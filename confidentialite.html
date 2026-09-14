@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Politique de confidentialité — Blueprint</title>
+<meta name="description" content="Ce que le bot Discord Blueprint enregistre, pourquoi, et comment le faire effacer.">
+<meta property="og:title" content="Politique de confidentialité — Blueprint">
+<meta property="og:description" content="Ce que le bot Discord Blueprint enregistre, pourquoi, et comment le faire effacer.">
+<meta name="theme-color" content="#6244b8">
+<style>
+:root{
+  --fond:#16121f; --fond2:#1d1830; --carte:#221c36; --bord:#332a52;
+  --violet:#6244b8; --violet-clair:#a48ce8; --texte:#ece9f5; --doux:#a9a2c4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);
+  font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.grille{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(164,140,232,.06) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(164,140,232,.06) 1px,transparent 1px);
+  background-size:44px 44px}
+.page{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px 80px}
+header{padding:72px 0 40px;text-align:center}
+.cube{width:88px;height:88px;margin:0 auto 22px;display:block}
+h1{font-size:clamp(2.1rem,6vw,3.2rem);margin:0 0 10px;letter-spacing:-.02em}
+.sous{color:var(--doux);font-size:1.13rem;max-width:600px;margin:0 auto}
+.boutons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:34px 0 0}
+.b{display:inline-block;padding:13px 26px;border-radius:11px;text-decoration:none;
+  font-weight:600;border:1px solid transparent;transition:transform .12s ease,filter .12s ease}
+.b:hover{transform:translateY(-2px)}
+.b1{background:var(--violet);color:#fff}
+.b1:hover{filter:brightness(1.14)}
+.b2{background:transparent;color:var(--texte);border-color:var(--bord)}
+.b2:hover{border-color:var(--violet-clair)}
+.cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:56px 0}
+.carte{background:var(--carte);border:1px solid var(--bord);border-radius:15px;padding:22px}
+.carte h3{margin:0 0 8px;font-size:1.05rem}
+.carte p{margin:0;color:var(--doux);font-size:.94rem}
+.bandeau{background:var(--fond2);border:1px solid var(--bord);border-radius:15px;
+  padding:26px;margin:44px 0;text-align:center}
+.bandeau strong{color:var(--violet-clair)}
+footer{border-top:1px solid var(--bord);margin-top:64px;padding-top:26px;
+  color:var(--doux);font-size:.9rem;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+footer a{color:var(--doux)}
+a{color:var(--violet-clair)}
+h2{margin:42px 0 12px;font-size:1.45rem;border-bottom:1px solid var(--bord);padding-bottom:8px}
+h3{margin:26px 0 8px;font-size:1.1rem}
+hr{border:0;border-top:1px solid var(--bord);margin:32px 0}
+code{background:#0f0c17;border:1px solid var(--bord);border-radius:5px;
+  padding:2px 6px;font-size:.88em;font-family:ui-monospace,Menlo,Consolas,monospace}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bord);vertical-align:top}
+th{color:var(--violet-clair);font-weight:600}
+.retour{display:inline-block;margin:34px 0 0;color:var(--doux);text-decoration:none}
+@media (max-width:560px){header{padding:48px 0 28px}.page{padding:0 18px 60px}}
+</style>
+</head>
+<body>
+<div class="grille"></div>
+<div class="page">
+<h1>Politique de confidentialité — Blueprint</h1>
+<p><em>Dernière mise à jour : 14 septembre 2026</em></p>
+<p>Blueprint est un bot Discord. Ce document dit exactement ce qu'il enregistre,</p>
+<p>pourquoi, combien de temps, et comment faire effacer ces données.</p>
+<p>Il est écrit pour être lu, pas pour se couvrir. Si quelque chose n'y est pas</p>
+<p>clair, écris à l'adresse en bas de page.</p>
+<hr>
+<h2>En une phrase</h2>
+<p>Blueprint enregistre des identifiants Discord et des compteurs (XP, monnaie,</p>
+<p>messages envoyés) pour faire fonctionner les niveaux, l'économie et la</p>
+<p>modération — et il efface <strong>tout</strong> ce qui concerne un serveur dès qu'on l'en</p>
+<p>retire.</p>
+<hr>
+<h2>1. Ce qui est enregistré</h2>
+<h3>Toujours, dès qu'un membre participe</h3>
+<table><thead><tr><th>Donnée</th><th>Pourquoi</th></tr></thead><tbody>
+<tr><td>Ton identifiant Discord (un nombre)</td><td>Pour te reconnaître d'une fois sur l'autre</td></tr>
+<tr><td>L'identifiant du serveur</td><td>Pour que ton XP d'un serveur ne se mélange pas à celui d'un autre</td></tr>
+<tr><td>Ton XP, ton niveau, ton nombre de messages, ton temps en vocal</td><td>C'est le système de niveaux</td></tr>
+<tr><td>L'heure de ton dernier gain d'XP</td><td>Pour ne pas compter dix messages d'affilée</td></tr>
+</tbody></table>
+<p><strong>Ton pseudo n'est pas enregistré.</strong> Le bot le redemande à Discord au moment</p>
+<p>d'afficher une carte ou un classement, et ne le garde pas.</p>
+<h3>Si le serveur a activé la fonction</h3>
+<table><thead><tr><th>Fonction</th><th>Ce qui est enregistré</th></tr></thead><tbody>
+<tr><td>Économie</td><td>Ton solde, ton compte en banque, tes achats, ton inventaire</td></tr>
+<tr><td>Modération</td><td>Tes sanctions : type, raison écrite par le modérateur, durée, date, et qui l'a prononcée</td></tr>
+<tr><td>Tickets</td><td>Le numéro, le sujet et la description que tu as écrits en ouvrant le ticket</td></tr>
+<tr><td>Suggestions</td><td>Le texte de ta suggestion et tes votes</td></tr>
+<tr><td>Candidatures</td><td>Les réponses que tu as écrites dans le formulaire</td></tr>
+<tr><td>Signalements</td><td>Le texte du message signalé, pour que le staff puisse le lire même s'il est supprimé</td></tr>
+<tr><td>Statistiques</td><td>Les heures auxquelles tu écris et les salons où tu écris, sous forme de compteurs</td></tr>
+<tr><td>Invitations</td><td>Qui t'a invité sur le serveur</td></tr>
+<tr><td>Concours</td><td>Ta participation à un concours : l'identifiant du concours, le tien, et la date du clic</td></tr>
+</tbody></table>
+<h3>Quatre cas à part</h3>
+<p><strong>Ta date d'anniversaire.</strong> Elle n'est enregistrée que si <strong>tu</strong> la donnes</p>
+<p>toi-même, avec <code>/anniversaire definir</code> — personne ne peut inscrire quelqu'un</p>
+<p>d'autre, et <code>/anniversaire retirer</code> l'efface en un clic.</p>
+<p>Le <strong>jour et le mois</strong> suffisent à souhaiter un anniversaire : ce sont les deux</p>
+<p>seules informations demandées. L'<strong>année est facultative</strong>, et si tu la donnes,</p>
+<p>le bot ne l'affiche nulle part et ne s'en sert jamais pour calculer un âge.</p>
+<p><code>/anniversaire voir</code> et <code>/anniversaire liste</code> montrent « 14 juillet », rien de</p>
+<p>plus.</p>
+<p>Une date d'anniversaire est enregistrée <strong>par serveur</strong> : la donner ici ne la</p>
+<p>donne pas ailleurs.</p>
+<p><strong>Les votes top.gg.</strong> Si tu votes pour le bot et réclames ta récompense, le bot</p>
+<p>enregistre ton identifiant Discord, la date et le nombre de tes votes. C'est</p>
+<p>enregistré <strong>une fois pour le bot</strong>, pas par serveur — sinon une même personne</p>
+<p>réclamerait sur dix serveurs. Rien d'autre n'est gardé, et le bot ne transmet</p>
+<p>rien à top.gg : il lui demande seulement « cette personne a-t-elle voté ? ».</p>
+<p><strong>L'XP global.</strong> En plus de l'XP de chaque serveur, le bot tient un compteur</p>
+<p>qui monte partout : c'est celui de <code>/global</code>. Sont enregistrés ton identifiant</p>
+<p>Discord, ce total d'XP, ton nombre de messages et ton temps en vocal cumulés.</p>
+<p><strong>Les serveurs où cet XP a été gagné ne sont pas enregistrés.</strong> Ni leur nom, ni</p>
+<p>leur identifiant. Un classement mondial qui révélerait sur quels serveurs</p>
+<p>chacun se trouve serait un annuaire de présence : le bot ne garde que le total.</p>
+<p>Ce compteur ne dépend d'aucun serveur, donc <code>/confidentialite effacer</code> — qui</p>
+<p>efface tes données <strong>sur un serveur</strong> — n'y touche pas. C'est</p>
+<p><code>/global effacer</code> qui le remet à zéro, et toi seul peux le faire : aucun</p>
+<p>administrateur n'a la main dessus.</p>
+<p><strong>La blocklist communautaire.</strong> C'est une liste partagée entre les serveurs du</p>
+<p>bot. Si un administrateur te propose dessus et que le staff du serveur support</p>
+<p>approuve, sont enregistrés et <strong>publiés</strong> : ton identifiant Discord, ton pseudo</p>
+<p>au moment de la fiche, et la raison écrite par la personne qui t'a proposé.</p>
+<p>Sont enregistrés <strong>sans être publiés</strong> : qui t'a proposé, depuis quel serveur,</p>
+<p>et qui a approuvé.</p>
+<p>Rien n'est publié automatiquement : un humain lit chaque proposition et décide.</p>
+<p>Une fiche peut être retirée — le message public est alors effacé aussi. Si tu</p>
+<p>penses être sur la liste à tort, écris à l'adresse en bas de page ou passe par</p>
+<p>le serveur support.</p>
+<h3>Ce qui n'est jamais enregistré</h3>
+<ul>
+<li>Le contenu des messages ordinaires. Le bot les lit au passage pour compter</li>
+</ul>
+<p>  l'XP et faire tourner l'automod, puis les oublie immédiatement. Ils ne sont</p>
+<p>  écrits nulle part.</p>
+<ul>
+<li>Les messages privés.</li>
+<li>Les conversations vocales. Seule la <strong>durée</strong> passée en vocal est comptée.</li>
+<li>Ton adresse e-mail, ton adresse IP, ton vrai nom, ton pays.</li>
+<li>Rien n'est vendu, loué, ni transmis à qui que ce soit.</li>
+</ul>
+<hr>
+<h2>2. Combien de temps</h2>
+<table><thead><tr><th>Situation</th><th>Ce qui se passe</th></tr></thead><tbody>
+<tr><td><strong>Le bot est retiré d'un serveur</strong></td><td><strong>Toutes</strong> les données de ce serveur sont effacées immédiatement et définitivement. Aucune copie n'est gardée.</td></tr>
+<tr><td>Tu quittes un serveur où le bot reste</td><td>Ton XP et ton solde restent, pour que tu les retrouves si tu reviens. Tu peux demander leur effacement (voir plus bas).</td></tr>
+<tr><td>Statistiques d'activité</td><td>Effacées automatiquement au bout de quelques mois.</td></tr>
+<tr><td>Photographies de la structure du serveur</td><td>Les dix dernières seulement, et uniquement si le serveur a activé la fonction (elle est désactivée par défaut).</td></tr>
+</tbody></table>
+<hr>
+<h2>3. Où c'est stocké</h2>
+<p>Dans un fichier de base de données, sur la machine qui fait tourner le bot.</p>
+<p>Cette machine est celle de l'auteur du bot, pas un service tiers. Personne</p>
+<p>d'autre n'y a accès.</p>
+<p>Le bot appelle des services extérieurs <strong>uniquement</strong> pour les annonces</p>
+<p>automatiques qu'un serveur a configurées lui-même : Twitch, YouTube,</p>
+<p>Instagram, TikTok, ou une adresse de flux RSS. Ces appels demandent</p>
+<p>« y a-t-il du nouveau ? » et n'envoient aucune donnée de membre.</p>
+<hr>
+<h2>4. Faire effacer tes données</h2>
+<p>Trois façons, au choix :</p>
+<p>1. <strong>Toi, pour toi</strong> — <code>/global effacer</code> remet à zéro ton compteur d'XP global,</p>
+<p>   celui qui ne dépend d'aucun serveur.</p>
+<p>   La commande <code>/confidentialite effacer</code> efface ce que le</p>
+<p>   bot sait de toi sur le serveur où tu la lances : XP, niveau, monnaie,</p>
+<p>   objets, statistiques, tickets, suggestions, candidatures, date</p>
+<p>   d'anniversaire et participations aux concours.</p>
+<p>   **Trois exceptions : les sanctions, les signalements et les fiches de la</p>
+<p>   blocklist.** Les fiches concernent une liste partagée entre serveurs : leur</p>
+<p>   retrait passe par le staff du serveur support, pas par la personne visée.</p>
+<p>   <strong>Les sanctions et les signalements.</strong> Ils ne décrivent</p>
+<p>   pas ta personne, ils décrivent le travail de modération du serveur — qui a</p>
+<p>   averti qui, et pourquoi. Si chacun pouvait les effacer d'une commande,</p>
+<p>   l'historique du staff ne vaudrait plus rien. Un modérateur du serveur peut</p>
+<p>   les retirer.</p>
+<p>2. <strong>Un administrateur, pour tout le serveur</strong> — retirer le bot du serveur</p>
+<p>   suffit : tout part avec lui.</p>
+<p>3. <strong>Par écrit</strong> — à l'adresse ci-dessous. Réponse sous 30 jours.</p>
+<p>Pour voir ce qui est enregistré avant de décider : <code>/confidentialite voir</code>.</p>
+<hr>
+<h2>5. Les mineurs</h2>
+<p>Discord interdit son service aux moins de 13 ans, ou à l'âge minimum légal du</p>
+<p>pays quand il est plus élevé. Blueprint ne demande l'âge de personne et n'a</p>
+<p>aucun moyen de le vérifier. La seule commande qui touche à une date de</p>
+<p>naissance, <code>/anniversaire</code>, se contente d'un jour et d'un mois : elle ne permet</p>
+<p>pas de déduire un âge. Si tu penses qu'un enfant a des données enregistrées,</p>
+<p>écris-nous : elles seront effacées.</p>
+<hr>
+<h2>6. Changements</h2>
+<p>Ce document peut évoluer. La date en haut indique la dernière modification.</p>
+<p>Un changement important sera annoncé sur le serveur de support.</p>
+<hr>
+<h2>7. Contact</h2>
+<p><strong>À REMPLIR avant de publier ce document :</strong></p>
+<ul>
+<li>E-mail de contact : <code>&lt;ton adresse&gt;</code></li>
+<li>Serveur de support : <code>&lt;ton invitation Discord&gt;</code></li>
+</ul>
+<p>Discord exige une adresse de contact valide pour vérifier une application.</p>
+<a class="retour" href="./">← Retour à l'accueil</a>
+<footer>
+  <a href="./">Accueil</a>
+  <a href="./conditions.html">Conditions d'utilisation</a>
+  <a href="./confidentialite.html">Confidentialité</a>
+</footer>
+</div>
+</body>
+</html>
