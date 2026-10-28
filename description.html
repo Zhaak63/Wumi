@@ -1,0 +1,106 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+.wm{background:#171534;color:#eef0ff;border-radius:24px;overflow:hidden;font-family:'Nunito','Segoe UI',system-ui,sans-serif;line-height:1.6;text-align:left}
+.wm *{box-sizing:border-box}
+.wm img{display:block;max-width:100%;height:auto;border-radius:0}
+.wm-in{padding:32px clamp(18px,4vw,44px)}
+.wm h2,.wm h3{font-family:'Fredoka','Nunito',system-ui,sans-serif;color:#eef0ff;margin:0;line-height:1.15;border:0;text-shadow:none;letter-spacing:0;text-transform:none}
+.wm h2{font-size:30px;margin:0 0 6px}
+.wm h3{font-size:20px;margin:10px 0 4px}
+.wm p{margin:0;color:#a9acd6}
+.wm a{color:#62b8ff}
+.wm-lead{font-size:19px;color:#cfd2f5!important;max-width:40em;margin:4px 0 20px!important}
+.wm-btns{display:flex;flex-wrap:wrap;gap:12px}
+.wm .wm-btn{display:inline-block;padding:12px 24px;border-radius:999px;background:#62b8ff;color:#06284a;font:600 17px 'Fredoka','Nunito',sans-serif;text-decoration:none;box-shadow:0 4px 0 rgba(0,0,0,.35)}
+.wm .wm-btn.alt{background:transparent;color:#eef0ff;box-shadow:inset 0 0 0 2px #34306a}
+.wm-sep{height:2px;background:repeating-linear-gradient(90deg,#34306a 0 10px,transparent 10px 18px);margin:0 clamp(18px,4vw,44px)}
+.wm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
+.wm-card{background:#201d45;border:2px solid #34306a;border-radius:20px;padding:20px}
+.wm-card .i{width:48px;height:48px;border-radius:16px 16px 16px 6px;background:#2b2766;display:grid;place-items:center;font-size:24px}
+.wm-card:nth-child(even) .i{border-radius:16px 6px 16px 16px;background:#62b8ff}
+.wm-shot{margin-top:22px}
+.wm-shot img{border-radius:16px;border:2px solid #34306a}
+.wm-shot p{font-size:14px;margin-top:8px}
+.wm-steps{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:s}
+.wm-steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;color:#cfd2f5}
+.wm-steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:#62b8ff;color:#06284a;font:700 17px 'Fredoka',sans-serif;display:grid;place-items:center}
+.wm code{background:#201d45;border:2px solid #34306a;border-radius:8px;padding:2px 8px;color:#eef0ff;font-size:14px}
+.wm-list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.wm-list li{background:#201d45;border-left:6px solid #62b8ff;border-radius:12px;padding:12px 16px;color:#a9acd6}
+.wm-list b{color:#eef0ff}
+.wm iframe{width:100%;height:520px;border:2px solid #34306a;border-radius:16px;background:#171534;margin-top:16px}
+.wm-foot{text-align:center;padding:22px;font-size:14px;color:#a9acd6;border-top:2px solid #201d45}
+.wm-foot a{margin:0 10px}
+</style>
+
+<div class="wm">
+
+<img src="https://zhaak63.github.io/Wumi/assets/og.png" alt="Wumi, your server's cutest little companion">
+
+<div class="wm-in">
+<p class="wm-lead">Wumi is a cute all-in-one Discord bot. It welcomes newcomers, hands out roles, helps you moderate and adds a bit of fun, with simple slash commands and no headaches.</p>
+<div class="wm-btns">
+<a class="wm-btn" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
+<a class="wm-btn alt" href="https://discord.gg/VaGrXgnAHS">Support server</a>
+<a class="wm-btn alt" href="https://zhaak63.github.io/Wumi/">Website</a>
+</div>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<h2>What Wumi does for you</h2>
+<p>Simple tools to manage your community.</p>
+<div class="wm-grid">
+<div class="wm-card"><div class="i">&#127872;</div><h3>Auto roles</h3><p>Give one or more roles to every new member, with separate settings for humans and bots.</p></div>
+<div class="wm-card"><div class="i">&#127800;</div><h3>Reaction roles</h3><p>Members pick their own roles with a button or an emoji, right inside a message.</p></div>
+<div class="wm-card"><div class="i">&#128075;</div><h3>Welcome and goodbye</h3><p>Custom greeting and farewell messages with the member's name, avatar and the member count.</p></div>
+<div class="wm-card"><div class="i">&#128737;&#65039;</div><h3>Moderation</h3><p>Ban, kick, timeout and clear a channel. Every action can be kept in a logs channel.</p></div>
+<div class="wm-card"><div class="i">&#127918;</div><h3>Games and fun</h3><p>Mini-games and silly commands to keep your server lively.</p></div>
+<div class="wm-card"><div class="i">&#9889;</div><h3>Slash commands</h3><p>Type <code>/</code> in Discord and pick a command. Nothing to memorize.</p></div>
+</div>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<h2>See it in action</h2>
+<div class="wm-shot"><img src="https://zhaak63.github.io/Wumi/assets/topgg/hero-dark.png" alt="Wumi website home page"><p>The Wumi website, in English and French.</p></div>
+<div class="wm-shot"><img src="https://zhaak63.github.io/Wumi/assets/topgg/demo-dark.png" alt="Wumi setting up an auto role and welcoming a member"><p>One command to set an auto role, and Wumi welcomes every new member.</p></div>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<h2>Ready in three steps</h2>
+<ol class="wm-steps">
+<li><div>Add Wumi to your server with the button above.</div></li>
+<li><div>Run <code>/autorole</code> and pick the role new members should get.</div></li>
+<li><div>Wumi welcomes the next member and gives them their role.</div></li>
+</ol>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<h2>What matters</h2>
+<ul class="wm-list">
+<li><b>No Administrator permission.</b> The invite link asks only for what Wumi needs: roles, moderation and messages.</li>
+<li><b>Your data stays yours.</b> Remove Wumi and everything about your server is erased immediately. No copy is kept.</li>
+<li><b>Free.</b> Wumi is a free bot. Read the <a href="https://zhaak63.github.io/Wumi/conditions.html">Terms</a> and the <a href="https://zhaak63.github.io/Wumi/confidentialite.html">Privacy Policy</a>.</li>
+</ul>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<h2>Take a look at the website</h2>
+<p>A live preview of the Wumi website.</p>
+<iframe src="https://zhaak63.github.io/Wumi/" title="Wumi website" loading="lazy"></iframe>
+</div>
+
+<div class="wm-foot">
+<a href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a><a href="https://discord.gg/VaGrXgnAHS">Support</a><a href="https://zhaak63.github.io/Wumi/conditions.html">Terms</a><a href="https://zhaak63.github.io/Wumi/confidentialite.html">Privacy</a>
+</div>
+
+</div>
