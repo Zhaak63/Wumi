@@ -355,7 +355,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
         <p>Wumi utilise les commandes slash : tape / dans Discord et choisis.</p>
       </div>
       <div class="cmds rv">
-        <code>/autorole</code><code>/reactionrole</code><code>/welcome</code><code>/ban</code><code>/kick</code><code>/timeout</code><code>/clear</code><code>/avertir</code><code>/sanctions</code><code>/softban</code><code>/massban</code><code>/pseudo</code><code>/role</code><code>/note</code><code>/vocal-mod</code><code>/modstats</code><code>/paliers</code><code>/raid</code><code>/logs</code><code>/serverinfo</code><code>/userinfo</code><code>/tictactoe</code><code>/help</code>
+        <code>/demarrer</code><code>/config</code><code>/bienvenue</code><code>/autorole</code><code>/roles-reactions</code><code>/embed</code><code>/ticket</code><code>/bannir</code><code>/expulser</code><code>/mute</code><code>/purger</code><code>/avertir</code><code>/sanctions</code><code>/softban</code><code>/massban</code><code>/pseudo</code><code>/role</code><code>/note</code><code>/vocal-mod</code><code>/modstats</code><code>/paliers</code><code>/raid</code><code>/antiraid</code><code>/automod</code><code>/rank</code><code>/classement</code><code>/economie</code><code>/giveaway</code><code>/suggestion</code><code>/anniversaire</code><code>/morpion</code><code>/serveurinfo</code><code>/userinfo</code><code>/aide</code>
       </div>
     </div>
   </section>
@@ -369,7 +369,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
       </div>
       <div class="steps">
         <div class="step rv"><div class="n">01</div><h3>Invite Wumi</h3><p>Ajoute le bot à ton serveur en un clic et place son rôle au-dessus des rôles qu'il doit gérer.</p></div>
-        <div class="step rv"><div class="n">02</div><h3>Une commande</h3><p>Lance <span class="cmd">/autorole</span> ou <span class="cmd">/welcome</span> : Wumi s'occupe du reste, dès la prochaine arrivée.</p></div>
+        <div class="step rv"><div class="n">02</div><h3>Une commande</h3><p>Lance <span class="cmd">/autorole</span> ou <span class="cmd">/bienvenue</span> : Wumi s'occupe du reste, dès la prochaine arrivée.</p></div>
         <div class="step rv"><div class="n">03</div><h3>Personnalise</h3><p>Crée tes embeds et ton texte coloré avec les outils, puis ajuste tes réglages quand tu veux.</p></div>
       </div>
     </div>
@@ -385,7 +385,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
       </div>
       <div class="rv">
         <details open><summary>Wumi est-il gratuit ?</summary><p>Oui. Le bot et tous les outils Aesthetic Creators sont gratuits.</p></details>
-        <details><summary>Comment configurer le bot ?</summary><p>Tout se fait avec les commandes slash dans Discord. Tape / puis choisis une commande Wumi, ou utilise /help pour voir la liste.</p></details>
+        <details><summary>Comment configurer le bot ?</summary><p>Tout se fait avec les commandes slash dans Discord. Tape / puis choisis une commande Wumi, ou utilise /aide pour voir la liste.</p></details>
         <details><summary>Les outils ont-ils besoin du bot ?</summary><p>Non. Les outils fonctionnent dans ton navigateur, avec ou sans Wumi sur ton serveur.</p></details>
         <details><summary>Pourquoi Wumi ne donne pas un rôle ?</summary><p>Vérifie que le rôle de Wumi est placé au-dessus du rôle à donner dans les paramètres du serveur, et qu'il a la permission de gérer les rôles.</p></details>
         <details><summary>Comment rejoindre la communauté ?</summary><p>Rejoins le serveur de support pour suivre le projet, poser tes questions et donner ton avis.</p></details>
@@ -422,7 +422,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 
 <script>
 // marquee
-const cmds=["/autorole","/reactionrole","/welcome","/ban","/kick","/timeout","/clear","/logs","/serverinfo","/userinfo","/tictactoe","/help","embeds","texte coloré","timestamps"];
+const cmds=["/demarrer","/bienvenue","/autorole","/roles-reactions","/embed","/bannir","/mute","/avertir","/rank","/giveaway","/morpion","/aide","embeds","texte coloré","timestamps"];
 const t=document.getElementById('track');
 t.innerHTML=[...cmds,...cmds].map(c=>`<div class="chip">${c.startsWith('/')?'<b>/</b>'+c.slice(1):'✨ '+c}</div>`).join('');
 // reveal on scroll
