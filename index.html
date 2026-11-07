@@ -1,22 +1,27 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{if(localStorage.getItem('wumi-lang')==='fr')location.replace('fr/index.html'+location.hash)}catch(e){}</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wumi · Bot & outils Discord</title>
-<meta name="description" content="Wumi, le petit compagnon tout-en-un de ton serveur Discord, et les outils Aesthetic Creators : rôles auto, bienvenue, modération, embeds, texte coloré, timestamps et plus.">
+<title>Wumi · Discord bot & tools</title>
+<meta name="description" content="Wumi, your Discord server's cutest all-in-one companion, plus the Aesthetic Creators tools: auto roles, welcome messages, moderation, embeds, colored text, timestamps and more.">
 <meta name="theme-color" content="#62b8ff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
 <meta property="og:url" content="https://zhaak63.github.io/Wumi/">
-<meta property="og:title" content="Wumi · Bot & outils Discord">
-<meta property="og:description" content="Un bot mignon qui gère ton serveur, et des outils gratuits pour le rendre beau.">
-<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<meta property="og:title" content="Wumi · Discord bot & tools">
+<meta property="og:description" content="A cute bot that runs your server, and free tools to make it beautiful.">
+<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Wumi, le petit robot mascotte du bot">
+<meta property="og:image:alt" content="The Wumi logo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
+<link rel="alternate" hreflang="en" href="https://zhaak63.github.io/Wumi/">
+<link rel="alternate" hreflang="fr" href="https://zhaak63.github.io/Wumi/fr/">
+<link rel="alternate" hreflang="x-default" href="https://zhaak63.github.io/Wumi/">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
 <link rel="icon" href="favicon.ico?v=3" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
@@ -59,8 +64,8 @@ nav{display:flex;align-items:center;gap:28px;height:68px}
 .logo span.dot{color:var(--pink)}
 .nav-links{display:flex;gap:22px;font-size:14.5px;color:var(--muted)}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{margin-left:auto;display:flex;gap:10px;align-items:center}
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+.nav-cta{margin-left:0;display:flex;gap:10px;align-items:center}
+.burger{display:none;margin-left:4px;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;transition:.2s;border:1px solid transparent;white-space:nowrap}
@@ -218,24 +223,28 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   section{padding-top:80px}
   .foot{grid-template-columns:1fr}
 }
+.page-grid{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%)}
+.lang{display:flex;gap:2px;padding:3px;margin-left:auto;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.03)}.lang a{display:grid;place-items:center;width:32px;height:26px;border-radius:7px;opacity:.45;transition:.2s;border:0}.lang a:hover{opacity:.85}.lang a.on{opacity:1;background:rgba(255,255,255,.09)}@media (max-width:760px){nav{gap:12px}.lang a{width:30px}}
+.lang svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 </style>
 </head>
 <body>
-<div class="glow"></div>
+<div class="glow"></div><div class="page-grid"></div>
 
 <header id="hdr">
   <nav class="wrap">
     <a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a>
     <div class="nav-links">
-      <a href="#fonctions">Fonctionnalités</a>
-      <a href="#outils">Outils</a>
-      <a href="#commandes">Commandes</a>
-      <a href="#demarrer">Démarrer</a>
+      <a href="#fonctions">Features</a>
+      <a href="#outils">Tools</a>
+      <a href="#commandes">Commands</a>
+      <a href="#demarrer">Get started</a>
       <a href="#faq">FAQ</a>
     </div>
+    <div class="lang" role="group" aria-label="Language"><a href="index.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/index.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div>
     <div class="nav-cta">
       <a class="btn btn-ghost btn-sm" href="https://discord.gg/VaGrXgnAHS">Support</a>
-      <a class="btn btn-primary btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Ajouter à Discord</a>
+      <a class="btn btn-primary btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
     </div>
     <button class="burger" aria-label="Menu" onclick="document.getElementById('hdr').classList.toggle('open')">☰</button>
   </nav>
@@ -244,48 +253,47 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 <main id="top">
   <!-- HERO -->
   <div class="hero">
-    <div class="grid-bg"></div>
     <div class="wrap">
       <img src="wumi-w.svg" alt="Wumi" class="hero-mascot rv">
-      <div class="pill rv"><b>NOUVEAU</b> Wumi et Aesthetic Creators, réunis au même endroit</div>
-      <h1 class="rv">Un serveur qui vit. <span class="serif grad-text">Un bot qui suit le rythme.</span></h1>
-      <p class="lead rv">Wumi accueille tes membres, distribue les rôles et veille sur la modération. Et pour rendre ton serveur beau, tous les outils Aesthetic Creators sont juste à côté, gratuits.</p>
+      <div class="pill rv"><b>NEW</b> Wumi and Aesthetic Creators, now in one place</div>
+      <h1 class="rv">A server that thrives. <span class="serif grad-text">A bot that keeps up.</span></h1>
+      <p class="lead rv">Wumi welcomes your members, hands out roles and keeps an eye on moderation. And to make your server beautiful, all the Aesthetic Creators tools are right next door, for free.</p>
       <div class="hero-ctas rv">
-        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Ajouter à Discord →</a>
-        <a class="btn btn-ghost" href="#outils">Voir les outils gratuits</a>
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord →</a>
+        <a class="btn btn-ghost" href="#outils">See the free tools</a>
       </div>
-      <p class="hero-note rv">Gratuit · Prêt en une commande · Commandes slash</p>
+      <p class="hero-note rv">Free · Ready in one command · Slash commands</p>
 
       <!-- Dashboard mockup -->
       <div class="mock rv">
         <aside class="mock-side">
-          <div class="srv"><div class="ava" style="background:var(--grad)">W</div><div><b>Mon serveur</b><br><span style="color:var(--dim);font-size:11.5px">1 284 membres</span></div></div>
-          <h6>PRINCIPAL</h6>
-          <a class="on">🏠 Accueil</a><a>👥 Membres</a>
+          <div class="srv"><div class="ava" style="background:var(--grad)">W</div><div><b>My server</b><br><span style="color:var(--dim);font-size:11.5px">1,284 members</span></div></div>
+          <h6>MAIN</h6>
+          <a class="on">🏠 Home</a><a>👥 Members</a>
           <h6>MODULES</h6>
-          <a>🎀 Rôles auto</a><a>🌸 Rôles réaction</a><a>👋 Bienvenue</a><a>🛡️ Modération</a>
-          <h6>OUTILS</h6>
-          <a>🎨 Embeds</a><a>🌈 Texte coloré</a>
+          <a>🎀 Auto roles</a><a>🌸 Reaction roles</a><a>👋 Welcome</a><a>🛡️ Moderation</a>
+          <h6>TOOLS</h6>
+          <a>🎨 Embeds</a><a>🌈 Colored text</a>
         </aside>
         <div class="mock-main">
-          <h4>Aujourd'hui sur ton serveur</h4>
+          <h4>Today on your server</h4>
           <div class="stats">
-            <div class="stat"><small>Nouveaux</small><strong>42</strong><i>▲ 12</i></div>
-            <div class="stat"><small>Rôles donnés</small><strong>118</strong><i>▲ 30</i></div>
+            <div class="stat"><small>New members</small><strong>42</strong><i>▲ 12</i></div>
+            <div class="stat"><small>Roles given</small><strong>118</strong><i>▲ 30</i></div>
             <div class="stat"><small>Sanctions</small><strong>3</strong><i style="color:var(--dim)">~ 0</i></div>
-            <div class="stat"><small>Parties jouées</small><strong>27</strong><i>▲ 9</i></div>
+            <div class="stat"><small>Games played</small><strong>27</strong><i>▲ 9</i></div>
           </div>
           <div class="feed">
-            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--blue)">N</div><span class="tag" style="background:rgba(61,220,151,.15);color:var(--green)">Rôle</span><span><b>Noa</b> a reçu @Membre</span><time>2 min</time></div>
-            <div class="feed-row"><div class="ava" style="background:rgba(143,160,255,.2);color:var(--pink)">L</div><span class="tag" style="background:rgba(255,190,80,.15);color:#ffbe50">Timeout</span><span><b>Léo</b> : spam de mentions</span><time>1 h</time></div>
-            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--violet)">S</div><span class="tag" style="background:rgba(98,184,255,.15);color:var(--blue)">Jeu</span><span><b>Sam</b> a gagné au morpion</span><time>3 h</time></div>
+            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--blue)">N</div><span class="tag" style="background:rgba(61,220,151,.15);color:var(--green)">Role</span><span><b>Noa</b> got @Member</span><time>2 min</time></div>
+            <div class="feed-row"><div class="ava" style="background:rgba(143,160,255,.2);color:var(--pink)">L</div><span class="tag" style="background:rgba(255,190,80,.15);color:#ffbe50">Timeout</span><span><b>Léo</b> : mention spam</span><time>1 h</time></div>
+            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--violet)">S</div><span class="tag" style="background:rgba(98,184,255,.15);color:var(--blue)">Game</span><span><b>Sam</b> won at tic-tac-toe</span><time>3 h</time></div>
           </div>
         </div>
         <aside class="mock-chat">
-          <h6># BIENVENUE</h6>
-          <div class="msg"><div class="ava" style="background:#7b80b8;color:#fff">M</div><div><span class="name">Maya</span><p><span class="cmd">/autorole add</span> role: <span class="mention">@Membre</span></p></div></div>
-          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>C'est réglé ! Les nouveaux recevront automatiquement <span class="mention">@Membre</span>.</p></div></div>
-          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>Bienvenue sur le serveur <span class="mention">@Noa</span> ! Je t'ai donné le rôle @Membre :3</p></div></div>
+          <h6># WELCOME</h6>
+          <div class="msg"><div class="ava" style="background:#7b80b8;color:#fff">M</div><div><span class="name">Maya</span><p><span class="cmd">/autorole add</span> role: <span class="mention">@Member</span></p></div></div>
+          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>All set! New arrivals will automatically receive <span class="mention">@Member</span>.</p></div></div>
+          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>Welcome to the server, <span class="mention">@Noa</span>! I gave you the @Member role :3</p></div></div>
         </aside>
       </div>
     </div>
@@ -293,26 +301,26 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 
   <!-- MARQUEE -->
   <div class="trust">
-    <p>Tout ce dont ton serveur a besoin, en <b style="color:var(--text)">une barre oblique</b></p>
+    <p>Everything your server needs, in <b style="color:var(--text)">one slash</b></p>
     <div class="marquee"><div class="track" id="track"></div></div>
-    <div class="status">Tous les systèmes fonctionnent</div>
+    <div class="status">All systems running</div>
   </div>
 
   <!-- FEATURES -->
   <section id="fonctions">
     <div class="wrap">
       <div class="sec-head rv">
-        <div class="eyebrow">LE BOT WUMI</div>
-        <h2>Tout ce qu'il faut. <span class="serif grad-text">Au même endroit.</span></h2>
-        <p>Des outils simples pour gérer ta communauté, sans prise de tête.</p>
+        <div class="eyebrow">THE WUMI BOT</div>
+        <h2>Everything you need. <span class="serif grad-text">In one place.</span></h2>
+        <p>Simple tools to manage your community, no headaches.</p>
       </div>
       <div class="features">
-        <article class="feat rv"><div class="ico">🎀</div><small>RÔLES AUTO</small><h3>Chaque arrivée, bien équipée.</h3><p>Donne un ou plusieurs rôles à chaque nouveau membre, avec des réglages séparés pour les humains et les bots.</p><ul><li>Plusieurs rôles à la fois</li><li>Humains et bots séparés</li></ul></article>
-        <article class="feat rv"><div class="ico">🌸</div><small>RÔLES RÉACTION</small><h3>Chacun choisit sa place.</h3><p>Les membres prennent leurs rôles en cliquant sur un bouton ou un emoji, directement dans un message.</p><ul><li>Boutons ou emojis</li><li>Autant de rôles que tu veux</li></ul></article>
-        <article class="feat rv"><div class="ico">👋</div><small>BIENVENUE</small><h3>Dire bonjour, avec style.</h3><p>Messages d'arrivée et de départ personnalisés avec le nom, l'avatar et le nombre de membres.</p><ul><li>Bienvenue et au revoir</li><li>Variables personnalisables</li></ul></article>
-        <article class="feat rv"><div class="ico">🛡️</div><small>MODÉRATION</small><h3>Garder le calme.</h3><p>Ban, kick, timeout, nettoyage de salon. Chaque action peut être gardée dans un salon de logs.</p><ul><li>Ban, kick, timeout, clear</li><li>Salon de logs dédié</li></ul></article>
-        <article class="feat rv"><div class="ico">🎮</div><small>JEUX</small><h3>Un serveur qui s'amuse.</h3><p>Mini-jeux et commandes rigolotes pour garder ton serveur vivant.</p><ul><li>Morpion entre membres</li><li>Commandes fun</li></ul></article>
-        <article class="feat rv"><div class="ico">🎨</div><small>CRÉATION</small><h3>Et pour le rendre beau ?</h3><p>Embeds, texte coloré, icônes de rôles : la boîte à outils Aesthetic Creators est incluse.</p><ul><li>7 outils gratuits</li><li>Tout tourne dans ton navigateur</li></ul></article>
+        <article class="feat rv"><div class="ico">🎀</div><small>AUTO ROLES</small><h3>Every arrival, ready to go.</h3><p>Give one or more roles to every new member, with separate settings for humans and bots.</p><ul><li>Several roles at once</li><li>Humans and bots apart</li></ul></article>
+        <article class="feat rv"><div class="ico">🌸</div><small>REACTION ROLES</small><h3>Everyone picks their place.</h3><p>Members choose their own roles by clicking a button or an emoji, right inside a message.</p><ul><li>Buttons or emojis</li><li>As many roles as you like</li></ul></article>
+        <article class="feat rv"><div class="ico">👋</div><small>WELCOME</small><h3>Say hi, with style.</h3><p>Greeting and farewell messages you customize with the member's name, avatar and the member count.</p><ul><li>Welcome and goodbye</li><li>Custom variables</li></ul></article>
+        <article class="feat rv"><div class="ico">🛡️</div><small>MODERATION</small><h3>Keep things calm.</h3><p>Ban, kick, timeout, clear a channel. Every action can be kept in a logs channel.</p><ul><li>Ban, kick, timeout, clear</li><li>Dedicated logs channel</li></ul></article>
+        <article class="feat rv"><div class="ico">🎮</div><small>GAMES</small><h3>A server that has fun.</h3><p>Mini-games and silly commands to keep your server lively.</p><ul><li>Tic-tac-toe between members</li><li>Fun commands</li></ul></article>
+        <article class="feat rv"><div class="ico">🎨</div><small>CREATION</small><h3>And to make it beautiful?</h3><p>Embeds, colored text, role icons: the Aesthetic Creators toolbox is included.</p><ul><li>7 free tools</li><li>Everything runs in your browser</li></ul></article>
       </div>
     </div>
   </section>
@@ -323,19 +331,19 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
       <div class="sec-head row rv">
         <div style="max-width:620px">
           <div class="eyebrow pink">AESTHETIC CREATORS</div>
-          <h2>Des outils gratuits. <span class="serif grad-text">Pour un serveur unique.</span></h2>
-          <p style="color:var(--muted);font-size:17px;margin-top:16px">Tout fonctionne directement dans ton navigateur, sans rien installer.</p>
+          <h2>Free tools. <span class="serif grad-text">For a unique server.</span></h2>
+          <p style="color:var(--muted);font-size:17px;margin-top:16px">Everything runs right in your browser, nothing to install.</p>
         </div>
-        <a class="btn btn-ghost" href="https://discord.gg/94seN7srjv">Rejoindre la communauté</a>
+        <a class="btn btn-ghost" href="https://discord.gg/94seN7srjv">Join the community</a>
       </div>
       <div class="tools">
-        <a class="tool big rv" href="https://aestheticcreators.xyz/#/embed"><span class="ico">🧩</span><h4>Créateur d'embeds</h4><p>Compose tes messages Discord avec embeds, couleurs et champs, et vois le rendu en direct avant de l'envoyer.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/colored"><span class="ico">🌈</span><h4>Texte coloré</h4><p>Écris du texte en couleur pour tes messages Discord.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/textfmt"><span class="ico">✍️</span><h4>Mise en forme</h4><p>Gras, italique, spoilers, blocs de code : tout le markdown Discord.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/timestamps"><span class="ico">⏱️</span><h4>Timestamps</h4><p>Génère des dates qui s'affichent dans le fuseau de chacun.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/invite"><span class="ico">🔗</span><h4>Lien d'invitation</h4><p>Crée le lien d'invitation de ton bot avec les bonnes permissions.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/download"><span class="ico">📥</span><h4>Icônes de rôles</h4><p>Télécharge les icônes de rôles, emojis et stickers.</p><span class="go">Ouvrir →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/icons"><span class="ico">✨</span><h4>Galerie d'icônes</h4><p>Parcours des icônes prêtes à utiliser sur ton serveur.</p><span class="go">Ouvrir →</span></a>
+        <a class="tool big rv" href="https://aestheticcreators.xyz/#/embed"><span class="ico">🧩</span><h4>Embed builder</h4><p>Design your Discord messages with embeds, colors and fields, and see a live preview before sending.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/colored"><span class="ico">🌈</span><h4>Colored text</h4><p>Write colored text for your Discord messages.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/textfmt"><span class="ico">✍️</span><h4>Text formatting</h4><p>Bold, italics, spoilers, code blocks: all of Discord's markdown.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/timestamps"><span class="ico">⏱️</span><h4>Timestamps</h4><p>Generate dates that show in everyone's own time zone.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/invite"><span class="ico">🔗</span><h4>Invite links</h4><p>Create your bot's invite link with the right permissions.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/download"><span class="ico">📥</span><h4>Role icons</h4><p>Download role icons, emojis and stickers.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="https://aestheticcreators.xyz/#/icons"><span class="ico">✨</span><h4>Icon gallery</h4><p>Browse icons ready to use on your server.</p><span class="go">Open →</span></a>
       </div>
     </div>
   </section>
@@ -344,9 +352,9 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   <section id="commandes">
     <div class="wrap">
       <div class="sec-head rv">
-        <div class="eyebrow">COMMANDES</div>
-        <h2>Tape <span class="serif grad-text">/</span> et c'est parti.</h2>
-        <p>Wumi utilise les commandes slash : tape / dans Discord et choisis.</p>
+        <div class="eyebrow">COMMANDS</div>
+        <h2>Type <span class="serif grad-text">/</span> and go.</h2>
+        <p>Wumi uses slash commands: type / in Discord and pick one.</p>
       </div>
       <div class="cmds rv">
         <code>/autorole</code><code>/reactionrole</code><code>/welcome</code><code>/ban</code><code>/kick</code><code>/timeout</code><code>/clear</code><code>/logs</code><code>/serverinfo</code><code>/userinfo</code><code>/tictactoe</code><code>/help</code>
@@ -358,13 +366,13 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   <section id="demarrer">
     <div class="wrap">
       <div class="sec-head row rv">
-        <div><div class="eyebrow">POUR COMMENCER</div><h2>Ton serveur. <span class="serif grad-text">À ta façon.</span></h2></div>
-        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Besoin d'aide ?</a>
+        <div><div class="eyebrow">GETTING STARTED</div><h2>Your server. <span class="serif grad-text">Your way.</span></h2></div>
+        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Need help?</a>
       </div>
       <div class="steps">
-        <div class="step rv"><div class="n">01</div><h3>Invite Wumi</h3><p>Ajoute le bot à ton serveur en un clic et place son rôle au-dessus des rôles qu'il doit gérer.</p></div>
-        <div class="step rv"><div class="n">02</div><h3>Une commande</h3><p>Lance <span class="cmd">/autorole</span> ou <span class="cmd">/welcome</span> : Wumi s'occupe du reste, dès la prochaine arrivée.</p></div>
-        <div class="step rv"><div class="n">03</div><h3>Personnalise</h3><p>Crée tes embeds et ton texte coloré avec les outils, puis ajuste tes réglages quand tu veux.</p></div>
+        <div class="step rv"><div class="n">01</div><h3>Invite Wumi</h3><p>Add the bot to your server in one click and place its role above the roles it should manage.</p></div>
+        <div class="step rv"><div class="n">02</div><h3>One command</h3><p>Run <span class="cmd">/autorole</span> or <span class="cmd">/welcome</span>: Wumi handles the rest, from the very next arrival.</p></div>
+        <div class="step rv"><div class="n">03</div><h3>Make it yours</h3><p>Build your embeds and colored text with the tools, then tweak your settings whenever you want.</p></div>
       </div>
     </div>
   </section>
@@ -373,16 +381,16 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   <section id="faq">
     <div class="wrap faq-grid">
       <div class="rv">
-        <div class="eyebrow">QUELQUES RÉPONSES</div>
-        <h2>Avant de <span class="serif grad-text">te lancer.</span></h2>
-        <a class="btn btn-ghost" style="margin-top:26px" href="https://discord.gg/VaGrXgnAHS">Une autre question ?</a>
+        <div class="eyebrow">A FEW ANSWERS</div>
+        <h2>Before you <span class="serif grad-text">get started.</span></h2>
+        <a class="btn btn-ghost" style="margin-top:26px" href="https://discord.gg/VaGrXgnAHS">Another question?</a>
       </div>
       <div class="rv">
-        <details open><summary>Wumi est-il gratuit ?</summary><p>Oui. Le bot et tous les outils Aesthetic Creators sont gratuits.</p></details>
-        <details><summary>Comment configurer le bot ?</summary><p>Tout se fait avec les commandes slash dans Discord. Tape / puis choisis une commande Wumi, ou utilise /help pour voir la liste.</p></details>
-        <details><summary>Les outils ont-ils besoin du bot ?</summary><p>Non. Les outils fonctionnent dans ton navigateur, avec ou sans Wumi sur ton serveur.</p></details>
-        <details><summary>Pourquoi Wumi ne donne pas un rôle ?</summary><p>Vérifie que le rôle de Wumi est placé au-dessus du rôle à donner dans les paramètres du serveur, et qu'il a la permission de gérer les rôles.</p></details>
-        <details><summary>Comment rejoindre la communauté ?</summary><p>Rejoins le serveur de support pour suivre le projet, poser tes questions et donner ton avis.</p></details>
+        <details open><summary>Is Wumi free?</summary><p>Yes. The bot and all the Aesthetic Creators tools are free.</p></details>
+        <details><summary>How do I set up the bot?</summary><p>Everything happens with slash commands in Discord. Type / and pick a Wumi command, or use /help to see the list.</p></details>
+        <details><summary>Do the tools need the bot?</summary><p>No. The tools run in your browser, with or without Wumi on your server.</p></details>
+        <details><summary>Why isn't Wumi giving a role?</summary><p>Check that Wumi's role sits above the role to give in your server settings, and that it has the Manage Roles permission.</p></details>
+        <details><summary>How do I join the community?</summary><p>Join the support server to follow the project, ask questions and share feedback.</p></details>
       </div>
     </div>
   </section>
@@ -391,12 +399,12 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   <div class="wrap">
     <div class="cta rv">
       <img src="wumi-icone.svg" alt="Wumi" class="mascot">
-      <div class="eyebrow">ADOPTE WUMI AUJOURD'HUI</div>
-      <h2>Prêt à donner vie <span class="serif grad-text">à ton serveur ?</span></h2>
-      <p>Invite-le en quelques secondes. Une question ? Viens dire coucou sur le serveur de support.</p>
+      <div class="eyebrow">ADOPT WUMI TODAY</div>
+      <h2>Ready to bring <span class="serif grad-text">your server to life?</span></h2>
+      <p>Invite it in seconds. Questions? Come say hi in the support server.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Ajouter à Discord →</a>
-        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Serveur de support</a>
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord →</a>
+        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Support server</a>
       </div>
     </div>
   </div>
@@ -405,18 +413,18 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a><p>Un petit compagnon pour ton serveur, et des outils pour le rendre beau.</p></div>
-      <div><h5>Bot</h5><a href="#fonctions">Fonctionnalités</a><a href="#commandes">Commandes</a><a href="#demarrer">Démarrer</a><a href="#faq">FAQ</a></div>
-      <div><h5>Outils</h5><a href="https://aestheticcreators.xyz/#/embed">Embeds</a><a href="https://aestheticcreators.xyz/#/colored">Texte coloré</a><a href="https://aestheticcreators.xyz/#/timestamps">Timestamps</a><a href="https://github.com/Zhaak63/Role-Icon-Downloader">GitHub</a></div>
-      <div><h5>Communauté</h5><a href="https://discord.gg/VaGrXgnAHS">Support Wumi</a><a href="https://discord.gg/94seN7srjv">Aesthetic Creators</a><a href="conditions.html">Conditions</a><a href="confidentialite.html">Confidentialité</a></div>
+      <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a><p>A little companion for your server, and tools to make it beautiful.</p></div>
+      <div><h5>Bot</h5><a href="#fonctions">Features</a><a href="#commandes">Commands</a><a href="#demarrer">Get started</a><a href="#faq">FAQ</a></div>
+      <div><h5>Tools</h5><a href="https://aestheticcreators.xyz/#/embed">Embeds</a><a href="https://aestheticcreators.xyz/#/colored">Colored text</a><a href="https://aestheticcreators.xyz/#/timestamps">Timestamps</a><a href="https://github.com/Zhaak63/Role-Icon-Downloader">GitHub</a></div>
+      <div><h5>Community</h5><a href="https://discord.gg/VaGrXgnAHS">Wumi support</a><a href="https://discord.gg/94seN7srjv">Aesthetic Creators</a><a href="conditions.html">Terms</a><a href="confidentialite.html">Privacy</a></div>
     </div>
-    <div class="copy"><span>© 2026 Wumi × Aesthetic Creators</span><span>Fait avec amour pour Discord :3</span></div>
+    <div class="copy"><span>© 2026 Wumi × Aesthetic Creators</span><span>Made with love for Discord :3</span></div>
   </div>
 </footer>
 
 <script>
 // marquee
-const cmds=["/autorole","/reactionrole","/welcome","/ban","/kick","/timeout","/clear","/logs","/serverinfo","/userinfo","/tictactoe","/help","embeds","texte coloré","timestamps"];
+const cmds=["/autorole","/reactionrole","/welcome","/ban","/kick","/timeout","/clear","/logs","/serverinfo","/userinfo","/tictactoe","/help","embeds","colored text","timestamps"];
 const t=document.getElementById('track');
 t.innerHTML=[...cmds,...cmds].map(c=>`<div class="chip">${c.startsWith('/')?'<b>/</b>'+c.slice(1):'✨ '+c}</div>`).join('');
 // reveal on scroll
@@ -425,5 +433,6 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 // close mobile menu on click
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('hdr').classList.remove('open')));
 </script>
+<script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
 </body>
 </html>

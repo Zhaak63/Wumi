@@ -1,22 +1,27 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{if(localStorage.getItem('wumi-lang')==='fr')location.replace('fr/confidentialite.html'+location.hash)}catch(e){}</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Politique de confidentialité · Wumi</title>
-<meta name="description" content="Ce que Wumi et les outils Aesthetic Creators enregistrent, pourquoi, et comment le faire effacer.">
+<title>Privacy Policy · Wumi</title>
+<meta name="description" content="What Wumi and the Aesthetic Creators tools store, why, and how to have it erased.">
 <meta name="theme-color" content="#62b8ff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
 <meta property="og:url" content="https://zhaak63.github.io/Wumi/confidentialite.html">
-<meta property="og:title" content="Politique de confidentialité · Wumi">
-<meta property="og:description" content="Ce que Wumi et les outils Aesthetic Creators enregistrent, et comment le faire effacer.">
-<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<meta property="og:title" content="Privacy Policy · Wumi">
+<meta property="og:description" content="What Wumi and the Aesthetic Creators tools store, why, and how to have it erased.">
+<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Wumi, le petit robot mascotte du bot">
+<meta property="og:image:alt" content="The Wumi logo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
+<link rel="alternate" hreflang="en" href="https://zhaak63.github.io/Wumi/confidentialite.html">
+<link rel="alternate" hreflang="fr" href="https://zhaak63.github.io/Wumi/fr/confidentialite.html">
+<link rel="alternate" hreflang="x-default" href="https://zhaak63.github.io/Wumi/confidentialite.html">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
 <link rel="icon" href="favicon.ico?v=3" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
@@ -43,7 +48,7 @@ nav{display:flex;align-items:center;gap:28px;height:68px}
 .nav-links{display:flex;gap:22px;font-size:14.5px;color:var(--muted)}
 .nav-links a:hover,.nav-links a.on{color:var(--text)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;transition:.2s;white-space:nowrap}
-.btn-primary{background:var(--blue);color:var(--bg);margin-left:auto}
+.btn-primary{background:var(--blue);color:var(--bg);margin-left:8px}
 .btn-primary:hover{box-shadow:0 10px 30px rgba(98,184,255,.4);transform:translateY(-1px)}
 .legal-hero{padding:70px 0 40px;border-bottom:1px solid var(--line)}
 .back{display:inline-block;color:var(--muted);font-size:14px;margin-bottom:26px}
@@ -89,86 +94,91 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 .copy a:hover{color:var(--text)}
 @media (max-width:900px){.layout{grid-template-columns:1fr;gap:20px}.toc{position:static;display:none}}
 @media (max-width:760px){.nav-links{display:none}.contact{grid-template-columns:1fr}}
+.page-grid{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%)}
+.lang{display:flex;gap:2px;padding:3px;margin-left:auto;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.03)}.lang a{display:grid;place-items:center;width:32px;height:26px;border-radius:7px;opacity:.45;transition:.2s;border:0}.lang a:hover{opacity:.85}.lang a.on{opacity:1;background:rgba(255,255,255,.09)}@media (max-width:760px){nav{gap:12px}.lang a{width:30px}}
+.lang svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 </style>
 </head>
 <body>
-<div class="glow"></div>
+<div class="glow"></div><div class="page-grid"></div>
 <header><nav class="wrap">
   <a href="index.html" class="logo"><img src="wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
-  <div class="nav-links"><a href="index.html#fonctions">Fonctionnalités</a><a href="index.html#outils">Outils</a><a href="index.html#faq">FAQ</a><a href="conditions.html" class="">Conditions</a><a href="confidentialite.html" class="on">Confidentialité</a></div>
-  <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Ajouter à Discord</a>
+  <div class="nav-links"><a href="index.html#fonctions">Features</a><a href="index.html#outils">Tools</a><a href="index.html#faq">FAQ</a><a href="conditions.html" class="">Terms</a><a href="confidentialite.html" class="on">Privacy</a></div>
+  <div class="lang" role="group" aria-label="Language"><a href="confidentialite.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/confidentialite.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div>
+  <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
 </nav></header>
 <main class="wrap">
   <div class="legal-hero">
-    <a class="back" href="index.html">← Retour à l'accueil</a>
-    <div class="eyebrow">POLITIQUE DE CONFIDENTIALITÉ</div>
-    <h1>Tes données, <span class="serif grad">rien de caché.</span></h1>
-    <p class="meta">Dernière mise à jour : 7 novembre 2026 · S'applique au bot Wumi et aux outils Aesthetic Creators</p>
-    <div class="tabs"><a href="conditions.html" class="">Conditions d'utilisation</a><a href="confidentialite.html" class="on">Politique de confidentialité</a></div>
+    <a class="back" href="index.html">← Back to home</a>
+    <div class="eyebrow">PRIVACY POLICY</div>
+    <h1>Your data, <span class="serif grad">nothing hidden.</span></h1>
+    <p class="meta">Last updated: November 7, 2026 · Applies to the Wumi bot and the Aesthetic Creators tools</p>
+    <div class="tabs"><a href="conditions.html" class="">Terms of Service</a><a href="confidentialite.html" class="on">Privacy Policy</a></div>
   </div>
   <div class="layout">
-    <aside class="toc"><h6>SUR CETTE PAGE</h6><a href="#enregistre">Ce que le bot enregistre</a><a href="#duree">Combien de temps</a><a href="#stockage">Où c'est stocké</a><a href="#outils">Les outils et le site</a><a href="#effacer">Faire effacer tes données</a><a href="#mineurs">Les mineurs</a><a href="#changements">Changements</a><a href="#contact">Contact</a></aside>
+    <aside class="toc"><h6>ON THIS PAGE</h6><a href="#stored">What the bot stores</a><a href="#duration">For how long</a><a href="#where">Where it is stored</a><a href="#tools">The tools and the site</a><a href="#erase">Getting your data erased</a><a href="#minors">Minors</a><a href="#changes">Changes</a><a href="#contact">Contact</a></aside>
     <article>
-<p class="lead">Ce document dit exactement ce que Wumi et les outils Aesthetic Creators enregistrent, pourquoi, combien de temps, et comment faire effacer ces données.</p>
-<div class="sum"><b>En bref :</b> le bot enregistre des identifiants Discord et des réglages de serveur pour faire fonctionner ses fonctions, et il efface <b>tout</b> ce qui concerne un serveur dès qu'on l'en retire. Les outils ne t'envoient rien et n'enregistrent rien sur nos machines : tout reste dans ton navigateur ou part directement vers Discord.</div>
-<h2 id="enregistre"><span class="n">01</span>Ce que le bot enregistre</h2>
-<h3>Pour chaque serveur qui ajoute Wumi</h3>
-<ul><li>L'identifiant du serveur.</li><li>Les réglages choisis par ses administrateurs : quels rôles donner, quels salons utiliser, les modèles de messages de bienvenue et d'au revoir.</li></ul>
-<h3>Seulement si le serveur utilise la fonction</h3>
+<p class="lead">This page says exactly what Wumi and the Aesthetic Creators tools store, why, for how long, and how to have it erased.</p>
+<div class="sum"><b>In short:</b> the bot stores Discord IDs and server settings so that its features work, and it erases <b>everything</b> about a server as soon as it is removed. The tools send nothing to us and store nothing on our machines: everything stays in your browser or goes straight to Discord.</div>
+<h2 id="stored"><span class="n">01</span>What the bot stores</h2>
+<h3>For every server that adds Wumi</h3>
+<ul><li>The server ID.</li><li>The settings chosen by its admins: which roles to give, which channels to use, welcome and goodbye message templates.</li></ul>
+<h3>Only if the server uses the feature</h3>
 <ul>
-<li><b>Rôles à réaction :</b> les identifiants du message, des rôles et des boutons ou emojis associés.</li>
-<li><b>Modération :</b> les sanctions, avec leur type, la raison écrite par le modérateur, la durée, la date, l'identifiant Discord du membre et celui du modérateur.</li>
-<li><b>Logs :</b> les événements sont publiés dans le salon choisi par le serveur. Ils restent dans Discord, sur ce serveur, et non dans la base de données de Wumi.</li>
+<li><b>Reaction roles:</b> the IDs of the message, the roles and the linked buttons or emojis.</li>
+<li><b>Moderation:</b> sanctions, with their type, the reason written by the moderator, the duration, the date, the member's Discord ID and the moderator's.</li>
+<li><b>Logs:</b> events are posted in the channel the server chose. They live in Discord, in that server, not in Wumi's database.</li>
 </ul>
-<h3>Jamais enregistré</h3>
+<h3>Never stored</h3>
 <ul>
-<li>Le contenu des messages ordinaires. Wumi peut les lire au passage, puis les oublie immédiatement.</li>
-<li>Les messages privés et les conversations vocales.</li>
-<li>Ton adresse e-mail, ton adresse IP, ton vrai nom, ton pays.</li>
-<li>Rien n'est vendu, loué, ni transmis à qui que ce soit.</li>
+<li>The content of ordinary messages. Wumi may read them in passing, then forgets them immediately.</li>
+<li>Private messages and voice conversations.</li>
+<li>Your email address, IP address, real name or country.</li>
+<li>Nothing is sold, rented or passed on to anyone.</li>
 </ul>
-<h2 id="duree"><span class="n">02</span>Combien de temps</h2>
+<h2 id="duration"><span class="n">02</span>For how long</h2>
 <ul>
-<li><b>Wumi est retiré d'un serveur :</b> toutes les données de ce serveur sont effacées immédiatement et définitivement. Aucune copie n'est gardée.</li>
-<li><b>Tu quittes un serveur où Wumi reste :</b> tes sanctions éventuelles restent dans l'historique de modération de ce serveur jusqu'à ce qu'un modérateur les retire.</li>
+<li><b>Wumi is removed from a server:</b> all data about that server is erased immediately and permanently. No copy is kept.</li>
+<li><b>You leave a server where Wumi stays:</b> your sanctions, if any, stay in that server's moderation history until a moderator removes them.</li>
 </ul>
-<h2 id="stockage"><span class="n">03</span>Où c'est stocké</h2>
-<p>Dans une base de données, sur la machine qui fait tourner le bot. Cette machine est celle de l'auteur du bot, pas un service tiers, et personne d'autre n'y a accès.</p>
-<h2 id="outils"><span class="n">04</span>Les outils et le site</h2>
-<h3>Ce que tu saisis dans les outils</h3>
+<h2 id="where"><span class="n">03</span>Where it is stored</h2>
+<p>In a database on the machine that runs the bot. That machine belongs to the bot's author, not to a third-party service, and nobody else has access to it.</p>
+<h2 id="tools"><span class="n">04</span>The tools and the site</h2>
+<h3>What you enter in the tools</h3>
 <ul>
-<li><b>Token :</b> utilisé uniquement pour interroger l'API de Discord depuis ton navigateur. Il n'est ni enregistré, ni envoyé ailleurs qu'à Discord.</li>
-<li><b>URL de webhook :</b> utilisée uniquement pour envoyer ton message à Discord, depuis ton navigateur.</li>
-<li><b>Textes, embeds, couleurs :</b> traités dans ton navigateur, rien n'est envoyé à nos machines.</li>
+<li><b>Token:</b> only used to query Discord's API from your browser. It is never stored and never sent anywhere but Discord.</li>
+<li><b>Webhook URL:</b> only used to send your message to Discord, from your browser.</li>
+<li><b>Text, embeds, colors:</b> processed in your browser, nothing is sent to our machines.</li>
 </ul>
-<h3>Enregistré sur ton appareil</h3>
-<p>Les outils gardent dans le stockage local de ton navigateur ton thème (clair ou sombre), ta langue et les modèles de messages que tu sauvegardes. Ces données ne quittent pas ton appareil : vider les données du site dans ton navigateur les efface.</p>
-<h3>Services tiers utilisés par le site</h3>
+<h3>Stored on your device</h3>
+<p>The tools keep your theme (light or dark), your language and the message templates you save in your browser's local storage. The site also remembers your language choice. This data never leaves your device: clearing the site's data in your browser erases it.</p>
+<h3>Third-party services used by the site</h3>
 <ul>
-<li><b>GitHub Pages</b> héberge le site. Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs dans ses journaux techniques.</li>
-<li><b>Google Fonts</b> fournit les polices d'écriture. Ton navigateur contacte les serveurs de Google pour les charger.</li>
-<li><b>Discord</b> (API et CDN) sert les icônes, emojis et stickers, et reçoit les requêtes des outils.</li>
-<li><b>cdnjs</b> et <b>jsDelivr</b> fournissent des bibliothèques et des icônes utilisées par certains outils.</li>
+<li><b>GitHub Pages</b> hosts the site. Like any host, GitHub may log visitors' IP addresses in its technical logs.</li>
+<li><b>Google Fonts</b> provides the fonts. Your browser contacts Google's servers to load them.</li>
+<li><b>Discord</b> (API and CDN) serves icons, emojis and stickers, and receives the tools' requests.</li>
+<li><b>cdnjs</b> and <b>jsDelivr</b> provide libraries and icons used by some tools.</li>
 </ul>
-<p>Le site n'utilise <b>ni cookies, ni outil de statistiques, ni publicité</b>.</p>
-<h2 id="effacer"><span class="n">05</span>Faire effacer tes données</h2>
+<p>The site uses <b>no cookies, no analytics and no ads</b>.</p>
+<h2 id="erase"><span class="n">05</span>Getting your data erased</h2>
 <ol>
-<li><b>Un administrateur, pour tout le serveur :</b> retirer Wumi du serveur suffit. Tout part avec lui.</li>
-<li><b>Un modérateur, pour une sanction :</b> les sanctions décrivent le travail de modération du serveur, ce sont donc ses modérateurs qui les retirent.</li>
-<li><b>Pour les outils :</b> vide les données du site dans les réglages de ton navigateur.</li>
-<li><b>Par écrit :</b> à <a href="mailto:zhaakpro@gmail.com">zhaakpro@gmail.com</a>. Réponse sous 30 jours.</li>
+<li><b>An admin, for the whole server:</b> removing Wumi from the server is enough. Everything goes with it.</li>
+<li><b>A moderator, for a sanction:</b> sanctions describe the server's moderation work, so they are removed by that server's moderators.</li>
+<li><b>For the tools:</b> clear the site's data in your browser settings.</li>
+<li><b>In writing:</b> email <a href="mailto:zhaakpro@gmail.com">zhaakpro@gmail.com</a>. You get an answer within 30 days.</li>
 </ol>
-<h2 id="mineurs"><span class="n">06</span>Les mineurs</h2>
-<p>Discord interdit son service aux moins de 13 ans, ou à l'âge minimum légal du pays quand il est plus élevé. Wumi ne demande l'âge de personne et n'a aucun moyen de le vérifier. Si tu penses qu'un enfant a des données enregistrées, écris-nous : elles seront effacées.</p>
-<h2 id="changements"><span class="n">07</span>Changements</h2>
-<p>Ce document peut évoluer. La date en haut indique la dernière modification. Un changement important sera annoncé sur le serveur de support.</p>
+<h2 id="minors"><span class="n">06</span>Minors</h2>
+<p>Discord forbids its service to people under 13, or under the legal minimum age of their country when higher. Wumi never asks for anyone's age and has no way to check it. If you think a child has data stored, write to us and it will be erased.</p>
+<h2 id="changes"><span class="n">07</span>Changes</h2>
+<p>This document may change. The date at the top shows the last update. Important changes will be announced in the support server.</p>
 <h2 id="contact"><span class="n">08</span>Contact</h2>
 <div class="contact">
-<a href="mailto:zhaakpro@gmail.com"><small>E-MAIL</small>zhaakpro@gmail.com</a>
-<a href="https://discord.gg/VaGrXgnAHS" target="_blank" rel="noopener"><small>SERVEUR DE SUPPORT</small>discord.gg/VaGrXgnAHS</a></div>
+<a href="mailto:zhaakpro@gmail.com"><small>EMAIL</small>zhaakpro@gmail.com</a>
+<a href="https://discord.gg/VaGrXgnAHS" target="_blank" rel="noopener"><small>SUPPORT SERVER</small>discord.gg/VaGrXgnAHS</a></div>
 </article>
   </div>
 </main>
 <footer><div class="wrap copy"><span>© 2026 Wumi × Aesthetic Creators</span>
-<nav><a href="index.html">Accueil</a><a href="conditions.html">Conditions</a><a href="confidentialite.html">Confidentialité</a><a href="https://discord.gg/VaGrXgnAHS">Support</a></nav></div></footer>
+<nav><a href="index.html">Home</a><a href="conditions.html">Terms</a><a href="confidentialite.html">Privacy</a><a href="https://discord.gg/VaGrXgnAHS">Support</a></nav></div></footer>
+<script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
 </body></html>
