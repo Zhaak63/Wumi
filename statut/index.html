@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statut · Wumi</title>
+<meta name="description" content="L'état de Wumi en direct : en ligne, serveurs, latence, disponibilité sur 90 jours.">
+<meta property="og:title" content="Statut · Wumi">
+<meta property="og:description" content="L'état de Wumi en direct.">
+<meta name="theme-color" content="#0b0e1c">
+<style>
+:root {
+  --nuit: #0b0e1c; --carte: rgba(20, 25, 46, .78); --bord: rgba(255,255,255,.08);
+  --texte: #eef0fb; --doux: #9aa3c4; --bleu: #58a6ff;
+  --vert: #3ddc97; --orange: #ffb547; --rouge: #ff5c7a; --vide: rgba(255,255,255,.07);
+}
+* { box-sizing: border-box; }
+html { background: var(--nuit); }
+body { margin: 0; color: var(--texte); font: 16px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.fond { position: fixed; inset: 0; z-index: -1; background:
+  radial-gradient(700px 480px at 8% 20%, rgba(58,120,182,.45), transparent 70%),
+  radial-gradient(700px 500px at 100% 100%, rgba(88,86,140,.4), transparent 70%),
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 48px 48px,
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 48px 48px, var(--nuit); }
+.page { max-width: 880px; margin: 0 auto; padding: 48px 16px 72px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+.marque { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--texte); font-weight: 800; font-size: 22px; }
+.marque span { color: var(--bleu); }
+.logo { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
+  background: radial-gradient(circle at 40% 45%, #3a78b6, #1b2c52 75%); box-shadow: 0 0 30px rgba(88,166,255,.3); }
+nav a { color: var(--doux); text-decoration: none; margin-left: 18px; font-size: 15px; }
+nav a:hover { color: var(--texte); }
+.etat { background: var(--carte); border: 1px solid var(--bord); border-radius: 20px; padding: 26px; display: flex; align-items: center; gap: 18px; backdrop-filter: blur(12px); }
+.pastille { width: 18px; height: 18px; border-radius: 50%; flex: none; background: var(--doux); }
+.pastille.ok { background: var(--vert); box-shadow: 0 0 0 0 rgba(61,220,151,.6); animation: pouls 2s infinite; }
+.pastille.ko { background: var(--rouge); }
+@keyframes pouls { 70% { box-shadow: 0 0 0 12px rgba(61,220,151,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,151,0); } }
+.etat h1 { margin: 0; font-size: clamp(1.4rem, 4vw, 1.9rem); letter-spacing: -.02em; }
+.etat p { margin: 2px 0 0; color: var(--doux); font-size: 15px; }
+.chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 18px 0 40px; }
+.chiffre { background: var(--carte); border: 1px solid var(--bord); border-radius: 16px; padding: 18px; }
+.chiffre b { display: block; font-size: 1.6rem; letter-spacing: -.02em; }
+.chiffre small { color: var(--doux); }
+h2 { font-size: 1.15rem; margin: 0 0 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+h2 small { color: var(--doux); font-weight: 500; font-size: .9rem; }
+.bloc { background: var(--carte); border: 1px solid var(--bord); border-radius: 16px; padding: 20px; margin-bottom: 26px; }
+.barres { display: flex; gap: 3px; height: 38px; align-items: stretch; }
+.barres i { flex: 1; border-radius: 3px; background: var(--vide); min-width: 2px; position: relative; }
+.barres i.v { background: var(--vert); } .barres i.o { background: var(--orange); } .barres i.r { background: var(--rouge); }
+.barres i:hover::after { content: attr(data-info); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: #11162b; border: 1px solid var(--bord); padding: 6px 10px; border-radius: 8px; white-space: nowrap; font-size: 13px; font-style: normal; z-index: 2; }
+.legende { display: flex; justify-content: space-between; color: var(--doux); font-size: 13px; margin-top: 8px; }
+.incident { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bord); font-size: 15px; }
+.incident:last-child { border-bottom: 0; }
+.incident span { color: var(--doux); }
+.rien { color: var(--doux); margin: 0; }
+footer { text-align: center; color: var(--doux); font-size: 14px; margin-top: 40px; }
+footer a { color: var(--doux); }
+@media (max-width: 560px) { .barres { gap: 1px; } nav a { margin-left: 12px; } }
+@media (prefers-reduced-motion: reduce) { .pastille.ok { animation: none; } }
+</style>
+</head>
+<body>
+<div class="fond" aria-hidden="true"></div>
+<main class="page">
+  <header>
+    <a class="marque" href="/">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 120 80" width="30" height="20"><polyline points="14,14 26,56 44,32 62,56 74,14" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="58" r="10" fill="#fff"/></svg>
+      </span>
+      wumi<span>.</span>
+    </a>
+    <nav><a href="/" data-t="accueil">Accueil</a><a href="https://discord.gg/" id="lien-support" data-t="support">Support</a></nav>
+  </header>
+
+  <section class="etat" aria-live="polite">
+    <div class="pastille" id="pastille"></div>
+    <div>
+      <h1 id="etat-titre" data-t="chargement">Chargement…</h1>
+      <p id="etat-sous"></p>
+    </div>
+  </section>
+
+  <section class="chiffres">
+    <div class="chiffre"><b id="c-serveurs">—</b><small data-t="serveurs">serveurs</small></div>
+    <div class="chiffre"><b id="c-membres">—</b><small data-t="membres">membres</small></div>
+    <div class="chiffre"><b id="c-latence">—</b><small data-t="latence">latence</small></div>
+    <div class="chiffre"><b id="c-dispo">—</b><small data-t="dispo90">disponibilité (90 j)</small></div>
+  </section>
+
+  <section class="bloc">
+    <h2><span data-t="historique">Disponibilité</span> <small id="dispo-texte"></small></h2>
+    <div class="barres" id="barres"></div>
+    <div class="legende"><span data-t="il_y_a_90">il y a 90 jours</span><span data-t="aujourdhui">aujourd'hui</span></div>
+  </section>
+
+  <section class="bloc">
+    <h2 data-t="incidents">Coupures récentes</h2>
+    <div id="incidents"><p class="rien" data-t="aucun_incident">Aucune coupure enregistrée.</p></div>
+  </section>
+
+  <footer><span data-t="maj">Mis à jour toutes les minutes</span> · <a href="/">wumi.fr</a></footer>
+</main>
+
+<script>
+// L'adresse du serveur public de Wumi (celui de l'Activite de verification).
+const API = 'https://verif.wumi.fr/api/statut';
+// Ton invitation vers le serveur support (facultatif).
+const SUPPORT = '';
+
+const EN = !/^fr/i.test(navigator.language || 'fr');
+const T = EN ? {
+  chargement: 'Loading…', accueil: 'Home', support: 'Support', serveurs: 'servers', membres: 'members', latence: 'latency',
+  dispo90: 'uptime (90 d)', historique: 'Uptime', il_y_a_90: '90 days ago', aujourdhui: 'today', incidents: 'Recent outages',
+  aucun_incident: 'No outage recorded.', maj: 'Refreshed every minute', ok: 'Wumi is online', ko: 'Wumi is offline',
+  injoignable: "Wumi can't be reached right now", depuis: 'Up since', releve: 'Last check', pas_donnees: 'no data', duree: 'lasted',
+} : {
+  chargement: 'Chargement…', accueil: 'Accueil', support: 'Support', serveurs: 'serveurs', membres: 'membres', latence: 'latence',
+  dispo90: 'disponibilité (90 j)', historique: 'Disponibilité', il_y_a_90: 'il y a 90 jours', aujourdhui: "aujourd'hui", incidents: 'Coupures récentes',
+  aucun_incident: 'Aucune coupure enregistrée.', maj: 'Mis à jour toutes les minutes', ok: 'Wumi est en ligne', ko: 'Wumi est hors ligne',
+  injoignable: 'Wumi est injoignable pour le moment', depuis: 'En ligne depuis', releve: 'Dernier relevé', pas_donnees: 'pas de données', duree: 'durée',
+};
+document.documentElement.lang = EN ? 'en' : 'fr';
+for (const el of document.querySelectorAll('[data-t]')) el.textContent = T[el.dataset.t];
+if (SUPPORT) document.getElementById('lien-support').href = SUPPORT; else document.getElementById('lien-support').remove();
+
+const nf = new Intl.NumberFormat(EN ? 'en-US' : 'fr-FR');
+const df = new Intl.DateTimeFormat(EN ? 'en-US' : 'fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
+const jf = new Intl.DateTimeFormat(EN ? 'en-US' : 'fr-FR', { dateStyle: 'medium' });
+const pct = (x) => `${(x * 100).toFixed(x >= 0.9995 ? 0 : 2)} %`;
+const duree = (ms) => {
+  const m = Math.round(ms / 60000);
+  return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
+};
+const $ = (id) => document.getElementById(id);
+
+function horsLigne() {
+  $('pastille').className = 'pastille ko';
+  $('etat-titre').textContent = T.injoignable;
+  $('etat-sous').textContent = '';
+}
+
+async function charger() {
+  let d;
+  try {
+    const r = await fetch(API, { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    d = await r.json();
+  } catch {
+    return horsLigne();
+  }
+  const a = d.actuel || {};
+  $('pastille').className = `pastille ${a.enLigne ? 'ok' : 'ko'}`;
+  $('etat-titre').textContent = a.enLigne ? T.ok : T.ko;
+  $('etat-sous').textContent = `${T.depuis} ${df.format(a.demarreLe)} · ${T.releve} ${df.format(a.date)}`;
+  $('c-serveurs').textContent = a.serveurs == null ? '—' : nf.format(a.serveurs);
+  $('c-membres').textContent = a.membres == null ? '—' : nf.format(a.membres);
+  $('c-latence').textContent = a.latenceMs == null ? '—' : `${a.latenceMs} ms`;
+
+  const connus = (d.jours || []).filter((j) => j.dispo !== null);
+  const moyenne = connus.length ? connus.reduce((s, j) => s + j.dispo, 0) / connus.length : null;
+  $('c-dispo').textContent = moyenne === null ? '—' : pct(moyenne);
+  $('dispo-texte').textContent = moyenne === null ? '' : pct(moyenne);
+
+  $('barres').replaceChildren(...(d.jours || []).map((j) => {
+    const i = document.createElement('i');
+    if (j.dispo !== null) i.className = j.dispo >= 0.995 ? 'v' : j.dispo >= 0.95 ? 'o' : 'r';
+    const date = jf.format(new Date(`${j.jour}T12:00:00Z`));
+    i.dataset.info = j.dispo === null ? `${date} · ${T.pas_donnees}` : `${date} · ${pct(j.dispo)}${j.latence ? ` · ${j.latence} ms` : ''}`;
+    return i;
+  }));
+
+  const liste = d.incidents || [];
+  if (liste.length) {
+    $('incidents').replaceChildren(...liste.map((x) => {
+      const div = document.createElement('div');
+      div.className = 'incident';
+      const quand = document.createElement('div');
+      quand.textContent = df.format(x.debut);
+      const combien = document.createElement('span');
+      combien.textContent = `${T.duree} ${duree(x.duree)}`;
+      div.append(quand, combien);
+      return div;
+    }));
+  }
+}
+
+charger();
+setInterval(charger, 60000);
+</script>
+</body>
+</html>
