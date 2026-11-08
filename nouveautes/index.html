@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wumi · What's new</title>
+<meta name="description" content="Every Wumi update, in English and French.">
+<meta name="theme-color" content="#62b8ff">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d1c;--bg-2:#11132a;--card:#161935;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--text:#eef0fc;--muted:#a3a9d1;--dim:#6f76a8;--blue:#62b8ff;--pink:#8fa0ff;--green:#3ddc97;--grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(600px 400px at 15% -5%,rgba(98,184,255,.18),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(143,160,255,.14),transparent 70%)}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(12,13,28,.78);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo img{width:30px;height:30px}
+.logo .dot{color:var(--pink)}
+.nav-fin{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-family:inherit}
+.btn.on{background:var(--blue);color:#0c0d1c;border-color:transparent}
+.hero{padding:56px 0 26px}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:620px;margin-top:14px;font-size:17px}
+.outils{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 8px;position:sticky;top:64px;z-index:10;background:var(--bg);padding:12px 0}
+.outils input{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;color:var(--text);font:inherit}
+.outils input:focus{outline:2px solid rgba(98,184,255,.6)}
+.filtres{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.filtre{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);border-radius:99px;padding:6px 12px;font:inherit;font-size:13.5px;cursor:pointer}
+.filtre.on{background:rgba(98,184,255,.16);color:var(--text);border-color:rgba(98,184,255,.4)}
+h2{font-size:22px;letter-spacing:-.02em;margin:34px 0 12px;display:flex;gap:10px;align-items:center}
+h2 small{color:var(--dim);font-size:14px;font-weight:500}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.cmd{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:16px 18px}
+.cmd .nom{font-family:ui-monospace,SFMono-Regular,monospace;font-size:15.5px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--muted)}
+.cmd p{color:var(--muted);font-size:14.5px;margin-top:6px}
+.cmd ul{list-style:none;margin-top:10px;border-top:1px solid var(--line);padding-top:8px;display:grid;gap:5px}
+.cmd li{font-size:13.5px;color:var(--muted)}
+.cmd li code{font-family:ui-monospace,monospace;color:var(--text);font-size:13px;margin-right:6px}
+.vide{color:var(--dim);padding:40px 0;text-align:center}
+footer{color:var(--dim);font-size:13px;padding:50px 0 40px;text-align:center}
+footer a{color:var(--muted)}
+@media (max-width:560px){.grille{grid-template-columns:1fr}.btn.ret{display:none}}
+
+/* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#1a7fe8,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"],:root[data-theme="light"] body{background:var(--bg)}
+:root[data-theme="light"] header{background:rgba(245,247,253,.8)}
+:root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(26,127,232,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(84,102,240,.1),transparent 70%)}
+:root[data-theme="light"] .page-grid,:root[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(22,28,70,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,70,.05) 1px,transparent 1px)}
+:root[data-theme="light"] .btn-primary{color:#fff}
+:root[data-theme="light"] .btn-primary:hover{box-shadow:0 10px 30px rgba(26,127,232,.35)}
+:root[data-theme="light"] .btn-ghost,:root[data-theme="light"] .pill,:root[data-theme="light"] .lang{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn-ghost:hover{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .lang a.on{background:rgba(22,28,70,.08)}
+:root[data-theme="light"] .lang svg{box-shadow:0 0 0 1px rgba(22,28,70,.18)}
+:root[data-theme="light"] .mock{background:linear-gradient(180deg,#fff,var(--bg-2));box-shadow:0 40px 100px -40px rgba(26,127,232,.35),0 0 0 8px rgba(22,28,70,.03)}
+:root[data-theme="light"] .mock-side .srv,:root[data-theme="light"] .stat,:root[data-theme="light"] .feat .ico{background:rgba(22,28,70,.035)}
+:root[data-theme="light"] .mock-side a.on{background:rgba(26,127,232,.1)}
+:root[data-theme="light"] .mock-chat{background:rgba(22,28,70,.025)}
+:root[data-theme="light"] .mention{color:#3d47c9;background:rgba(88,101,242,.14)}
+:root[data-theme="light"] .msg .cmd{background:rgba(26,127,232,.09)}
+:root[data-theme="light"] .feat{background:linear-gradient(180deg,#fff,var(--card-2));box-shadow:0 1px 2px rgba(22,28,70,.04)}
+:root[data-theme="light"] .feat:hover,:root[data-theme="light"] .tool:hover{box-shadow:0 14px 34px -18px rgba(22,28,70,.25)}
+:root[data-theme="light"] .tool.big{background:linear-gradient(135deg,rgba(84,102,240,.1),rgba(26,127,232,.06) 60%,#fff);border-color:rgba(84,102,240,.25)}
+:root[data-theme="light"] .tool:hover{border-color:rgba(84,102,240,.4)}
+:root[data-theme="light"] .cta{background:radial-gradient(500px 260px at 20% 0%,rgba(26,127,232,.14),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(84,102,240,.12),transparent 70%),#fff}
+:root[data-theme="light"] .hero-mascot,:root[data-theme="light"] .cta .mascot{filter:brightness(0) invert(.09) drop-shadow(0 16px 26px rgba(26,127,232,.3))}
+:root[data-theme="light"] .logo-mark,:root[data-theme="light"] .ava.wumi img,:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09) drop-shadow(0 4px 10px rgba(26,127,232,.25))}
+:root[data-theme="light"] .status::before{box-shadow:0 0 0 4px rgba(15,154,99,.15)}
+:root[data-theme="light"] .tag[style*="ffbe50"]{color:#b06d00!important;background:rgba(255,170,40,.16)!important}
+:root[data-theme="light"] .btn{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn.on,:root[data-theme="light"] .btn-primary{background:var(--blue);color:#fff}
+:root[data-theme="light"] .outils{background:var(--bg)}
+:root[data-theme="light"] .filtre{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .filtre.on{background:rgba(26,127,232,.12)}
+:root[data-theme="light"] .badge{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .cmd{box-shadow:0 1px 2px rgba(22,28,70,.04)}
+.theme{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:16px;line-height:1;flex:none}
+.theme:hover{background:rgba(255,255,255,.07)}
+:root[data-theme="light"] .theme{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .theme:hover{background:rgba(22,28,70,.07)}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
+</style>
+<style>
+.version{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:24px 26px;margin-bottom:16px}
+.version-tete{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.version-tete h2{margin:0;font-size:24px}
+.version-tete .tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(98,184,255,.14);color:var(--blue)}
+.version-tete small{color:var(--dim);font-size:14px}
+.version > p{color:var(--muted);margin:4px 0 14px}
+.version h3{font-size:15px;margin:16px 0 8px;letter-spacing:.01em}
+.version ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.version li{color:var(--muted);font-size:15px}
+.version li b{color:var(--text)}
+.version code{font-family:ui-monospace,monospace;font-size:13.5px;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header><div class="wrap"><nav>
+  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
+  <div class="nav-fin">
+    <a class="btn ret" href="../" id="retour">← Site</a>
+    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <button class="btn" type="button" data-lang="en">EN</button>
+    <button class="btn" type="button" data-lang="fr">FR</button>
+  </div>
+</nav></div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow" id="t-eyebrow"></div>
+    <h1 id="t-titre"></h1>
+    <p class="lead" id="t-lead"></p>
+  </section>
+  <div id="liste"></div>
+</main>
+<footer class="wrap" id="t-pied"></footer>
+<script>
+const V = [
+ { v: '2.5', tag: { en: 'Latest', fr: 'Dernière' },
+   en: { intro: 'A brighter website, and a few things behind the scenes.', blocs: [
+     ['Website', ['<b>Light theme</b> on wumi.fr, the commands page, the status page and the dashboard: use the ☀️/🌙 button, or let your device choose.', '<b>This page</b>: every update in one place.', '<b>An interactive demo</b> on the home page: try Wumi before adding it.']],
+     ['Security', ['Database backups are now <b>reserved to the bot owner</b>.']] ] },
+   fr: { intro: 'Un site plus lumineux, et quelques améliorations en coulisses.', blocs: [
+     ['Site', ['<b>Thème clair</b> sur wumi.fr, la page des commandes, la page de statut et le dashboard : bouton ☀️/🌙, ou réglage automatique selon ton appareil.', '<b>Cette page</b> : toutes les mises à jour au même endroit.', '<b>Une démo interactive</b> sur la page d\'accueil : essaie Wumi avant de l\'ajouter.']],
+     ['Sécurité', ['Les sauvegardes de la base sont désormais <b>réservées au créateur du bot</b>.']] ] } },
+ { v: '2.4',
+   en: { intro: 'The best messages of your server, highlighted.', blocs: [
+     ['New', ['<code>/starboard</code>: messages that get enough ⭐ are reposted in a "best of" channel, with a live star count.', '<b>wumi.fr/commandes</b>: every command in English and French, with search and filters, always up to date.']] ] },
+   fr: { intro: 'Les meilleurs messages de ton serveur, mis en avant.', blocs: [
+     ['Nouveau', ['<code>/starboard</code> : les messages qui reçoivent assez de ⭐ sont republiés dans un salon « meilleurs messages », avec le compteur en direct.', '<b>wumi.fr/commandes</b> : toutes les commandes en français et en anglais, avec recherche et filtres, toujours à jour.']] ] } },
+ { v: '2.3',
+   en: { intro: 'Games for your community, and a full web dashboard.', blocs: [
+     ['Games', ['<code>/connect4</code> against a member or against Wumi (3 levels).', '<code>/hangman</code>, solo or with the whole channel.', '<code>/quiz play</code>: general knowledge, <b>flags</b> or a mix, with a server leaderboard.', '<code>/counting</code>: count together, one mistake and it starts over at 1.']],
+     ['Dashboard', ['<b>Statistics</b>: messages per day, joins and leaves, most active channels and members, sanctions per week.', 'Reaction roles, embed builder and the full sanction history, from your browser.']] ] },
+   fr: { intro: 'Des jeux pour ta communauté, et un dashboard web complet.', blocs: [
+     ['Jeux', ['<code>/puissance4</code> contre un membre ou contre Wumi (3 niveaux).', '<code>/pendu</code>, seul ou avec tout le salon.', '<code>/quiz jouer</code> : culture générale, <b>drapeaux</b> ou mélange, avec classement du serveur.', '<code>/compteur</code> : on compte ensemble, une erreur et tout repart de 1.']],
+     ['Dashboard', ['<b>Statistiques</b> : messages par jour, arrivées et départs, salons et membres les plus actifs, sanctions par semaine.', 'Rôles-réactions, créateur d\'embeds et historique complet des sanctions, depuis ton navigateur.']] ] } },
+ { v: '2.2',
+   en: { intro: 'Everything to welcome and organize your members.', blocs: [
+     ['New', ['<code>/reactionrole</code>: panels where members pick their own roles (buttons or menu).', '<code>/autorole</code>: a role for every new member.', '<code>/welcome</code>: welcome message, illustrated card, welcome DM and goodbye message.', '<code>/embed</code>: build nice messages without code.', '<code>/tictactoe</code> against a friend or against Wumi.']],
+     ['Improved', ['<b>Logs</b> have a brand-new, clearer look.']] ] },
+   fr: { intro: 'Tout pour accueillir et organiser tes membres.', blocs: [
+     ['Nouveau', ['<code>/roles-reactions</code> : des panneaux où les membres choisissent leurs rôles (boutons ou menu).', '<code>/autorole</code> : un rôle pour chaque nouvel arrivant.', '<code>/bienvenue</code> : message d\'accueil, carte illustrée, MP de bienvenue et message d\'au revoir.', '<code>/embed</code> : crée de beaux messages sans coder.', '<code>/morpion</code> contre un ami ou contre Wumi.']],
+     ['Amélioré', ['Les <b>logs</b> ont un tout nouveau look, plus clair.']] ] } },
+ { v: '2.1',
+   en: { intro: 'More tools for your moderators, and tickets rebuilt from scratch.', blocs: [
+     ['Moderation', ['<code>/warnsteps</code>: automatic sanctions set per server ("at 3 warnings, 1 h mute…").', '<code>/raid</code>: the panic button during an attack, and everything goes back as it was afterwards.', '<b>Temporary roles</b>: <code>/role add … duration:7d</code>.']],
+     ['Tickets', ['New look, claim, priority, transcripts and a 1 to 5 ⭐ rating.', 'Inactive tickets close automatically.']],
+     ['Translations', ['Tickets, verification and <code>/vote</code> fully translated.']] ] },
+   fr: { intro: 'Plus d\'outils pour tes modérateurs, et des tickets refaits de zéro.', blocs: [
+     ['Modération', ['<code>/paliers</code> : des sanctions automatiques réglées par serveur (« à 3 avertissements, mute 1 h… »).', '<code>/raid</code> : le bouton panique pendant une attaque, et tout revient comme avant ensuite.', '<b>Rôles temporaires</b> : <code>/role ajouter … duree:7j</code>.']],
+     ['Tickets', ['Nouveau look, prise en charge, priorité, transcriptions et note de 1 à 5 ⭐.', 'Les tickets inactifs se ferment tout seuls.']],
+     ['Traductions', ['Tickets, vérification et <code>/vote</code> entièrement traduits.']] ] } },
+ { v: '2.0',
+   en: { intro: 'The big update: a new look and stronger moderation.', blocs: [
+     ['Moderation', ['New commands: <code>/softban</code>, <code>/massban</code>, <code>/nickname</code>, <code>/note</code>, <code>/voicemod</code>, <code>/modstats</code>.', 'Clearer sanction history.']],
+     ['Fixed', ['<code>/sanctions</code> no longer shows an error.']] ] },
+   fr: { intro: 'La grosse mise à jour : un nouveau look et une modération renforcée.', blocs: [
+     ['Modération', ['Nouvelles commandes : <code>/softban</code>, <code>/massban</code>, <code>/pseudo</code>, <code>/note</code>, <code>/vocal-mod</code>, <code>/modstats</code>.', 'Historique des sanctions plus clair.']],
+     ['Corrigé', ['<code>/sanctions</code> n\'affiche plus d\'erreur.']] ] } },
+];
+const T = {
+  en: { eyebrow: "What's new", titre: 'Wumi keeps <span class="serif grad">growing.</span>', lead: 'Every update, explained simply. New commands can take up to an hour to show up in Discord.', pied: 'Thanks for using Wumi · ', retour: '← Site', accueil: '../' },
+  fr: { eyebrow: 'Nouveautés', titre: 'Wumi ne cesse <span class="serif grad">de grandir.</span>', lead: 'Chaque mise à jour, expliquée simplement. Les nouvelles commandes peuvent mettre jusqu\'à une heure à apparaître dans Discord.', pied: 'Merci d\'utiliser Wumi · ', retour: '← Site', accueil: '../fr/' },
+};
+let langue = 'en';
+try { langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('wumi-lang') || (/^fr/i.test(navigator.language) ? 'fr' : 'en'); } catch (e) {}
+if (!T[langue]) langue = 'en';
+function rendre() {
+  const t = T[langue];
+  document.documentElement.lang = langue;
+  document.title = 'Wumi · ' + t.eyebrow;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-titre').innerHTML = t.titre;
+  document.getElementById('t-lead').textContent = t.lead;
+  const r = document.getElementById('retour'); if (r) { r.textContent = t.retour; r.href = t.accueil; }
+  const l = document.getElementById('lien-accueil'); if (l) l.href = t.accueil;
+  document.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('on', b.dataset.lang === langue));
+  document.getElementById('t-pied').innerHTML = t.pied + '<a href="' + t.accueil + '">wumi.fr</a>';
+  document.getElementById('liste').innerHTML = V.map((x) => {
+    const c = x[langue];
+    return '<article class="version"><div class="version-tete"><h2>Wumi ' + x.v + '</h2>' + (x.tag ? '<span class="tag">' + x.tag[langue] + '</span>' : '') + '</div><p>' + c.intro + '</p>'
+      + c.blocs.map((b) => '<h3>' + b[0] + '</h3><ul>' + b[1].map((li) => '<li>' + li + '</li>').join('') + '</ul>').join('') + '</article>';
+  }).join('');
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-lang]');
+  if (b) { langue = b.dataset.lang; try { localStorage.setItem('wumi-lang', langue); } catch (er) {} rendre(); }
+});
+rendre();
+</script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.setItem('wumi-theme',t)}catch(_){}});</script>
+</body>
+</html>
