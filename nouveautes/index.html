@@ -131,7 +131,14 @@ footer a{color:var(--muted)}
 <footer class="wrap" id="t-pied"></footer>
 <script>
 const V = [
- { v: '2.5', tag: { en: 'Latest', fr: 'Dernière' },
+ { v: '2.6', tag: { en: 'Latest', fr: 'Dernière' },
+   en: { intro: 'A full security check of your server, with one-click fixes.', blocs: [
+     ['New', ['<code>/audit run</code>: 15 checks (dangerous @everyone permissions, admin bots, 2FA, verification level, private channels that leak, roles above Wumi, forgotten webhooks, logs, antiraid, automod…), a <b>score out of 100</b> and a <b>Fix</b> button when it\'s safe.', '<code>/audit weekly</code>: the report posted every week in a staff channel, with an alert if the score drops.']],
+     ['Safety', ['Fixes never delete a role, a channel or a webhook.']] ] },
+   fr: { intro: 'Un bilan de sécurité complet de ton serveur, avec corrections en un clic.', blocs: [
+     ['Nouveau', ['<code>/audit lancer</code> : 15 vérifications (permissions dangereuses de @everyone, bots administrateurs, 2FA, niveau de vérification, salons privés qui fuient, rôles au-dessus de Wumi, webhooks oubliés, logs, antiraid, automod…), une <b>note sur 100</b> et un bouton <b>Corriger</b> quand c\'est sans risque.', '<code>/audit hebdo</code> : le bilan posté chaque semaine dans un salon staff, avec une alerte si la note baisse.']],
+     ['Sécurité', ['Les corrections ne suppriment jamais de rôle, de salon ni de webhook.']] ] } },
+ { v: '2.5',
    en: { intro: 'A brighter website, and a few things behind the scenes.', blocs: [
      ['Website', ['<b>Light theme</b> on wumi.fr, the commands page, the status page and the dashboard: use the ☀️/🌙 button, or let your device choose.', '<b>This page</b>: every update in one place.', '<b>An interactive demo</b> on the home page: try Wumi before adding it.']],
      ['Security', ['Database backups are now <b>reserved to the bot owner</b>.']] ] },
