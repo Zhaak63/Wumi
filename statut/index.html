@@ -68,6 +68,21 @@ footer a { color: var(--doux); }
 .theme{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;margin-left:16px;vertical-align:middle;border-radius:10px;border:1px solid var(--bord);background:var(--carte);color:var(--texte);cursor:pointer;font-size:15px;line-height:1}
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
+<style>
+.annonces{display:grid;gap:12px}
+.annonce{border:1px solid var(--line,rgba(255,255,255,.1));border-left:5px solid #ff8a3d;border-radius:14px;padding:16px 18px;background:rgba(255,138,61,.07)}
+.annonce.critique{border-left-color:#ff2860;background:rgba(255,40,96,.08)}
+.annonce.mineur{border-left-color:#f5c518;background:rgba(245,197,24,.08)}
+.annonce.maintenance{border-left-color:#58a6ff;background:rgba(88,166,255,.08)}
+.annonce.fini{border-left-color:#2fbf71;background:rgba(47,191,113,.07)}
+.annonce h3{font-size:17px;margin:0 0 4px}
+.annonce .meta{font-size:13px;opacity:.75;margin-bottom:10px}
+.annonce ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.annonce li{font-size:14.5px;line-height:1.5}
+.annonce li b{margin-right:6px}
+.annonce li time{opacity:.65;font-size:12.5px;margin-left:6px}
+.annonce details summary{cursor:pointer;font-size:13px;opacity:.75;margin-top:8px}
+</style>
 </head>
 <body>
 <div class="fond" aria-hidden="true"></div>
@@ -89,6 +104,8 @@ footer a { color: var(--doux); }
       <p id="etat-sous"></p>
     </div>
   </section>
+
+  <section class="bloc annonces" id="annonces" hidden></section>
 
   <section class="chiffres">
     <div class="chiffre"><b id="c-serveurs">—</b><small data-t="serveurs">serveurs</small></div>
@@ -115,7 +132,7 @@ footer a { color: var(--doux); }
 // L'adresse du serveur public de Wumi (celui de l'Activite de verification).
 const API = 'https://serveurhp63114.tail284a6e.ts.net/api/statut';
 // Ton invitation vers le serveur support (facultatif).
-const SUPPORT = '';
+const SUPPORT = 'https://discord.gg/VaGrXgnAHS';
 
 const EN = !/^fr/i.test(navigator.language || 'fr');
 const T = EN ? {
@@ -196,6 +213,53 @@ async function charger() {
 
 charger();
 setInterval(charger, 60000);
+</script>
+<script>
+(function () {
+  var EN = !/^fr/i.test(navigator.language || 'fr');
+  var L = EN ? {
+    titre: 'Announcements', recents: 'Recently resolved', impact_mineur: 'Minor disruption', impact_majeur: 'Partial outage', impact_critique: 'Major outage', maintenance: 'Maintenance',
+    investigation: 'Investigating', identifie: 'Identified', surveillance: 'Monitoring', resolu: 'Resolved', prevue: 'Scheduled', en_cours: 'In progress', terminee: 'Completed',
+    prevue_le: 'Scheduled for', historique: 'Full history', jusqu: 'until'
+  } : {
+    titre: 'Annonces', recents: 'Résolus récemment', impact_mineur: 'Perturbation mineure', impact_majeur: 'Panne partielle', impact_critique: 'Panne majeure', maintenance: 'Maintenance',
+    investigation: 'Investigation', identifie: 'Cause identifiée', surveillance: 'Surveillance', resolu: 'Résolu', prevue: 'Prévue', en_cours: 'En cours', terminee: 'Terminée',
+    prevue_le: 'Prévue le', historique: 'Historique complet', jusqu: "jusqu'à"
+  };
+  var EMO = { investigation: '🔍', identifie: '🧩', surveillance: '👀', resolu: '✅', prevue: '🗓️', en_cours: '🛠️', terminee: '✅' };
+  var FINIS = ['resolu', 'terminee'];
+  var fmt = new Intl.DateTimeFormat(EN ? 'en-GB' : 'fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
+  var heure = new Intl.DateTimeFormat(EN ? 'en-GB' : 'fr-FR', { timeStyle: 'short' });
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function carte(i) {
+    var fini = FINIS.indexOf(i.statut) !== -1;
+    var cls = fini ? 'fini' : i.type === 'maintenance' ? 'maintenance' : i.impact;
+    var meta = i.type === 'maintenance' ? L.maintenance + (i.debut ? ' · ' + L.prevue_le + ' ' + fmt.format(i.debut) + (i.fin ? ' ' + L.jusqu + ' ' + heure.format(i.fin) : '') : '') : L['impact_' + i.impact];
+    var lignes = (i.majs || []).map(function (m) {
+      return '<li><b>' + EMO[m.statut] + ' ' + L[m.statut] + '</b>' + esc(m.message) + '<time>' + fmt.format(m.le) + '</time></li>';
+    });
+    var corps = fini && lignes.length > 1
+      ? '<ol>' + lignes[0] + '</ol><details><summary>' + L.historique + '</summary><ol>' + lignes.slice(1).join('') + '</ol></details>'
+      : '<ol>' + lignes.join('') + '</ol>';
+    return '<article class="annonce ' + cls + '"><h3>' + esc(i.titre) + '</h3><div class="meta">' + meta + '</div>' + corps + '</article>';
+  }
+  function afficher(d) {
+    var zone = document.getElementById('annonces');
+    var inc = d && d.incidents;
+    if (!zone || !inc) return;
+    var actifs = inc.actifs || [];
+    var finis = (inc.recents || []).filter(function (i) { return FINIS.indexOf(i.statut) !== -1; }).slice(0, 5);
+    if (!actifs.length && !finis.length) { zone.hidden = true; return; }
+    zone.hidden = false;
+    zone.innerHTML = (actifs.length ? '<h2>' + L.titre + '</h2>' + actifs.map(carte).join('') : '')
+      + (finis.length ? '<h2>' + L.recents + '</h2>' + finis.map(carte).join('') : '');
+  }
+  function charger() {
+    fetch(API + (API.indexOf('?') === -1 ? '?' : '&') + 'i=' + Date.now()).then(function (r) { return r.json(); }).then(afficher).catch(function () {});
+  }
+  charger();
+  setInterval(charger, 60000);
+})();
 </script>
 <script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var m=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=m;try{localStorage.setItem('wumi-theme',m)}catch(_){}});</script>
 </body>
