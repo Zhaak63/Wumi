@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Statut · Wumi</title>
 <meta name="description" content="L'état de Wumi en direct : en ligne, serveurs, latence, disponibilité sur 90 jours.">
@@ -58,6 +59,14 @@ footer { text-align: center; color: var(--doux); font-size: 14px; margin-top: 40
 footer a { color: var(--doux); }
 @media (max-width: 560px) { .barres { gap: 1px; } nav a { margin-left: 12px; } }
 @media (prefers-reduced-motion: reduce) { .pastille.ok { animation: none; } }
+
+/* ---------- Theme clair (meme bouton et meme memoire que wumi.fr) ---------- */
+:root[data-theme="light"]{--nuit:#f5f7fd;--carte:rgba(255,255,255,.92);--bord:rgba(22,28,70,.11);--texte:#151935;--doux:#4e5582;--bleu:#1a7fe8;--vert:#0f9a63;--orange:#c27c0e;--rouge:#d6334f;--vide:rgba(22,28,70,.08);color-scheme:light}
+:root[data-theme="light"] .fond{background:radial-gradient(700px 480px at 8% 20%,rgba(26,127,232,.14),transparent 70%),radial-gradient(700px 500px at 100% 100%,rgba(84,102,240,.1),transparent 70%),linear-gradient(rgba(22,28,70,.06) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(22,28,70,.06) 1px,transparent 1px) 0 0/48px 48px,var(--nuit)}
+:root[data-theme="light"] .barres i:hover::after{background:#fff;box-shadow:0 10px 26px rgba(22,28,70,.16)}
+:root[data-theme="light"] .chiffre,:root[data-theme="light"] .bloc,:root[data-theme="light"] .etat{box-shadow:0 1px 2px rgba(22,28,70,.05)}
+.theme{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;margin-left:16px;vertical-align:middle;border-radius:10px;border:1px solid var(--bord);background:var(--carte);color:var(--texte);cursor:pointer;font-size:15px;line-height:1}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
 </head>
 <body>
@@ -70,7 +79,7 @@ footer a { color: var(--doux); }
       </span>
       wumi<span>.</span>
     </a>
-    <nav><a href="/" data-t="accueil">Accueil</a><a href="https://discord.gg/" id="lien-support" data-t="support">Support</a></nav>
+    <nav><a href="/" data-t="accueil">Accueil</a><a href="https://discord.gg/" id="lien-support" data-t="support">Support</a><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button></nav>
   </header>
 
   <section class="etat" aria-live="polite">
@@ -188,5 +197,6 @@ async function charger() {
 charger();
 setInterval(charger, 60000);
 </script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var m=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=m;try{localStorage.setItem('wumi-theme',m)}catch(_){}});</script>
 </body>
 </html>
