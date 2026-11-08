@@ -131,7 +131,14 @@ footer a{color:var(--muted)}
 <footer class="wrap" id="t-pied"></footer>
 <script>
 const V = [
- { v: '2.6', tag: { en: 'Latest', fr: 'Dernière' },
+ { v: '2.7', tag: { en: 'Latest', fr: 'Dernière' },
+   en: { intro: 'Music arrives on Wumi: a full player, right in your voice channels.', blocs: [
+     ['New', ['<code>/play</code>: YouTube search with suggestions as you type, plus YouTube, SoundCloud, Bandcamp, Twitch and radio links.', '<b>Spotify links</b>: tracks, albums and playlists, no account needed.', '<b>Interactive player</b>: previous, pause, skip, stop, loop, shuffle, volume, queue, and a progress bar that moves on its own.', '<b>Audio filters</b>: bass boost, nightcore, vaporwave, slowed, 8D, karaoke.']],
+     ['Control', ['<code>/music</code>: queue, skip, previous, volume, loop, shuffle, remove, move, seek, clear.', '<b>DJ role</b> (optional): others vote to skip a track.', '<b>Server playlists</b>: save the queue, load it back anytime.', '<b>24/7 mode</b>, otherwise Wumi leaves after 3 minutes without music.']] ] },
+   fr: { intro: 'La musique arrive sur Wumi : un lecteur complet, directement dans tes salons vocaux.', blocs: [
+     ['Nouveau', ['<code>/jouer</code> : recherche YouTube avec suggestions pendant que tu tapes, et liens YouTube, SoundCloud, Bandcamp, Twitch et radios.', '<b>Liens Spotify</b> : titres, albums et playlists, sans compte.', '<b>Lecteur interactif</b> : précédent, pause, suivant, stop, boucle, mélange, volume, file, et une barre de progression qui avance toute seule.', '<b>Filtres audio</b> : bass boost, nightcore, vaporwave, slowed, 8D, karaoké.']],
+     ['Contrôle', ['<code>/musique</code> : file, passer, précédent, volume, boucle, mélanger, retirer, déplacer, aller à un moment, vider.', '<b>Rôle DJ</b> (facultatif) : les autres votent pour passer une piste.', '<b>Playlists du serveur</b> : sauve la file, recharge-la quand tu veux.', '<b>Mode 24/7</b>, sinon Wumi part après 3 minutes sans musique.']] ] } },
+ { v: '2.6',
    en: { intro: 'A full security check of your server, with one-click fixes.', blocs: [
      ['New', ['<code>/audit run</code>: 15 checks (dangerous @everyone permissions, admin bots, 2FA, verification level, private channels that leak, roles above Wumi, forgotten webhooks, logs, antiraid, automod…), a <b>score out of 100</b> and a <b>Fix</b> button when it\'s safe.', '<code>/audit weekly</code>: the report posted every week in a staff channel, with an alert if the score drops.']],
      ['Safety', ['Fixes never delete a role, a channel or a webhook.']] ] },
