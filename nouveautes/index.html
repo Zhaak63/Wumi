@@ -131,7 +131,16 @@ footer a{color:var(--muted)}
 <footer class="wrap" id="t-pied"></footer>
 <script>
 const V = [
- { v: '2.10', tag: { en: 'Latest', fr: 'Dernière' },
+ { v: '2.11', tag: { en: 'Latest', fr: 'Dernière' },
+   en: { intro: 'Christmas comes to the official Wumi server, plus a handy tool for moderators.', blocs: [
+     ['Christmas event', ['On the official Wumi server until December 31: chat in the community channels and something falls from the snow. Pick it up first to find a ☃️ snowman (+1), a 🎁 gift (+3)… or an old 🧦 sock (−1)!', 'Live leaderboard with <code>/christmas leaderboard</code>, and a podium announced at the end.']],
+     ['Moderation', ['<code>/snipe</code>: the latest deleted or edited messages in a channel, kept for 10 minutes in memory only, visible to staff.']],
+     ['Fixed', ['Voice time is now counted every 5 minutes and survives bot restarts; a muted mic still counts.']] ] },
+   fr: { intro: 'Noël arrive sur le serveur officiel de Wumi, et un outil pratique pour les modérateurs.', blocs: [
+     ['Événement de Noël', ['Sur le serveur officiel de Wumi jusqu\'au 31 décembre : discute dans les salons de la communauté et un objet tombe de la neige. Ramasse-le le premier pour trouver un ☃️ bonhomme de neige (+1), un 🎁 cadeau (+3)… ou une vieille 🧦 chaussette (−1) !', 'Classement en direct avec <code>/noel classement</code>, et podium annoncé à la fin.']],
+     ['Modération', ['<code>/snipe</code> : les derniers messages supprimés ou modifiés d\'un salon, gardés 10 minutes en mémoire seulement, visibles par le staff.']],
+     ['Corrigé', ['Le temps en vocal est compté toutes les 5 minutes et survit aux redémarrages du bot ; micro coupé, ça compte quand même.']] ] } },
+ { v: '2.10',
    en: { intro: 'Your stats as a shareable image, a companion that grows with you, and an easier way to find teammates.', blocs: [
      ['New', ['<code>/wrapped</code>: your personal recap as an image, this month or all time: messages, voice time, level, favorite channels, your peak hour and your "personality".', '<code>/pet</code>: adopt a companion (cat, fox, dragon, unicorn…). It grows from an egg to legendary as you chat; feed it, play with it, or it sulks.', '<code>/lfg</code>: looking for players? Post your game and the number of slots; once the group is full, Wumi creates a private voice channel for it.']],
      ['Support & status', ['Incidents and maintenance are now announced on the status page and in the status channel.', 'Permanent 24/7 radio that restarts on its own, and smarter support tickets.']] ] },
