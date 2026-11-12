@@ -110,7 +110,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
     <a class="back" href="index.html">← Retour à l'accueil</a>
     <div class="eyebrow">POLITIQUE DE CONFIDENTIALITÉ</div>
     <h1>Tes données, <span class="serif grad">rien de caché.</span></h1>
-    <p class="meta">Dernière mise à jour : 7 novembre 2026 · S'applique au bot Wumi et aux outils Wumi</p>
+    <p class="meta">Dernière mise à jour : 12 novembre 2026 · S'applique au bot Wumi et aux outils Wumi</p>
     <div class="tabs"><a href="conditions.html" class="">Conditions d'utilisation</a><a href="confidentialite.html" class="on">Politique de confidentialité</a></div>
   </div>
   <div class="layout">
@@ -141,6 +141,10 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 </ul>
 <h2 id="stockage"><span class="n">03</span>Où c'est stocké</h2>
 <p>Dans une base de données, sur la machine qui fait tourner le bot. Cette machine est celle de l'auteur du bot, pas un service tiers, et personne d'autre n'y a accès.</p>
+<h3>Chiffrement</h3>
+<p>Tout ce qu'un membre ou un modérateur <b>écrit</b> et que Wumi conserve est <b>chiffré au repos</b> en AES-256-GCM : le texte des messages signalés, des suggestions, des appels, des candidatures, des tickets, des raisons de sanction et des notes du staff. Sans la clé de chiffrement, ces textes sont illisibles, même avec une copie de la base. Les identifiants et les compteurs (XP, soldes, niveaux) restent en clair, car ils servent à trier les classements.</p>
+<h3>Sauvegardes</h3>
+<p>Une copie de la base est faite chaque jour sur la même machine, et les 14 dernières sont gardées. Une fois par jour, une copie est aussi envoyée en privé à l'auteur du bot pour ne rien perdre si la machine tombe en panne : cette copie est <b>compressée et chiffrée</b> avant de quitter la machine, et la clé ne voyage jamais avec elle. Quand Wumi est retiré d'un serveur, ses données disparaissent de la base tout de suite, et des sauvegardes locales au fil de leur rotation, en 14 jours au plus. Les copies chiffrées envoyées à l'auteur servent uniquement de filet de sécurité : elles ne sont jamais ouvertes, sauf pour remettre le bot en marche après une panne.</p>
 <h2 id="outils"><span class="n">04</span>Les outils et le site</h2>
 <h3>Ce que tu saisis dans les outils</h3>
 <ul>
