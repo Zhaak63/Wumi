@@ -188,6 +188,9 @@ document.addEventListener('click', (e) => {
   const f = e.target.closest('[data-cat]');
   if (f) { filtre = f.dataset.cat; rendre(); }
 });
+// /docs commande:… ouvre la page deja filtree (?q=play).
+const q0 = new URLSearchParams(location.search).get('q');
+if (q0) document.getElementById('recherche').value = q0;
 document.getElementById('recherche').addEventListener('input', rendre);
 rendre();
 // La liste en direct, depuis le bot lui-meme.

@@ -131,7 +131,16 @@ footer a{color:var(--muted)}
 <footer class="wrap" id="t-pied"></footer>
 <script>
 const V = [
- { v: '2.11.2', tag: { en: 'Latest', fr: 'Dernière' },
+ { v: '2.11.4', tag: { en: 'Latest', fr: 'Dernière' },
+   en: { intro: 'A docs command, a nicer vote screen, and a fix for very high XP.', blocs: [
+     ['New', ['<code>/docs</code>: the full command list on wumi.fr in one click. Add <code>command:</code> to open a specific command directly.', '<code>/vote</code> got a makeover: a banner, why voting helps, your status with a 12-hour gauge, your total and your rank among voters.']],
+     ['Support server', ['New "Share an idea" panel: one button, a short form, and your idea becomes a suggestion the community can vote on.', 'New "Report a bug" panel: reports go straight to the team, and you get a DM when your bug is confirmed or fixed.']],
+     ['Fixed', ['A member with an extremely high XP total could break <code>/leaderboard</code> and XP gains. XP is now capped at one billion.']] ] },
+   fr: { intro: 'Une commande de documentation, un écran de vote plus beau, et un correctif pour les XP démesurées.', blocs: [
+     ['Nouveau', ['<code>/doc</code> : la liste complète des commandes sur wumi.fr en un clic. Ajoute <code>commande:</code> pour ouvrir directement une commande.', '<code>/voter</code> fait peau neuve : une bannière, pourquoi voter, ton statut avec une jauge des 12 heures, ton total et ton rang parmi les votants.']],
+     ['Serveur support', ['Nouveau panneau « Propose une idée » : un bouton, un petit formulaire, et ton idée devient une suggestion que la communauté peut voter.', 'Nouveau panneau « Signale un bug » : les rapports arrivent directement chez l\'équipe, et tu reçois un MP quand ton bug est confirmé ou corrigé.']],
+     ['Corrigé', ['Un membre avec un total d\'XP démesuré pouvait bloquer <code>/classement</code> et les gains d\'XP. L\'XP est maintenant plafonnée à un milliard.']] ] } },
+ { v: '2.11.2',
    en: { intro: 'Everyone can now pick up the Christmas snow, the staff recruitment panel gets a makeover, and Wumi lands on TikTok.', blocs: [
      ['Christmas event', ['When snow falls, <b>everyone</b> has 30 seconds to click Pick up, once per snowfall. Each player gets their own surprise (☃️ +1, 🎁 +3 or 🧦 −1), and the first one gets a +1 bonus.', 'The message shows live who found what, and keeps the recap once the snow melts.']],
      ['Recruitment', ['New application panel with a banner, open positions and a 3-step guide.', 'Choose the panel language (English or French): the form, the confirmation and the reply DM follow it.']],
