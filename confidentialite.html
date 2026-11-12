@@ -112,7 +112,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
     <a class="back" href="index.html">← Back to home</a>
     <div class="eyebrow">PRIVACY POLICY</div>
     <h1>Your data, <span class="serif grad">nothing hidden.</span></h1>
-    <p class="meta">Last updated: November 7, 2026 · Applies to the Wumi bot and the Wumi tools</p>
+    <p class="meta">Last updated: November 12, 2026 · Applies to the Wumi bot and the Wumi tools</p>
     <div class="tabs"><a href="conditions.html" class="">Terms of Service</a><a href="confidentialite.html" class="on">Privacy Policy</a></div>
   </div>
   <div class="layout">
@@ -143,6 +143,10 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 </ul>
 <h2 id="where"><span class="n">03</span>Where it is stored</h2>
 <p>In a database on the machine that runs the bot. That machine belongs to the bot's author, not to a third-party service, and nobody else has access to it.</p>
+<h3>Encryption</h3>
+<p>Everything a member or a moderator <b>writes</b> and that Wumi keeps is <b>encrypted at rest</b> with AES-256-GCM: the text of reported messages, suggestions, appeals, staff applications, tickets, sanction reasons and staff notes. Without the encryption key, these texts are unreadable, even with a copy of the database. Identifiers and counters (XP, balances, levels) stay unencrypted because they are used to sort leaderboards.</p>
+<h3>Backups</h3>
+<p>A copy of the database is made every day on the same machine, and the last 14 are kept. Once a day, a copy is also sent privately to the bot's author so that nothing is lost if the machine fails: that copy is <b>compressed and encrypted</b> before it leaves the machine, and the key never travels with it. When Wumi is removed from a server, its data disappears from the database right away and from the local backups as they rotate out, within 14 days. The encrypted copies sent to the author are a safety net against data loss only: they are never opened except to restore the bot after a failure.</p>
 <h2 id="tools"><span class="n">04</span>The tools and the site</h2>
 <h3>What you enter in the tools</h3>
 <ul>
