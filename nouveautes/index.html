@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wumi · What's new</title>
+<meta name="description" content="Every Wumi update, in English and French.">
+<meta name="theme-color" content="#62b8ff">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d1c;--bg-2:#11132a;--card:#161935;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--text:#eef0fc;--muted:#a3a9d1;--dim:#6f76a8;--blue:#62b8ff;--pink:#8fa0ff;--green:#3ddc97;--grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(600px 400px at 15% -5%,rgba(98,184,255,.18),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(143,160,255,.14),transparent 70%)}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(12,13,28,.78);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo img{width:30px;height:30px}
+.logo .dot{color:var(--pink)}
+.nav-fin{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-family:inherit}
+.btn.on{background:var(--blue);color:#0c0d1c;border-color:transparent}
+.hero{padding:56px 0 26px}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:620px;margin-top:14px;font-size:17px}
+.outils{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 8px;position:sticky;top:64px;z-index:10;background:var(--bg);padding:12px 0}
+.outils input{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;color:var(--text);font:inherit}
+.outils input:focus{outline:2px solid rgba(98,184,255,.6)}
+.filtres{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.filtre{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);border-radius:99px;padding:6px 12px;font:inherit;font-size:13.5px;cursor:pointer}
+.filtre.on{background:rgba(98,184,255,.16);color:var(--text);border-color:rgba(98,184,255,.4)}
+h2{font-size:22px;letter-spacing:-.02em;margin:34px 0 12px;display:flex;gap:10px;align-items:center}
+h2 small{color:var(--dim);font-size:14px;font-weight:500}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.cmd{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:16px 18px}
+.cmd .nom{font-family:ui-monospace,SFMono-Regular,monospace;font-size:15.5px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--muted)}
+.cmd p{color:var(--muted);font-size:14.5px;margin-top:6px}
+.cmd ul{list-style:none;margin-top:10px;border-top:1px solid var(--line);padding-top:8px;display:grid;gap:5px}
+.cmd li{font-size:13.5px;color:var(--muted)}
+.cmd li code{font-family:ui-monospace,monospace;color:var(--text);font-size:13px;margin-right:6px}
+.vide{color:var(--dim);padding:40px 0;text-align:center}
+footer{color:var(--dim);font-size:13px;padding:50px 0 40px;text-align:center}
+footer a{color:var(--muted)}
+@media (max-width:560px){.grille{grid-template-columns:1fr}.btn.ret{display:none}}
+
+/* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#1a7fe8,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"],:root[data-theme="light"] body{background:var(--bg)}
+:root[data-theme="light"] header{background:rgba(245,247,253,.8)}
+:root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(26,127,232,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(84,102,240,.1),transparent 70%)}
+:root[data-theme="light"] .page-grid,:root[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(22,28,70,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,70,.05) 1px,transparent 1px)}
+:root[data-theme="light"] .btn-primary{color:#fff}
+:root[data-theme="light"] .btn-primary:hover{box-shadow:0 10px 30px rgba(26,127,232,.35)}
+:root[data-theme="light"] .btn-ghost,:root[data-theme="light"] .pill,:root[data-theme="light"] .lang{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn-ghost:hover{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .lang a.on{background:rgba(22,28,70,.08)}
+:root[data-theme="light"] .lang svg{box-shadow:0 0 0 1px rgba(22,28,70,.18)}
+:root[data-theme="light"] .mock{background:linear-gradient(180deg,#fff,var(--bg-2));box-shadow:0 40px 100px -40px rgba(26,127,232,.35),0 0 0 8px rgba(22,28,70,.03)}
+:root[data-theme="light"] .mock-side .srv,:root[data-theme="light"] .stat,:root[data-theme="light"] .feat .ico{background:rgba(22,28,70,.035)}
+:root[data-theme="light"] .mock-side a.on{background:rgba(26,127,232,.1)}
+:root[data-theme="light"] .mock-chat{background:rgba(22,28,70,.025)}
+:root[data-theme="light"] .mention{color:#3d47c9;background:rgba(88,101,242,.14)}
+:root[data-theme="light"] .msg .cmd{background:rgba(26,127,232,.09)}
+:root[data-theme="light"] .feat{background:linear-gradient(180deg,#fff,var(--card-2));box-shadow:0 1px 2px rgba(22,28,70,.04)}
+:root[data-theme="light"] .feat:hover,:root[data-theme="light"] .tool:hover{box-shadow:0 14px 34px -18px rgba(22,28,70,.25)}
+:root[data-theme="light"] .tool.big{background:linear-gradient(135deg,rgba(84,102,240,.1),rgba(26,127,232,.06) 60%,#fff);border-color:rgba(84,102,240,.25)}
+:root[data-theme="light"] .tool:hover{border-color:rgba(84,102,240,.4)}
+:root[data-theme="light"] .cta{background:radial-gradient(500px 260px at 20% 0%,rgba(26,127,232,.14),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(84,102,240,.12),transparent 70%),#fff}
+:root[data-theme="light"] .hero-mascot,:root[data-theme="light"] .cta .mascot{filter:brightness(0) invert(.09) drop-shadow(0 16px 26px rgba(26,127,232,.3))}
+:root[data-theme="light"] .logo-mark,:root[data-theme="light"] .ava.wumi img,:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09) drop-shadow(0 4px 10px rgba(26,127,232,.25))}
+:root[data-theme="light"] .status::before{box-shadow:0 0 0 4px rgba(15,154,99,.15)}
+:root[data-theme="light"] .tag[style*="ffbe50"]{color:#b06d00!important;background:rgba(255,170,40,.16)!important}
+:root[data-theme="light"] .btn{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn.on,:root[data-theme="light"] .btn-primary{background:var(--blue);color:#fff}
+:root[data-theme="light"] .outils{background:var(--bg)}
+:root[data-theme="light"] .filtre{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .filtre.on{background:rgba(26,127,232,.12)}
+:root[data-theme="light"] .badge{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .cmd{box-shadow:0 1px 2px rgba(22,28,70,.04)}
+.theme{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:16px;line-height:1;flex:none}
+.theme:hover{background:rgba(255,255,255,.07)}
+:root[data-theme="light"] .theme{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .theme:hover{background:rgba(22,28,70,.07)}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
+</style>
+<style>
+.version{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:24px 26px;margin-bottom:16px}
+.version-tete{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.version-tete h2{margin:0;font-size:24px}
+.version-tete .tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(98,184,255,.14);color:var(--blue)}
+.version-tete small{color:var(--dim);font-size:14px}
+.version > p{color:var(--muted);margin:4px 0 14px}
+.version h3{font-size:15px;margin:16px 0 8px;letter-spacing:.01em}
+.version ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.version li{color:var(--muted);font-size:15px}
+.version li b{color:var(--text)}
+.version code{font-family:ui-monospace,monospace;font-size:13.5px;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header><div class="wrap"><nav>
+  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
+  <div class="nav-fin">
+    <a class="btn ret" href="../" id="retour">← Site</a>
+    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <button class="btn" type="button" data-lang="en">EN</button>
+    <button class="btn" type="button" data-lang="fr">FR</button>
+  </div>
+</nav></div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow" id="t-eyebrow"></div>
+    <h1 id="t-titre"></h1>
+    <p class="lead" id="t-lead"></p>
+  </section>
+  <div id="liste"></div>
+</main>
+<footer class="wrap" id="t-pied"></footer>
+<script>
+const V = [
+ {"v": "2.32", "tag": {"en": "Latest", "fr": "Dernière"}, "en": {"intro": "AI comes to Wumi: scam detection, toxic message filter, NSFW image detection and message translation. Everything runs on Wumi's own server.", "blocs": [["Automod", ["<b>Anti-scam</b>, on by default: fake Nitro, fake Steam gifts, “I reported you by mistake, contact the staff”, fake crypto airdrops, and links that imitate Discord or Steam (dlscord, steamcommunlty…). In all 6 languages.", "<b>AI toxicity filter</b>: an AI reads messages and removes insults and harassment, even misspelled, in any language. The log shows how confident it was.", "<b>NSFW image detection</b>: explicit images are removed. NSFW channels are left alone, and the image is never copied into the logs.", "Turn them on with <code>/automod module</code> or from <code>/config</code>. Both AI modules are off by default."]], ["Translation", ["Right-click a message › Apps › <b>Translate</b>: Wumi translates it into your Discord language. Only you can see the reply.", "French, English, Spanish, German, Portuguese and Italian."]], ["Privacy", ["The AI models run on Wumi's own server: no message and no image is ever sent to an outside service."]]]}, "fr": {"intro": "L'IA arrive sur Wumi : détection des arnaques, filtre des messages toxiques, détection des images NSFW et traduction des messages. Tout tourne sur le serveur de Wumi.", "blocs": [["Automod", ["<b>Anti-arnaques</b>, actif par défaut : faux Nitro, faux cadeaux Steam, « je t'ai signalé par erreur, contacte le staff », faux airdrops crypto, et les liens qui imitent Discord ou Steam (dlscord, steamcommunlty…). Dans les 6 langues.", "<b>Anti-toxicité par IA</b> : une IA lit les messages et supprime les insultes et le harcèlement, même mal écrits, dans toutes les langues. Le log indique son niveau de certitude.", "<b>Détection des images NSFW</b> : les images explicites sont supprimées. Les salons NSFW ne sont pas concernés, et l'image n'est jamais recopiée dans les logs.", "À activer avec <code>/automod module</code> ou depuis <code>/config</code>. Les deux modules IA sont désactivés par défaut."]], ["Traduction", ["Clic droit sur un message › Applications › <b>Traduire</b> : Wumi le traduit dans ta langue Discord. Réponse visible de toi seul.", "Français, anglais, espagnol, allemand, portugais et italien."]], ["Confidentialité", ["Les modèles d'IA tournent sur le serveur de Wumi : aucun message ni aucune image n'est envoyé à un service externe."]]]}},
+{"v": "2.31", "en": {"intro": "Wumi now speaks Spanish, German, Portuguese (Brazil) and Italian.", "blocs": [["Languages", ["Pick your server's language in <code>/setup</code> or <code>/config</code> → Server. A server whose Discord language is one of these gets it automatically.", "<b>Everything is translated</b>: messages, buttons, menus, image cards, logs, tickets, giveaways, events, anti-raid, anti-nuke, automod, economy, games and more.", "Command descriptions <b>and option choices</b> follow each member's Discord language."]], ["Games", ["The quiz's 65 questions and the country names of the flag round, in every language.", "Hangman has its own word list for each language."]]]}, "fr": {"intro": "Wumi parle maintenant espagnol, allemand, portugais (Brésil) et italien.", "blocs": [["Langues", ["Choisis la langue de ton serveur dans <code>/demarrer</code> ou <code>/config</code> → Serveur. Un serveur dont la langue Discord est l'une de celles-ci la reçoit d'office.", "<b>Tout est traduit</b> : messages, boutons, menus, cartes image, journaux, tickets, concours, événements, anti-raid, anti-nuke, automod, économie, jeux et le reste.", "Les descriptions des commandes <b>et les choix des options</b> suivent la langue Discord de chaque membre."]], ["Jeux", ["Les 65 questions du quiz et les noms des pays de la manche drapeaux, dans chaque langue.", "Le pendu a sa propre liste de mots pour chaque langue."]]]}},
+ {"v": "2.28", "en": {"intro": "Boosts deserve a card too.", "blocs": [["Boosts", ["A boost is now announced like a level-up: the thank-you message, then an image card with the booster's avatar in a pink ring, the server's boost count, a bar to the next tier and the unlocked role.", "<code>/boost test</code>: a private preview of the announcement, no real boost needed."]]]}, "fr": {"intro": "Les boosts ont droit à leur carte.", "blocs": [["Boosts", ["Un boost s'annonce maintenant comme une montée de niveau : le remerciement, puis une carte image avec l'avatar du booster dans un anneau rose, le nombre de boosts du serveur, une barre vers le palier suivant et le rôle débloqué.", "<code>/boost test</code> : un aperçu privé de l'annonce, sans attendre un vrai boost."]]]}},
+ {"v": "2.26", "en": {"intro": "Instagram announcements for any public creator or business account.", "blocs": [["Announcements", ["<code>/watch</code> Instagram now follows <b>any public Creator or Business account by its @username</b>. Nothing to set up on your side.", "Wumi emojis no longer show up as raw code in the author line or footer of announcements and logs."]]]}, "fr": {"intro": "Les annonces Instagram pour n'importe quel compte créateur ou entreprise.", "blocs": [["Annonces", ["<code>/veille</code> Instagram suit maintenant <b>n'importe quel compte public Créateur ou Entreprise par son @pseudo</b>. Rien à configurer de ton côté.", "Les emojis de Wumi ne s'affichent plus en code brut dans la ligne d'auteur ou le pied des annonces et des journaux."]]]}},
+ {"v": "2.25", "en": {"intro": "New emojis, themed level-up cards and a smarter dashboard.", "blocs": [["Design", ["A brand-new set of Wumi emojis, one color per meaning (green for success, red for errors, gold for economy...).", "The level-up card follows the card theme (the member's, or the server's): accent, ring, bar and background tint."]], ["Dashboard", ["Your server list fills in live with every server where Wumi is and you can manage it.", "The Premium tab previews both the rank card and the level-up card with your server's theme and background."]]]}, "fr": {"intro": "De nouveaux emojis, des cartes de niveau à thème et un tableau de bord plus malin.", "blocs": [["Design", ["Un tout nouveau jeu d'emojis Wumi, une couleur par sens (vert réussite, rouge erreur, or économie...).", "La carte de montée de niveau suit le thème de carte (celui du membre, sinon celui du serveur) : accent, anneau, barre et teinte du fond."]], ["Tableau de bord", ["La liste de tes serveurs se complète en direct avec tous ceux où Wumi est présent et que tu peux gérer.", "L'onglet Premium montre la carte de rang et la carte de niveau avec le thème et le fond de ton serveur."]]]}},
+ {"v": "2.24", "en": {"intro": "A free Premium trial, Wumi fully in English, and a Premium tab in the dashboard.", "blocs": [["Premium", ["<b>7-day free Premium trial</b>: <code>/premium trial</code> or the button in the welcome message. Once per server, no card needed, with a DM the day before it ends.", "Dashboard Premium tab: subscription status, start the trial, upload the server's card background with a preview, and a default card theme for the whole server."]], ["English", ["Cards, charts, suggestions, appeals, automod, history, FAQ and announcements are now fully in English, and commands show in British English too.", "New welcome message with a Set up Wumi button."]]]}, "fr": {"intro": "Un essai Premium gratuit, Wumi vraiment en anglais, et un onglet Premium au tableau de bord.", "blocs": [["Premium", ["<b>Essai Premium gratuit de 7 jours</b> : <code>/premium essai</code> ou le bouton du message d'arrivée. Une fois par serveur, sans carte, avec un MP la veille de la fin.", "Onglet Premium du tableau de bord : état de l'abonnement, lancer l'essai, envoyer le fond des cartes du serveur avec aperçu, et un thème de carte par défaut pour tout le serveur."]], ["Anglais", ["Cartes, graphiques, suggestions, appels, automod, historique, FAQ et annonces sont maintenant entièrement en anglais, et les commandes s'affichent aussi en anglais britannique.", "Nouveau message d'arrivée avec un bouton Configurer Wumi."]]]}},
+ {"v": "2.23", "en": {"intro": "Vote reminders, vote streaks and a complete /setup.", "blocs": [["Votes", ["<b>Remind me</b> button in <code>/vote</code>: a DM as soon as you can vote again.", "<b>Vote streaks</b>: voting again within 36 hours keeps your streak, and each streak vote adds 1 hour to your XP bonus (up to +12 h)."]], ["Setup", ["<code>/setup</code> now covers 9 steps (language, welcome, auto role, logs, AutoMod, anti-raid, levels, level-up channel, economy) with a progress bar."]]]}, "fr": {"intro": "Rappels de vote, séries de votes et un /demarrer complet.", "blocs": [["Votes", ["Bouton <b>Me rappeler</b> dans <code>/vote</code> : un MP dès que tu peux revoter.", "<b>Séries de votes</b> : revoter dans les 36 h garde ta série, et chaque vote de série ajoute 1 h à ton bonus d'XP (jusqu'à +12 h)."]], ["Configuration", ["<code>/demarrer</code> couvre maintenant 9 étapes (langue, bienvenue, rôle automatique, journaux, AutoMod, anti-raid, niveaux, salon des montées de niveau, économie) avec une barre de progression."]]]}},
+ {"v":"2.22","en":{"intro":"Wumi Premium: new extras for the servers that support Wumi. Everything free stays free.","blocs":[["Premium",["<code>/premium info</code> is redesigned: exclusives, higher limits and a subscribe button straight from Discord.","<b>4 exclusive card themes</b> (Aurora, Neon, Sakura, Emerald), free for every member of a premium server in <code>/theme</code>.","<code>/premium card-background</code>: one background for the rank, profile and level-up cards of the whole server. Members' own backgrounds still come first.","<code>/premium bot</code>: Wumi's name, avatar, banner and bio, for your server only."]]]},"fr":{"intro":"Wumi Premium : de nouveaux bonus pour les serveurs qui soutiennent Wumi. Tout ce qui est gratuit le reste.","blocs":[["Premium",["<code>/premium info</code> est refait : exclusivités, plafonds relevés et bouton d'abonnement directement dans Discord.","<b>4 thèmes de carte exclusifs</b> (Aurore, Néon, Sakura, Émeraude), offerts à tous les membres d'un serveur premium dans <code>/theme</code>.","<code>/premium fond-cartes</code> : un fond pour les cartes de rang, de profil et de montée de niveau de tout le serveur. Les fonds perso des membres restent prioritaires.","<code>/premium bot</code> : le nom, l'avatar, la bannière et la bio de Wumi, rien que sur ton serveur."]]]}},
+ {"v":"2.21","en":{"intro":"A weekly challenge for Wumi Run, coins you can spend, and clearer sanctions.","blocs":[["Wumi Run",["<b>Weekly challenge</b>: one level per week, every finished run counts (not just records). Live leaderboard in the channel of your choice, podium rewarded every Monday. <code>/wumirun challenge</code> to see your rank.","<code>/wumirun convert</code>: turn your game coins into your server's currency, at the rate the server picks."]],["Moderation",["Warn, mute, kick and ban receipts now show the member's avatar, the moderator, the reason, the duration and the case number, with a color for each level."]],["Reliability",["Daily encrypted backups sent off the machine, and updates that roll back on their own if something goes wrong."]]]},"fr":{"intro":"Un défi de la semaine pour Wumi Run, des pièces qui servent, et des sanctions plus claires.","blocs":[["Wumi Run",["<b>Défi de la semaine</b> : un niveau par semaine, chaque partie terminée compte (pas seulement les records). Classement en direct dans le salon de ton choix, podium récompensé chaque lundi. <code>/wumirun defi</code> pour voir ta place.","<code>/wumirun convertir</code> : transforme tes pièces du jeu en monnaie du serveur, au taux choisi par le serveur."]],["Modération",["Les reçus d'avertissement, de mute, d'expulsion et de bannissement montrent l'avatar du membre, le modérateur, la raison, la durée et le numéro de dossier, avec une couleur par gravité."]],["Fiabilité",["Sauvegardes chiffrées envoyées hors de la machine chaque jour, et mises à jour qui reviennent en arrière toutes seules en cas de souci."]]]}},
+ {"v":"2.20","en":{"intro":"New emojis everywhere.","blocs":[["Emojis",["72 redrawn emojis: gradient tiles, bold white icons and one color per family (green for success, red for moderation, gold for economy, purple for progress...). Gold, silver and bronze medals, and music finally gets its own."]]]},"fr":{"intro":"De nouveaux emojis partout.","blocs":[["Emojis",["72 emojis redessinés : tuiles en dégradé, pictogrammes blancs bien lisibles et une couleur par famille (vert réussite, rouge modération, or économie, violet progression...). Médailles or, argent et bronze, et la musique a enfin le sien."]]]}},
+ {"v":"2.19","en":{"intro":"Level-ups in style.","blocs":[["Levels",["Level-up announcements become an image card: avatar in a glowing ring, \"9 → 10\" in big numbers, a bar to the next level, rank, bonus and unlocked roles. The color changes with the tier, from blue to diamond.","Voice level-ups get the same card. Only the member is pinged, never the roles."]]]},"fr":{"intro":"Les montées de niveau ont du style.","blocs":[["Niveaux",["Les annonces de montée de niveau deviennent une carte image : avatar dans un anneau lumineux, « 9 → 10 » en grand, barre vers le niveau suivant, rang, bonus et rôles débloqués. La couleur change avec le palier, du bleu au diamant.","Les montées de niveau en vocal ont la même carte. Seul le membre est notifié, jamais les rôles."]]]}},
+ {"v":"2.18","en":{"intro":"Your data, encrypted.","blocs":[["Privacy",["Everything members write and Wumi keeps (reports, suggestions, tickets, sanction reasons, staff notes...) is now encrypted at rest with AES-256-GCM."]]]},"fr":{"intro":"Tes données, chiffrées.","blocs":[["Confidentialité",["Tout ce que les membres écrivent et que Wumi garde (signalements, suggestions, tickets, raisons de sanction, notes du staff...) est désormais chiffré au repos en AES-256-GCM."]]]}},
+ {"v":"2.17","en":{"intro":"The economy gets a full redesign, with the Wumi Run gold coin as its new currency.","blocs":[["Economy",["<code>/economy daily</code> and <code>/economy work</code> now show an image card: your gain in big numbers, your streak bonus, a 10-day streak bar and your new balance. Wumi also tells you exactly when you can come back.","<code>/economy balance</code> becomes a wallet card: total wealth, wallet, bank, total earned, rank, streak and whether your daily reward is ready.","Quick buttons under every answer: Daily, Work, Wallet, Leaderboard. No need to retype a command.","<code>/economy leaderboard</code> is now an image like <code>/leaderboard</code>, with gold bars and page buttons.","<code>/bank view</code> shows the wallet card with your interest, and <code>/pay</code> shows a receipt with the recipient's avatar."]],["Currency",["The Wumi Run gold coin is the new default currency icon, everywhere: balances, shop, bank, missions, profile card.","Custom currency emoji: typing <code>:Name:</code> now finds the emoji on your server. A broken emoji falls back to the coin, and <code>default-emoji</code> brings the coin back."]]]},"fr":{"intro":"L'économie est entièrement refaite, avec la pièce d'or de Wumi Run comme nouvelle monnaie.","blocs":[["Économie",["<code>/economie daily</code> et <code>/economie travailler</code> affichent une carte image : ton gain en grand, ton bonus de série, une barre de série sur 10 jours et ton nouveau solde. Wumi te dit aussi exactement quand revenir.","<code>/economie solde</code> devient une carte portefeuille : fortune totale, poche, banque, total gagné, rang, série et récompense du jour prête ou non.","Des boutons rapides sous chaque réponse : Récompense, Travailler, Portefeuille, Classement. Plus besoin de retaper une commande.","<code>/economie classement</code> passe en image comme <code>/classement</code>, avec des barres dorées et des boutons de pages.","<code>/banque voir</code> reprend la carte portefeuille avec tes intérêts, et <code>/payer</code> affiche un reçu avec l'avatar du destinataire."]],["Monnaie",["La pièce d'or de Wumi Run devient l'icône de monnaie par défaut, partout : soldes, boutique, banque, missions, carte de profil.","Emoji de monnaie personnalisé : taper <code>:Nom:</code> retrouve maintenant l'emoji sur ton serveur. Un emoji cassé est remplacé par la pièce, et <code>emoji-defaut</code> la remet."]]]}},
+ {"v":"2.16","en":{"intro":"Wumi now has its own game: Wumi Run, a platformer you play right inside Discord.","blocs":[["Wumi Run",["<code>/wumirun play</code> launches the game in the channel, as a Discord Activity. Nothing to install, it works on desktop and mobile.","5 levels (from First steps to The Citadel), coins to collect, stars to earn and characters to unlock in the shop.","Your progress is saved on your Discord account and follows you from one server to another."]],["On your server",["<code>/wumirun leaderboard</code>: the server's best times on each level, as an image.","<code>/wumirun profile</code>: levels cleared, times, stars and rank.","First clear of a level on a server: XP and server currency (can be turned off). New records can be announced in a channel with <code>/wumirun config</code>."]]]},"fr":{"intro":"Wumi a maintenant son propre jeu : Wumi Run, un jeu de plateforme qui se joue directement dans Discord.","blocs":[["Wumi Run",["<code>/wumirun jouer</code> lance le jeu dans le salon, en Activité Discord. Rien à installer, ça marche sur ordinateur et sur téléphone.","5 niveaux (de Premiers pas à La citadelle), des pièces à ramasser, des étoiles à gagner et des personnages à débloquer dans la boutique.","Ta progression est enregistrée sur ton compte Discord et te suit d'un serveur à l'autre."]],["Sur ton serveur",["<code>/wumirun classement</code> : les meilleurs temps du serveur sur chaque niveau, en image.","<code>/wumirun profil</code> : niveaux terminés, temps, étoiles et rang.","Première victoire sur un niveau dans un serveur : XP et monnaie du serveur (désactivable). Les nouveaux records peuvent être annoncés dans un salon avec <code>/wumirun config</code>."]]]}},
+ {"v":"2.14","en":{"intro":"Translated server logs, a better temporary voice panel, right-click sanctions and recurring events.","blocs":[["Logs",["All server logs are now in your server's language, and each entry shows <b>who</b> did the action, with their avatar and a Profile or View message button."]],["Moderation",["Right-click a member › Apps › <b>Sanction</b>, or a message › <b>Sanction author</b>: their record, the action (warn, mute, kick, ban), a ready-made reason, and the message deleted in one click."]],["Temporary voice",["New control panel: rename, slots, lock, hide, claim, plus menus to invite, kick or hand over the channel."]],["Events",["<code>/event</code> can repeat (daily, weekly, every 2 weeks, monthly) and is added to the server's native Discord events.","<code>/leaderboard</code> is now an image: avatars, gold, silver and bronze ranks, progress bars and your own rank at the bottom."]]]},"fr":{"intro":"Journaux traduits, un meilleur panneau de vocal temporaire, la sanction au clic droit et les événements récurrents.","blocs":[["Journaux",["Tous les journaux du serveur sont maintenant dans la langue du serveur, et chaque fiche indique <b>qui</b> a fait l'action, avec son avatar et un bouton Profil ou Voir le message."]],["Modération",["Clic droit sur un membre › Applications › <b>Sanctionner</b>, ou sur un message › <b>Sanctionner l'auteur</b> : son casier, l'action (avertir, muet, expulser, bannir), une raison prête, et le message supprimé en un clic."]],["Vocal temporaire",["Nouveau panneau de contrôle : renommer, places, verrouiller, cacher, revendiquer, et des menus pour inviter, expulser ou donner le salon."]],["Événements",["<code>/event</code> peut se répéter (chaque jour, semaine, 2 semaines, mois) et s'ajoute aux événements Discord du serveur.","<code>/classement</code> passe en image : avatars, rangs or, argent et bronze, barres de progression et ta place en bas."]]]}},
+ {"v":"2.13","en":{"intro":"Smarter tickets, a new /embed builder, bonus chances in giveaways and custom welcome cards.","blocs":[["Tickets",["The first staff reply automatically claims a free ticket. New Release button, an alert when a ticket stays unanswered, and <code>/ticket stats</code> with response times and a staff ranking."]],["/embed",["Rebuilt from scratch: banner, thumbnail, up to 5 sections, image, link buttons and role mention, with an exact preview. Drafts are kept 24 hours, and you can save your own templates."]],["Giveaways",["New look with a live entry count, and <b>bonus chances</b> for a role or for boosters (x2 to x10). Winners get a DM."]],["Cards",["<code>/serverinfo</code> and <code>/userinfo</code> are now image cards.","Custom welcome cards: up to 5 designs with your own background, style, colour and text, picked at random or fixed."]]]},"fr":{"intro":"Des tickets plus malins, un nouveau /embed, des chances bonus aux concours et des cartes de bienvenue personnalisées.","blocs":[["Tickets",["La première réponse du staff prend automatiquement un ticket libre. Nouveau bouton Libérer, une alerte quand un ticket reste sans réponse, et <code>/ticket stats</code> avec les temps de réponse et le classement de l'équipe."]],["/embed",["Entièrement refait : bannière, vignette, jusqu'à 5 sections, image, boutons lien et mention d'un rôle, avec un aperçu exact. Brouillons gardés 24 h, et tu peux enregistrer tes propres modèles."]],["Concours",["Nouvelle présentation avec le nombre de participants en direct, et des <b>chances bonus</b> pour un rôle ou les boosters (x2 à x10). Les gagnants reçoivent un MP."]],["Cartes",["<code>/serverinfo</code> et <code>/userinfo</code> deviennent des cartes en image.","Cartes de bienvenue personnalisées : jusqu'à 5 designs avec ton fond, ton style, ta couleur et ton texte, tirés au hasard ou fixes."]]]}},
+ {"v":"2.12","en":{"intro":"Protection against rogue admins, server structure import, and a weekly stats report.","blocs":[["Anti-nuke",["<code>/antinuke</code> (server owner only): if an admin or a bot deletes channels or roles, or bans in a burst, Wumi removes their roles right away and tells you how to put everything back."]],["Structure",["<code>/structure import</code>: import a structure file, even from another server, to copy its roles, channels and permissions. Nothing is applied until you confirm."]],["Stats",["<code>/stats server</code> compares with the previous period and shows peak hours.","<code>/stats report</code>: every Monday at 9 am, the week's summary in the channel of your choice."]]]},"fr":{"intro":"Une protection contre les admins malveillants, l'import de structure, et un rapport de stats chaque semaine.","blocs":[["Anti-nuke",["<code>/antinuke</code> (propriétaire du serveur uniquement) : si un admin ou un bot supprime des salons ou des rôles, ou bannit en rafale, Wumi lui retire ses rôles aussitôt et t'explique comment tout remettre en place."]],["Structure",["<code>/structure importer</code> : importe un fichier de structure, même d'un autre serveur, pour copier ses rôles, salons et permissions. Rien n'est appliqué avant ta confirmation."]],["Stats",["<code>/stats serveur</code> compare avec la période précédente et montre les heures de pointe.","<code>/stats rapport</code> : chaque lundi à 9 h, le bilan de la semaine dans le salon de ton choix."]]]}},
+ { v: '2.11.4',
+   en: { intro: 'A docs command, a nicer vote screen, and a fix for very high XP.', blocs: [
+     ['New', ['<code>/docs</code>: the full command list on wumi.fr in one click. Add <code>command:</code> to open a specific command directly.', '<code>/vote</code> got a makeover: a banner, why voting helps, your status with a 12-hour gauge, your total and your rank among voters.']],
+     ['Support server', ['New "Share an idea" panel: one button, a short form, and your idea becomes a suggestion the community can vote on.', 'New "Report a bug" panel: reports go straight to the team, and you get a DM when your bug is confirmed or fixed.']],
+     ['Fixed', ['A member with an extremely high XP total could break <code>/leaderboard</code> and XP gains. XP is now capped at one billion.']] ] },
+   fr: { intro: 'Une commande de documentation, un écran de vote plus beau, et un correctif pour les XP démesurées.', blocs: [
+     ['Nouveau', ['<code>/doc</code> : la liste complète des commandes sur wumi.fr en un clic. Ajoute <code>commande:</code> pour ouvrir directement une commande.', '<code>/voter</code> fait peau neuve : une bannière, pourquoi voter, ton statut avec une jauge des 12 heures, ton total et ton rang parmi les votants.']],
+     ['Serveur support', ['Nouveau panneau « Propose une idée » : un bouton, un petit formulaire, et ton idée devient une suggestion que la communauté peut voter.', 'Nouveau panneau « Signale un bug » : les rapports arrivent directement chez l\'équipe, et tu reçois un MP quand ton bug est confirmé ou corrigé.']],
+     ['Corrigé', ['Un membre avec un total d\'XP démesuré pouvait bloquer <code>/classement</code> et les gains d\'XP. L\'XP est maintenant plafonnée à un milliard.']] ] } },
+ { v: '2.11.2',
+   en: { intro: 'Everyone can now pick up the Christmas snow, the staff recruitment panel gets a makeover, and Wumi lands on TikTok.', blocs: [
+     ['Christmas event', ['When snow falls, <b>everyone</b> has 30 seconds to click Pick up, once per snowfall. Each player gets their own surprise (☃️ +1, 🎁 +3 or 🧦 −1), and the first one gets a +1 bonus.', 'The message shows live who found what, and keeps the recap once the snow melts.']],
+     ['Recruitment', ['New application panel with a banner, open positions and a 3-step guide.', 'Choose the panel language (English or French): the form, the confirmation and the reply DM follow it.']],
+     ['Wumi on TikTok', ['A new video every day: tips, commands and Discord memes. Follow <a href="https://www.tiktok.com/@wumi.fr" target="_blank" rel="noopener">@wumi.fr</a>!']] ] },
+   fr: { intro: 'Tout le monde peut ramasser la neige de Noël, le panneau de recrutement fait peau neuve, et Wumi débarque sur TikTok.', blocs: [
+     ['Événement de Noël', ['Quand la neige tombe, <b>tout le monde</b> a 30 secondes pour cliquer sur Ramasser, une fois par chute. Chacun tire sa propre surprise (☃️ +1, 🎁 +3 ou 🧦 −1), et le premier gagne +1 de bonus.', 'Le message affiche en direct qui a trouvé quoi, et garde le récapitulatif quand la neige fond.']],
+     ['Recrutement', ['Nouveau panneau de candidatures avec bannière, postes ouverts et déroulé en 3 étapes.', 'Choisis la langue du panneau (français ou anglais) : le formulaire, la confirmation et la réponse en MP la suivent.']],
+     ['Wumi sur TikTok', ['Une vidéo chaque jour : astuces, commandes et mèmes Discord. Abonne-toi à <a href="https://www.tiktok.com/@wumi.fr" target="_blank" rel="noopener">@wumi.fr</a> !']] ] } },
+ { v: '2.11',
+   en: { intro: 'Christmas comes to the official Wumi server, plus a handy tool for moderators.', blocs: [
+     ['Christmas event', ['On the official Wumi server until December 31: chat in the community channels and something falls from the snow. Pick it up first to find a ☃️ snowman (+1), a 🎁 gift (+3)… or an old 🧦 sock (−1)!', 'Live leaderboard with <code>/christmas leaderboard</code>, and a podium announced at the end.']],
+     ['Moderation', ['<code>/snipe</code>: the latest deleted or edited messages in a channel, kept for 10 minutes in memory only, visible to staff.']],
+     ['Fixed', ['Voice time is now counted every 5 minutes and survives bot restarts; a muted mic still counts.']] ] },
+   fr: { intro: 'Noël arrive sur le serveur officiel de Wumi, et un outil pratique pour les modérateurs.', blocs: [
+     ['Événement de Noël', ['Sur le serveur officiel de Wumi jusqu\'au 31 décembre : discute dans les salons de la communauté et un objet tombe de la neige. Ramasse-le le premier pour trouver un ☃️ bonhomme de neige (+1), un 🎁 cadeau (+3)… ou une vieille 🧦 chaussette (−1) !', 'Classement en direct avec <code>/noel classement</code>, et podium annoncé à la fin.']],
+     ['Modération', ['<code>/snipe</code> : les derniers messages supprimés ou modifiés d\'un salon, gardés 10 minutes en mémoire seulement, visibles par le staff.']],
+     ['Corrigé', ['Le temps en vocal est compté toutes les 5 minutes et survit aux redémarrages du bot ; micro coupé, ça compte quand même.']] ] } },
+ { v: '2.10',
+   en: { intro: 'Your stats as a shareable image, a companion that grows with you, and an easier way to find teammates.', blocs: [
+     ['New', ['<code>/wrapped</code>: your personal recap as an image, this month or all time: messages, voice time, level, favorite channels, your peak hour and your "personality".', '<code>/pet</code>: adopt a companion (cat, fox, dragon, unicorn…). It grows from an egg to legendary as you chat; feed it, play with it, or it sulks.', '<code>/lfg</code>: looking for players? Post your game and the number of slots; once the group is full, Wumi creates a private voice channel for it.']],
+     ['Support & status', ['Incidents and maintenance are now announced on the status page and in the status channel.', 'Permanent 24/7 radio that restarts on its own, and smarter support tickets.']] ] },
+   fr: { intro: 'Tes stats en image à partager, un compagnon qui grandit avec toi, et une façon simple de trouver des coéquipiers.', blocs: [
+     ['Nouveau', ['<code>/wrapped</code> : ton récap perso en image, ce mois-ci ou depuis le début : messages, temps en vocal, niveau, salons préférés, ton heure de pointe et ta « personnalité ».', '<code>/pet</code> : adopte un compagnon (chat, renard, dragon, licorne…). Il passe de l\'œuf au légendaire quand tu discutes ; nourris-le, joue avec lui, sinon il boude.', '<code>/lfg</code> : tu cherches des joueurs ? Annonce ton jeu et le nombre de places ; quand le groupe est complet, Wumi lui crée un vocal privé.']],
+     ['Support & statut', ['Les incidents et maintenances sont annoncés sur la page de statut et dans le salon de statut.', 'Radio permanente 24/7 qui se relance toute seule, et tickets du support plus malins.']] ] } },
+ { v: '2.8',
+   en: { intro: 'Blind test, live radios and events: more reasons to hang out in your voice channels.', blocs: [
+     ['New', ['<code>/blindtest</code>: Wumi plays a 25-second clip in voice, the first to type the title wins 2 points (the artist, 1 point). Hints, 6 themes and a final leaderboard.', '<code>/radio</code>: 13 live radios in one click (Lofi Girl, FIP, jazz, rock, electro, rap, hits, classical…). Pair it with 24/7 mode.', '<code>/event</code>: an evening or a tournament with sign-up buttons, limited slots, a waiting list and a reminder 15 minutes before.']],
+     ['Improved', ['Music playback is more reliable on YouTube and Spotify links.']] ] },
+   fr: { intro: 'Blind test, radios en direct et événements : encore plus de raisons de se retrouver en vocal.', blocs: [
+     ['Nouveau', ['<code>/blindtest</code> : Wumi joue un extrait de 25 secondes dans le vocal, le premier qui écrit le titre gagne 2 points (l\'artiste, 1 point). Indices, 6 thèmes et classement final.', '<code>/radio</code> : 13 radios en direct en un clic (Lofi Girl, FIP, jazz, rock, électro, rap, hits, classique…). Parfait avec le mode 24/7.', '<code>/evenement</code> : une soirée ou un tournoi avec inscriptions par bouton, places limitées, liste d\'attente et rappel 15 minutes avant.']],
+     ['Amélioré', ['La lecture de la musique est plus fiable, avec les liens YouTube et Spotify.']] ] } },
+ { v: '2.7',
+   en: { intro: 'Music arrives on Wumi: a full player, right in your voice channels.', blocs: [
+     ['New', ['<code>/play</code>: YouTube search with suggestions as you type, plus YouTube, SoundCloud, Bandcamp, Twitch and radio links.', '<b>Spotify links</b>: tracks, albums and playlists, no account needed.', '<b>Interactive player</b>: previous, pause, skip, stop, loop, shuffle, volume, queue, and a progress bar that moves on its own.', '<b>Audio filters</b>: bass boost, nightcore, vaporwave, slowed, 8D, karaoke.']],
+     ['Control', ['<code>/music</code>: queue, skip, previous, volume, loop, shuffle, remove, move, seek, clear.', '<b>DJ role</b> (optional): others vote to skip a track.', '<b>Server playlists</b>: save the queue, load it back anytime.', '<b>24/7 mode</b>, otherwise Wumi leaves after 3 minutes without music.']] ] },
+   fr: { intro: 'La musique arrive sur Wumi : un lecteur complet, directement dans tes salons vocaux.', blocs: [
+     ['Nouveau', ['<code>/jouer</code> : recherche YouTube avec suggestions pendant que tu tapes, et liens YouTube, SoundCloud, Bandcamp, Twitch et radios.', '<b>Liens Spotify</b> : titres, albums et playlists, sans compte.', '<b>Lecteur interactif</b> : précédent, pause, suivant, stop, boucle, mélange, volume, file, et une barre de progression qui avance toute seule.', '<b>Filtres audio</b> : bass boost, nightcore, vaporwave, slowed, 8D, karaoké.']],
+     ['Contrôle', ['<code>/musique</code> : file, passer, précédent, volume, boucle, mélanger, retirer, déplacer, aller à un moment, vider.', '<b>Rôle DJ</b> (facultatif) : les autres votent pour passer une piste.', '<b>Playlists du serveur</b> : sauve la file, recharge-la quand tu veux.', '<b>Mode 24/7</b>, sinon Wumi part après 3 minutes sans musique.']] ] } },
+ { v: '2.6',
+   en: { intro: 'A full security check of your server, with one-click fixes.', blocs: [
+     ['New', ['<code>/audit run</code>: 15 checks (dangerous @everyone permissions, admin bots, 2FA, verification level, private channels that leak, roles above Wumi, forgotten webhooks, logs, antiraid, automod…), a <b>score out of 100</b> and a <b>Fix</b> button when it\'s safe.', '<code>/audit weekly</code>: the report posted every week in a staff channel, with an alert if the score drops.']],
+     ['Safety', ['Fixes never delete a role, a channel or a webhook.']] ] },
+   fr: { intro: 'Un bilan de sécurité complet de ton serveur, avec corrections en un clic.', blocs: [
+     ['Nouveau', ['<code>/audit lancer</code> : 15 vérifications (permissions dangereuses de @everyone, bots administrateurs, 2FA, niveau de vérification, salons privés qui fuient, rôles au-dessus de Wumi, webhooks oubliés, logs, antiraid, automod…), une <b>note sur 100</b> et un bouton <b>Corriger</b> quand c\'est sans risque.', '<code>/audit hebdo</code> : le bilan posté chaque semaine dans un salon staff, avec une alerte si la note baisse.']],
+     ['Sécurité', ['Les corrections ne suppriment jamais de rôle, de salon ni de webhook.']] ] } },
+ { v: '2.5',
+   en: { intro: 'A brighter website, and a few things behind the scenes.', blocs: [
+     ['Website', ['<b>Light theme</b> on wumi.fr, the commands page, the status page and the dashboard: use the ☀️/🌙 button, or let your device choose.', '<b>This page</b>: every update in one place.', '<b>An interactive demo</b> on the home page: try Wumi before adding it.']],
+     ['Security', ['Database backups are now <b>reserved to the bot owner</b>.']] ] },
+   fr: { intro: 'Un site plus lumineux, et quelques améliorations en coulisses.', blocs: [
+     ['Site', ['<b>Thème clair</b> sur wumi.fr, la page des commandes, la page de statut et le dashboard : bouton ☀️/🌙, ou réglage automatique selon ton appareil.', '<b>Cette page</b> : toutes les mises à jour au même endroit.', '<b>Une démo interactive</b> sur la page d\'accueil : essaie Wumi avant de l\'ajouter.']],
+     ['Sécurité', ['Les sauvegardes de la base sont désormais <b>réservées au créateur du bot</b>.']] ] } },
+ { v: '2.4',
+   en: { intro: 'The best messages of your server, highlighted.', blocs: [
+     ['New', ['<code>/starboard</code>: messages that get enough ⭐ are reposted in a "best of" channel, with a live star count.', '<b>wumi.fr/commandes</b>: every command in English and French, with search and filters, always up to date.']] ] },
+   fr: { intro: 'Les meilleurs messages de ton serveur, mis en avant.', blocs: [
+     ['Nouveau', ['<code>/starboard</code> : les messages qui reçoivent assez de ⭐ sont republiés dans un salon « meilleurs messages », avec le compteur en direct.', '<b>wumi.fr/commandes</b> : toutes les commandes en français et en anglais, avec recherche et filtres, toujours à jour.']] ] } },
+ { v: '2.3',
+   en: { intro: 'Games for your community, and a full web dashboard.', blocs: [
+     ['Games', ['<code>/connect4</code> against a member or against Wumi (3 levels).', '<code>/hangman</code>, solo or with the whole channel.', '<code>/quiz play</code>: general knowledge, <b>flags</b> or a mix, with a server leaderboard.', '<code>/counting</code>: count together, one mistake and it starts over at 1.']],
+     ['Dashboard', ['<b>Statistics</b>: messages per day, joins and leaves, most active channels and members, sanctions per week.', 'Reaction roles, embed builder and the full sanction history, from your browser.']] ] },
+   fr: { intro: 'Des jeux pour ta communauté, et un dashboard web complet.', blocs: [
+     ['Jeux', ['<code>/puissance4</code> contre un membre ou contre Wumi (3 niveaux).', '<code>/pendu</code>, seul ou avec tout le salon.', '<code>/quiz jouer</code> : culture générale, <b>drapeaux</b> ou mélange, avec classement du serveur.', '<code>/compteur</code> : on compte ensemble, une erreur et tout repart de 1.']],
+     ['Dashboard', ['<b>Statistiques</b> : messages par jour, arrivées et départs, salons et membres les plus actifs, sanctions par semaine.', 'Rôles-réactions, créateur d\'embeds et historique complet des sanctions, depuis ton navigateur.']] ] } },
+ { v: '2.2',
+   en: { intro: 'Everything to welcome and organize your members.', blocs: [
+     ['New', ['<code>/reactionrole</code>: panels where members pick their own roles (buttons or menu).', '<code>/autorole</code>: a role for every new member.', '<code>/welcome</code>: welcome message, illustrated card, welcome DM and goodbye message.', '<code>/embed</code>: build nice messages without code.', '<code>/tictactoe</code> against a friend or against Wumi.']],
+     ['Improved', ['<b>Logs</b> have a brand-new, clearer look.']] ] },
+   fr: { intro: 'Tout pour accueillir et organiser tes membres.', blocs: [
+     ['Nouveau', ['<code>/roles-reactions</code> : des panneaux où les membres choisissent leurs rôles (boutons ou menu).', '<code>/autorole</code> : un rôle pour chaque nouvel arrivant.', '<code>/bienvenue</code> : message d\'accueil, carte illustrée, MP de bienvenue et message d\'au revoir.', '<code>/embed</code> : crée de beaux messages sans coder.', '<code>/morpion</code> contre un ami ou contre Wumi.']],
+     ['Amélioré', ['Les <b>logs</b> ont un tout nouveau look, plus clair.']] ] } },
+ { v: '2.1',
+   en: { intro: 'More tools for your moderators, and tickets rebuilt from scratch.', blocs: [
+     ['Moderation', ['<code>/warnsteps</code>: automatic sanctions set per server ("at 3 warnings, 1 h mute…").', '<code>/raid</code>: the panic button during an attack, and everything goes back as it was afterwards.', '<b>Temporary roles</b>: <code>/role add … duration:7d</code>.']],
+     ['Tickets', ['New look, claim, priority, transcripts and a 1 to 5 ⭐ rating.', 'Inactive tickets close automatically.']],
+     ['Translations', ['Tickets, verification and <code>/vote</code> fully translated.']] ] },
+   fr: { intro: 'Plus d\'outils pour tes modérateurs, et des tickets refaits de zéro.', blocs: [
+     ['Modération', ['<code>/paliers</code> : des sanctions automatiques réglées par serveur (« à 3 avertissements, mute 1 h… »).', '<code>/raid</code> : le bouton panique pendant une attaque, et tout revient comme avant ensuite.', '<b>Rôles temporaires</b> : <code>/role ajouter … duree:7j</code>.']],
+     ['Tickets', ['Nouveau look, prise en charge, priorité, transcriptions et note de 1 à 5 ⭐.', 'Les tickets inactifs se ferment tout seuls.']],
+     ['Traductions', ['Tickets, vérification et <code>/vote</code> entièrement traduits.']] ] } },
+ { v: '2.0',
+   en: { intro: 'The big update: a new look and stronger moderation.', blocs: [
+     ['Moderation', ['New commands: <code>/softban</code>, <code>/massban</code>, <code>/nickname</code>, <code>/note</code>, <code>/voicemod</code>, <code>/modstats</code>.', 'Clearer sanction history.']],
+     ['Fixed', ['<code>/sanctions</code> no longer shows an error.']] ] },
+   fr: { intro: 'La grosse mise à jour : un nouveau look et une modération renforcée.', blocs: [
+     ['Modération', ['Nouvelles commandes : <code>/softban</code>, <code>/massban</code>, <code>/pseudo</code>, <code>/note</code>, <code>/vocal-mod</code>, <code>/modstats</code>.', 'Historique des sanctions plus clair.']],
+     ['Corrigé', ['<code>/sanctions</code> n\'affiche plus d\'erreur.']] ] } },
+];
+const T = {
+  en: { eyebrow: "What's new", titre: 'Wumi keeps <span class="serif grad">growing.</span>', lead: 'Every update, explained simply. New commands can take up to an hour to show up in Discord.', pied: 'Thanks for using Wumi · ', retour: '← Site', accueil: '../' },
+  fr: { eyebrow: 'Nouveautés', titre: 'Wumi ne cesse <span class="serif grad">de grandir.</span>', lead: 'Chaque mise à jour, expliquée simplement. Les nouvelles commandes peuvent mettre jusqu\'à une heure à apparaître dans Discord.', pied: 'Merci d\'utiliser Wumi · ', retour: '← Site', accueil: '../fr/' },
+};
+let langue = 'en';
+try { langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('wumi-lang') || (/^fr/i.test(navigator.language) ? 'fr' : 'en'); } catch (e) {}
+if (!T[langue]) langue = 'en';
+function rendre() {
+  const t = T[langue];
+  document.documentElement.lang = langue;
+  document.title = 'Wumi · ' + t.eyebrow;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-titre').innerHTML = t.titre;
+  document.getElementById('t-lead').textContent = t.lead;
+  const r = document.getElementById('retour'); if (r) { r.textContent = t.retour; r.href = t.accueil; }
+  const l = document.getElementById('lien-accueil'); if (l) l.href = t.accueil;
+  document.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('on', b.dataset.lang === langue));
+  document.getElementById('t-pied').innerHTML = t.pied + '<a href="' + t.accueil + '">wumi.fr</a>';
+  document.getElementById('liste').innerHTML = V.map((x) => {
+    const c = x[langue];
+    return '<article class="version"><div class="version-tete"><h2>Wumi ' + x.v + '</h2>' + (x.tag ? '<span class="tag">' + x.tag[langue] + '</span>' : '') + '</div><p>' + c.intro + '</p>'
+      + c.blocs.map((b) => '<h3>' + b[0] + '</h3><ul>' + b[1].map((li) => '<li>' + li + '</li>').join('') + '</ul>').join('') + '</article>';
+  }).join('');
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-lang]');
+  if (b) { langue = b.dataset.lang; try { localStorage.setItem('wumi-lang', langue); } catch (er) {} rendre(); }
+});
+rendre();
+</script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.setItem('wumi-theme',t)}catch(_){}});</script>
+</body>
+</html>

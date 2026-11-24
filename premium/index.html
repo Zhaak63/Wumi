@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wumi Premium</title>
+<meta name="description" content="Wumi Premium: exclusive card themes, a card background for your server, Wumi in your server's style and higher limits. Everything free stays free.">
+<meta name="theme-color" content="#62b8ff">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d1c;--bg-2:#11132a;--card:#161935;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--text:#eef0fc;--muted:#a3a9d1;--dim:#6f76a8;--blue:#62b8ff;--pink:#8fa0ff;--green:#3ddc97;--grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(600px 400px at 15% -5%,rgba(98,184,255,.18),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(143,160,255,.14),transparent 70%)}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(12,13,28,.78);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo img{width:30px;height:30px}
+.logo .dot{color:var(--pink)}
+.nav-fin{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-family:inherit}
+.btn.on{background:var(--blue);color:#0c0d1c;border-color:transparent}
+.hero{padding:56px 0 26px}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:620px;margin-top:14px;font-size:17px}
+.outils{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 8px;position:sticky;top:64px;z-index:10;background:var(--bg);padding:12px 0}
+.outils input{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;color:var(--text);font:inherit}
+.outils input:focus{outline:2px solid rgba(98,184,255,.6)}
+.filtres{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.filtre{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);border-radius:99px;padding:6px 12px;font:inherit;font-size:13.5px;cursor:pointer}
+.filtre.on{background:rgba(98,184,255,.16);color:var(--text);border-color:rgba(98,184,255,.4)}
+h2{font-size:22px;letter-spacing:-.02em;margin:34px 0 12px;display:flex;gap:10px;align-items:center}
+h2 small{color:var(--dim);font-size:14px;font-weight:500}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.cmd{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:16px 18px}
+.cmd .nom{font-family:ui-monospace,SFMono-Regular,monospace;font-size:15.5px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.06);color:var(--muted)}
+.cmd p{color:var(--muted);font-size:14.5px;margin-top:6px}
+.cmd ul{list-style:none;margin-top:10px;border-top:1px solid var(--line);padding-top:8px;display:grid;gap:5px}
+.cmd li{font-size:13.5px;color:var(--muted)}
+.cmd li code{font-family:ui-monospace,monospace;color:var(--text);font-size:13px;margin-right:6px}
+.vide{color:var(--dim);padding:40px 0;text-align:center}
+footer{color:var(--dim);font-size:13px;padding:50px 0 40px;text-align:center}
+footer a{color:var(--muted)}
+@media (max-width:560px){.grille{grid-template-columns:1fr}.btn.ret{display:none}}
+
+/* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#1a7fe8,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"],:root[data-theme="light"] body{background:var(--bg)}
+:root[data-theme="light"] header{background:rgba(245,247,253,.8)}
+:root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(26,127,232,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(84,102,240,.1),transparent 70%)}
+:root[data-theme="light"] .page-grid,:root[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(22,28,70,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,70,.05) 1px,transparent 1px)}
+:root[data-theme="light"] .btn-primary{color:#fff}
+:root[data-theme="light"] .btn-primary:hover{box-shadow:0 10px 30px rgba(26,127,232,.35)}
+:root[data-theme="light"] .btn-ghost,:root[data-theme="light"] .pill,:root[data-theme="light"] .lang{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn-ghost:hover{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .lang a.on{background:rgba(22,28,70,.08)}
+:root[data-theme="light"] .lang svg{box-shadow:0 0 0 1px rgba(22,28,70,.18)}
+:root[data-theme="light"] .mock{background:linear-gradient(180deg,#fff,var(--bg-2));box-shadow:0 40px 100px -40px rgba(26,127,232,.35),0 0 0 8px rgba(22,28,70,.03)}
+:root[data-theme="light"] .mock-side .srv,:root[data-theme="light"] .stat,:root[data-theme="light"] .feat .ico{background:rgba(22,28,70,.035)}
+:root[data-theme="light"] .mock-side a.on{background:rgba(26,127,232,.1)}
+:root[data-theme="light"] .mock-chat{background:rgba(22,28,70,.025)}
+:root[data-theme="light"] .mention{color:#3d47c9;background:rgba(88,101,242,.14)}
+:root[data-theme="light"] .msg .cmd{background:rgba(26,127,232,.09)}
+:root[data-theme="light"] .feat{background:linear-gradient(180deg,#fff,var(--card-2));box-shadow:0 1px 2px rgba(22,28,70,.04)}
+:root[data-theme="light"] .feat:hover,:root[data-theme="light"] .tool:hover{box-shadow:0 14px 34px -18px rgba(22,28,70,.25)}
+:root[data-theme="light"] .tool.big{background:linear-gradient(135deg,rgba(84,102,240,.1),rgba(26,127,232,.06) 60%,#fff);border-color:rgba(84,102,240,.25)}
+:root[data-theme="light"] .tool:hover{border-color:rgba(84,102,240,.4)}
+:root[data-theme="light"] .cta{background:radial-gradient(500px 260px at 20% 0%,rgba(26,127,232,.14),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(84,102,240,.12),transparent 70%),#fff}
+:root[data-theme="light"] .hero-mascot,:root[data-theme="light"] .cta .mascot{filter:brightness(0) invert(.09) drop-shadow(0 16px 26px rgba(26,127,232,.3))}
+:root[data-theme="light"] .logo-mark,:root[data-theme="light"] .ava.wumi img,:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09) drop-shadow(0 4px 10px rgba(26,127,232,.25))}
+:root[data-theme="light"] .status::before{box-shadow:0 0 0 4px rgba(15,154,99,.15)}
+:root[data-theme="light"] .tag[style*="ffbe50"]{color:#b06d00!important;background:rgba(255,170,40,.16)!important}
+:root[data-theme="light"] .btn{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn.on,:root[data-theme="light"] .btn-primary{background:var(--blue);color:#fff}
+:root[data-theme="light"] .outils{background:var(--bg)}
+:root[data-theme="light"] .filtre{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .filtre.on{background:rgba(26,127,232,.12)}
+:root[data-theme="light"] .badge{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .cmd{box-shadow:0 1px 2px rgba(22,28,70,.04)}
+.theme{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:16px;line-height:1;flex:none}
+.theme:hover{background:rgba(255,255,255,.07)}
+:root[data-theme="light"] .theme{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .theme:hover{background:rgba(22,28,70,.07)}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
+.cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:8px 0 30px}
+.carte{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.carte .ico{font-size:28px;line-height:1;margin-bottom:12px}
+.carte h3{font-size:17px;margin-bottom:6px}
+.carte p{color:var(--muted);font-size:14.5px}
+.carte code,.note code{font-family:ui-monospace,monospace;font-size:13px;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:6px}
+.titre-sec{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:600;margin:26px 0 12px}
+table.lim{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+table.lim th,table.lim td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:15px}
+table.lim th{color:var(--dim);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+table.lim td.p{color:var(--blue);font-weight:700}
+table.lim tr:last-child td{border-bottom:0}
+.prix{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:22px}
+.prix .montant{font-size:28px;font-weight:700}
+.prix .montant small{font-size:15px;color:var(--muted);font-weight:500}
+.note{color:var(--muted);font-size:14.5px;margin:22px 0 40px;padding:16px 18px;border:1px dashed var(--line-2);border-radius:14px}
+</style>
+<style>
+.version{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:24px 26px;margin-bottom:16px}
+.version-tete{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.version-tete h2{margin:0;font-size:24px}
+.version-tete .tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(98,184,255,.14);color:var(--blue)}
+.version-tete small{color:var(--dim);font-size:14px}
+.version > p{color:var(--muted);margin:4px 0 14px}
+.version h3{font-size:15px;margin:16px 0 8px;letter-spacing:.01em}
+.version ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.version li{color:var(--muted);font-size:15px}
+.version li b{color:var(--text)}
+.version code{font-family:ui-monospace,monospace;font-size:13.5px;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header><div class="wrap"><nav>
+  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
+  <div class="nav-fin">
+    <a class="btn ret" href="../" id="retour">← Site</a>
+    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <button class="btn" type="button" data-lang="en">EN</button>
+    <button class="btn" type="button" data-lang="fr">FR</button>
+  </div>
+</nav></div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow" id="t-eyebrow"></div>
+    <h1 id="t-titre"></h1>
+    <p class="lead" id="t-lead"></p>
+    <div class="prix"><span class="montant" id="t-prix"></span><a class="btn on" id="t-cta" href="https://discord.com/discovery/applications/1545770920185045084"></a></div>
+  </section>
+  <div id="contenu"></div>
+</main>
+<footer class="wrap" id="t-pied"></footer>
+<script>
+const T = {"en":{"eyebrow":"Wumi Premium","titre":"Support Wumi, <span class=\"serif grad\">unlock extras.</span>","lead":"Everything in Wumi is free and stays free. Premium adds exclusives for your whole server and raises a few limits. It's one subscription per server, paid securely through Discord.","prix":"$3.99 <small>/ month per server</small>","cta":"Get it in Discord","ex":"Premium exclusives","lim":"Higher limits","col":["","Free","Premium"],"cartes":[["🌌","4 exclusive card themes","Aurora, Neon, Sakura and Emerald, free for every member in <code>/theme</code>."],["🖼️","A background for your server","One image for the rank, profile and level-up cards of all your members. <code>/premium card-background</code>"],["🎨","Wumi in your style","Its own name, avatar, banner and bio on your server only. <code>/premium bot</code>"],["💙","Keep Wumi growing","Premium pays for the server and new features, for everyone."]],"lignes":[["Giveaways at once","5","25"],["Open tickets per member","3","10"],["Twitch, YouTube, TikTok, Instagram and RSS alerts","10","30"],["Server snapshots","10","30"]],"note":"How to subscribe: type <code>/premium info</code> in your server and press the subscribe button, or open Wumi's page in Discord. You can cancel anytime from your Discord settings. If premium stops, nothing breaks: members simply go back to the default theme.","pied":"Thanks for supporting Wumi · ","retour":"← Site","accueil":"../"},"fr":{"eyebrow":"Wumi Premium","titre":"Soutiens Wumi, <span class=\"serif grad\">débloque des bonus.</span>","lead":"Tout Wumi est gratuit et le restera. Le premium ajoute des exclusivités pour tout ton serveur et relève quelques plafonds. Un abonnement par serveur, payé en toute sécurité via Discord.","prix":"3,99 $ <small>/ mois par serveur</small>","cta":"S'abonner dans Discord","ex":"Exclusivités premium","lim":"Plafonds relevés","col":["","Gratuit","Premium"],"cartes":[["🌌","4 thèmes de carte exclusifs","Aurore, Néon, Sakura et Émeraude, offerts à tous les membres dans <code>/theme</code>."],["🖼️","Un fond pour ton serveur","Une image pour les cartes de rang, de profil et de montée de niveau de tous tes membres. <code>/premium fond-cartes</code>"],["🎨","Wumi à ton image","Son nom, son avatar, sa bannière et sa bio, rien que sur ton serveur. <code>/premium bot</code>"],["💙","Fais grandir Wumi","Le premium finance le serveur et les nouveautés, pour tout le monde."]],"lignes":[["Giveaways en même temps","5","25"],["Tickets ouverts par membre","3","10"],["Alertes Twitch, YouTube, TikTok, Instagram et RSS","10","30"],["Copies de la structure du serveur","10","30"]],"note":"Pour t'abonner : tape <code>/premium info</code> sur ton serveur et appuie sur le bouton d'abonnement, ou ouvre la page de Wumi dans Discord. Tu peux arrêter quand tu veux depuis tes paramètres Discord. Si le premium s'arrête, rien ne casse : les membres reviennent simplement au thème par défaut.","pied":"Merci de soutenir Wumi · ","retour":"← Site","accueil":"../fr/"}};
+let langue = 'en';
+try { langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('wumi-lang') || (/^fr/i.test(navigator.language) ? 'fr' : 'en'); } catch (e) {}
+if (!T[langue]) langue = 'en';
+function rendre() {
+  const t = T[langue];
+  document.documentElement.lang = langue;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-titre').innerHTML = t.titre;
+  document.getElementById('t-lead').textContent = t.lead;
+  document.getElementById('t-prix').innerHTML = t.prix;
+  document.getElementById('t-cta').textContent = t.cta;
+  const r = document.getElementById('retour'); if (r) { r.textContent = t.retour; r.href = t.accueil; }
+  const l = document.getElementById('lien-accueil'); if (l) l.href = t.accueil;
+  document.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('on', b.dataset.lang === langue));
+  document.getElementById('t-pied').innerHTML = t.pied + '<a href="' + t.accueil + '">wumi.fr</a>';
+  document.getElementById('contenu').innerHTML =
+    '<div class="titre-sec">' + t.ex + '</div><div class="cartes">' + t.cartes.map((c) => '<div class="carte"><div class="ico">' + c[0] + '</div><h3>' + c[1] + '</h3><p>' + c[2] + '</p></div>').join('') + '</div>'
+    + '<div class="titre-sec">' + t.lim + '</div><table class="lim"><tr>' + t.col.map((c) => '<th>' + c + '</th>').join('') + '</tr>'
+    + t.lignes.map((l) => '<tr><td>' + l[0] + '</td><td>' + l[1] + '</td><td class="p">' + l[2] + '</td></tr>').join('') + '</table>'
+    + '<p class="note">' + t.note + '</p>';
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-lang]');
+  if (b) { langue = b.dataset.lang; try { localStorage.setItem('wumi-lang', langue); } catch (er) {} rendre(); }
+});
+rendre();
+</script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.setItem('wumi-theme',t)}catch(_){}});</script>
+</body>
+</html>

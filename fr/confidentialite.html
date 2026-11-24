@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Politique de confidentialité · Wumi</title>
-<meta name="description" content="Ce que Wumi et les outils Aesthetic Creators enregistrent, pourquoi, et comment le faire effacer.">
+<meta name="description" content="Ce que Wumi et les outils Wumi enregistrent, pourquoi, et comment le faire effacer.">
 <meta name="theme-color" content="#62b8ff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
 <meta property="og:url" content="https://zhaak63.github.io/Wumi/fr/confidentialite.html">
 <meta property="og:title" content="Politique de confidentialité · Wumi">
-<meta property="og:description" content="Ce que Wumi et les outils Aesthetic Creators enregistrent, et comment le faire effacer.">
+<meta property="og:description" content="Ce que Wumi et les outils Wumi enregistrent, et comment le faire effacer.">
 <meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -110,13 +110,13 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
     <a class="back" href="index.html">← Retour à l'accueil</a>
     <div class="eyebrow">POLITIQUE DE CONFIDENTIALITÉ</div>
     <h1>Tes données, <span class="serif grad">rien de caché.</span></h1>
-    <p class="meta">Dernière mise à jour : 7 novembre 2026 · S'applique au bot Wumi et aux outils Aesthetic Creators</p>
+    <p class="meta">Dernière mise à jour : 12 novembre 2026 · S'applique au bot Wumi et aux outils Wumi</p>
     <div class="tabs"><a href="conditions.html" class="">Conditions d'utilisation</a><a href="confidentialite.html" class="on">Politique de confidentialité</a></div>
   </div>
   <div class="layout">
     <aside class="toc"><h6>SUR CETTE PAGE</h6><a href="#enregistre">Ce que le bot enregistre</a><a href="#duree">Combien de temps</a><a href="#stockage">Où c'est stocké</a><a href="#outils">Les outils et le site</a><a href="#effacer">Faire effacer tes données</a><a href="#mineurs">Les mineurs</a><a href="#changements">Changements</a><a href="#contact">Contact</a></aside>
     <article>
-<p class="lead">Ce document dit exactement ce que Wumi et les outils Aesthetic Creators enregistrent, pourquoi, combien de temps, et comment faire effacer ces données.</p>
+<p class="lead">Ce document dit exactement ce que Wumi et les outils Wumi enregistrent, pourquoi, combien de temps, et comment faire effacer ces données.</p>
 <div class="sum"><b>En bref :</b> le bot enregistre des identifiants Discord et des réglages de serveur pour faire fonctionner ses fonctions, et il efface <b>tout</b> ce qui concerne un serveur dès qu'on l'en retire. Les outils ne t'envoient rien et n'enregistrent rien sur nos machines : tout reste dans ton navigateur ou part directement vers Discord.</div>
 <h2 id="enregistre"><span class="n">01</span>Ce que le bot enregistre</h2>
 <h3>Pour chaque serveur qui ajoute Wumi</h3>
@@ -130,6 +130,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 <h3>Jamais enregistré</h3>
 <ul>
 <li>Le contenu des messages ordinaires. Wumi peut les lire au passage, puis les oublie immédiatement.</li>
+<li>Les messages et les images analysés par l'IA (anti-toxicité, images NSFW, traduction). L'analyse se fait sur le serveur de Wumi, sans service externe, et rien n'est gardé une fois le résultat obtenu.</li>
 <li>Les messages privés et les conversations vocales.</li>
 <li>Ton adresse e-mail, ton adresse IP, ton vrai nom, ton pays.</li>
 <li>Rien n'est vendu, loué, ni transmis à qui que ce soit.</li>
@@ -141,6 +142,10 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 </ul>
 <h2 id="stockage"><span class="n">03</span>Où c'est stocké</h2>
 <p>Dans une base de données, sur la machine qui fait tourner le bot. Cette machine est celle de l'auteur du bot, pas un service tiers, et personne d'autre n'y a accès.</p>
+<h3>Chiffrement</h3>
+<p>Tout ce qu'un membre ou un modérateur <b>écrit</b> et que Wumi conserve est <b>chiffré au repos</b> en AES-256-GCM : le texte des messages signalés, des suggestions, des appels, des candidatures, des tickets, des raisons de sanction et des notes du staff. Sans la clé de chiffrement, ces textes sont illisibles, même avec une copie de la base. Les identifiants et les compteurs (XP, soldes, niveaux) restent en clair, car ils servent à trier les classements.</p>
+<h3>Sauvegardes</h3>
+<p>Une copie de la base est faite chaque jour sur la même machine, et les 14 dernières sont gardées. Une fois par jour, une copie est aussi envoyée en privé à l'auteur du bot pour ne rien perdre si la machine tombe en panne : cette copie est <b>compressée et chiffrée</b> avant de quitter la machine, et la clé ne voyage jamais avec elle. Quand Wumi est retiré d'un serveur, ses données disparaissent de la base tout de suite, et des sauvegardes locales au fil de leur rotation, en 14 jours au plus. Les copies chiffrées envoyées à l'auteur servent uniquement de filet de sécurité : elles ne sont jamais ouvertes, sauf pour remettre le bot en marche après une panne.</p>
 <h2 id="outils"><span class="n">04</span>Les outils et le site</h2>
 <h3>Ce que tu saisis dans les outils</h3>
 <ul>
@@ -176,7 +181,7 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 </article>
   </div>
 </main>
-<footer><div class="wrap copy"><span>© 2026 Wumi × Aesthetic Creators</span>
-<nav><a href="index.html">Accueil</a><a href="conditions.html">Conditions</a><a href="confidentialite.html">Confidentialité</a><a href="https://discord.gg/VaGrXgnAHS">Support</a></nav></div></footer>
+<footer><div class="wrap copy"><span>© 2026 Wumi</span>
+<nav><a href="index.html">Accueil</a><a href="conditions.html">Conditions</a><a href="confidentialite.html">Confidentialité</a><a href="/discord/">Discord</a><a href="/tiktok/">TikTok</a><a href="/x/">X</a></nav></div></footer>
 <script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
 </body></html>

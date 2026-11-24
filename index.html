@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
 <script>try{if(localStorage.getItem('wumi-lang')==='fr')location.replace('fr/index.html'+location.hash)}catch(e){}</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wumi · Discord bot & tools</title>
-<meta name="description" content="Wumi, your Discord server's cutest all-in-one companion, plus the Aesthetic Creators tools: auto roles, welcome messages, moderation, embeds, colored text, timestamps and more.">
+<meta name="description" content="Wumi, your Discord server's cutest all-in-one companion, plus free Wumi tools: auto roles, welcome messages, moderation, embeds, colored text, timestamps and more.">
 <meta name="theme-color" content="#62b8ff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
@@ -226,6 +227,46 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 .page-grid{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%)}
 .lang{display:flex;gap:2px;padding:3px;margin-left:auto;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.03)}.lang a{display:grid;place-items:center;width:32px;height:26px;border-radius:7px;opacity:.45;transition:.2s;border:0}.lang a:hover{opacity:.85}.lang a.on{opacity:1;background:rgba(255,255,255,.09)}@media (max-width:760px){nav{gap:12px}.lang a{width:30px}}
 .lang svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+
+/* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#1a7fe8,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"] header{background:rgba(245,247,253,.8)}
+:root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(26,127,232,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(84,102,240,.1),transparent 70%)}
+:root[data-theme="light"] .page-grid,:root[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(22,28,70,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,70,.07) 1px,transparent 1px)}
+:root[data-theme="light"] .btn-primary{color:#fff}
+:root[data-theme="light"] .btn-primary:hover{box-shadow:0 10px 30px rgba(26,127,232,.35)}
+:root[data-theme="light"] .btn-ghost,:root[data-theme="light"] .pill,:root[data-theme="light"] .lang{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn-ghost:hover{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .lang a.on{background:rgba(22,28,70,.08)}
+:root[data-theme="light"] .lang svg{box-shadow:0 0 0 1px rgba(22,28,70,.18)}
+:root[data-theme="light"] .mock{background:linear-gradient(180deg,#fff,var(--bg-2));box-shadow:0 40px 100px -40px rgba(26,127,232,.35),0 0 0 8px rgba(22,28,70,.03)}
+:root[data-theme="light"] .mock-side .srv,:root[data-theme="light"] .stat,:root[data-theme="light"] .feat .ico{background:rgba(22,28,70,.035)}
+:root[data-theme="light"] .mock-side a.on{background:rgba(26,127,232,.1)}
+:root[data-theme="light"] .mock-chat{background:rgba(22,28,70,.025)}
+:root[data-theme="light"] .mention{color:#3d47c9;background:rgba(88,101,242,.14)}
+:root[data-theme="light"] .msg .cmd{background:rgba(26,127,232,.09)}
+:root[data-theme="light"] .feat{background:linear-gradient(180deg,#fff,var(--card-2));box-shadow:0 1px 2px rgba(22,28,70,.04)}
+:root[data-theme="light"] .feat:hover,:root[data-theme="light"] .tool:hover{box-shadow:0 14px 34px -18px rgba(22,28,70,.25)}
+:root[data-theme="light"] .tool.big{background:linear-gradient(135deg,rgba(84,102,240,.1),rgba(26,127,232,.06) 60%,#fff);border-color:rgba(84,102,240,.25)}
+:root[data-theme="light"] .tool:hover{border-color:rgba(84,102,240,.4)}
+:root[data-theme="light"] .cta{background:radial-gradient(500px 260px at 20% 0%,rgba(26,127,232,.14),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(84,102,240,.12),transparent 70%),#fff}
+:root[data-theme="light"] .hero-mascot,:root[data-theme="light"] .cta .mascot{filter:brightness(0) invert(.09) drop-shadow(0 16px 26px rgba(26,127,232,.3))}
+:root[data-theme="light"] .logo-mark,:root[data-theme="light"] .ava.wumi img,:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09) drop-shadow(0 4px 10px rgba(26,127,232,.25))}
+:root[data-theme="light"] .status::before{box-shadow:0 0 0 4px rgba(15,154,99,.15)}
+:root[data-theme="light"] .tag[style*="ffbe50"]{color:#b06d00!important;background:rgba(255,170,40,.16)!important}
+:root[data-theme="light"] .btn{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .btn.on,:root[data-theme="light"] .btn-primary{background:var(--blue);color:#fff}
+:root[data-theme="light"] .outils{background:var(--bg)}
+:root[data-theme="light"] .filtre{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .filtre.on{background:rgba(26,127,232,.12)}
+:root[data-theme="light"] .badge{background:rgba(22,28,70,.06)}
+:root[data-theme="light"] .cmd{box-shadow:0 1px 2px rgba(22,28,70,.04)}
+.theme{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:16px;line-height:1;flex:none}
+.theme:hover{background:rgba(255,255,255,.07)}
+:root[data-theme="light"] .theme{background:rgba(22,28,70,.03)}
+:root[data-theme="light"] .theme:hover{background:rgba(22,28,70,.07)}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
+.reseaux{display:flex;gap:10px;margin-top:18px}.reseaux a{display:grid;place-items:center;width:42px;height:42px;padding:0!important;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--muted);transition:.2s}.reseaux a:hover{color:var(--text);border-color:var(--blue);transform:translateY(-2px)}.reseaux svg{width:19px;height:19px}:root[data-theme="light"] .reseaux a{background:rgba(22,28,70,.03)}
 </style>
 </head>
 <body>
@@ -240,8 +281,10 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
       <a href="#commandes">Commands</a>
       <a href="#demarrer">Get started</a>
       <a href="#faq">FAQ</a>
+      <a href="statut/">Status</a>
+      <a href="dashboard/">Dashboard</a>
     </div>
-    <div class="lang" role="group" aria-label="Language"><a href="index.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/index.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div>
+    <div class="lang" role="group" aria-label="Language"><a href="index.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/index.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
     <div class="nav-cta">
       <a class="btn btn-ghost btn-sm" href="https://discord.gg/VaGrXgnAHS">Support</a>
       <a class="btn btn-primary btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
@@ -255,9 +298,9 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
   <div class="hero">
     <div class="wrap">
       <img src="wumi-w.svg" alt="Wumi" class="hero-mascot rv">
-      <div class="pill rv"><b>NEW</b> Wumi and Aesthetic Creators, now in one place</div>
+      <div class="pill rv"><b>NEW</b> <a href="premium/" style="color:inherit;text-decoration:none">✨ Wumi Premium: exclusive themes, your own card background →</a></div>
       <h1 class="rv">A server that thrives. <span class="serif grad-text">A bot that keeps up.</span></h1>
-      <p class="lead rv">Wumi welcomes your members, hands out roles and keeps an eye on moderation. And to make your server beautiful, all the Aesthetic Creators tools are right next door, for free.</p>
+      <p class="lead rv">Wumi welcomes your members, hands out roles and keeps an eye on moderation. And to make your server beautiful, all the Wumi tools are right next door, for free.</p>
       <div class="hero-ctas rv">
         <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord →</a>
         <a class="btn btn-ghost" href="#outils">See the free tools</a>
@@ -306,6 +349,196 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
     <div class="status">All systems running</div>
   </div>
 
+  <!-- DEMO -->
+  <section id="demo">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-d="eyebrow">TRY IT</div>
+        <h2 data-d="titre">Test Wumi <span class="serif grad-text">right here.</span></h2>
+        <p data-d="lead">A pretend Discord channel: type a command or click one, and Wumi answers.</p>
+      </div>
+      <div class="demo rv">
+        <div class="demo-top"><span class="demo-hash">#</span><b data-d="salon">general</b><small data-d="hint">Demo · nothing is sent to Discord</small></div>
+        <div class="demo-fil" id="demo-fil" aria-live="polite"></div>
+        <div class="demo-chips" id="demo-chips"></div>
+        <form class="demo-saisie" id="demo-form" autocomplete="off">
+          <input id="demo-input" type="text" maxlength="40" aria-label="Command">
+          <button type="submit" aria-label="Send">➤</button>
+        </form>
+      </div>
+    </div>
+  </section>
+<style>
+#demo .demo{max-width:860px;margin:0 auto;border:1px solid var(--line-2);border-radius:20px;background:var(--card);overflow:hidden;box-shadow:0 30px 80px -40px rgba(98,184,255,.35)}
+.demo-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px}
+.demo-top small{margin-left:auto;color:var(--dim);font-size:12.5px}
+.demo-hash{color:var(--dim);font-size:20px;line-height:1}
+.demo-fil{height:420px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth}
+.demo-msg{display:flex;gap:12px;align-items:flex-start;animation:demoIn .25s ease}
+@keyframes demoIn{from{opacity:0;transform:translateY(6px)}}
+.demo-ava{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff;background:#7b80b8}
+.demo-ava.wumi{background:var(--grad)}
+.demo-nom{font-weight:600;font-size:14.5px}
+.demo-nom .bot{font-size:10px;background:#5865f2;color:#fff;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:1px}
+.demo-txt{color:var(--muted);font-size:14.5px;margin-top:2px}
+.demo-txt code{font-family:ui-monospace,monospace;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:5px;font-size:13.5px}
+.demo-box{margin-top:6px;border-left:4px solid var(--blue);background:var(--bg-2);border-radius:8px;padding:12px 14px;max-width:440px}
+.demo-box h4{font-size:15.5px;margin-bottom:6px}
+.demo-box img{width:150px;border-radius:6px;border:1px solid var(--line);margin:6px 0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.demo-btns button{font:600 13.5px Inter,system-ui,sans-serif;border:0;border-radius:6px;padding:7px 12px;cursor:pointer;background:#4e5058;color:#fff}
+.demo-btns button:disabled{opacity:.55;cursor:default}
+.demo-btns button.ok{background:#248046}.demo-btns button.ko{background:#da373c}
+.demo-grille{font-size:22px;line-height:1.15;letter-spacing:1px;margin-top:4px}
+.demo-chips{display:flex;flex-wrap:wrap;gap:8px;padding:12px 18px 0}
+.demo-chips button{font-family:ui-monospace,monospace;font-size:13.5px;padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg-2);color:var(--blue);cursor:pointer}
+.demo-chips button:hover{border-color:var(--line-2)}
+.demo-saisie{display:flex;gap:8px;padding:12px 18px 18px}
+.demo-saisie input{flex:1;min-width:0;background:var(--bg-2);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit}
+.demo-saisie input:focus{outline:2px solid rgba(98,184,255,.5)}
+.demo-saisie button{width:46px;border:0;border-radius:10px;background:var(--blue);color:#fff;font-size:16px;cursor:pointer}
+@media (max-width:560px){.demo-fil{height:380px;padding:14px}.demo-top small{display:none}}
+</style>
+<script>
+(function () {
+  var FR = (document.documentElement.lang || '').slice(0, 2) === 'fr';
+  var L = FR ? {
+    eyebrow: 'ESSAIE-LE', titre: 'Teste Wumi <span class="serif grad-text">ici même.</span>', lead: 'Un faux salon Discord : tape une commande ou clique dessus, et Wumi répond.',
+    salon: 'général', hint: 'Démo · rien n\'est envoyé sur Discord', placeholder: 'Tape / pour voir les commandes…', toi: 'Toi',
+    bienvenue: 'Salut ! Essaie <code>/quiz</code>, <code>/puissance4</code>, <code>/pendu</code> ou <code>/bienvenue</code> 👋',
+    inconnue: 'Je ne connais pas cette commande dans la démo. Essaie plutôt :',
+    quizTitre: '🏳️ Quiz · drapeaux', quizQ: 'De quel pays est ce drapeau ?', bravo: 'Bonne réponse ! +2 points ⚡', rate: 'Raté ! C\'était',
+    p4Titre: '🎮 Puissance 4', p4Tour: 'À toi de jouer (🔴)', p4Gagne: '🏆 Tu as gagné !', p4Perdu: '🏆 Wumi gagne !', p4Nul: '🤝 Égalité !',
+    penduTitre: '🪢 Pendu', penduAide: 'Clique sur les lettres :', penduGagne: '🎉 Bravo, c\'était', penduPerdu: '💀 Perdu, c\'était',
+    bienvenueTitre: 'Bienvenue sur le serveur !', bienvenueTxt: 'Bienvenue <b>@Léa</b> sur <b>Mon serveur</b> ! Tu es le <b>1 285e</b> membre 🎉', role: 'Rôle donné : @Membre',
+    mots: ['DRAGON', 'GALAXIE', 'PIRATE', 'VOLCAN', 'GUITARE']
+  } : {
+    eyebrow: 'TRY IT', titre: 'Test Wumi <span class="serif grad-text">right here.</span>', lead: 'A pretend Discord channel: type a command or click one, and Wumi answers.',
+    salon: 'general', hint: 'Demo · nothing is sent to Discord', placeholder: 'Type / to see the commands…', toi: 'You',
+    bienvenue: 'Hi! Try <code>/quiz</code>, <code>/connect4</code>, <code>/hangman</code> or <code>/welcome</code> 👋',
+    inconnue: 'I don\'t know that command in the demo. Try:',
+    quizTitre: '🏳️ Quiz · flags', quizQ: 'Which country does this flag belong to?', bravo: 'Correct! +2 points ⚡', rate: 'Wrong! It was',
+    p4Titre: '🎮 Connect Four', p4Tour: 'Your turn (🔴)', p4Gagne: '🏆 You win!', p4Perdu: '🏆 Wumi wins!', p4Nul: '🤝 Draw!',
+    penduTitre: '🪢 Hangman', penduAide: 'Click the letters:', penduGagne: '🎉 Well done, it was', penduPerdu: '💀 Game over, it was',
+    bienvenueTitre: 'Welcome to the server!', bienvenueTxt: 'Welcome <b>@Lea</b> to <b>My server</b>! You\'re member <b>#1,285</b> 🎉', role: 'Role given: @Member',
+    mots: ['DRAGON', 'GALAXY', 'PIRATE', 'VOLCANO', 'GUITAR']
+  };
+  var CMD = FR ? { quiz: '/quiz', p4: '/puissance4', pendu: '/pendu', bienvenue: '/bienvenue' } : { quiz: '/quiz', p4: '/connect4', pendu: '/hangman', bienvenue: '/welcome' };
+  var PAYS = FR
+    ? [['jp', 'Japon'], ['br', 'Brésil'], ['ca', 'Canada'], ['it', 'Italie'], ['kr', 'Corée du Sud'], ['se', 'Suède'], ['mx', 'Mexique'], ['in', 'Inde']]
+    : [['jp', 'Japan'], ['br', 'Brazil'], ['ca', 'Canada'], ['it', 'Italy'], ['kr', 'South Korea'], ['se', 'Sweden'], ['mx', 'Mexico'], ['in', 'India']];
+
+  var racine = document.getElementById('demo');
+  if (!racine) return;
+  racine.querySelectorAll('[data-d]').forEach(function (n) { var k = n.getAttribute('data-d'); if (L[k]) n.innerHTML = L[k]; });
+  var fil = document.getElementById('demo-fil');
+  var input = document.getElementById('demo-input');
+  input.placeholder = L.placeholder;
+
+  function el(tag, cls, html) { var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+  function melanger(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function message(wumi, contenu) {
+    var m = el('div', 'demo-msg');
+    m.append(el('div', 'demo-ava' + (wumi ? ' wumi' : ''), wumi ? 'W' : (FR ? 'T' : 'Y')));
+    var corps = el('div');
+    corps.append(el('div', 'demo-nom', wumi ? 'Wumi<span class="bot">APP</span>' : L.toi));
+    if (typeof contenu === 'string') corps.append(el('div', 'demo-txt', contenu)); else corps.append(contenu);
+    m.append(corps); fil.append(m); fil.scrollTop = fil.scrollHeight;
+    return corps;
+  }
+  function boite(titre) { var b = el('div', 'demo-box'); b.append(el('h4', null, titre)); return b; }
+
+  function quiz() {
+    var choix = melanger(PAYS).slice(0, 4); var bon = choix[0]; choix = melanger(choix);
+    var b = boite(L.quizTitre);
+    b.append(el('div', 'demo-txt', '<b>' + L.quizQ + '</b>'));
+    var img = el('img'); img.src = 'https://flagcdn.com/w320/' + bon[0] + '.png'; img.alt = ''; b.append(img);
+    var btns = el('div', 'demo-btns');
+    choix.forEach(function (c) {
+      var bt = el('button', null, c[1]); bt.type = 'button';
+      bt.onclick = function () {
+        btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; if (x.textContent === bon[1]) x.className = 'ok'; });
+        if (c !== bon) bt.className = 'ko';
+        message(true, c === bon ? '✅ ' + L.bravo : '❌ ' + L.rate + ' <b>' + bon[1] + '</b>.');
+      };
+      btns.append(bt);
+    });
+    b.append(btns); message(true, b);
+  }
+
+  function p4() {
+    var G = []; for (var l = 0; l < 6; l++) G.push([null, null, null, null, null, null, null]);
+    var fini = false;
+    var b = boite(L.p4Titre); var grille = el('div', 'demo-grille'); var etat = el('div', 'demo-txt', L.p4Tour);
+    var btns = el('div', 'demo-btns');
+    function chute(c) { for (var l = 5; l >= 0; l--) if (G[l][c] === null) return l; return -1; }
+    function gagnant() {
+      var d = [[0, 1], [1, 0], [1, 1], [1, -1]];
+      for (var l = 0; l < 6; l++) for (var c = 0; c < 7; c++) { var v = G[l][c]; if (v === null) continue;
+        for (var k = 0; k < 4; k++) { var n = 1; while (n < 4) { var a = l + d[k][0] * n, z = c + d[k][1] * n; if (a < 0 || a > 5 || z < 0 || z > 6 || G[a][z] !== v) break; n++; } if (n === 4) return v; } }
+      for (var cc = 0; cc < 7; cc++) if (chute(cc) !== -1) return null;
+      return 'nul';
+    }
+    function dessiner() { grille.innerHTML = G.map(function (r) { return r.map(function (v) { return v === null ? '⚫' : v === 0 ? '🔴' : '🟡'; }).join(''); }).join('<br>') + '<br>1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣'; }
+    function coupBot() {
+      var libres = []; for (var c = 0; c < 7; c++) if (chute(c) !== -1) libres.push(c);
+      for (var j = 1; j >= 0; j--) for (var i = 0; i < libres.length; i++) { var cc = libres[i], ll = chute(cc); G[ll][cc] = j; var g = gagnant(); G[ll][cc] = null; if (g === j) return cc; }
+      if (libres.indexOf(3) !== -1 && Math.random() < .6) return 3;
+      return libres[Math.floor(Math.random() * libres.length)];
+    }
+    function finir(g) { fini = true; etat.innerHTML = g === 0 ? L.p4Gagne : g === 1 ? L.p4Perdu : L.p4Nul; btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; }); }
+    for (var c = 0; c < 7; c++) (function (c) {
+      var bt = el('button', null, String(c + 1)); bt.type = 'button';
+      bt.onclick = function () {
+        if (fini) return; var l = chute(c); if (l === -1) return;
+        G[l][c] = 0; var g = gagnant(); if (g !== null) { dessiner(); return finir(g); }
+        var cb = coupBot(); G[chute(cb)][cb] = 1; g = gagnant(); dessiner(); if (g !== null) finir(g);
+      };
+      btns.append(bt);
+    })(c);
+    dessiner(); b.append(grille, etat, btns); message(true, b);
+  }
+
+  function pendu() {
+    var mot = L.mots[Math.floor(Math.random() * L.mots.length)], trouvees = {}, erreurs = 0, fini = false;
+    var b = boite(L.penduTitre); var affichage = el('div', 'demo-grille'); var info = el('div', 'demo-txt');
+    var btns = el('div', 'demo-btns');
+    function maj() {
+      affichage.textContent = mot.split('').map(function (x) { return trouvees[x] ? x : '_'; }).join(' ');
+      info.innerHTML = '❌ ' + erreurs + '/6 · ' + L.penduAide;
+      if (mot.split('').every(function (x) { return trouvees[x]; })) { fini = true; info.innerHTML = L.penduGagne + ' <b>' + mot + '</b>.'; }
+      else if (erreurs >= 6) { fini = true; info.innerHTML = L.penduPerdu + ' <b>' + mot + '</b>.'; }
+      if (fini) btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; });
+    }
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function (x) {
+      var bt = el('button', null, x); bt.type = 'button';
+      bt.onclick = function () { if (fini) return; bt.disabled = true; if (mot.indexOf(x) !== -1) { trouvees[x] = true; bt.className = 'ok'; } else { erreurs++; bt.className = 'ko'; } maj(); };
+      btns.append(bt);
+    });
+    maj(); b.append(affichage, info, btns); message(true, b);
+  }
+
+  function bienvenue() {
+    var b = boite('👋 ' + L.bienvenueTitre);
+    b.append(el('div', 'demo-txt', L.bienvenueTxt), el('div', 'demo-txt', '<small>✅ ' + L.role + '</small>'));
+    message(true, b);
+  }
+
+  var ACTIONS = {}; ACTIONS[CMD.quiz] = quiz; ACTIONS[CMD.p4] = p4; ACTIONS[CMD.pendu] = pendu; ACTIONS[CMD.bienvenue] = bienvenue;
+  function lancer(texte) {
+    var cmd = String(texte || '').trim().split(/\s+/)[0].toLowerCase();
+    if (!cmd) return;
+    message(false, '<code>' + cmd.replace(/[<>&]/g, '') + '</code>');
+    var f = ACTIONS[cmd];
+    setTimeout(function () { if (f) f(); else message(true, L.inconnue + ' ' + Object.keys(ACTIONS).map(function (k) { return '<code>' + k + '</code>'; }).join(' ')); }, 350);
+  }
+  var chips = document.getElementById('demo-chips');
+  Object.keys(ACTIONS).forEach(function (k) { var bt = el('button', null, k); bt.type = 'button'; bt.onclick = function () { lancer(k); }; chips.append(bt); });
+  document.getElementById('demo-form').addEventListener('submit', function (e) { e.preventDefault(); lancer(input.value); input.value = ''; });
+  message(true, L.bienvenue);
+})();
+</script>
+
   <!-- FEATURES -->
   <section id="fonctions">
     <div class="wrap">
@@ -315,12 +548,15 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
         <p>Simple tools to manage your community, no headaches.</p>
       </div>
       <div class="features">
+        <article class="feat rv"><div class="ico">🎵</div><small>MUSIC</small><h3>Press play, together.</h3><p>A full player in your voice channels: search YouTube as you type, paste a Spotify playlist, add filters and control everything with buttons.</p><ul><li>YouTube, Spotify, 13 live radios</li><li>Filters, DJ role, playlists, 24/7</li></ul></article>
+        <article class="feat rv"><div class="ico">🔒</div><small>SECURITY AUDIT</small><h3>Find the holes first.</h3><p><code>/audit</code> checks your roles, channels and settings, gives your server a score out of 100 and fixes the risky bits in one click.</p><ul><li>15 checks, one-click fixes</li><li>Weekly report for your staff</li></ul></article>
+        <article class="feat rv"><div class="ico">🤖</div><small>AI</small><h3>A smart guard, built in.</h3><p>Wumi spots scams, toxic messages and NSFW images on its own, and translates any message with a right-click. The AI runs on Wumi's server: nothing leaves it.</p><ul><li>Anti-scam, anti-toxicity, NSFW images</li><li>Right-click › Translate, 6 languages</li></ul></article>
         <article class="feat rv"><div class="ico">🎀</div><small>AUTO ROLES</small><h3>Every arrival, ready to go.</h3><p>Give one or more roles to every new member, with separate settings for humans and bots.</p><ul><li>Several roles at once</li><li>Humans and bots apart</li></ul></article>
         <article class="feat rv"><div class="ico">🌸</div><small>REACTION ROLES</small><h3>Everyone picks their place.</h3><p>Members choose their own roles by clicking a button or an emoji, right inside a message.</p><ul><li>Buttons or emojis</li><li>As many roles as you like</li></ul></article>
         <article class="feat rv"><div class="ico">👋</div><small>WELCOME</small><h3>Say hi, with style.</h3><p>Greeting and farewell messages you customize with the member's name, avatar and the member count.</p><ul><li>Welcome and goodbye</li><li>Custom variables</li></ul></article>
         <article class="feat rv"><div class="ico">🛡️</div><small>MODERATION</small><h3>Keep things calm.</h3><p>Ban, kick, timeout, clear a channel. Every action can be kept in a logs channel.</p><ul><li>Ban, kick, timeout, clear</li><li>Dedicated logs channel</li></ul></article>
-        <article class="feat rv"><div class="ico">🎮</div><small>GAMES</small><h3>A server that has fun.</h3><p>Mini-games and silly commands to keep your server lively.</p><ul><li>Tic-tac-toe between members</li><li>Fun commands</li></ul></article>
-        <article class="feat rv"><div class="ico">🎨</div><small>CREATION</small><h3>And to make it beautiful?</h3><p>Embeds, colored text, role icons: the Aesthetic Creators toolbox is included.</p><ul><li>7 free tools</li><li>Everything runs in your browser</li></ul></article>
+        <article class="feat rv"><div class="ico">🎮</div><small>GAMES & EVENTS</small><h3>A server that has fun.</h3><p>A music blind test, Connect Four, a virtual pet that grows with you, your monthly Wrapped, and events or LFG posts to play together.</p><ul><li><code>/blindtest</code>, <code>/pet</code>, <code>/wrapped</code></li><li><code>/event</code> and <code>/lfg</code> to team up</li></ul></article>
+        <article class="feat rv"><div class="ico">🎨</div><small>CREATION</small><h3>And to make it beautiful?</h3><p>Embeds, colored text, role icons: the Wumi toolbox is included.</p><ul><li>7 free tools</li><li>Everything runs in your browser</li></ul></article>
       </div>
     </div>
   </section>
@@ -330,20 +566,20 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
     <div class="wrap">
       <div class="sec-head row rv">
         <div style="max-width:620px">
-          <div class="eyebrow pink">AESTHETIC CREATORS</div>
+          <div class="eyebrow pink">WUMI TOOLS</div>
           <h2>Free tools. <span class="serif grad-text">For a unique server.</span></h2>
           <p style="color:var(--muted);font-size:17px;margin-top:16px">Everything runs right in your browser, nothing to install.</p>
         </div>
-        <a class="btn btn-ghost" href="https://discord.gg/94seN7srjv">Join the community</a>
+        <a class="btn btn-ghost" href="outils/">See all the tools</a>
       </div>
       <div class="tools">
-        <a class="tool big rv" href="https://aestheticcreators.xyz/#/embed"><span class="ico">🧩</span><h4>Embed builder</h4><p>Design your Discord messages with embeds, colors and fields, and see a live preview before sending.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/colored"><span class="ico">🌈</span><h4>Colored text</h4><p>Write colored text for your Discord messages.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/textfmt"><span class="ico">✍️</span><h4>Text formatting</h4><p>Bold, italics, spoilers, code blocks: all of Discord's markdown.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/timestamps"><span class="ico">⏱️</span><h4>Timestamps</h4><p>Generate dates that show in everyone's own time zone.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/invite"><span class="ico">🔗</span><h4>Invite links</h4><p>Create your bot's invite link with the right permissions.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/download"><span class="ico">📥</span><h4>Role icons</h4><p>Download role icons, emojis and stickers.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="https://aestheticcreators.xyz/#/icons"><span class="ico">✨</span><h4>Icon gallery</h4><p>Browse icons ready to use on your server.</p><span class="go">Open →</span></a>
+        <a class="tool big rv" href="outils/message-builder/"><span class="ico">🧩</span><h4>Embed builder</h4><p>Design your Discord messages with embeds, colors and fields, and see a live preview before sending.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/colored-text/"><span class="ico">🌈</span><h4>Colored text</h4><p>Write colored text for your Discord messages.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/text-formatter/"><span class="ico">✍️</span><h4>Text formatting</h4><p>Bold, italics, spoilers, code blocks: all of Discord's markdown.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/timestamps/"><span class="ico">⏱️</span><h4>Timestamps</h4><p>Generate dates that show in everyone's own time zone.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/bot-invite/"><span class="ico">🔗</span><h4>Invite links</h4><p>Create your bot's invite link with the right permissions.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/downloader/"><span class="ico">📥</span><h4>Role icons</h4><p>Download role icons, emojis and stickers.</p><span class="go">Open →</span></a>
+        <a class="tool rv" href="outils/icon-maker/"><span class="ico">✨</span><h4>Icon maker</h4><p>Draw a role icon with shapes, gradients and symbols, then export it as a PNG.</p><span class="go">Open →</span></a>
       </div>
     </div>
   </section>
@@ -357,8 +593,9 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
         <p>Wumi uses slash commands: type / in Discord and pick one.</p>
       </div>
       <div class="cmds rv">
-        <code>/autorole</code><code>/reactionrole</code><code>/welcome</code><code>/ban</code><code>/kick</code><code>/timeout</code><code>/clear</code><code>/logs</code><code>/serverinfo</code><code>/userinfo</code><code>/tictactoe</code><code>/help</code>
+        <code>/setup</code><code>/config</code><code>/welcome</code><code>/autorole</code><code>/reactionrole</code><code>/embed</code><code>/ticket</code><code>/ban</code><code>/kick</code><code>/mute</code><code>/clear</code><code>/warn</code><code>/sanctions</code><code>/softban</code><code>/massban</code><code>/nickname</code><code>/role</code><code>/note</code><code>/voicemod</code><code>/modstats</code><code>/warnsteps</code><code>/raid</code><code>/antiraid</code><code>/automod</code><code>/rank</code><code>/leaderboard</code><code>/economy</code><code>/giveaway</code><code>/suggestion</code><code>/birthday</code><code>/tictactoe</code><code>/serverinfo</code><code>/userinfo</code><code>/aide</code>
       </div>
+      <div class="rv" style="margin-top:22px;text-align:center"><a class="btn btn-ghost" href="commandes/">See all commands →</a></div>
     </div>
   </section>
 
@@ -386,8 +623,8 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
         <a class="btn btn-ghost" style="margin-top:26px" href="https://discord.gg/VaGrXgnAHS">Another question?</a>
       </div>
       <div class="rv">
-        <details open><summary>Is Wumi free?</summary><p>Yes. The bot and all the Aesthetic Creators tools are free.</p></details>
-        <details><summary>How do I set up the bot?</summary><p>Everything happens with slash commands in Discord. Type / and pick a Wumi command, or use /help to see the list.</p></details>
+        <details open><summary>Is Wumi free?</summary><p>Yes. The bot and all the Wumi tools are free.</p></details>
+        <details><summary>How do I set up the bot?</summary><p>Everything happens with slash commands in Discord. Type / and pick a Wumi command, or use /aide to see the list.</p></details>
         <details><summary>Do the tools need the bot?</summary><p>No. The tools run in your browser, with or without Wumi on your server.</p></details>
         <details><summary>Why isn't Wumi giving a role?</summary><p>Check that Wumi's role sits above the role to give in your server settings, and that it has the Manage Roles permission.</p></details>
         <details><summary>How do I join the community?</summary><p>Join the support server to follow the project, ask questions and share feedback.</p></details>
@@ -413,18 +650,18 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a><p>A little companion for your server, and tools to make it beautiful.</p></div>
-      <div><h5>Bot</h5><a href="#fonctions">Features</a><a href="#commandes">Commands</a><a href="#demarrer">Get started</a><a href="#faq">FAQ</a></div>
-      <div><h5>Tools</h5><a href="https://aestheticcreators.xyz/#/embed">Embeds</a><a href="https://aestheticcreators.xyz/#/colored">Colored text</a><a href="https://aestheticcreators.xyz/#/timestamps">Timestamps</a><a href="https://github.com/Zhaak63/Role-Icon-Downloader">GitHub</a></div>
-      <div><h5>Community</h5><a href="https://discord.gg/VaGrXgnAHS">Wumi support</a><a href="https://discord.gg/94seN7srjv">Aesthetic Creators</a><a href="conditions.html">Terms</a><a href="confidentialite.html">Privacy</a></div>
+      <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a><p>A little companion for your server, and tools to make it beautiful.</p><div class="reseaux"><a href="/discord/" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.1.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="/tiktok/" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="/x/" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z"/></svg></a></div></div>
+      <div><h5>Bot</h5><a href="#fonctions">Features</a><a href="#commandes">Commands</a><a href="commandes/">All commands</a><a href="#demarrer">Get started</a><a href="#faq">FAQ</a><a href="statut/">Status</a><a href="dashboard/">Dashboard</a><a href="nouveautes/">What's new</a><a href="premium/">Premium</a><a href="#demo">Demo</a></div>
+      <div><h5>Tools</h5><a href="outils/">All tools</a><a href="outils/message-builder/">Embeds</a><a href="outils/colored-text/">Colored text</a><a href="outils/timestamps/">Timestamps</a></div>
+      <div><h5>Community</h5><a href="/discord/">Discord</a><a href="/tiktok/">TikTok</a><a href="/x/">X (Twitter)</a><a href="conditions.html">Terms</a><a href="confidentialite.html">Privacy</a></div>
     </div>
-    <div class="copy"><span>© 2026 Wumi × Aesthetic Creators</span><span>Made with love for Discord :3</span></div>
+    <div class="copy"><span>© 2026 Wumi</span><span>Made with love for Discord :3</span></div>
   </div>
 </footer>
 
 <script>
 // marquee
-const cmds=["/autorole","/reactionrole","/welcome","/ban","/kick","/timeout","/clear","/logs","/serverinfo","/userinfo","/tictactoe","/help","embeds","colored text","timestamps"];
+const cmds=["/setup","/welcome","/autorole","/reactionrole","/embed","/ban","/mute","/warn","/rank","/giveaway","/tictactoe","/aide","embeds","colored text","timestamps"];
 const t=document.getElementById('track');
 t.innerHTML=[...cmds,...cmds].map(c=>`<div class="chip">${c.startsWith('/')?'<b>/</b>'+c.slice(1):'✨ '+c}</div>`).join('');
 // reveal on scroll
@@ -434,5 +671,6 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('hdr').classList.remove('open')));
 </script>
 <script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.setItem('wumi-theme',t)}catch(_){}});</script>
 </body>
 </html>
