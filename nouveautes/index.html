@@ -55,7 +55,7 @@ footer a{color:var(--muted)}
 @media (max-width:560px){.grille{grid-template-columns:1fr}.btn.ret{display:none}}
 
 /* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
-:root[data-theme="light"]{--bg:#fbf7f1;--bg-2:#f4eee5;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(60,38,10,.09);--line-2:rgba(60,38,10,.16);--text:#221b10;--muted:#6b5a45;--dim:#8f7f6c;--blue:#b35c00;--pink:#d97400;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#b35c00,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"]{--bg:#fbf7f1;--bg-2:#f4eee5;--card:#ffffff;--card-2:#f6f0e6;--line:rgba(60,38,10,.09);--line-2:rgba(60,38,10,.16);--text:#221b10;--muted:#6b5a45;--dim:#8f7f6c;--blue:#b35c00;--pink:#d97400;--violet:#c76a00;--green:#0f9a63;--grad:linear-gradient(120deg,#b35c00,#d97400 45%,#ff9d1b 85%);color-scheme:light}
 :root[data-theme="light"],:root[data-theme="light"] body{background:var(--bg)}
 :root[data-theme="light"] header{background:rgba(245,247,253,.8)}
 :root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(179,92,0,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(217,116,0,.1),transparent 70%)}
@@ -144,18 +144,13 @@ footer a{color:var(--muted)}
 @media (max-width:860px){.une{grid-template-columns:1fr}.une-vis{min-height:0;order:-1}.recents{grid-template-columns:1fr}.une-txt{padding:24px}}
 @media (max-width:560px){.frise{padding-left:22px}.frise::before{left:5px}.version::before{left:-22px}.version-tete time{margin-left:0;width:100%}}
 </style>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
 </head>
 <body>
 <div class="glow"></div>
-<header><div class="wrap"><nav>
-  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
-  <div class="nav-fin">
-    <a class="btn ret" href="../" id="retour">← Site</a>
-    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
-    <button class="btn" type="button" data-lang="en">EN</button>
-    <button class="btn" type="button" data-lang="fr">FR</button>
-  </div>
-</nav></div></header>
+<div id="sw-entete" data-langue="boutons"></div>
+<div hidden><a id="lien-accueil" href="/"></a><a id="retour" href="/"></a></div>
 
 <main class="wrap">
   <section class="hero">
@@ -169,8 +164,12 @@ footer a{color:var(--muted)}
   <div class="frise" id="liste"></div>
 </main>
 <footer class="wrap" id="t-pied"></footer>
+<div id="sw-pied"></div>
 <script>
 const V = [
+ {"v": "2.39", "date": "2026-11-25", "ico": "🧭", "couleur": "#ff9d1b", "en": {"titre": "A brand-new dashboard", "intro": "The dashboard gets a side menu with icons, and the whole website shares the same navigation.", "points": [["🧭", "Side menu with icons and a server switcher"], ["🔎", "Search your servers"], ["🌐", "Same header and footer on every page"]], "blocs": [["Dashboard", ["A <b>side menu</b> grouped into Overview, Modules and Tools, each with its icon; switch server right from the top of the menu.", "Server list with search, new login screen, and everything in Wumi's orange, in dark and light mode."]], ["Website", ["Features, Premium, Docs, Status, What's new and the legal pages now share <b>the same header and footer</b> as the home page."]]]}, "fr": {"titre": "Un tout nouveau tableau de bord", "intro": "Le tableau de bord passe à un menu latéral avec icônes, et tout le site partage la même navigation.", "points": [["🧭", "Menu latéral avec icônes et choix du serveur"], ["🔎", "Recherche dans tes serveurs"], ["🌐", "Même en-tête et pied de page partout"]], "blocs": [["Tableau de bord", ["Un <b>menu latéral</b> rangé en Vue d'ensemble, Modules et Outils, chacun avec son icône ; on change de serveur directement en haut du menu.", "Liste des serveurs avec recherche, nouvel écran de connexion, et tout aux couleurs orange de Wumi, en sombre comme en clair."]], ["Site", ["Fonctionnalités, Premium, Docs, Statut, Nouveautés et les pages légales ont maintenant <b>le même en-tête et le même pied de page</b> que l'accueil."]]]}},
+ {"v": "2.38", "date": "2026-11-25", "img": "../og-wumi.jpg", "ico": "🧡", "couleur": "#ff9d1b", "en": {"titre": "A new face for Wumi", "intro": "Wumi gets its orange mascot: new avatar, new colors everywhere.", "points": [["🧡", "New logo and avatar"], ["🖼️", "Every banner redrawn"], ["🎴", "Orange rank, leaderboard and welcome cards"]], "blocs": [["Bot", ["New <b>avatar</b> and profile banner with the orange mascot.", "<code>/rank</code>, <code>/leaderboard</code>, economy, welcome and Wrapped cards take the new colors, with the mascot as a watermark. Embeds are orange too."]], ["Server", ["Every banner was redrawn: tickets, verification, rules, FAQ, suggestions, bugs, giveaways, modmail…"]], ["Website", ["wumi.fr switches to the logo's warm colors, with a new favicon and share image."]]]}, "fr": {"titre": "Wumi change de visage", "intro": "Wumi adopte sa mascotte orange : nouvel avatar, nouvelles couleurs partout.", "points": [["🧡", "Nouveau logo et nouvel avatar"], ["🖼️", "Toutes les bannières redessinées"], ["🎴", "Cartes rank, classement et bienvenue en orange"]], "blocs": [["Bot", ["Nouvel <b>avatar</b> et nouvelle bannière de profil avec la mascotte orange.", "Les cartes <code>/rank</code>, <code>/classement</code>, économie, bienvenue et Wrapped passent aux nouvelles couleurs, avec la mascotte en filigrane. Les embeds aussi sont orange."]], ["Serveur", ["Toutes les bannières sont redessinées : tickets, vérification, règlement, FAQ, idées, bugs, giveaways, modmail…"]], ["Site", ["wumi.fr passe aux couleurs chaudes du logo, avec un nouveau favicon et une nouvelle image de partage."]]]}},
+ {"v": "2.37", "date": "2026-11-25", "ico": "🎮", "couleur": "#62e3ff", "en": {"titre": "Music games", "intro": "Three new games to play together in voice, next to the blind test.", "points": [["⚡", "Music quiz: the faster, the more points"], ["🕵️", "Who picked it? Guess who chose the song"], ["🌡️", "Vibe check: rate it and match the room"]], "blocs": [["Music", ["<code>/musicgame quiz</code>: a snippet, 4 titles, one answer each. Faster answers score more (1000 → 300), streaks add up to +500.", "<code>/musicgame who-picked</code>: everyone secretly adds 1 to 3 songs, then the voice channel guesses who picked each one.", "<code>/musicgame vibe-check</code>: rate each song from 1 to 10; the closer to the room's average, the more points. A « hot take » for the boldest opinion."]]]}, "fr": {"titre": "Les jeux musicaux", "intro": "Trois nouveaux jeux à faire ensemble en vocal, à côté du blind test.", "points": [["⚡", "Quiz musical : plus tu es rapide, plus tu marques"], ["🕵️", "Qui l'a choisie ? Devine qui a mis le titre"], ["🌡️", "Vibe check : note et colle à l'avis du vocal"]], "blocs": [["Musique", ["<code>/jeu-musical quiz</code> : un extrait, 4 titres, une réponse chacun. Plus on répond vite, plus on marque (1000 → 300), et une série ajoute jusqu'à +500.", "<code>/jeu-musical qui-l-a-choisie</code> : chacun propose en secret 1 à 3 titres, puis le vocal devine qui a choisi chaque titre.", "<code>/jeu-musical vibe-check</code> : on note chaque titre de 1 à 10 ; plus on est proche de la moyenne du vocal, plus on marque. Un « hot take » pour l'avis le plus osé."]]]}},
  {"v": "2.36", "date": "2026-11-25", "img": "../assets/apercus/emojis-ku.webp", "ico": "✨", "couleur": "#ff8cc0",
   "en": {"titre": "Brand-new emojis", "intro": "71 new emojis everywhere in Wumi, and a banner of the servers that use it on wumi.fr.",
    "points": [["🎨", "New emoji set, one color per meaning"], ["🌐", "Opt-in server banner on wumi.fr"], ["📄", "Legal pages: notice, refunds, copyright"]],

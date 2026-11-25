@@ -96,15 +96,12 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 .lang{display:flex;gap:2px;padding:3px;margin-left:auto;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.03)}.lang a{display:grid;place-items:center;width:32px;height:26px;border-radius:7px;opacity:.45;transition:.2s;border:0}.lang a:hover{opacity:.85}.lang a.on{opacity:1;background:rgba(255,255,255,.09)}@media (max-width:760px){nav{gap:12px}.lang a{width:30px}}
 .lang svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 </style>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
 </head>
 <body>
 <div class="glow"></div><div class="page-grid"></div>
-<header><nav class="wrap">
-  <a href="index.html" class="logo"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
-  <div class="nav-links"><a href="../fonctionnalites/?lang=fr">Fonctionnalités</a><a href="index.html#outils">Outils</a><a href="index.html#faq">FAQ</a><a href="conditions.html" class="">Conditions</a><a href="confidentialite.html" class="">Confidentialité</a></div>
-  <div class="lang" role="group" aria-label="Language"><a href="../remboursement.html" data-lang="en" hreflang="en" title="English" class=""><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="remboursement.html" data-lang="fr" hreflang="fr" title="Français" class="on"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div>
-  <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Ajouter à Discord</a>
-</nav></header>
+<div id="sw-entete" data-langue="chemin"></div>
 <main class="wrap">
   <div class="legal-hero">
     <a class="back" href="index.html">← Retour à l'accueil</a>
@@ -139,7 +136,6 @@ footer{margin-top:100px;border-top:1px solid var(--line);padding:40px 0}
 </article>
   </div>
 </main>
-<footer><div class="wrap copy"><span>© 2026 Wumi</span>
-<nav><a href="index.html">Accueil</a><a href="conditions.html">Conditions</a><a href="confidentialite.html">Confidentialité</a><a href="mentions-legales.html">Mentions légales</a><a href="remboursement.html">Remboursement</a><a href="droits-auteur.html">Droits d'auteur</a><a href="/discord/">Discord</a><a href="/tiktok/">TikTok</a><a href="/x/">X</a></nav></div></footer>
+<div id="sw-pied"></div>
 <script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
 </body></html>

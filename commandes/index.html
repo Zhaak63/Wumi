@@ -55,7 +55,7 @@ footer a{color:var(--muted)}
 @media (max-width:560px){.grille{grid-template-columns:1fr}.btn.ret{display:none}}
 
 /* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
-:root[data-theme="light"]{--bg:#fbf7f1;--bg-2:#f4eee5;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(60,38,10,.09);--line-2:rgba(60,38,10,.16);--text:#221b10;--muted:#6b5a45;--dim:#8f7f6c;--blue:#b35c00;--pink:#d97400;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#b35c00,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
+:root[data-theme="light"]{--bg:#fbf7f1;--bg-2:#f4eee5;--card:#ffffff;--card-2:#f6f0e6;--line:rgba(60,38,10,.09);--line-2:rgba(60,38,10,.16);--text:#221b10;--muted:#6b5a45;--dim:#8f7f6c;--blue:#b35c00;--pink:#d97400;--violet:#c76a00;--green:#0f9a63;--grad:linear-gradient(120deg,#b35c00,#d97400 45%,#ff9d1b 85%);color-scheme:light}
 :root[data-theme="light"],:root[data-theme="light"] body{background:var(--bg)}
 :root[data-theme="light"] header{background:rgba(245,247,253,.8)}
 :root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(179,92,0,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(217,116,0,.1),transparent 70%)}
@@ -94,18 +94,13 @@ footer a{color:var(--muted)}
 :root[data-theme="light"] .theme:hover{background:rgba(60,38,10,.07)}
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
 </head>
 <body>
 <div class="glow"></div>
-<header><div class="wrap"><nav>
-  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
-  <div class="nav-fin">
-    <a class="btn ret" href="../" id="retour">← Site</a>
-    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
-    <button class="btn" type="button" data-lang="en">EN</button>
-    <button class="btn" type="button" data-lang="fr">FR</button>
-  </div>
-</nav></div></header>
+<div id="sw-entete" data-langue="boutons"></div>
+<div hidden><a id="lien-accueil" href="/"></a><a id="retour" href="/"></a></div>
 
 <main class="wrap">
   <section class="hero">
@@ -118,6 +113,7 @@ footer a{color:var(--muted)}
   <div id="liste"></div>
 </main>
 <footer class="wrap" id="t-pied"></footer>
+<div id="sw-pied"></div>
 
 <script>
 const API = 'https://serveurhp63114.tail284a6e.ts.net/api/commandes';
