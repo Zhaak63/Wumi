@@ -198,7 +198,7 @@ header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:
 </div>
 </section>
 <section class="preuve">
-  <p>Already on <b id="nb-serveurs">hundreds of</b> servers</p>
+  <p>Already on <b id="nb-serveurs">many</b> servers<span id="nb-membres"></span></p>
   <div class="vt-rail" id="vitrine" hidden><div class="vt-track" id="vt-track"></div></div>
 </section>
 <div id="fonctionnalites"></div>
@@ -239,7 +239,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
   function esc(x){var d=document.createElement('div');d.textContent=x;return d.innerHTML}
   var nf=new Intl.NumberFormat(LOC);
   fetch(API+'/statut',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
-    var n=d&&d.actuel&&d.actuel.serveurs; if(n>20)document.getElementById('nb-serveurs').textContent=nf.format(n);
+    var a=d&&d.actuel||{}; if(a.serveurs>0)document.getElementById('nb-serveurs').textContent=nf.format(a.serveurs); if(a.membres>0)document.getElementById('nb-membres').innerHTML=' · <b>'+nf.format(a.membres)+'</b> '+MOT;
   }).catch(function(){});
   fetch(API+'/vitrine',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
     var l=d&&d.serveurs||[]; if(l.length<3)return;
