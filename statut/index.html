@@ -8,11 +8,11 @@
 <meta name="description" content="L'état de Wumi en direct : en ligne, serveurs, latence, disponibilité sur 90 jours.">
 <meta property="og:title" content="Statut · Wumi">
 <meta property="og:description" content="L'état de Wumi en direct.">
-<meta name="theme-color" content="#0b0e1c">
+<meta name="theme-color" content="#110e0a">
 <style>
 :root {
-  --nuit: #0b0e1c; --carte: rgba(20, 25, 46, .78); --bord: rgba(255,255,255,.08);
-  --texte: #eef0fb; --doux: #9aa3c4; --bleu: #58a6ff;
+  --nuit: #110e0a; --carte: rgba(32, 26, 18, .78); --bord: rgba(255,255,255,.08);
+  --texte: #f7f1e8; --doux: #b9ab98; --bleu: #ff9d1b;
   --vert: #3ddc97; --orange: #ffb547; --rouge: #ff5c7a; --vide: rgba(255,255,255,.07);
 }
 * { box-sizing: border-box; }
@@ -27,8 +27,7 @@ body { margin: 0; color: var(--texte); font: 16px/1.6 "Inter", system-ui, -apple
 header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
 .marque { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--texte); font-weight: 800; font-size: 22px; }
 .marque span { color: var(--bleu); }
-.logo { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
-  background: radial-gradient(circle at 40% 45%, #3a78b6, #1b2c52 75%); box-shadow: 0 0 30px rgba(88,166,255,.3); }
+.logo { width: 44px; height: 44px; border-radius: 13px; box-shadow: 0 0 30px rgba(255,157,27,.3); }
 nav a { color: var(--doux); text-decoration: none; margin-left: 18px; font-size: 15px; }
 nav a:hover { color: var(--texte); }
 .etat { background: var(--carte); border: 1px solid var(--bord); border-radius: 20px; padding: 26px; display: flex; align-items: center; gap: 18px; backdrop-filter: blur(12px); }
@@ -68,10 +67,10 @@ footer a { color: var(--doux); }
 @media (prefers-reduced-motion: reduce) { .pastille.ok { animation: none; } }
 
 /* ---------- Theme clair (meme bouton et meme memoire que wumi.fr) ---------- */
-:root[data-theme="light"]{--nuit:#f5f7fd;--carte:rgba(255,255,255,.92);--bord:rgba(22,28,70,.11);--texte:#151935;--doux:#4e5582;--bleu:#1a7fe8;--vert:#0f9a63;--orange:#c27c0e;--rouge:#d6334f;--vide:rgba(22,28,70,.08);color-scheme:light}
-:root[data-theme="light"] .fond{background:radial-gradient(700px 480px at 8% 20%,rgba(26,127,232,.14),transparent 70%),radial-gradient(700px 500px at 100% 100%,rgba(84,102,240,.1),transparent 70%),linear-gradient(rgba(22,28,70,.06) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(22,28,70,.06) 1px,transparent 1px) 0 0/48px 48px,var(--nuit)}
-:root[data-theme="light"] .barres i:hover::after{background:#fff;box-shadow:0 10px 26px rgba(22,28,70,.16)}
-:root[data-theme="light"] .chiffre,:root[data-theme="light"] .bloc,:root[data-theme="light"] .etat{box-shadow:0 1px 2px rgba(22,28,70,.05)}
+:root[data-theme="light"]{--nuit:#fbf7f1;--carte:rgba(255,255,255,.92);--bord:rgba(60,38,10,.11);--texte:#221b10;--doux:#6b5a45;--bleu:#b35c00;--vert:#0f9a63;--orange:#c27c0e;--rouge:#d6334f;--vide:rgba(60,38,10,.08);color-scheme:light}
+:root[data-theme="light"] .fond{background:radial-gradient(700px 480px at 8% 20%,rgba(179,92,0,.14),transparent 70%),radial-gradient(700px 500px at 100% 100%,rgba(217,116,0,.1),transparent 70%),linear-gradient(rgba(60,38,10,.06) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(60,38,10,.06) 1px,transparent 1px) 0 0/48px 48px,var(--nuit)}
+:root[data-theme="light"] .barres i:hover::after{background:#fff;box-shadow:0 10px 26px rgba(60,38,10,.16)}
+:root[data-theme="light"] .chiffre,:root[data-theme="light"] .bloc,:root[data-theme="light"] .etat{box-shadow:0 1px 2px rgba(60,38,10,.05)}
 .theme{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;margin-left:16px;vertical-align:middle;border-radius:10px;border:1px solid var(--bord);background:var(--carte);color:var(--texte);cursor:pointer;font-size:15px;line-height:1}
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
@@ -80,7 +79,7 @@ footer a { color: var(--doux); }
 .annonce{border:1px solid var(--line,rgba(255,255,255,.1));border-left:5px solid #ff8a3d;border-radius:14px;padding:16px 18px;background:rgba(255,138,61,.07)}
 .annonce.critique{border-left-color:#ff2860;background:rgba(255,40,96,.08)}
 .annonce.mineur{border-left-color:#f5c518;background:rgba(245,197,24,.08)}
-.annonce.maintenance{border-left-color:#58a6ff;background:rgba(88,166,255,.08)}
+.annonce.maintenance{border-left-color:#ff9d1b;background:rgba(255,157,27,.08)}
 .annonce.fini{border-left-color:#2fbf71;background:rgba(47,191,113,.07)}
 .annonce h3{font-size:17px;margin:0 0 4px}
 .annonce .meta{font-size:13px;opacity:.75;margin-bottom:10px}
@@ -96,9 +95,7 @@ footer a { color: var(--doux); }
 <main class="page">
   <header>
     <a class="marque" href="/">
-      <span class="logo" aria-hidden="true">
-        <svg viewBox="0 0 120 80" width="30" height="20"><polyline points="14,14 26,56 44,32 62,56 74,14" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="58" r="10" fill="#fff"/></svg>
-      </span>
+      <img class="logo" src="../wumi-icone.svg" alt="">
       wumi<span>.</span>
     </a>
     <nav><a href="/" data-t="accueil">Accueil</a><a href="https://discord.gg/" id="lien-support" data-t="support">Support</a><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button></nav>
