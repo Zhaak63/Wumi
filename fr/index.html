@@ -9,17 +9,17 @@
 <meta name="theme-color" content="#ff9d1b">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
-<meta property="og:url" content="https://zhaak63.github.io/Wumi/fr/">
+<meta property="og:url" content="https://wumi.fr/fr/">
 <meta property="og:title" content="Wumi · Le bot Discord qui fait vivre ton serveur">
 <meta property="og:description" content="Wumi accueille les nouveaux, lance la musique et les jeux en vocal, gère les niveaux, les tickets et la modération. Gratuit, en français.">
-<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<meta property="og:image" content="https://wumi.fr/og-wumi.jpg?v=5">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
-<link rel="alternate" hreflang="en" href="https://zhaak63.github.io/Wumi/">
-<link rel="alternate" hreflang="fr" href="https://zhaak63.github.io/Wumi/fr/">
-<link rel="alternate" hreflang="x-default" href="https://zhaak63.github.io/Wumi/">
+<meta name="twitter:image" content="https://wumi.fr/og-wumi.jpg?v=5">
+<link rel="alternate" hreflang="en" href="https://wumi.fr/">
+<link rel="alternate" hreflang="fr" href="https://wumi.fr/fr/">
+<link rel="alternate" hreflang="x-default" href="https://wumi.fr/">
 <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=3">
 <link rel="icon" href="../favicon.ico?v=3" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=3">
@@ -150,6 +150,15 @@ h2 .serif{color:var(--c)}
 .gr h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
 .gr div{display:flex;flex-wrap:wrap;gap:6px}.gr span{font-size:13.5px;padding:4px 9px;border-radius:8px;background:rgba(127,127,127,.08)}
 .tout .lien{color:var(--blue)}
+.avis{margin:30px 0 70px}
+.avis .tete{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.avis .moy{display:flex;align-items:center;gap:12px;color:var(--muted)}.avis .moy b{font-size:40px;color:var(--text);letter-spacing:-.02em}
+.etoiles{color:#ffb547;letter-spacing:2px}
+.avis-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:26px}
+.avis-carte{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.avis-carte p{color:var(--text);font-size:15.5px;line-height:1.6;margin:0}
+.avis-qui{display:flex;align-items:center;gap:10px;margin-top:auto;color:var(--muted);font-size:14px}
+.avis-qui img,.avis-qui i{width:34px;height:34px;border-radius:50%;flex:none;background:var(--card-2);display:grid;place-items:center;font-style:normal;font-weight:700;color:var(--text)}
 /* cta final */
 .final{margin:20px 0 80px;padding:64px 24px;border-radius:28px;text-align:center;border:1px solid var(--line-2);background:radial-gradient(600px 300px at 15% 0%,rgba(255,157,27,.2),transparent 70%),radial-gradient(600px 300px at 85% 100%,rgba(255,190,92,.14),transparent 70%),var(--card)}
 .final h2{margin-top:0}.final p{color:var(--muted);font-size:17px}.final .ctas{justify-content:center}
@@ -217,6 +226,12 @@ header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:
   <div class="groupes"><div class="gr"><h5>Communauté</h5><div><span>Bienvenue</span><span>Rôles auto</span><span>Rôles-réactions</span><span>Vérification</span><span>Anniversaires</span><span>Suggestions</span><span>Candidatures</span><span>Invitations</span></div></div><div class="gr"><h5>Engagement</h5><div><span>Niveaux</span><span>Prestige</span><span>Badges</span><span>Économie</span><span>Boutique</span><span>Cartes</span><span>/wrapped</span><span>Profils</span></div></div><div class="gr"><h5>Vocal & jeux</h5><div><span>Musique</span><span>Radios 24/7</span><span>Quiz musical</span><span>Qui l'a choisie ?</span><span>Vibe check</span><span>Blind test</span><span>Wumi Run</span><span>Vocaux temporaires</span></div></div><div class="gr"><h5>Staff</h5><div><span>Tickets</span><span>FAQ intelligente</span><span>Modmail</span><span>Automod</span><span>Anti-arnaque</span><span>Anti-raid</span><span>Audit</span><span>Journaux</span><span>Giveaways</span><span>Alertes live</span><span>Embeds</span><span>Salons de stats</span></div></div></div>
   <a class="lien" href="../commandes/?lang=fr">Toutes les commandes →</a>
 </section>
+<section class="avis" id="avis" hidden>
+  <div class="tete"><div><span class="num"><b>★</b>Avis</span><h2>Ils l'utilisent, <span class="serif grad">ils en parlent.</span></h2></div>
+  <div class="moy"><b id="avis-moy">–</b><div><div class="etoiles" id="avis-etoiles"></div><span id="avis-n"></span></div></div></div>
+  <div class="avis-grille" id="avis-grille"></div>
+  <p style="color:var(--muted);margin-top:18px;font-size:14px">De vrais avis, laissés avec <code>/avis ecrire</code> dans Discord.</p>
+</section>
 <section class="final">
   <h2>Ton serveur <span class="serif grad">mérite mieux.</span></h2>
   <p>Ajoute Wumi en une minute. Gratuit, sans carte bancaire.</p>
@@ -250,6 +265,22 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     document.getElementById('vitrine').hidden=false;
   }).catch(function(){});
 })();
+</script>
+<script>
+(function(){var g=document.getElementById('avis-grille');if(!g)return;
+fetch('https://serveurhp63114.tail284a6e.ts.net/api/avis',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+ if(!d||!d.avis||!d.avis.length)return;var L='fr';
+ var liste=d.avis.slice().sort(function(a,b){return (b.langue===L)-(a.langue===L)}).slice(0,9);
+ liste.forEach(function(a){var c=document.createElement('div');c.className='avis-carte';
+  var e=document.createElement('div');e.className='etoiles';e.textContent='★★★★★'.slice(0,a.note)+'☆☆☆☆☆'.slice(0,5-a.note);
+  var p=document.createElement('p');p.textContent='« '+a.texte+' »';
+  var q=document.createElement('div');q.className='avis-qui';
+  var im;if(a.avatar){im=document.createElement('img');im.src=a.avatar;im.alt='';im.loading='lazy';im.referrerPolicy='no-referrer'}else{im=document.createElement('i');im.textContent=(a.nom||'?').charAt(0).toUpperCase()}
+  var n=document.createElement('span');n.textContent=a.nom;q.append(im,n);c.append(e,p,q);g.append(c)});
+ document.getElementById('avis-moy').textContent=String(d.moyenne).replace('.',L==='fr'?',':'.');
+ document.getElementById('avis-etoiles').textContent='★★★★★'.slice(0,Math.round(d.moyenne))+'☆☆☆☆☆'.slice(0,5-Math.round(d.moyenne));
+ document.getElementById('avis-n').textContent=d.nombre+(L==='fr'?' avis':(d.nombre>1?' reviews':' review'));
+ document.getElementById('avis').hidden=false;}).catch(function(){});})();
 </script>
 </body>
 </html>
