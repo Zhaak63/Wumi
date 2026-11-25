@@ -33,7 +33,7 @@ header{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:co
 nav{display:flex;align-items:center;gap:16px;height:64px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
 .logo img{width:30px;height:30px}
-:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09)}
+:root[data-theme="light"] .logo img{filter:none}
 .logo .dot{color:var(--pink)}
 .nav-fin{margin-left:auto;display:flex;gap:8px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line-2);background:rgba(127,127,127,.06);cursor:pointer}
@@ -81,8 +81,8 @@ h1{font-size:clamp(36px,6.4vw,64px);line-height:1.04;letter-spacing:-.035em;font
 .dc-body{padding:16px 16px 20px;display:grid;gap:16px;min-height:340px}
 .msg{display:grid;grid-template-columns:40px 1fr;gap:12px}
 .ava{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px}
-.ava img{width:26px;height:26px}
-.ava.bot{background:radial-gradient(circle at 40% 40%,#3a78b6,#1b2c52 80%)}
+.ava img{width:40px;height:40px}
+.ava.bot{background:none;overflow:hidden}
 .qui{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600}
 .qui .app{font-size:10.5px;font-weight:700;padding:1px 5px;border-radius:4px;background:#5865f2;color:#fff;letter-spacing:.02em}
 .qui time{color:var(--dc-mut);font-size:12px;font-weight:400}
