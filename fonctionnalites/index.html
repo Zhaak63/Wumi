@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wumi · Fonctionnalités</title>
+<meta name="description" content="Tout ce que Wumi sait faire, avec de vrais exemples de commandes : modération, bienvenue, niveaux, économie, cartes, musique, tickets, annonces.">
+<meta name="theme-color" content="#62b8ff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wumi">
+<meta property="og:title" content="Wumi · Fonctionnalités">
+<meta property="og:description" content="Tout ce que Wumi sait faire, avec de vrais exemples de commandes.">
+<meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi.jpg?v=3">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d1c;--bg-2:#11132a;--card:#161935;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--text:#eef0fc;--muted:#a3a9d1;--dim:#6f76a8;--blue:#62b8ff;--pink:#8fa0ff;--green:#3ddc97;
+--grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7);
+--dc-bg:#2b2d31;--dc-bg2:#313338;--dc-txt:#dbdee1;--dc-mut:#949ba4;--dc-card:#232428}
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;
+--dc-bg:#ffffff;--dc-bg2:#f2f3f5;--dc-txt:#2e3338;--dc-mut:#5c5e66;--dc-card:#f2f3f5}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 16px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(600px 400px at 15% -5%,rgba(98,184,255,.18),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(143,160,255,.14),transparent 70%)}
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo img{width:30px;height:30px}
+:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09)}
+.logo .dot{color:var(--pink)}
+.nav-fin{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line-2);background:rgba(127,127,127,.06);cursor:pointer}
+.btn.on,.btn.plein{background:var(--blue);color:#fff;border-color:transparent}
+:root:not([data-theme="light"]) .btn.on,:root:not([data-theme="light"]) .btn.plein{color:#0c0d1c}
+.theme{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--line-2);background:rgba(127,127,127,.06);cursor:pointer;font-size:16px}
+.theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
+.hero{padding:60px 0 24px;text-align:center}
+.eyebrow{font-size:12.5px;letter-spacing:.14em;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(36px,6.4vw,64px);line-height:1.04;letter-spacing:-.035em;font-weight:700}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:640px;margin:16px auto 0;font-size:17.5px}
+/* onglets des categories */
+.cats{position:sticky;top:64px;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);padding:14px 0;margin-top:22px}
+.cats-rail{position:relative;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.cats-rail::-webkit-scrollbar{display:none}
+.cat{flex:none;display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-weight:600;font-size:14.5px;cursor:pointer;transition:.15s}
+.cat:hover{color:var(--text);border-color:var(--line-2)}
+.cat.on{color:var(--text);border-color:color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 14%,var(--card));box-shadow:inset 0 -2px 0 var(--c)}
+.cat span{font-size:17px}
+/* panneau */
+.pan{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;padding:34px 0 20px}
+.pan-txt{position:sticky;top:150px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.pill i{width:22px;height:22px;display:grid;place-items:center;border-radius:7px;background:color-mix(in srgb,var(--c) 18%,transparent);font-style:normal;font-size:13px}
+.pan h2{font-size:clamp(30px,4vw,44px);line-height:1.06;letter-spacing:-.03em;margin:14px 0 12px}
+.pan h2 em{font-family:"Instrument Serif",Georgia,serif;font-weight:400;color:var(--c)}
+.pan p{color:var(--muted);font-size:16.5px}
+.atouts{list-style:none;display:grid;gap:10px;margin:20px 0}
+.atouts li{display:flex;gap:10px;color:var(--muted);font-size:15px}
+.atouts li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:6px;background:color-mix(in srgb,var(--c) 70%,transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.atouts b{color:var(--text)}
+.cmds{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cmds a{font-family:ui-monospace,SFMono-Regular,monospace;font-size:13px;padding:5px 10px;border-radius:8px;background:rgba(127,127,127,.08);border:1px solid var(--line);color:var(--text)}
+.cmds a:hover{border-color:var(--c)}
+/* exemples */
+.ex-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.ex-tab{padding:7px 13px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer}
+.ex-tab .n{opacity:.55;margin-right:4px}
+.ex-tab.on{color:var(--text);border-color:color-mix(in srgb,var(--c) 55%,transparent);box-shadow:inset 0 -2px 0 var(--c)}
+.dc{border-radius:16px;overflow:hidden;border:1px solid var(--line-2);background:var(--dc-bg2);color:var(--dc-txt);box-shadow:0 30px 80px -40px rgba(0,0,0,.6)}
+.dc-top{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(127,127,127,.18);font-weight:600;font-size:15px}
+.dc-top b{color:var(--dc-mut);font-size:20px;font-weight:400}
+.dc-body{padding:16px 16px 20px;display:grid;gap:16px;min-height:340px}
+.msg{display:grid;grid-template-columns:40px 1fr;gap:12px}
+.ava{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px}
+.ava img{width:26px;height:26px}
+.ava.bot{background:radial-gradient(circle at 40% 40%,#3a78b6,#1b2c52 80%)}
+.qui{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600}
+.qui .app{font-size:10.5px;font-weight:700;padding:1px 5px;border-radius:4px;background:#5865f2;color:#fff;letter-spacing:.02em}
+.qui time{color:var(--dc-mut);font-size:12px;font-weight:400}
+.slash{margin-top:4px;font-size:14.5px;color:var(--dc-mut)}
+.slash code{font-family:inherit;color:#c9cdfb;background:rgba(88,101,242,.22);padding:1px 6px;border-radius:5px;font-weight:600}
+:root[data-theme="light"] .slash code{color:#3d47c9}
+.slash em{font-style:normal;color:var(--dc-txt)}
+.cont{margin-top:6px;border-radius:10px;background:var(--dc-card);border-left:4px solid var(--c);padding:14px 16px;max-width:520px}
+.cont h4{font-size:15.5px;margin-bottom:6px}
+.cont p{font-size:14.5px;color:var(--dc-txt);margin:4px 0}
+.cont .mut{color:var(--dc-mut);font-size:13px}
+.cont .sep{height:1px;background:rgba(127,127,127,.2);margin:10px 0}
+.champs{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:8px}
+.champs div small{display:block;color:var(--dc-mut);font-size:12px;font-weight:600}
+.champs div span{font-size:14px}
+.cont img{display:block;max-width:100%;border-radius:8px;margin-top:10px}
+.wcard{margin-top:10px;border-radius:12px;padding:22px 16px 18px;text-align:center;background:radial-gradient(260px 140px at 20% 0%,rgba(255,205,74,.45),transparent 70%),radial-gradient(260px 140px at 90% 100%,rgba(255,140,192,.4),transparent 70%),#1b1d3a;color:#fff;max-width:420px}
+.wava{width:64px;height:64px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-size:26px;font-weight:700;background:linear-gradient(135deg,#ffcd4a,#ff8cc0);box-shadow:0 0 0 4px rgba(255,255,255,.85)}
+.wcard b{display:block;font-size:11px;letter-spacing:.22em;opacity:.75}
+.wcard strong{display:block;font-size:24px;letter-spacing:-.02em}
+.wcard small{opacity:.7;font-size:12.5px}
+.barre{height:8px;border-radius:99px;background:rgba(127,127,127,.25);overflow:hidden;margin-top:8px}
+.barre i{display:block;height:100%;background:var(--c);border-radius:99px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btns span{padding:6px 14px;border-radius:8px;font-size:14px;font-weight:600;background:#4e5058;color:#fff}
+.btns span.p{background:#5865f2}.btns span.v{background:#248046}.btns span.r{background:#da373c}
+.ment{color:#c9cdfb;background:rgba(88,101,242,.22);border-radius:4px;padding:0 3px;font-weight:500}
+:root[data-theme="light"] .ment{color:#3d47c9}
+.legende{color:var(--dim);font-size:13.5px;margin-top:10px}
+/* fin */
+.cta{margin:50px 0 30px;padding:40px 24px;border:1px solid var(--line-2);border-radius:24px;text-align:center;background:radial-gradient(500px 240px at 20% 0%,rgba(98,184,255,.16),transparent 70%),radial-gradient(500px 240px at 80% 100%,rgba(143,160,255,.14),transparent 70%),var(--card)}
+.cta h3{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em}
+.cta p{color:var(--muted);margin:8px 0 20px}
+.cta .btns2{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+footer{color:var(--dim);font-size:13px;padding:30px 0 40px;text-align:center}
+footer a{color:var(--muted)}
+@media (max-width:900px){.pan{grid-template-columns:1fr;gap:22px}.pan-txt{position:static}}
+@media (max-width:560px){.btn.ret{display:none}.champs{grid-template-columns:1fr}.dc-body{padding:14px 12px 18px}.msg{grid-template-columns:34px 1fr;gap:10px}.ava{width:34px;height:34px}}
+@media (prefers-reduced-motion:no-preference){.pan{animation:monte .35s ease}@keyframes monte{from{opacity:0;transform:translateY(8px)}}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header><div class="wrap"><nav>
+  <a class="logo" href="../" id="lien-accueil"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
+  <div class="nav-fin">
+    <a class="btn ret" href="../" id="retour">← Site</a>
+    <button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <button class="btn" type="button" data-lang="en">EN</button>
+    <button class="btn" type="button" data-lang="fr">FR</button>
+  </div>
+</nav></div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow" id="t-eyebrow"></div>
+    <h1 id="t-titre"></h1>
+    <p class="lead" id="t-lead"></p>
+  </section>
+  <div class="cats"><div class="cats-rail" id="cats" role="tablist"></div></div>
+  <section id="pan"></section>
+  <section class="cta">
+    <h3 id="t-cta"></h3>
+    <p id="t-cta-p"></p>
+    <div class="btns2"><a class="btn plein" id="t-ajouter" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470"></a><a class="btn" id="t-toutes" href="../commandes/"></a></div>
+  </section>
+</main>
+<footer class="wrap" id="t-pied"></footer>
+
+<script>
+const WUMI = '<div class="ava bot"><img src="../wumi-icone.svg" alt=""></div>';
+const u = (l, c) => '<div class="ava" style="background:' + c + '">' + l + '</div>';
+// Une conversation : [qui, commande, reponse]. Toutes les reponses sont des maquettes fideles aux vrais messages de Wumi.
+const CATS = [
+ { id: 'moderation', ico: '🛡️', c: '#ff7a7a',
+   nom: { fr: 'Modération', en: 'Moderation' },
+   titre: { fr: 'Un serveur <em>propre</em>, sans y passer tes soirées.', en: 'A <em>clean</em> server, without spending your evenings on it.' },
+   texte: { fr: "Automod, anti-arnaques, sanctions graduées et un historique clair. Wumi bloque le gros du travail, ton staff garde la main.", en: 'Automod, anti-scam, step-by-step sanctions and a clear history. Wumi handles the heavy lifting, your staff stays in control.' },
+   atouts: { fr: ['<b>Anti-arnaques</b> : faux Nitro, faux Steam, faux airdrops, en 6 langues', '<b>Paliers</b> : « à 3 avertissements, mute 1 h » tout seul', '<b>Audit</b> de sécurité noté sur 100, corrections en un clic'],
+             en: ['<b>Anti-scam</b>: fake Nitro, fake Steam, fake airdrops, in 6 languages', '<b>Warn steps</b>: "at 3 warnings, 1 h mute", automatically', '<b>Security audit</b> scored out of 100, one-click fixes'] },
+   cmds: { fr: ['/automod', '/avertir', '/sanctions', '/paliers', '/audit lancer', '/antiraid'], en: ['/automod', '/warn', '/sanctions', '/warnsteps', '/audit run', '/antiraid'] },
+   ex: [
+    { o: { fr: 'Avertir', en: 'Warn' }, salon: 'moderation',
+      fr: [u('M', '#e67e22'), 'Maya', '<code>/avertir</code> <em>membre: @Léo raison: spam de mentions</em>', '<h4>⚠️ Léo a reçu un avertissement</h4><p>Raison : spam de mentions</p><div class="champs"><div><small>AVERTISSEMENTS</small><span>3 sur 3</span></div><div><small>PALIER ATTEINT</small><span>Mute 1 h appliqué</span></div></div><div class="sep"></div><p class="mut">Sanction n°42 · Léo a été prévenu en MP</p>'],
+      en: [u('M', '#e67e22'), 'Maya', '<code>/warn</code> <em>member: @Leo reason: mention spam</em>', '<h4>⚠️ Leo has been warned</h4><p>Reason: mention spam</p><div class="champs"><div><small>WARNINGS</small><span>3 of 3</span></div><div><small>STEP REACHED</small><span>1 h mute applied</span></div></div><div class="sep"></div><p class="mut">Sanction #42 · Leo was notified by DM</p>'] },
+    { o: { fr: 'Anti-arnaque', en: 'Anti-scam' }, salon: 'general', auto: true,
+      fr: [WUMI, 'Wumi', null, '<h4>🛡️ Message supprimé : arnaque probable</h4><p>Un message de <span class="ment">@compte_pirate</span> imitait un cadeau Nitro avec un faux lien.</p><div class="champs"><div><small>DÉTECTÉ</small><span>Faux Nitro · lien suspect</span></div><div><small>ACTION</small><span>Supprimé + exclu 10 min</span></div></div><div class="btns"><span>Voir le journal</span><span class="v">C\'était légitime</span></div>'],
+      en: [WUMI, 'Wumi', null, '<h4>🛡️ Message removed: likely scam</h4><p>A message from <span class="ment">@hacked_account</span> faked a Nitro gift with a fake link.</p><div class="champs"><div><small>DETECTED</small><span>Fake Nitro · suspicious link</span></div><div><small>ACTION</small><span>Removed + 10 min timeout</span></div></div><div class="btns"><span>View log</span><span class="v">It was legit</span></div>'] },
+    { o: { fr: 'Audit', en: 'Audit' }, salon: 'staff',
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/audit lancer</code>', '<h4>🔐 Audit de sécurité : 78/100</h4><div class="barre"><i style="width:78%"></i></div><p style="margin-top:10px">✅ 2FA exigée pour la modération<br>⚠️ @everyone peut mentionner tout le monde<br>⚠️ 2 webhooks oubliés dans #annonces</p><div class="btns"><span class="p">Corriger (3)</span><span>Détails</span></div>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/audit run</code>', '<h4>🔐 Security audit: 78/100</h4><div class="barre"><i style="width:78%"></i></div><p style="margin-top:10px">✅ 2FA required for moderation<br>⚠️ @everyone can mention everyone<br>⚠️ 2 forgotten webhooks in #announcements</p><div class="btns"><span class="p">Fix (3)</span><span>Details</span></div>'] } ] },
+ { id: 'bienvenue', ico: '👋', c: '#ffcd4a',
+   nom: { fr: 'Bienvenue', en: 'Welcome' },
+   titre: { fr: 'Chaque arrivée <em>compte</em>.', en: 'Every arrival <em>counts</em>.' },
+   texte: { fr: "Carte de bienvenue illustrée, rôle automatique, MP d'accueil et rôles à choisir soi-même : les nouveaux savent tout de suite où aller.", en: 'Illustrated welcome card, auto role, welcome DM and self-assigned roles: newcomers know where to go right away.' },
+   atouts: { fr: ['<b>Carte</b> avec l\'avatar, le nom du serveur et le numéro du membre', '<b>Rôles-réactions</b> en boutons ou en menu', '<b>Vérification</b> avec captcha contre les comptes robots'], en: ['<b>Card</b> with the avatar, server name and member number', '<b>Reaction roles</b> as buttons or a menu', '<b>Verification</b> with a captcha against bot accounts'] },
+   cmds: { fr: ['/bienvenue', '/autorole', '/roles-reactions', '/serveur verification'], en: ['/welcome', '/autorole', '/reactionrole', '/server verification'] },
+   ex: [
+    { o: { fr: 'Arrivée', en: 'Arrival' }, salon: 'bienvenue', auto: true,
+      fr: [WUMI, 'Wumi', null, '<p>Bienvenue <span class="ment">@Noa</span> ! Passe dans <span class="ment">#rôles</span> pour choisir tes jeux 🎮</p><div class="wcard"><div class="wava">N</div><b>BIENVENUE</b><strong>Noa</strong><small>Membre n°1 285 · Mon serveur</small></div>'],
+      en: [WUMI, 'Wumi', null, '<p>Welcome <span class="ment">@Noa</span>! Head to <span class="ment">#roles</span> to pick your games 🎮</p><div class="wcard"><div class="wava">N</div><b>WELCOME</b><strong>Noa</strong><small>Member #1,285 · My server</small></div>'] },
+    { o: { fr: 'Rôles à choisir', en: 'Pick your roles' }, salon: 'roles',
+      fr: [u('A', '#9b59b6'), 'Ana', '<code>/roles-reactions creer</code> <em>titre: Tes jeux</em>', '<h4>🎮 Tes jeux</h4><p>Clique pour recevoir (ou retirer) un rôle.</p><div class="btns"><span>🟩 Minecraft</span><span>🔫 Valorant</span><span>⚽ Rocket League</span><span>🧱 Roblox</span></div>'],
+      en: [u('A', '#9b59b6'), 'Ana', '<code>/reactionrole create</code> <em>title: Your games</em>', '<h4>🎮 Your games</h4><p>Click to get (or remove) a role.</p><div class="btns"><span>🟩 Minecraft</span><span>🔫 Valorant</span><span>⚽ Rocket League</span><span>🧱 Roblox</span></div>'] } ] },
+ { id: 'niveaux', ico: '📈', c: '#bf9bff',
+   nom: { fr: 'Niveaux', en: 'Levels' },
+   titre: { fr: 'Donne envie de <em>revenir</em>.', en: 'Give them a reason to <em>come back</em>.' },
+   texte: { fr: "XP en écrivant et en vocal, cartes de niveau en image, rôles qui se débloquent, prestige et badges : la progression se voit.", en: 'XP from chatting and voice, image level cards, unlockable roles, prestige and badges: progress you can see.' },
+   atouts: { fr: ['<b>Carte de rang</b> avec thèmes et fond personnalisé', '<b>Récompenses</b> : un rôle tous les N niveaux', '<b>/wrapped</b> : le récap du mois à partager'], en: ['<b>Rank card</b> with themes and a custom background', '<b>Rewards</b>: a role every N levels', '<b>/wrapped</b>: a monthly recap to share'] },
+   cmds: { fr: ['/rank', '/classement', '/profil', '/wrapped', '/badges'], en: ['/rank', '/leaderboard', '/profil', '/wrapped', '/badges'] },
+   ex: [
+    { o: { fr: 'Passage de niveau', en: 'Level up' }, salon: 'general', auto: true,
+      fr: [WUMI, 'Wumi', null, '<h4>🎉 GG <span class="ment">@Sam</span>, niveau 10 !</h4><div class="champs"><div><small>NIVEAU</small><span>9 → 10</span></div><div><small>RANG</small><span>#4 du serveur</span></div></div><div class="barre"><i style="width:12%"></i></div><p class="mut" style="margin-top:6px">Rôle débloqué : <span class="ment">@Habitué</span></p>'],
+      en: [WUMI, 'Wumi', null, '<h4>🎉 GG <span class="ment">@Sam</span>, level 10!</h4><div class="champs"><div><small>LEVEL</small><span>9 → 10</span></div><div><small>RANK</small><span>#4 on the server</span></div></div><div class="barre"><i style="width:12%"></i></div><p class="mut" style="margin-top:6px">Role unlocked: <span class="ment">@Regular</span></p>'] },
+    { o: { fr: 'Classement', en: 'Leaderboard' }, salon: 'general',
+      fr: [u('L', '#3498db'), 'Léo', '<code>/classement</code>', '<h4>🏆 Classement du serveur</h4><p>🥇 Ana — niveau 24<br>🥈 Mika — niveau 21<br>🥉 Sam — niveau 18<br><span class="mut">4.</span> Léo — niveau 15</p><div class="btns"><span>◀</span><span class="p">XP</span><span>Vocal</span><span>▶</span></div>'],
+      en: [u('L', '#3498db'), 'Leo', '<code>/leaderboard</code>', '<h4>🏆 Server leaderboard</h4><p>🥇 Ana — level 24<br>🥈 Mika — level 21<br>🥉 Sam — level 18<br><span class="mut">4.</span> Leo — level 15</p><div class="btns"><span>◀</span><span class="p">XP</span><span>Voice</span><span>▶</span></div>'] } ] },
+ { id: 'cartes', ico: '🎴', c: '#ff8cc0',
+   nom: { fr: 'Économie & cartes', en: 'Economy & cards' },
+   titre: { fr: 'Une monnaie, une boutique, <em>72 cartes</em>.', en: 'A currency, a shop, <em>72 cards</em>.' },
+   texte: { fr: "Daily, travail, banque, boutique d'objets… et les cartes à collectionner : un booster tous les 100 messages, à ouvrir en direct.", en: 'Daily, work, bank, item shop… and collectible cards: a booster every 100 messages, opened live.' },
+   atouts: { fr: ['<b>72 créatures</b>, 6 familles, 6 raretés, des brillantes', '<b>Classeur</b> et vitrine de 5 cartes', '<b>Pas d\'échange</b> : chaque collection se mérite'], en: ['<b>72 creatures</b>, 6 families, 6 rarities, shiny ones', '<b>Binder</b> and a 5-card showcase', '<b>No trading</b>: every collection is earned'] },
+   cmds: { fr: ['/cartes ouvrir', '/cartes classeur', '/cartes vitrine', '/economie daily', '/boutique'], en: ['/cards open', '/cards binder', '/cards showcase', '/economy daily', '/shop'] },
+   ex: [
+    { o: { fr: 'Ouvrir un booster', en: 'Open a booster' }, salon: 'cartes',
+      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes ouvrir</code>', '<h4>🎴 Carte 5 sur 5 · Légendaire</h4><img src="../assets/apercus/carte-fr.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">Carte suivante</span><span>Tout révéler</span></div>'],
+      en: [u('M', '#e91e63'), 'Mika', '<code>/cards open</code>', '<h4>🎴 Card 5 of 5 · Legendary</h4><img src="../assets/apercus/carte-en.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">Next card</span><span>Reveal all</span></div>'] },
+    { o: { fr: 'Classeur', en: 'Binder' }, salon: 'cartes',
+      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes classeur</code>', '<img src="../assets/apercus/classeur-fr.webp" alt="" loading="lazy"><div class="btns"><span>◀</span><span class="p">Néon</span><span>▶</span></div>'],
+      en: [u('M', '#e91e63'), 'Mika', '<code>/cards binder</code>', '<img src="../assets/apercus/classeur-en.webp" alt="" loading="lazy"><div class="btns"><span>◀</span><span class="p">Neon</span><span>▶</span></div>'] } ] },
+ { id: 'musique', ico: '🎵', c: '#62e3ff',
+   nom: { fr: 'Musique & jeux', en: 'Music & games' },
+   titre: { fr: 'Le vocal, <em>en mieux</em>.', en: 'Voice, <em>but better</em>.' },
+   texte: { fr: "Un lecteur complet, des radios 24/7, un blind test, Wumi Run en Activity et des mini-jeux pour animer le serveur.", en: 'A full music player, 24/7 radios, a blind test, Wumi Run as an Activity and mini-games to liven up the server.' },
+   atouts: { fr: ['<b>YouTube, Spotify, SoundCloud</b> : liens et recherche', '<b>Blind test</b> : 6 thèmes, indices, classement', '<b>Jeux</b> : puissance 4, morpion, pendu, quiz drapeaux'], en: ['<b>YouTube, Spotify, SoundCloud</b>: links and search', '<b>Blind test</b>: 6 themes, hints, leaderboard', '<b>Games</b>: connect 4, tic-tac-toe, hangman, flag quiz'] },
+   cmds: { fr: ['/jouer', '/musique', '/radio', '/blindtest lancer', '/wumirun jouer', '/puissance4'], en: ['/play', '/music', '/radio', '/blindtest start', '/wumirun play', '/connect4'] },
+   ex: [
+    { o: { fr: 'Lecteur', en: 'Player' }, salon: 'musique',
+      fr: [u('A', '#9b59b6'), 'Ana', '<code>/jouer</code> <em>recherche: lofi hip hop</em>', '<h4>🎵 En lecture</h4><p><b>lofi hip hop radio – beats to relax</b></p><div class="barre"><i style="width:36%"></i></div><p class="mut" style="margin-top:6px">1:42 / 4:40 · ajouté par Ana · 6 titres à suivre</p><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span><span>🔁</span><span>🔀</span></div>'],
+      en: [u('A', '#9b59b6'), 'Ana', '<code>/play</code> <em>query: lofi hip hop</em>', '<h4>🎵 Now playing</h4><p><b>lofi hip hop radio – beats to relax</b></p><div class="barre"><i style="width:36%"></i></div><p class="mut" style="margin-top:6px">1:42 / 4:40 · added by Ana · 6 tracks up next</p><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span><span>🔁</span><span>🔀</span></div>'] },
+    { o: { fr: 'Blind test', en: 'Blind test' }, salon: 'jeux',
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest lancer</code> <em>theme: années 2000</em>', '<h4>🎧 Manche 3 sur 10</h4><p>Wumi passe un extrait de 25 s dans le vocal. Écris le titre !</p><p class="mut">Indice : _ _ _ _ _ _ _ _   _ _ _ _ _ _</p><div class="sep"></div><p>🥇 Sam 6 pts · 🥈 Ana 4 pts · 🥉 Léo 2 pts</p>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest start</code> <em>theme: 2000s</em>', '<h4>🎧 Round 3 of 10</h4><p>Wumi plays a 25 s clip in voice. Type the title!</p><p class="mut">Hint: _ _ _ _ _ _ _ _   _ _ _ _ _ _</p><div class="sep"></div><p>🥇 Sam 6 pts · 🥈 Ana 4 pts · 🥉 Leo 2 pts</p>'] } ] },
+ { id: 'tickets', ico: '🎫', c: '#7b9bff',
+   nom: { fr: 'Tickets & FAQ', en: 'Tickets & FAQ' },
+   titre: { fr: 'Le support, <em>sans chaos</em>.', en: 'Support, <em>without chaos</em>.' },
+   texte: { fr: "Des tickets privés avec formulaire, une FAQ qui comprend le sens des questions et répond avant même que le staff arrive.", en: 'Private tickets with a form, and a FAQ that understands questions and answers before the staff even arrives.' },
+   atouts: { fr: ['<b>FAQ intelligente</b> : trouve la bonne fiche, même mal formulée', '<b>Prise en charge</b>, priorité, transcription, note sur 5', '<b>Modmail</b> : écris au staff en MP'], en: ['<b>Smart FAQ</b>: finds the right entry, even if badly worded', '<b>Claim</b>, priority, transcript, rating out of 5', '<b>Modmail</b>: write to the staff by DM'] },
+   cmds: { fr: ['/ticket panneau', '/faq chercher', '/faq ajouter', '/suggestion envoyer'], en: ['/ticket panel', '/faq search', '/faq add', '/suggestion send'] },
+   ex: [
+    { o: { fr: 'Ouverture', en: 'Opening' }, salon: 'ticket-0042', auto: true,
+      fr: [WUMI, 'Wumi', null, '<h4>🎫 Ticket de Léo</h4><p><b>Sujet :</b> le bot répond plus</p><div class="sep"></div><p>💡 <b>Cette fiche de la FAQ peut t\'aider :</b> « Wumi ne marche pas » — vérifie qu\'il a la permission d\'écrire dans le salon et relance <code style="font-family:inherit">/diagnostic</code>.</p><div class="btns"><span class="v">C\'est réglé</span><span>J\'attends l\'équipe</span></div>'],
+      en: [WUMI, 'Wumi', null, '<h4>🎫 Leo\'s ticket</h4><p><b>Subject:</b> the bot stopped replying</p><div class="sep"></div><p>💡 <b>This FAQ entry may help:</b> "Wumi doesn\'t work" — check it can write in the channel and run <code style="font-family:inherit">/diagnostic</code>.</p><div class="btns"><span class="v">Solved</span><span>Wait for the team</span></div>'] },
+    { o: { fr: 'Panneau', en: 'Panel' }, salon: 'support',
+      fr: [u('M', '#e67e22'), 'Maya', '<code>/ticket panneau</code>', '<h4>📩 Besoin d\'aide ?</h4><p>Ouvre un ticket privé : seul le staff le verra. Réponse moyenne : <b>12 min</b>.</p><div class="btns"><span class="p">Ouvrir un ticket</span><span>Lire la FAQ</span></div>'],
+      en: [u('M', '#e67e22'), 'Maya', '<code>/ticket panel</code>', '<h4>📩 Need help?</h4><p>Open a private ticket: only the staff will see it. Average reply: <b>12 min</b>.</p><div class="btns"><span class="p">Open a ticket</span><span>Read the FAQ</span></div>'] } ] },
+ { id: 'annonces', ico: '📣', c: '#ff7ad9',
+   nom: { fr: 'Alertes live', en: 'Live alerts' },
+   titre: { fr: 'Ne rate plus <em>un live</em>.', en: 'Never miss <em>a stream</em>.' },
+   texte: { fr: "Twitch, YouTube, TikTok, Instagram et flux RSS : Wumi annonce tes créateurs préférés avec ton message, la bonne mention et l'image.", en: 'Twitch, YouTube, TikTok, Instagram and RSS feeds: Wumi announces your favourite creators with your message, the right mention and the image.' },
+   atouts: { fr: ['<b>5 plateformes</b> suivies, sans clé à configurer', '<b>Message perso</b> et rôle à mentionner par créateur', '<b>Test</b> en un clic avant de publier'], en: ['<b>5 platforms</b> tracked, no key to set up', '<b>Custom message</b> and role to ping per creator', '<b>One-click test</b> before going live'] },
+   cmds: { fr: ['/veille ajouter', '/veille liste', '/veille tester'], en: ['/watch add', '/watch list', '/watch test'] },
+   ex: [
+    { o: { fr: 'Twitch', en: 'Twitch' }, salon: 'annonces', auto: true, c: '#9146ff',
+      fr: [WUMI, 'Wumi', null, '<p><span class="ment">@Fans de stream</span> Mira est en live !</p><h4 style="margin-top:8px">Chill au coucher du soleil</h4><p class="mut">Just Chatting · 1 240 spectateurs</p><div class="btns"><span class="p">Regarder sur Twitch</span></div>'],
+      en: [WUMI, 'Wumi', null, '<p><span class="ment">@Stream fans</span> Mira is live!</p><h4 style="margin-top:8px">Sunset chill</h4><p class="mut">Just Chatting · 1,240 viewers</p><div class="btns"><span class="p">Watch on Twitch</span></div>'] },
+    { o: { fr: 'YouTube', en: 'YouTube' }, salon: 'annonces', auto: true, c: '#ff4e45',
+      fr: [WUMI, 'Wumi', null, '<p>Nouvelle vidéo de <b>Nova</b> 🎬</p><h4 style="margin-top:8px">J\'ai testé 10 bots Discord</h4><p class="mut">14:32 · publiée il y a 2 min</p><div class="btns"><span class="r">Voir sur YouTube</span></div>'],
+      en: [WUMI, 'Wumi', null, '<p>New video from <b>Nova</b> 🎬</p><h4 style="margin-top:8px">I tried 10 Discord bots</h4><p class="mut">14:32 · posted 2 min ago</p><div class="btns"><span class="r">Watch on YouTube</span></div>'] } ] },
+ { id: 'serveur', ico: '📊', c: '#5ee68f',
+   nom: { fr: 'Outils serveur', en: 'Server tools' },
+   titre: { fr: 'Tout se règle <em>en une commande</em>.', en: 'Everything set <em>in one command</em>.' },
+   texte: { fr: "Salons de statistiques, embeds, giveaways, événements, anniversaires, salons vocaux temporaires et un tableau de bord web.", en: 'Stats channels, embeds, giveaways, events, birthdays, temporary voice channels and a web dashboard.' },
+   atouts: { fr: ['<b>Pack de stats</b> : une catégorie complète en 3 styles', '<b>Giveaways</b> avec chances bonus par rôle', '<b>Dashboard</b> pour tout régler depuis ton navigateur'], en: ['<b>Stats pack</b>: a full category in 3 styles', '<b>Giveaways</b> with bonus chances per role', '<b>Dashboard</b> to set everything from your browser'] },
+   cmds: { fr: ['/serveur stats pack', '/embed creer', '/giveaway lancer', '/evenement', '/config'], en: ['/server stats pack', '/embed create', '/giveaway start', '/event', '/config'] },
+   ex: [
+    { o: { fr: 'Pack de stats', en: 'Stats pack' }, salon: 'staff',
+      fr: [u('A', '#9b59b6'), 'Ana', '<code>/serveur stats pack</code> <em>style: élégant</em>', '<h4>✅ Pack de statistiques créé</h4><p>📊 <b>Statistiques</b><br>🔊 🧭 Membres : 1 284<br>🔊 🟢 En ligne : 312<br>🔊 💎 Boosts : 14<br>🔊 🔗 wumi.fr</p><p class="mut">Mis à jour toutes les 10 minutes</p>'],
+      en: [u('A', '#9b59b6'), 'Ana', '<code>/server stats pack</code> <em>style: elegant</em>', '<h4>✅ Stats pack created</h4><p>📊 <b>Statistics</b><br>🔊 🧭 Members: 1,284<br>🔊 🟢 Online: 312<br>🔊 💎 Boosts: 14<br>🔊 🔗 wumi.fr</p><p class="mut">Refreshed every 10 minutes</p>'] },
+    { o: { fr: 'Giveaway', en: 'Giveaway' }, salon: 'concours',
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway lancer</code> <em>lot: Nitro 1 mois durée: 2j</em>', '<h4>🎁 Nitro 1 mois</h4><p>Fin dans <b>2 jours</b> · 1 gagnant · 87 participants</p><p class="mut">Les <span class="ment">@Boosters</span> ont 2× plus de chances</p><div class="btns"><span class="v">🎉 Participer</span></div>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway start</code> <em>prize: Nitro 1 month duration: 2d</em>', '<h4>🎁 Nitro 1 month</h4><p>Ends in <b>2 days</b> · 1 winner · 87 entries</p><p class="mut"><span class="ment">@Boosters</span> get 2× the chances</p><div class="btns"><span class="v">🎉 Enter</span></div>'] } ] },
+];
+const T = {
+  fr: { eyebrow: 'Fonctionnalités', titre: 'Tout ce que Wumi <span class="serif grad">sait faire.</span>', lead: "Choisis un domaine et regarde de vrais exemples : la commande qu'on tape, et ce que Wumi répond.", cmds: 'Commandes', legende: 'Maquette d\'un vrai message de Wumi.', auto: 'automatique', cta: 'Prêt à essayer ?', ctaP: 'Gratuit, prêt en une commande. Premium si tu veux aller plus loin.', ajouter: 'Ajouter à Discord', toutes: 'Toutes les commandes', retour: '← Site', accueil: '../fr/', pied: 'Wumi · <a href="../fr/">wumi.fr</a> · <a href="../fr/conditions.html">Conditions</a> · <a href="../fr/confidentialite.html">Confidentialité</a>', auj: "Aujourd'hui" },
+  en: { eyebrow: 'Features', titre: 'Everything Wumi <span class="serif grad">can do.</span>', lead: 'Pick an area and see real examples: the command you type, and what Wumi replies.', cmds: 'Commands', legende: 'Mock-up of a real Wumi message.', auto: 'automatic', cta: 'Ready to try it?', ctaP: 'Free, ready in one command. Premium if you want to go further.', ajouter: 'Add to Discord', toutes: 'All commands', retour: '← Site', accueil: '../', pied: 'Wumi · <a href="../">wumi.fr</a> · <a href="../conditions.html">Terms</a> · <a href="../confidentialite.html">Privacy</a>', auj: 'Today' },
+};
+let langue = 'fr', cat = 0, ex = 0;
+const SALONS_EN = { bienvenue: 'welcome', cartes: 'cards', musique: 'music', jeux: 'games', annonces: 'announcements', concours: 'giveaways' };
+try { langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('wumi-lang') || (/^fr/i.test(navigator.language) ? 'fr' : 'en'); } catch (e) {}
+if (!T[langue]) langue = 'en';
+const h = location.hash.slice(1); if (h) { const i = CATS.findIndex((c) => c.id === h); if (i >= 0) cat = i; }
+
+function message(e, c) {
+  const [ava, nom, cmd, rep] = e[langue];
+  const t = T[langue];
+  const estBot = ava === WUMI;
+  return '<div class="msg">' + ava + '<div><div class="qui">' + nom + (estBot ? '<span class="app">APP</span>' : '') + '<time>' + t.auj + '</time></div>'
+    + (cmd ? '<div class="slash">' + (langue === 'fr' ? 'a utilisé ' : 'used ') + cmd + '</div>' : '')
+    + '<div class="cont" style="--c:' + (e.c || c) + '">' + rep + '</div></div></div>';
+}
+function panneau() {
+  const C = CATS[cat], t = T[langue], e = C.ex[ex];
+  const lien = (x) => '../commandes/?lang=' + langue + '&q=' + encodeURIComponent(x.replace(/^\//, '').split(' ')[0]);
+  document.getElementById('pan').innerHTML = '<div class="pan" style="--c:' + C.c + '"><div class="pan-txt">'
+    + '<span class="pill"><i>' + C.ico + '</i>' + C.nom[langue] + '</span><h2>' + C.titre[langue] + '</h2><p>' + C.texte[langue] + '</p>'
+    + '<ul class="atouts">' + C.atouts[langue].map((a) => '<li><span>' + a + '</span></li>').join('') + '</ul>'
+    + '<div class="cmds">' + C.cmds[langue].map((x) => '<a href="' + lien(x) + '">' + x + '</a>').join('') + '</div></div>'
+    + '<div><div class="ex-tabs" role="tablist">' + C.ex.map((x, i) => '<button class="ex-tab' + (i === ex ? ' on' : '') + '" data-ex="' + i + '" role="tab"><span class="n">' + (i + 1) + '</span>' + x.o[langue] + (x.auto ? ' · ' + t.auto : '') + '</button>').join('') + '</div>'
+    + '<div class="dc"><div class="dc-top"><b>#</b>' + (langue === 'en' && SALONS_EN[e.salon] || e.salon) + '</div><div class="dc-body">'
+    + message(e, C.c) + '</div></div><p class="legende">' + t.legende + '</p></div></div>';
+}
+function rendre() {
+  const t = T[langue];
+  document.documentElement.lang = langue;
+  document.title = 'Wumi · ' + t.eyebrow;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-titre').innerHTML = t.titre;
+  document.getElementById('t-lead').textContent = t.lead;
+  document.getElementById('t-cta').textContent = t.cta;
+  document.getElementById('t-cta-p').textContent = t.ctaP;
+  document.getElementById('t-ajouter').textContent = t.ajouter;
+  const toutes = document.getElementById('t-toutes'); toutes.textContent = t.toutes; toutes.href = '../commandes/?lang=' + langue;
+  const r = document.getElementById('retour'); r.textContent = t.retour; r.href = t.accueil;
+  document.getElementById('lien-accueil').href = t.accueil;
+  document.getElementById('t-pied').innerHTML = t.pied;
+  document.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('on', b.dataset.lang === langue));
+  document.getElementById('cats').innerHTML = CATS.map((c, i) => '<button class="cat' + (i === cat ? ' on' : '') + '" data-cat="' + i + '" role="tab" aria-selected="' + (i === cat) + '" style="--c:' + c.c + '"><span>' + c.ico + '</span>' + c.nom[langue] + '</button>').join('');
+  panneau();
+  const rail = document.getElementById('cats'), on = rail.querySelector('.cat.on');
+  if (on) rail.scrollLeft = on.offsetLeft - (rail.clientWidth - on.offsetWidth) / 2;
+}
+document.addEventListener('click', (e) => {
+  const l = e.target.closest('[data-lang]');
+  if (l) { langue = l.dataset.lang; try { localStorage.setItem('wumi-lang', langue); } catch (er) {} rendre(); return; }
+  const c = e.target.closest('[data-cat]');
+  if (c) { cat = +c.dataset.cat; ex = 0; history.replaceState(null, '', '#' + CATS[cat].id); rendre(); return; }
+  const x = e.target.closest('[data-ex]');
+  if (x) { ex = +x.dataset.ex; panneau(); return; }
+  const th = e.target.closest('.theme');
+  if (th) { const m = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'; document.documentElement.dataset.theme = m; try { localStorage.setItem('wumi-theme', m); } catch (er) {} }
+});
+rendre();
+</script>
+</body>
+</html>

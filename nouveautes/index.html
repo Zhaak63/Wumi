@@ -95,17 +95,54 @@ footer a{color:var(--muted)}
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
 <style>
-.version{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:24px 26px;margin-bottom:16px}
-.version-tete{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-.version-tete h2{margin:0;font-size:24px}
-.version-tete .tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(98,184,255,.14);color:var(--blue)}
-.version-tete small{color:var(--dim);font-size:14px}
-.version > p{color:var(--muted);margin:4px 0 14px}
-.version h3{font-size:15px;margin:16px 0 8px;letter-spacing:.01em}
-.version ul{margin:0;padding-left:20px;display:grid;gap:6px}
-.version li{color:var(--muted);font-size:15px}
+/* ---------- Nouveautés v3 ---------- */
+.une{display:grid;grid-template-columns:1.15fr 1fr;gap:0;border:1px solid var(--line-2);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--card)),var(--bg-2) 70%);margin:10px 0 18px;position:relative}
+.une-txt{padding:34px 34px 30px}
+.une-pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);padding:5px 12px;border-radius:99px}
+.une-pill i{width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent);font-style:normal}
+.une h2{font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-.03em;margin:16px 0 10px}
+.une p{color:var(--muted);font-size:16.5px;max-width:460px}
+.une-pts{display:grid;gap:10px;margin-top:22px}
+.une-pt{display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:14.5px}
+.une-pt span{font-size:20px;width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--c) 14%,transparent);flex:none}
+.une-pt code,.carte code{font-family:ui-monospace,monospace;font-size:13px;color:var(--blue)}
+.une-vis{display:grid;place-items:center;padding:28px;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 28%,transparent),transparent);min-height:320px}
+.une-vis img{max-width:100%;max-height:380px;border-radius:14px;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+.une-vis .gros{font-size:120px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.3))}
+.une-meta{margin-top:20px;color:var(--dim);font-size:13.5px}
+.une-meta a{color:var(--text);border-bottom:1px solid var(--line-2)}
+.recents{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}
+.carte{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);transition:.2s}
+.carte:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.carte-vis{height:120px;display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 30%,var(--card)),color-mix(in srgb,var(--c) 8%,var(--card)));font-size:52px;overflow:hidden}
+.carte-vis img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.carte-txt{padding:16px 18px 18px}
+.carte small{color:var(--dim);font-size:12.5px;font-weight:600;letter-spacing:.05em}
+.carte h3{font-size:18px;letter-spacing:-.01em;margin:4px 0 6px}
+.carte p{color:var(--muted);font-size:14px}
+.barre{display:flex;gap:10px;align-items:center;margin:8px 0 22px;flex-wrap:wrap}
+.barre h2{font-size:22px;letter-spacing:-.02em;margin-right:auto}
+.barre input{flex:0 1 300px;min-width:0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:10px 14px;color:var(--text);font:inherit;font-size:14.5px}
+.barre input:focus{outline:2px solid rgba(98,184,255,.5)}
+.frise{position:relative;padding-left:34px}
+.frise::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--line-2),transparent)}
+.version{position:relative;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--card),var(--bg-2));padding:22px 24px;margin-bottom:14px;scroll-margin-top:90px}
+.version::before{content:"";position:absolute;left:-29px;top:28px;width:12px;height:12px;border-radius:50%;background:var(--c,var(--blue));box-shadow:0 0 0 4px var(--bg),0 0 0 6px color-mix(in srgb,var(--c,var(--blue)) 40%,transparent)}
+.version-tete{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.version-tete .num{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;padding:3px 9px;border-radius:8px;background:color-mix(in srgb,var(--c,var(--blue)) 16%,transparent);color:var(--c,var(--blue))}
+.version-tete h2{margin:0;font-size:20px;letter-spacing:-.02em}
+.version-tete time{color:var(--dim);font-size:13.5px;margin-left:auto}
+.version > p{color:var(--muted);margin:4px 0 12px}
+.version h3{font-size:12.5px;margin:14px 0 8px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.version ul{margin:0;padding-left:0;list-style:none;display:grid;gap:7px}
+.version li{color:var(--muted);font-size:15px;padding-left:18px;position:relative}
+.version li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--c,var(--blue));opacity:.8}
 .version li b{color:var(--text)}
 .version code{font-family:ui-monospace,monospace;font-size:13.5px;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:6px}
+.version mark{background:rgba(255,205,74,.3);color:inherit;border-radius:3px}
+:root[data-theme="light"] .une-pt{background:rgba(22,28,70,.03)}
+@media (max-width:860px){.une{grid-template-columns:1fr}.une-vis{min-height:0;order:-1}.recents{grid-template-columns:1fr}.une-txt{padding:24px}}
+@media (max-width:560px){.frise{padding-left:22px}.frise::before{left:5px}.version::before{left:-22px}.version-tete time{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
@@ -126,12 +163,49 @@ footer a{color:var(--muted)}
     <h1 id="t-titre"></h1>
     <p class="lead" id="t-lead"></p>
   </section>
-  <div id="liste"></div>
+  <div id="une"></div>
+  <div class="recents" id="recents"></div>
+  <div class="barre"><h2 id="t-tout"></h2><input id="cherche" type="search" autocomplete="off"></div>
+  <div class="frise" id="liste"></div>
 </main>
 <footer class="wrap" id="t-pied"></footer>
 <script>
 const V = [
- {"v": "2.32", "tag": {"en": "Latest", "fr": "Dernière"}, "en": {"intro": "AI comes to Wumi: scam detection, toxic message filter, NSFW image detection and message translation. Everything runs on Wumi's own server.", "blocs": [["Automod", ["<b>Anti-scam</b>, on by default: fake Nitro, fake Steam gifts, “I reported you by mistake, contact the staff”, fake crypto airdrops, and links that imitate Discord or Steam (dlscord, steamcommunlty…). In all 6 languages.", "<b>AI toxicity filter</b>: an AI reads messages and removes insults and harassment, even misspelled, in any language. The log shows how confident it was.", "<b>NSFW image detection</b>: explicit images are removed. NSFW channels are left alone, and the image is never copied into the logs.", "Turn them on with <code>/automod module</code> or from <code>/config</code>. Both AI modules are off by default."]], ["Translation", ["Right-click a message › Apps › <b>Translate</b>: Wumi translates it into your Discord language. Only you can see the reply.", "French, English, Spanish, German, Portuguese and Italian."]], ["Privacy", ["The AI models run on Wumi's own server: no message and no image is ever sent to an outside service."]]]}, "fr": {"intro": "L'IA arrive sur Wumi : détection des arnaques, filtre des messages toxiques, détection des images NSFW et traduction des messages. Tout tourne sur le serveur de Wumi.", "blocs": [["Automod", ["<b>Anti-arnaques</b>, actif par défaut : faux Nitro, faux cadeaux Steam, « je t'ai signalé par erreur, contacte le staff », faux airdrops crypto, et les liens qui imitent Discord ou Steam (dlscord, steamcommunlty…). Dans les 6 langues.", "<b>Anti-toxicité par IA</b> : une IA lit les messages et supprime les insultes et le harcèlement, même mal écrits, dans toutes les langues. Le log indique son niveau de certitude.", "<b>Détection des images NSFW</b> : les images explicites sont supprimées. Les salons NSFW ne sont pas concernés, et l'image n'est jamais recopiée dans les logs.", "À activer avec <code>/automod module</code> ou depuis <code>/config</code>. Les deux modules IA sont désactivés par défaut."]], ["Traduction", ["Clic droit sur un message › Applications › <b>Traduire</b> : Wumi le traduit dans ta langue Discord. Réponse visible de toi seul.", "Français, anglais, espagnol, allemand, portugais et italien."]], ["Confidentialité", ["Les modèles d'IA tournent sur le serveur de Wumi : aucun message ni aucune image n'est envoyé à un service externe."]]]}},
+ {"v": "2.36", "date": "2026-11-25", "img": "../assets/apercus/emojis-ku.webp", "ico": "✨", "couleur": "#ff8cc0",
+  "en": {"titre": "Brand-new emojis", "intro": "71 new emojis everywhere in Wumi, and a banner of the servers that use it on wumi.fr.",
+   "points": [["🎨", "New emoji set, one color per meaning"], ["🌐", "Opt-in server banner on wumi.fr"], ["📄", "Legal pages: notice, refunds, copyright"]],
+   "blocs": [["Design", ["<b>71 new emojis</b> based on the open-source Kubai icons (MIT): soft, layered and colored by meaning (green for success, red for errors, gold for economy…).", "If one is missing, Wumi falls back to the previous set, then to the regular emoji: messages never break."]],
+             ["Website", ["<b>Server banner</b>: turn on <code>/config</code> › Community › <b>Show on wumi.fr</b> and your server (name, icon, members) scrolls on the home page. Off by default.", "New <b>legal notice</b>, <b>refund policy</b> and <b>copyright</b> pages; the terms now cover Premium."]]]},
+  "fr": {"titre": "Des emojis tout neufs", "intro": "71 nouveaux emojis partout dans Wumi, et une banderole des serveurs qui l'utilisent sur wumi.fr.",
+   "points": [["🎨", "Nouveau jeu d'emojis, une couleur par sens"], ["🌐", "Banderole des serveurs sur wumi.fr (au choix)"], ["📄", "Pages légales : mentions, remboursement, droits d'auteur"]],
+   "blocs": [["Design", ["<b>71 nouveaux emojis</b> dessinés à partir des icônes libres Kubai (MIT) : doux, en relief, colorés selon leur sens (vert réussite, rouge erreur, or économie…).", "S'il en manque un, Wumi reprend l'ancien jeu, puis l'emoji classique : les messages ne cassent jamais."]],
+             ["Site", ["<b>Banderole des serveurs</b> : active <code>/config</code> › Communauté › <b>Afficher sur wumi.fr</b> et ton serveur (nom, icône, membres) défile sur la page d'accueil. Désactivé par défaut.", "Nouvelles pages <b>mentions légales</b>, <b>remboursement</b> et <b>droits d'auteur</b> ; les conditions couvrent maintenant Premium."]]]}},
+ {"v": "2.35", "date": "2026-11-25", "ico": "📊", "couleur": "#62e3ff",
+  "en": {"titre": "Stats channels in style", "intro": "A ready-made pack of stats channels, and a clearer command list.",
+   "points": [["📊", "<code>/server stats pack</code>"], ["🧭", "Emoji in front of every command"]],
+   "blocs": [["Server", ["<code>/server stats pack</code>: a whole \"📊 Statistics\" category in one command, in 3 styles (elegant, minimal, dots), plus up to 2 fixed link channels (invite, website)."]],
+             ["Commands", ["Every command now has an emoji in front of its description in Discord's <b>/</b> list: easier to spot what you need."]]]},
+  "fr": {"titre": "Des salons de stats stylés", "intro": "Un pack de salons statistiques prêt à l'emploi, et une liste de commandes plus lisible.",
+   "points": [["📊", "<code>/serveur stats pack</code>"], ["🧭", "Un emoji devant chaque commande"]],
+   "blocs": [["Serveur", ["<code>/serveur stats pack</code> : toute une catégorie « 📊 Statistiques » en une commande, en 3 styles (élégant, minimal, points), plus jusqu'à 2 salons de liens fixes (invitation, site)."]],
+             ["Commandes", ["Chaque commande a maintenant un emoji devant sa description dans la liste <b>/</b> de Discord : on trouve plus vite ce qu'on cherche."]]]}},
+ {"v": "2.34", "date": "2026-11-25", "img": {"en": "../assets/apercus/carte-en.webp", "fr": "../assets/apercus/carte-fr.webp"}, "ico": "🎴", "couleur": "#bf9bff",
+  "en": {"titre": "Collectible cards", "intro": "72 creatures to collect, open in boosters and show off in your binder.",
+   "points": [["🎴", "72 cards, 6 families, 6 rarities"], ["📦", "A booster every 100 messages"], ["📒", "Binder and showcase"]],
+   "blocs": [["Cards", ["<code>/cards open</code>: an animated booster of 5 cards, from the least to the most rare. 1 in 40 chance of a <b>shiny</b> card.", "Boosters come from chatting (one every 100 messages), a free daily one, or the server's shop.", "<code>/cards binder</code>, <code>/cards showcase</code>, <code>/cards leaderboard</code>. No trading or gifting, on purpose: duplicates are recycled into dust."]]]},
+  "fr": {"titre": "Les cartes à collectionner", "intro": "72 créatures à collectionner, à ouvrir en boosters et à montrer dans ton classeur.",
+   "points": [["🎴", "72 cartes, 6 familles, 6 raretés"], ["📦", "Un booster tous les 100 messages"], ["📒", "Classeur et vitrine"]],
+   "blocs": [["Cartes", ["<code>/cartes ouvrir</code> : un booster animé de 5 cartes, de la moins rare à la plus rare. 1 chance sur 40 d'avoir une carte <b>brillante</b>.", "Les boosters se gagnent en discutant (un tous les 100 messages), un gratuit par jour, ou dans la boutique du serveur.", "<code>/cartes classeur</code>, <code>/cartes vitrine</code>, <code>/cartes classement</code>. Pas d'échange ni de don, c'est voulu : les doubles se recyclent en poussière."]]]}},
+ {"v": "2.33", "date": "2026-11-21", "ico": "💡", "couleur": "#ffcd4a",
+  "en": {"titre": "A FAQ that understands", "intro": "The FAQ now understands the meaning of a question, not just its keywords.",
+   "points": [["🧠", "Matches by meaning, in 6 languages"], ["🎫", "Answers right when a ticket opens"]],
+   "blocs": [["FAQ", ["An AI model running on Wumi's own server compares the <b>meaning</b> of a question with your FAQ entries: \"the bot stopped replying\" finds \"Wumi doesn't work\", and an English question finds a French entry."]],
+             ["Tickets", ["When a ticket opens, the matching FAQ entry is posted with two buttons: <b>Solved</b> or <b>Wait for the team</b>. Setting in <code>/config</code>, on by default."]]]},
+  "fr": {"titre": "Une FAQ qui comprend", "intro": "La FAQ comprend maintenant le sens d'une question, pas seulement ses mots-clés.",
+   "points": [["🧠", "Trouve par le sens, en 6 langues"], ["🎫", "Répond dès l'ouverture d'un ticket"]],
+   "blocs": [["FAQ", ["Un modèle d'IA, sur le serveur de Wumi, compare le <b>sens</b> d'une question avec tes fiches : « le bot répond plus » trouve « Wumi ne marche pas », et une question en anglais trouve une fiche en français."]],
+             ["Tickets", ["À l'ouverture d'un ticket, la fiche qui correspond est postée avec deux boutons : <b>C'est réglé</b> ou <b>J'attends l'équipe</b>. Réglage dans <code>/config</code>, activé par défaut."]]]}},
+ {"v": "2.32", "date": "2026-11-20", "ico": "🤖", "couleur": "#7b9bff", "en": {"intro": "AI comes to Wumi: scam detection, toxic message filter, NSFW image detection and message translation. Everything runs on Wumi's own server.", "blocs": [["Automod", ["<b>Anti-scam</b>, on by default: fake Nitro, fake Steam gifts, “I reported you by mistake, contact the staff”, fake crypto airdrops, and links that imitate Discord or Steam (dlscord, steamcommunlty…). In all 6 languages.", "<b>AI toxicity filter</b>: an AI reads messages and removes insults and harassment, even misspelled, in any language. The log shows how confident it was.", "<b>NSFW image detection</b>: explicit images are removed. NSFW channels are left alone, and the image is never copied into the logs.", "Turn them on with <code>/automod module</code> or from <code>/config</code>. Both AI modules are off by default."]], ["Translation", ["Right-click a message › Apps › <b>Translate</b>: Wumi translates it into your Discord language. Only you can see the reply.", "French, English, Spanish, German, Portuguese and Italian."]], ["Privacy", ["The AI models run on Wumi's own server: no message and no image is ever sent to an outside service."]]]}, "fr": {"intro": "L'IA arrive sur Wumi : détection des arnaques, filtre des messages toxiques, détection des images NSFW et traduction des messages. Tout tourne sur le serveur de Wumi.", "blocs": [["Automod", ["<b>Anti-arnaques</b>, actif par défaut : faux Nitro, faux cadeaux Steam, « je t'ai signalé par erreur, contacte le staff », faux airdrops crypto, et les liens qui imitent Discord ou Steam (dlscord, steamcommunlty…). Dans les 6 langues.", "<b>Anti-toxicité par IA</b> : une IA lit les messages et supprime les insultes et le harcèlement, même mal écrits, dans toutes les langues. Le log indique son niveau de certitude.", "<b>Détection des images NSFW</b> : les images explicites sont supprimées. Les salons NSFW ne sont pas concernés, et l'image n'est jamais recopiée dans les logs.", "À activer avec <code>/automod module</code> ou depuis <code>/config</code>. Les deux modules IA sont désactivés par défaut."]], ["Traduction", ["Clic droit sur un message › Applications › <b>Traduire</b> : Wumi le traduit dans ta langue Discord. Réponse visible de toi seul.", "Français, anglais, espagnol, allemand, portugais et italien."]], ["Confidentialité", ["Les modèles d'IA tournent sur le serveur de Wumi : aucun message ni aucune image n'est envoyé à un service externe."]]]}},
 {"v": "2.31", "en": {"intro": "Wumi now speaks Spanish, German, Portuguese (Brazil) and Italian.", "blocs": [["Languages", ["Pick your server's language in <code>/setup</code> or <code>/config</code> → Server. A server whose Discord language is one of these gets it automatically.", "<b>Everything is translated</b>: messages, buttons, menus, image cards, logs, tickets, giveaways, events, anti-raid, anti-nuke, automod, economy, games and more.", "Command descriptions <b>and option choices</b> follow each member's Discord language."]], ["Games", ["The quiz's 65 questions and the country names of the flag round, in every language.", "Hangman has its own word list for each language."]]]}, "fr": {"intro": "Wumi parle maintenant espagnol, allemand, portugais (Brésil) et italien.", "blocs": [["Langues", ["Choisis la langue de ton serveur dans <code>/demarrer</code> ou <code>/config</code> → Serveur. Un serveur dont la langue Discord est l'une de celles-ci la reçoit d'office.", "<b>Tout est traduit</b> : messages, boutons, menus, cartes image, journaux, tickets, concours, événements, anti-raid, anti-nuke, automod, économie, jeux et le reste.", "Les descriptions des commandes <b>et les choix des options</b> suivent la langue Discord de chaque membre."]], ["Jeux", ["Les 65 questions du quiz et les noms des pays de la manche drapeaux, dans chaque langue.", "Le pendu a sa propre liste de mots pour chaque langue."]]]}},
  {"v": "2.28", "en": {"intro": "Boosts deserve a card too.", "blocs": [["Boosts", ["A boost is now announced like a level-up: the thank-you message, then an image card with the booster's avatar in a pink ring, the server's boost count, a bar to the next tier and the unlocked role.", "<code>/boost test</code>: a private preview of the announcement, no real boost needed."]]]}, "fr": {"intro": "Les boosts ont droit à leur carte.", "blocs": [["Boosts", ["Un boost s'annonce maintenant comme une montée de niveau : le remerciement, puis une carte image avec l'avatar du booster dans un anneau rose, le nombre de boosts du serveur, une barre vers le palier suivant et le rôle débloqué.", "<code>/boost test</code> : un aperçu privé de l'annonce, sans attendre un vrai boost."]]]}},
  {"v": "2.26", "en": {"intro": "Instagram announcements for any public creator or business account.", "blocs": [["Announcements", ["<code>/watch</code> Instagram now follows <b>any public Creator or Business account by its @username</b>. Nothing to set up on your side.", "Wumi emojis no longer show up as raw code in the author line or footer of announcements and logs."]]]}, "fr": {"intro": "Les annonces Instagram pour n'importe quel compte créateur ou entreprise.", "blocs": [["Annonces", ["<code>/veille</code> Instagram suit maintenant <b>n'importe quel compte public Créateur ou Entreprise par son @pseudo</b>. Rien à configurer de ton côté.", "Les emojis de Wumi ne s'affichent plus en code brut dans la ligne d'auteur ou le pied des annonces et des journaux."]]]}},
@@ -247,8 +321,8 @@ const V = [
      ['Corrigé', ['<code>/sanctions</code> n\'affiche plus d\'erreur.']] ] } },
 ];
 const T = {
-  en: { eyebrow: "What's new", titre: 'Wumi keeps <span class="serif grad">growing.</span>', lead: 'Every update, explained simply. New commands can take up to an hour to show up in Discord.', pied: 'Thanks for using Wumi · ', retour: '← Site', accueil: '../' },
-  fr: { eyebrow: 'Nouveautés', titre: 'Wumi ne cesse <span class="serif grad">de grandir.</span>', lead: 'Chaque mise à jour, expliquée simplement. Les nouvelles commandes peuvent mettre jusqu\'à une heure à apparaître dans Discord.', pied: 'Merci d\'utiliser Wumi · ', retour: '← Site', accueil: '../fr/' },
+  en: { une: 'Latest update', tout: 'All updates', cherche: 'Search an update…', lire: 'Read the details', vide: 'No update matches.',  eyebrow: "What's new", titre: 'Wumi keeps <span class="serif grad">growing.</span>', lead: 'Every update, explained simply. New commands can take up to an hour to show up in Discord.', pied: 'Thanks for using Wumi · ', retour: '← Site', accueil: '../' },
+  fr: { une: 'Dernière mise à jour', tout: 'Toutes les mises à jour', cherche: 'Chercher une mise à jour…', lire: 'Lire le détail', vide: 'Aucune mise à jour ne correspond.', eyebrow: 'Nouveautés', titre: 'Wumi ne cesse <span class="serif grad">de grandir.</span>', lead: 'Chaque mise à jour, expliquée simplement. Les nouvelles commandes peuvent mettre jusqu\'à une heure à apparaître dans Discord.', pied: 'Merci d\'utiliser Wumi · ', retour: '← Site', accueil: '../fr/' },
 };
 let langue = 'en';
 try { langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('wumi-lang') || (/^fr/i.test(navigator.language) ? 'fr' : 'en'); } catch (e) {}
@@ -264,12 +338,31 @@ function rendre() {
   const l = document.getElementById('lien-accueil'); if (l) l.href = t.accueil;
   document.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('on', b.dataset.lang === langue));
   document.getElementById('t-pied').innerHTML = t.pied + '<a href="' + t.accueil + '">wumi.fr</a>';
-  document.getElementById('liste').innerHTML = V.map((x) => {
+  const fmt = (d) => d ? new Date(d + 'T12:00:00').toLocaleDateString(langue === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+  const img = (x) => x.img ? (typeof x.img === 'string' ? x.img : x.img[langue]) : null;
+  const id = (x) => 'v' + x.v.replace(/\./g, '-');
+  const titre = (x) => x[langue].titre || ('Wumi ' + x.v);
+  const a = V[0], ca = a[langue];
+  document.getElementById('une').innerHTML = '<article class="une" style="--c:' + (a.couleur || '#62b8ff') + '"><div class="une-txt">'
+    + '<span class="une-pill"><i></i>' + t.une + ' · ' + a.v + '</span><h2>' + titre(a) + '</h2><p>' + ca.intro + '</p>'
+    + '<div class="une-pts">' + (ca.points || []).map((pt) => '<div class="une-pt"><span>' + pt[0] + '</span><div>' + pt[1] + '</div></div>').join('') + '</div>'
+    + '<p class="une-meta">' + fmt(a.date) + (a.date ? ' · ' : '') + '<a href="#' + id(a) + '">' + t.lire + ' ↓</a></p></div>'
+    + '<div class="une-vis">' + (img(a) ? '<img src="' + img(a) + '" alt="">' : '<span class="gros">' + (a.ico || '✨') + '</span>') + '</div></article>';
+  document.getElementById('recents').innerHTML = V.slice(1, 4).map((x) => '<a class="carte" href="#' + id(x) + '" style="--c:' + (x.couleur || '#62b8ff') + '">'
+    + '<div class="carte-vis">' + (img(x) ? '<img src="' + img(x) + '" alt="" loading="lazy">' : (x.ico || '✨')) + '</div>'
+    + '<div class="carte-txt"><small>WUMI ' + x.v + (x.date ? ' · ' + fmt(x.date).toUpperCase() : '') + '</small><h3>' + titre(x) + '</h3><p>' + x[langue].intro + '</p></div></a>').join('');
+  document.getElementById('t-tout').textContent = t.tout;
+  const champ = document.getElementById('cherche'); champ.placeholder = t.cherche;
+  const q = champ.value.trim().toLowerCase();
+  const html = V.map((x) => {
     const c = x[langue];
-    return '<article class="version"><div class="version-tete"><h2>Wumi ' + x.v + '</h2>' + (x.tag ? '<span class="tag">' + x.tag[langue] + '</span>' : '') + '</div><p>' + c.intro + '</p>'
-      + c.blocs.map((b) => '<h3>' + b[0] + '</h3><ul>' + b[1].map((li) => '<li>' + li + '</li>').join('') + '</ul>').join('') + '</article>';
+    const corps = '<p>' + c.intro + '</p>' + c.blocs.map((b) => '<h3>' + b[0] + '</h3><ul>' + b[1].map((li) => '<li>' + li + '</li>').join('') + '</ul>').join('');
+    if (q && !(x.v + ' ' + titre(x) + ' ' + corps.replace(/<[^>]+>/g, ' ')).toLowerCase().includes(q)) return '';
+    return '<article class="version" id="' + id(x) + '" style="--c:' + (x.couleur || '#62b8ff') + '"><div class="version-tete"><span class="num">' + x.v + '</span><h2>' + (x.ico ? x.ico + ' ' : '') + titre(x) + '</h2>' + (x.date ? '<time datetime="' + x.date + '">' + fmt(x.date) + '</time>' : '') + '</div>' + corps + '</article>';
   }).join('');
+  document.getElementById('liste').innerHTML = html || '<p class="vide">' + t.vide + '</p>';
 }
+document.addEventListener('input', (e) => { if (e.target.id === 'cherche') rendre(); });
 document.addEventListener('click', (e) => {
   const b = e.target.closest('[data-lang]');
   if (b) { langue = b.dataset.lang; try { localStorage.setItem('wumi-lang', langue); } catch (er) {} rendre(); }

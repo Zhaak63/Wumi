@@ -51,6 +51,13 @@ h2 small { color: var(--doux); font-weight: 500; font-size: .9rem; }
 .barres i:hover::after { content: attr(data-info); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
   background: #11162b; border: 1px solid var(--bord); padding: 6px 10px; border-radius: 8px; white-space: nowrap; font-size: 13px; font-style: normal; z-index: 2; }
 .legende { display: flex; justify-content: space-between; color: var(--doux); font-size: 13px; margin-top: 8px; }
+.couleurs { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid var(--bord); }
+.couleurs li { display: flex; gap: 10px; align-items: center; }
+.couleurs i { width: 14px; height: 28px; border-radius: 3px; background: var(--vide); flex: none; }
+.couleurs i.v { background: var(--vert); } .couleurs i.o { background: var(--orange); } .couleurs i.r { background: var(--rouge); }
+.couleurs b { display: block; font-size: 14px; font-weight: 600; }
+.couleurs small { display: block; color: var(--doux); font-size: 12.5px; line-height: 1.3; }
+@media (max-width: 640px) { .couleurs { grid-template-columns: 1fr 1fr; } }
 .incident { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bord); font-size: 15px; }
 .incident:last-child { border-bottom: 0; }
 .incident span { color: var(--doux); }
@@ -69,7 +76,7 @@ footer a { color: var(--doux); }
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
 </style>
 <style>
-.annonces{display:grid;gap:12px}
+.annonces{display:grid;gap:12px}.annonces[hidden]{display:none}
 .annonce{border:1px solid var(--line,rgba(255,255,255,.1));border-left:5px solid #ff8a3d;border-radius:14px;padding:16px 18px;background:rgba(255,138,61,.07)}
 .annonce.critique{border-left-color:#ff2860;background:rgba(255,40,96,.08)}
 .annonce.mineur{border-left-color:#f5c518;background:rgba(245,197,24,.08)}
@@ -118,6 +125,12 @@ footer a { color: var(--doux); }
     <h2><span data-t="historique">Disponibilité</span> <small id="dispo-texte"></small></h2>
     <div class="barres" id="barres"></div>
     <div class="legende"><span data-t="il_y_a_90">il y a 90 jours</span><span data-t="aujourdhui">aujourd'hui</span></div>
+    <ul class="couleurs" aria-label="Légende">
+      <li><i class="v"></i><span><b data-t="lg_ok">Opérationnel</b><small data-t="lg_ok_d">99,5 % ou plus</small></span></li>
+      <li><i class="o"></i><span><b data-t="lg_pert">Perturbations</b><small data-t="lg_pert_d">entre 95 et 99,5 %</small></span></li>
+      <li><i class="r"></i><span><b data-t="lg_panne">Panne</b><small data-t="lg_panne_d">moins de 95 %</small></span></li>
+      <li><i></i><span><b data-t="lg_vide">Pas de données</b><small data-t="lg_vide_d">avant le suivi</small></span></li>
+    </ul>
   </section>
 
   <section class="bloc">
@@ -138,12 +151,12 @@ const EN = !/^fr/i.test(navigator.language || 'fr');
 const T = EN ? {
   chargement: 'Loading…', accueil: 'Home', support: 'Support', serveurs: 'servers', membres: 'members', latence: 'latency',
   dispo90: 'uptime (90 d)', historique: 'Uptime', il_y_a_90: '90 days ago', aujourdhui: 'today', incidents: 'Recent outages',
-  aucun_incident: 'No outage recorded.', maj: 'Refreshed every minute', ok: 'Wumi is online', ko: 'Wumi is offline',
+  aucun_incident: 'No outage recorded.', lg_ok: 'Operational', lg_ok_d: '99.5% or more', lg_pert: 'Disruptions', lg_pert_d: 'between 95 and 99.5%', lg_panne: 'Outage', lg_panne_d: 'under 95%', lg_vide: 'No data', lg_vide_d: 'before tracking', maj: 'Refreshed every minute', ok: 'Wumi is online', ko: 'Wumi is offline',
   injoignable: "Wumi can't be reached right now", depuis: 'Up since', releve: 'Last check', pas_donnees: 'no data', duree: 'lasted',
 } : {
   chargement: 'Chargement…', accueil: 'Accueil', support: 'Support', serveurs: 'serveurs', membres: 'membres', latence: 'latence',
   dispo90: 'disponibilité (90 j)', historique: 'Disponibilité', il_y_a_90: 'il y a 90 jours', aujourdhui: "aujourd'hui", incidents: 'Coupures récentes',
-  aucun_incident: 'Aucune coupure enregistrée.', maj: 'Mis à jour toutes les minutes', ok: 'Wumi est en ligne', ko: 'Wumi est hors ligne',
+  aucun_incident: 'Aucune coupure enregistrée.', lg_ok: 'Opérationnel', lg_ok_d: '99,5 % ou plus', lg_pert: 'Perturbations', lg_pert_d: 'entre 95 et 99,5 %', lg_panne: 'Panne', lg_panne_d: 'moins de 95 %', lg_vide: 'Pas de données', lg_vide_d: 'avant le suivi', maj: 'Mis à jour toutes les minutes', ok: 'Wumi est en ligne', ko: 'Wumi est hors ligne',
   injoignable: 'Wumi est injoignable pour le moment', depuis: 'En ligne depuis', releve: 'Dernier relevé', pas_donnees: 'pas de données', duree: 'durée',
 };
 document.documentElement.lang = EN ? 'en' : 'fr';
