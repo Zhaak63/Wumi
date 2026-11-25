@@ -37,6 +37,8 @@ nav a:hover { color: var(--texte); }
 @keyframes pouls { 70% { box-shadow: 0 0 0 12px rgba(61,220,151,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,151,0); } }
 .etat h1 { margin: 0; font-size: clamp(1.4rem, 4vw, 1.9rem); letter-spacing: -.02em; }
 .etat p { margin: 2px 0 0; color: var(--doux); font-size: 15px; }
+.chiffre-version { text-decoration: none; color: inherit; border-color: rgba(255,157,27,.45) !important; }
+.chiffre-version b { color: #ff9d1b; }
 .chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 18px 0 40px; }
 .chiffre { background: var(--carte); border: 1px solid var(--bord); border-radius: 16px; padding: 18px; }
 .chiffre b { display: block; font-size: 1.6rem; letter-spacing: -.02em; }
@@ -113,6 +115,7 @@ footer a { color: var(--doux); }
     <div class="chiffre"><b id="c-membres">—</b><small data-t="membres">membres</small></div>
     <div class="chiffre"><b id="c-latence">—</b><small data-t="latence">latence</small></div>
     <div class="chiffre"><b id="c-dispo">—</b><small data-t="dispo90">disponibilité (90 j)</small></div>
+    <a class="chiffre chiffre-version" href="/nouveautes/"><b id="c-version">v3</b><small data-t="version">version · nouveautés →</small></a>
   </section>
 
   <section class="bloc">
@@ -144,12 +147,12 @@ const SUPPORT = 'https://discord.gg/VaGrXgnAHS';
 
 const EN = !/^fr/i.test(navigator.language || 'fr');
 const T = EN ? {
-  chargement: 'Loading…', accueil: 'Home', support: 'Support', serveurs: 'servers', membres: 'members', latence: 'latency',
+  chargement: 'Loading…', accueil: 'Home', support: 'Support', serveurs: 'servers', membres: 'members', latence: 'latency', version: "version · what's new →",
   dispo90: 'uptime (90 d)', historique: 'Uptime', il_y_a_90: '90 days ago', aujourdhui: 'today', incidents: 'Recent outages',
   aucun_incident: 'No outage recorded.', lg_ok: 'Operational', lg_ok_d: '99.5% or more', lg_pert: 'Disruptions', lg_pert_d: 'between 95 and 99.5%', lg_panne: 'Outage', lg_panne_d: 'under 95%', lg_vide: 'No data', lg_vide_d: 'before tracking', maj: 'Refreshed every minute', ok: 'Wumi is online', ko: 'Wumi is offline',
   injoignable: "Wumi can't be reached right now", depuis: 'Up since', releve: 'Last check', pas_donnees: 'no data', duree: 'lasted',
 } : {
-  chargement: 'Chargement…', accueil: 'Accueil', support: 'Support', serveurs: 'serveurs', membres: 'membres', latence: 'latence',
+  chargement: 'Chargement…', accueil: 'Accueil', support: 'Support', serveurs: 'serveurs', membres: 'membres', latence: 'latence', version: 'version · nouveautés →',
   dispo90: 'disponibilité (90 j)', historique: 'Disponibilité', il_y_a_90: 'il y a 90 jours', aujourdhui: "aujourd'hui", incidents: 'Coupures récentes',
   aucun_incident: 'Aucune coupure enregistrée.', lg_ok: 'Opérationnel', lg_ok_d: '99,5 % ou plus', lg_pert: 'Perturbations', lg_pert_d: 'entre 95 et 99,5 %', lg_panne: 'Panne', lg_panne_d: 'moins de 95 %', lg_vide: 'Pas de données', lg_vide_d: 'avant le suivi', maj: 'Mis à jour toutes les minutes', ok: 'Wumi est en ligne', ko: 'Wumi est hors ligne',
   injoignable: 'Wumi est injoignable pour le moment', depuis: 'En ligne depuis', releve: 'Dernier relevé', pas_donnees: 'pas de données', duree: 'durée',
@@ -190,6 +193,7 @@ async function charger() {
   $('c-serveurs').textContent = a.serveurs == null ? '—' : nf.format(a.serveurs);
   $('c-membres').textContent = a.membres == null ? '—' : nf.format(a.membres);
   $('c-latence').textContent = a.latenceMs == null ? '—' : `${a.latenceMs} ms`;
+  if (a.versionBot) $('c-version').textContent = `v${a.versionBot}`;
 
   const connus = (d.jours || []).filter((j) => j.dispo !== null);
   const moyenne = connus.length ? connus.reduce((s, j) => s + j.dispo, 0) / connus.length : null;
