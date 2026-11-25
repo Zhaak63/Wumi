@@ -3,21 +3,18 @@
 <head>
 <meta charset="utf-8">
 <script>(function(){try{var m=localStorage.getItem('wumi-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=m}catch(e){}})();</script>
-<script>try{if(localStorage.getItem('wumi-lang')==='fr')location.replace('fr/index.html'+location.hash)}catch(e){}</script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wumi · Discord bot & tools</title>
-<meta name="description" content="Wumi, your Discord server's cutest all-in-one companion, plus free Wumi tools: auto roles, welcome messages, moderation, embeds, colored text, timestamps and more.">
+<title>Wumi · The Discord bot that brings your server to life</title>
+<meta name="description" content="Wumi welcomes newcomers, runs music and games in voice, handles levels, tickets and moderation. Free.">
 <meta name="theme-color" content="#62b8ff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Wumi">
 <meta property="og:url" content="https://zhaak63.github.io/Wumi/">
-<meta property="og:title" content="Wumi · Discord bot & tools">
-<meta property="og:description" content="A cute bot that runs your server, and free tools to make it beautiful.">
+<meta property="og:title" content="Wumi · The Discord bot that brings your server to life">
+<meta property="og:description" content="Wumi welcomes newcomers, runs music and games in voice, handles levels, tickets and moderation. Free.">
 <meta property="og:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Wumi logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://zhaak63.github.io/Wumi/og-wumi-en.jpg?v=3">
 <link rel="alternate" hreflang="en" href="https://zhaak63.github.io/Wumi/">
@@ -30,727 +27,227 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0c0d1c; --bg-2:#11132a; --card:#161935; --card-2:#1c2042;
-  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
-  --text:#eef0fc; --muted:#a3a9d1; --dim:#6f76a8;
-  --blue:#62b8ff; --pink:#8fa0ff; --violet:#b9c0ec; --green:#3ddc97;
-  --grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7);
-  --radius:18px; --max:1180px;
-}
+:root{--bg:#0c0d1c;--bg-2:#11132a;--card:#161935;--card-2:#1c2042;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
+--text:#eef0fc;--muted:#a3a9d1;--dim:#6f76a8;--blue:#62b8ff;--pink:#8fa0ff;--green:#3ddc97;--gold:#ffcd4a;
+--grad:linear-gradient(120deg,#4aa8ff,#62b8ff 35%,#a9b4f2 75%,#d9ddf7);
+--dc:#232436;--dc-2:#2b2d42;--dc-txt:#dcdff2;--dc-mut:#9aa0c4;--max:1200px}
+:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f3f5fc;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);
+--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--dc:#ffffff;--dc-2:#f2f3f8;--dc-txt:#2e3338;--dc-mut:#5c5e70}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--bg)}
 body{background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-em.serif,.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
-.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-/* background glow */
-.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-   radial-gradient(600px 400px at 15% -5%,rgba(98,184,255,.18),transparent 70%),
-   radial-gradient(600px 400px at 90% 5%,rgba(143,160,255,.14),transparent 70%);}
-.grid-bg{position:absolute;inset:0;z-index:-1;opacity:.35;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 75%)}
-
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(700px 460px at 12% -8%,rgba(98,184,255,.17),transparent 70%),radial-gradient(640px 420px at 92% 0%,rgba(143,160,255,.13),transparent 70%)}
 /* nav */
-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(12,13,28,.72);border-bottom:1px solid var(--line)}
-nav{display:flex;align-items:center;gap:28px;height:68px}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:26px;height:68px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
-.logo-mark{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(98,184,255,.35))}
-.ava.wumi{background:none;padding:0}.ava.wumi img{width:28px;height:28px;object-fit:contain}
-.logo span.dot{color:var(--pink)}
-.nav-links{display:flex;gap:22px;font-size:14.5px;color:var(--muted)}
+.logo img{width:30px;height:30px}
+:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09)}
+.logo .dot{color:var(--pink)}
+.nav-links{display:flex;gap:24px;font-size:14.5px;color:var(--muted)}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{margin-left:0;display:flex;gap:10px;align-items:center}
-.burger{display:none;margin-left:4px;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;transition:.2s;border:1px solid transparent;white-space:nowrap}
-.btn-primary{background:var(--blue);color:#0c0d1c}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(98,184,255,.4)}
-.btn-ghost{border-color:var(--line-2);color:var(--text);background:rgba(255,255,255,.03)}
-.btn-ghost:hover{background:rgba(255,255,255,.07)}
-.btn-sm{padding:9px 15px;font-size:14px;border-radius:10px}
-
-/* hero */
-.hero{position:relative;padding:90px 0 40px;text-align:center}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border:1px solid var(--line-2);border-radius:99px;font-size:13px;color:var(--muted);background:rgba(255,255,255,.03);margin-bottom:26px}
-.pill b{background:var(--grad);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px;letter-spacing:.04em}
-h1{font-size:clamp(40px,7vw,78px);line-height:1.02;letter-spacing:-.035em;font-weight:700;max-width:900px;margin:0 auto}
-h1 .serif{display:block;font-size:1.08em;font-weight:400}
-.lead{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:620px;margin:24px auto 34px}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-mascot{width:132px;height:110px;object-fit:contain;margin:0 auto 22px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 18px 34px rgba(98,184,255,.4))}
-.hero-mascot.rv.in{opacity:1}
-.hero-note{margin-top:18px;font-size:13px;color:var(--dim)}
-
-/* dashboard mockup */
-.mock{margin:64px auto 0;max-width:1040px;border:1px solid var(--line-2);border-radius:22px;background:linear-gradient(180deg,var(--card),var(--bg-2));box-shadow:0 40px 120px -30px rgba(98,184,255,.25),0 0 0 8px rgba(255,255,255,.02);overflow:hidden;text-align:left;display:grid;grid-template-columns:210px 1fr 280px}
-.mock-side{border-right:1px solid var(--line);padding:18px 14px;font-size:13px}
-.mock-side .srv{display:flex;align-items:center;gap:10px;padding:8px;margin-bottom:16px;border-radius:10px;background:rgba(255,255,255,.04)}
-.ava{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}
-.mock-side h6{font-size:10.5px;letter-spacing:.1em;color:var(--dim);margin:14px 8px 6px;font-weight:600}
-.mock-side a{display:flex;gap:8px;align-items:center;padding:7px 8px;border-radius:8px;color:var(--muted)}
-.mock-side a.on{background:rgba(98,184,255,.12);color:var(--text)}
-.mock-main{padding:22px}
-.mock-main h4{font-size:15px;margin-bottom:14px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.stat{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:12px;padding:12px}
-.stat small{color:var(--dim);font-size:11.5px}
-.stat strong{display:block;font-size:22px;letter-spacing:-.02em}
-.stat i{font-style:normal;font-size:11px;color:var(--green)}
-.feed{border:1px solid var(--line);border-radius:12px}
-.feed-row{display:flex;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);font-size:13px}
-.feed-row:last-child{border-bottom:0}
-.tag{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600}
-.feed-row time{margin-left:auto;color:var(--dim);font-size:12px}
-.mock-chat{border-left:1px solid var(--line);padding:18px;background:rgba(0,0,0,.15);font-size:13px;display:flex;flex-direction:column;gap:14px}
-.mock-chat h6{font-size:10.5px;letter-spacing:.1em;color:var(--dim);font-weight:600}
-.msg{display:flex;gap:10px}
-.msg .name{font-weight:600;font-size:13px}
-.bot{font-size:9.5px;background:#5865f2;color:#fff;padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:1px}
-.msg p{color:var(--muted);font-size:12.5px;line-height:1.45}
-.cmd{color:var(--blue);background:rgba(98,184,255,.1);padding:1px 5px;border-radius:5px;font-family:ui-monospace,monospace;font-size:12px}
-.mention{color:#c9cdfb;background:rgba(88,101,242,.25);padding:0 4px;border-radius:4px}
-
-/* marquee */
-.trust{padding:46px 0 10px;text-align:center}
-.trust p{color:var(--dim);font-size:14px;margin-bottom:18px}
-.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.track{display:flex;gap:12px;width:max-content;animation:scroll 40s linear infinite}
-.chip{display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-family:ui-monospace,monospace;font-size:14px;color:var(--muted)}
-.chip b{color:var(--text);font-weight:500}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.status{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:13px;color:var(--muted)}
-.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(61,220,151,.15)}
-
-/* sections */
-section{padding:110px 0 0}
-.eyebrow{font-size:12.5px;letter-spacing:.14em;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:14px}
-.eyebrow.pink{color:var(--pink)}
-h2{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
-h2 .serif{font-weight:400;font-size:1.06em}
-.sec-head{max-width:640px;margin-bottom:54px}
-.sec-head p{color:var(--muted);font-size:17px;margin-top:16px}
-.sec-head.row{max-width:none;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-
-/* features */
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feat{position:relative;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--card),var(--bg-2));transition:.25s;overflow:hidden}
-.feat:hover{border-color:var(--line-2);transform:translateY(-3px)}
-.feat::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);opacity:0;transition:.25s;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-.feat:hover::after{opacity:.6}
-.feat .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:rgba(255,255,255,.05);border:1px solid var(--line);margin-bottom:20px}
-.feat small{font-size:11.5px;letter-spacing:.12em;color:var(--dim);font-weight:600}
-.feat h3{font-size:21px;letter-spacing:-.02em;margin:6px 0 10px}
-.feat p{color:var(--muted);font-size:15px}
-.feat ul{list-style:none;margin-top:18px;display:grid;gap:8px;font-size:14px;color:var(--text)}
-.feat li::before{content:"✓";color:var(--green);margin-right:8px;font-weight:700}
-
-/* tools */
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.tool{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:.2s}
-.tool:hover{border-color:rgba(143,160,255,.5);background:var(--card-2)}
-.tool .ico{font-size:22px}
-.tool h4{font-size:16.5px;letter-spacing:-.01em}
-.tool p{font-size:14px;color:var(--muted);flex:1}
-.tool span.go{font-size:13px;color:var(--pink);font-weight:600}
-.tool.big{grid-column:span 2;background:linear-gradient(135deg,rgba(143,160,255,.14),rgba(98,184,255,.08) 60%,var(--card));border-color:rgba(143,160,255,.3)}
-
-/* commands */
-.cmds{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-.cmds code{font-family:ui-monospace,monospace;font-size:14.5px;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--blue)}
-
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
-.step .n{font-family:"Instrument Serif",serif;font-size:54px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.step h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.02em}
-.step p{color:var(--muted);font-size:15px}
-
-/* faq */
-.faq-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
-details{border-bottom:1px solid var(--line);padding:22px 0}
-details:first-child{border-top:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:20px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:22px;font-weight:400;color:var(--muted);transition:.2s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{color:var(--muted);margin-top:12px;font-size:15.5px}
-
-/* cta */
-.cta{margin-top:120px;position:relative;text-align:center;padding:80px 24px;border-radius:28px;border:1px solid var(--line-2);overflow:hidden;
-  background:radial-gradient(500px 260px at 20% 0%,rgba(98,184,255,.22),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(143,160,255,.2),transparent 70%),var(--bg-2)}
-.cta .mascot{width:96px;height:96px;margin:0 auto 18px;display:block;animation:float 3.5s ease-in-out infinite;filter:drop-shadow(0 16px 30px rgba(98,184,255,.35))}
-@keyframes float{50%{transform:translateY(-8px)}}
-@keyframes bob{50%{transform:translateY(-8px) rotate(-4deg)}}
-.cta p{color:var(--muted);max-width:540px;margin:16px auto 30px;font-size:17px}
-
-/* footer */
-footer{margin-top:100px;border-top:1px solid var(--line);padding:60px 0 40px}
-.foot{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px}
-.foot p{color:var(--muted);font-size:14.5px;margin-top:14px;max-width:280px}
-.foot h5{font-size:13px;letter-spacing:.1em;color:var(--dim);margin-bottom:14px;font-weight:600;text-transform:uppercase}
-.foot a{display:block;color:var(--muted);font-size:14.5px;padding:4px 0}
-.foot a:hover{color:var(--text)}
-.copy{margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--dim);font-size:13.5px}
-
-/* reveal */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.track,.cta .mascot,.hero-mascot{animation:none}}
-
-/* responsive */
-@media (max-width:980px){
-  .mock{grid-template-columns:1fr}
-  .mock-side,.mock-chat{display:none}
-  .features,.steps{grid-template-columns:1fr 1fr}
-  .tools{grid-template-columns:1fr 1fr}
-  .faq-grid{grid-template-columns:1fr;gap:30px}
-  .foot{grid-template-columns:1fr 1fr}
-}
-@media (max-width:760px){
-  .nav-links,.nav-cta{display:none}
-  .burger{display:block}
-  header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--bg);padding:20px;gap:16px;border-bottom:1px solid var(--line);font-size:16px}
-  .features,.steps,.tools{grid-template-columns:1fr}
-  .tool.big{grid-column:auto}
-  .stats{grid-template-columns:1fr 1fr}
-  .hero{padding-top:60px}
-  section{padding-top:80px}
-  .foot{grid-template-columns:1fr}
-}
-.page-grid{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 130% 100% at 50% 0%,#000 35%,transparent 90%)}
-.lang{display:flex;gap:2px;padding:3px;margin-left:auto;border:1px solid var(--line-2);border-radius:10px;background:rgba(255,255,255,.03)}.lang a{display:grid;place-items:center;width:32px;height:26px;border-radius:7px;opacity:.45;transition:.2s;border:0}.lang a:hover{opacity:.85}.lang a.on{opacity:1;background:rgba(255,255,255,.09)}@media (max-width:760px){nav{gap:12px}.lang a{width:30px}}
-.lang svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
-
-/* ---------- Theme clair (bouton soleil/lune, ou reglage de l'appareil) ---------- */
-:root[data-theme="light"]{--bg:#f5f7fd;--bg-2:#edf0fa;--card:#ffffff;--card-2:#f4f6fe;--line:rgba(22,28,70,.09);--line-2:rgba(22,28,70,.16);--text:#151935;--muted:#4e5582;--dim:#7a80a7;--blue:#1a7fe8;--pink:#5466f0;--violet:#6470c4;--green:#0f9a63;--grad:linear-gradient(120deg,#1a7fe8,#3a95f5 40%,#6f7de6 80%,#8f98ec);color-scheme:light}
-:root[data-theme="light"] header{background:rgba(245,247,253,.8)}
-:root[data-theme="light"] .glow{background:radial-gradient(600px 400px at 15% -5%,rgba(26,127,232,.12),transparent 70%),radial-gradient(600px 400px at 90% 5%,rgba(84,102,240,.1),transparent 70%)}
-:root[data-theme="light"] .page-grid,:root[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(22,28,70,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,70,.07) 1px,transparent 1px)}
-:root[data-theme="light"] .btn-primary{color:#fff}
-:root[data-theme="light"] .btn-primary:hover{box-shadow:0 10px 30px rgba(26,127,232,.35)}
-:root[data-theme="light"] .btn-ghost,:root[data-theme="light"] .pill,:root[data-theme="light"] .lang{background:rgba(22,28,70,.03)}
-:root[data-theme="light"] .btn-ghost:hover{background:rgba(22,28,70,.06)}
-:root[data-theme="light"] .lang a.on{background:rgba(22,28,70,.08)}
-:root[data-theme="light"] .lang svg{box-shadow:0 0 0 1px rgba(22,28,70,.18)}
-:root[data-theme="light"] .mock{background:linear-gradient(180deg,#fff,var(--bg-2));box-shadow:0 40px 100px -40px rgba(26,127,232,.35),0 0 0 8px rgba(22,28,70,.03)}
-:root[data-theme="light"] .mock-side .srv,:root[data-theme="light"] .stat,:root[data-theme="light"] .feat .ico{background:rgba(22,28,70,.035)}
-:root[data-theme="light"] .mock-side a.on{background:rgba(26,127,232,.1)}
-:root[data-theme="light"] .mock-chat{background:rgba(22,28,70,.025)}
-:root[data-theme="light"] .mention{color:#3d47c9;background:rgba(88,101,242,.14)}
-:root[data-theme="light"] .msg .cmd{background:rgba(26,127,232,.09)}
-:root[data-theme="light"] .feat{background:linear-gradient(180deg,#fff,var(--card-2));box-shadow:0 1px 2px rgba(22,28,70,.04)}
-:root[data-theme="light"] .feat:hover,:root[data-theme="light"] .tool:hover{box-shadow:0 14px 34px -18px rgba(22,28,70,.25)}
-:root[data-theme="light"] .tool.big{background:linear-gradient(135deg,rgba(84,102,240,.1),rgba(26,127,232,.06) 60%,#fff);border-color:rgba(84,102,240,.25)}
-:root[data-theme="light"] .tool:hover{border-color:rgba(84,102,240,.4)}
-:root[data-theme="light"] .cta{background:radial-gradient(500px 260px at 20% 0%,rgba(26,127,232,.14),transparent 70%),radial-gradient(500px 260px at 80% 100%,rgba(84,102,240,.12),transparent 70%),#fff}
-:root[data-theme="light"] .hero-mascot,:root[data-theme="light"] .cta .mascot{filter:brightness(0) invert(.09) drop-shadow(0 16px 26px rgba(26,127,232,.3))}
-:root[data-theme="light"] .logo-mark,:root[data-theme="light"] .ava.wumi img,:root[data-theme="light"] .logo img{filter:brightness(0) invert(.09) drop-shadow(0 4px 10px rgba(26,127,232,.25))}
-:root[data-theme="light"] .status::before{box-shadow:0 0 0 4px rgba(15,154,99,.15)}
-:root[data-theme="light"] .tag[style*="ffbe50"]{color:#b06d00!important;background:rgba(255,170,40,.16)!important}
-:root[data-theme="light"] .btn{background:rgba(22,28,70,.03)}
-:root[data-theme="light"] .btn.on,:root[data-theme="light"] .btn-primary{background:var(--blue);color:#fff}
-:root[data-theme="light"] .outils{background:var(--bg)}
-:root[data-theme="light"] .filtre{background:rgba(22,28,70,.03)}
-:root[data-theme="light"] .filtre.on{background:rgba(26,127,232,.12)}
-:root[data-theme="light"] .badge{background:rgba(22,28,70,.06)}
-:root[data-theme="light"] .cmd{box-shadow:0 1px 2px rgba(22,28,70,.04)}
-.theme{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;font-size:16px;line-height:1;flex:none}
-.theme:hover{background:rgba(255,255,255,.07)}
-:root[data-theme="light"] .theme{background:rgba(22,28,70,.03)}
-:root[data-theme="light"] .theme:hover{background:rgba(22,28,70,.07)}
+.nav-fin{margin-left:auto;display:flex;gap:10px;align-items:center}
+.lang{display:flex;gap:4px}.lang a{width:26px;height:18px;border-radius:4px;overflow:hidden;opacity:.5;border:1px solid var(--line-2)}.lang a.on{opacity:1}.lang svg{width:100%;height:100%;display:block}
+.theme{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--line-2);background:transparent;cursor:pointer;font-size:15px}
 .theme .soleil{display:none}:root[data-theme="light"] .theme .soleil{display:block}:root[data-theme="light"] .theme .lune{display:none}
-.reseaux{display:flex;gap:10px;margin-top:18px}.reseaux a{display:grid;place-items:center;width:42px;height:42px;padding:0!important;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--muted);transition:.2s}.reseaux a:hover{color:var(--text);border-color:var(--blue);transform:translateY(-2px)}.reseaux svg{width:19px;height:19px}:root[data-theme="light"] .reseaux a{background:rgba(22,28,70,.03)}
-
-/* 2.35 : aperçus de commandes (façon message Discord) */
-#apercus .ap-grille{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:980px){#apercus .ap-grille{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){#apercus .ap-grille{grid-template-columns:1fr}}
-.ap{border:1px solid var(--line-2);border-radius:var(--radius);background:var(--card);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.ap:hover{transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(98,184,255,.45)}
-.ap-ecran{background:#313338;color:#dbdee1;padding:14px;font-size:13.5px;line-height:1.45;min-height:250px;display:flex;flex-direction:column;gap:10px}
-.ap-cmd{align-self:flex-start;background:#2b2d31;border:1px solid #3f4147;border-radius:8px;padding:4px 10px;font:600 12.5px/1.6 ui-monospace,Menlo,monospace;color:#c9cdfb}
-.ap-msg{display:flex;gap:10px}
-.ap-av{width:34px;height:34px;border-radius:50%;background:#1e1f22;padding:5px;flex:none}
-.ap-nom{font-weight:600;color:#fff;font-size:13.5px}
-.ap-app{background:#5865f2;color:#fff;border-radius:4px;font-size:9.5px;font-weight:700;padding:1px 4px;margin-left:4px;vertical-align:2px}
-.ap-boite{margin-top:5px;background:#2b2d31;border-left:3px solid var(--blue);border-radius:6px;padding:9px 11px}
-.ap-boite b{color:#fff}
-.ap-btns{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.ap-btn{border-radius:5px;padding:4px 10px;font-size:12px;font-weight:600;color:#fff;background:#4e5058}
-.ap-btn.v{background:#248046}.ap-btn.b{background:#5865f2}
-.ap-img{border-radius:8px;margin-top:6px;max-height:230px;width:auto}
-.ap-barre{text-decoration:line-through;opacity:.55}
-.ap-salons{background:#2b2d31;border-radius:8px;padding:8px 10px;font-size:13px}
-.ap-salons div{padding:3px 0;color:#949ba4}.ap-salons .cat{color:#dbdee1;font-weight:600;font-size:11.5px;letter-spacing:.04em}
-.ap-txt{padding:16px 18px 18px}
-.ap-txt h3{font-size:17px;letter-spacing:-.01em;margin-bottom:4px}
-.ap-txt p{color:var(--muted);font-size:14px}
-
-/* vitrine : les serveurs qui ont Wumi (opt-in, /api/vitrine) */
-.vitrine{padding:34px 0 6px;text-align:center}
-.vitrine[hidden]{display:none}
-.vitrine p{color:var(--muted);font-size:14px;margin-bottom:16px}
-.vitrine p b{color:var(--text)}
-.vt-rail{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.vt-track{display:flex;gap:12px;width:max-content;animation:vt-defile var(--vt-duree,60s) linear infinite}
+.burger{display:none;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:.2s;border:1px solid transparent;white-space:nowrap;cursor:pointer}
+.btn-p{background:var(--blue);color:#0c0d1c}:root[data-theme="light"] .btn-p{color:#fff}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(98,184,255,.4)}
+.btn-g{border-color:var(--line-2);background:rgba(127,127,127,.05)}
+.btn-g:hover{background:rgba(127,127,127,.1)}
+.btn-sm{padding:9px 15px;font-size:14px;border-radius:10px}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;padding:72px 0 40px}
+.eye{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.eye::before{content:"";width:18px;height:2px;border-radius:2px;background:currentColor}
+h1{font-size:clamp(40px,5.6vw,68px);line-height:1.03;letter-spacing:-.035em;margin:18px 0}
+.lead{font-size:clamp(16px,1.8vw,19px);color:var(--muted);max-width:540px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.note{margin-top:14px;font-size:13px;color:var(--dim)}
+.collage{position:relative;height:540px}
+.cl{position:absolute;border-radius:16px;background:var(--dc);border:1px solid var(--line-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.55);padding:14px 16px;color:var(--dc-txt);font-size:13.5px}
+.cl small{display:block;color:var(--dc-mut);font-size:11.5px;font-weight:600;letter-spacing:.06em;margin-bottom:6px}
+.cl b{color:var(--dc-txt)}
+.cl-1{left:0;top:10px;width:300px;transform:rotate(-2deg)}
+.cl-2{right:0;top:0;width:250px;transform:rotate(2deg)}
+.cl-3{left:40px;top:220px;width:270px}
+.cl-4{right:20px;top:190px;width:250px;transform:rotate(-1.5deg)}
+.cl-5{left:0;bottom:20px;width:290px;transform:rotate(1.5deg)}
+.cl-6{right:0;bottom:0;width:270px;transform:rotate(-2deg)}
+@media (prefers-reduced-motion:no-preference){.cl{animation:flotte 7s ease-in-out infinite}.cl-2,.cl-5{animation-delay:-2s}.cl-3,.cl-6{animation-delay:-4s}@keyframes flotte{50%{translate:0 -8px}}}
+.wcard{border-radius:10px;padding:16px;text-align:center;color:#fff;background:radial-gradient(200px 100px at 20% 0%,rgba(98,184,255,.55),transparent 70%),radial-gradient(200px 100px at 90% 100%,rgba(169,180,242,.5),transparent 70%),#1b1d3a}
+.wcard i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 6px;border-radius:50%;background:linear-gradient(135deg,#62b8ff,#a9b4f2);font-style:normal;font-weight:700;box-shadow:0 0 0 3px #fff}
+.wcard span{display:block;font-size:10px;letter-spacing:.2em;opacity:.75}.wcard strong{font-size:19px}
+.bar{height:7px;border-radius:9px;background:rgba(127,127,127,.25);overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;border-radius:9px;background:var(--c,var(--blue))}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.chips span{padding:4px 9px;border-radius:7px;background:var(--dc-2);font-size:12px;font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.btns span{padding:6px 12px;border-radius:8px;background:#4e5058;color:#fff;font-size:12.5px;font-weight:600}
+.btns .p{background:#5865f2}.btns .v{background:#248046}.btns .r{background:#da373c}
+/* preuve sociale */
+.preuve{padding:26px 0 10px;text-align:center}
+.preuve p{color:var(--muted);font-size:15px}.preuve p b{color:var(--text);font-size:18px}
+.vt-rail{overflow:hidden;margin-top:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.vt-rail[hidden]{display:none}
+.vt-track{display:flex;gap:12px;width:max-content;animation:defile var(--duree,60s) linear infinite}
 .vt-rail:hover .vt-track{animation-play-state:paused}
-.vt-srv{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:1px solid var(--line);border-radius:14px;background:var(--card);white-space:nowrap}
-.vt-srv img,.vt-srv .vt-ini{width:34px;height:34px;border-radius:10px;flex:none}
-.vt-srv .vt-ini{display:grid;place-items:center;background:var(--grad);color:var(--bg);font-weight:700;font-size:13px}
-.vt-srv b{display:block;font-size:14px;max-width:200px;overflow:hidden;text-overflow:ellipsis;text-align:left}
-.vt-srv small{display:block;color:var(--dim);font-size:12px;text-align:left}
-@keyframes vt-defile{to{transform:translateX(-50%)}}
+.vt{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border:1px solid var(--line);border-radius:14px;background:var(--card);white-space:nowrap}
+.vt img,.vt .ini{width:34px;height:34px;border-radius:10px;flex:none}.vt .ini{display:grid;place-items:center;background:var(--grad);color:#0c0d1c;font-weight:700;font-size:13px}
+.vt b{display:block;font-size:14px;text-align:left;max-width:200px;overflow:hidden;text-overflow:ellipsis}.vt small{display:block;color:var(--dim);font-size:12px;text-align:left}
+@keyframes defile{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.vt-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
+/* sections numerotees */
+.sec{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;padding:96px 0;border-top:1px solid var(--line)}
+.sec.inv .sec-txt{order:2}
+.num{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.num b{display:grid;place-items:center;min-width:30px;height:24px;padding:0 6px;border-radius:7px;background:var(--c);color:#0c0d1c;font-size:12.5px;letter-spacing:0}
+h2{font-size:clamp(32px,4.2vw,50px);line-height:1.05;letter-spacing:-.03em;margin:16px 0 14px}
+h2 .serif{color:var(--c)}
+.sec p.sub{color:var(--muted);font-size:17px;max-width:500px}
+.puces{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.puces span{padding:7px 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);font-size:14px;font-weight:500}
+.puces span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--c);margin-right:8px;vertical-align:1px}
+.lien{display:inline-flex;gap:6px;margin-top:24px;font-weight:600;color:var(--c)}
+.lien:hover{gap:10px}
+/* maquettes discord */
+.dc{border-radius:18px;overflow:hidden;border:1px solid var(--line-2);background:var(--dc);color:var(--dc-txt);box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
+.dc-top{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid rgba(127,127,127,.18);font-weight:600;font-size:15px}
+.dc-top i{color:var(--dc-mut);font-style:normal;font-size:20px;font-weight:400}
+.dc-body{padding:18px;display:grid;gap:16px}
+.m{display:grid;grid-template-columns:40px 1fr;gap:12px}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px}
+.av.w{background:radial-gradient(circle at 40% 40%,#3a78b6,#1b2c52 80%)}.av.w img{width:26px;height:26px}
+.qui{display:flex;align-items:center;gap:6px;font-weight:600;font-size:15px}
+.qui .app{font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;background:#5865f2;color:#fff}
+.qui time{color:var(--dc-mut);font-size:12px;font-weight:400}
+.sl{color:var(--dc-mut);font-size:14px;margin-top:2px}.sl code{font-family:inherit;color:#c9cdfb;background:rgba(88,101,242,.22);padding:1px 6px;border-radius:5px;font-weight:600}
+:root[data-theme="light"] .sl code,:root[data-theme="light"] .men{color:#3d47c9}
+.ct{margin-top:6px;border-radius:10px;background:var(--dc-2);border-left:4px solid var(--c);padding:14px 16px;max-width:520px;font-size:14.5px}
+.ct h4{font-size:15.5px;margin-bottom:6px}.ct p{margin:3px 0}.ct .mu{color:var(--dc-mut);font-size:13px}
+.ct .sep{height:1px;background:rgba(127,127,127,.2);margin:10px 0}
+.ct img{border-radius:8px;margin-top:10px}
+.men{color:#c9cdfb;background:rgba(88,101,242,.22);border-radius:4px;padding:0 3px}
+.ch{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:8px}.ch small{display:block;color:var(--dc-mut);font-size:11.5px;font-weight:600}
+.choix{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.choix span{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--dc);border:1px solid rgba(127,127,127,.2);font-weight:600;font-size:14px}
+.choix span i{display:grid;place-items:center;width:26px;height:26px;border-radius:7px;font-style:normal;color:#0c0d1c;font-weight:700;font-size:13px;flex:none}
+.choix .ok{border-color:#3ddc97;box-shadow:inset 0 0 0 1px #3ddc97}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini{border-radius:16px;border:1px solid var(--line-2);background:var(--card);padding:18px}
+.mini h5{font-size:16px;margin-bottom:4px}.mini p{color:var(--muted);font-size:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.rang{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:linear-gradient(120deg,#1d2350,#2b2f66);color:#fff;margin-top:8px}
+.rang .av{width:56px;height:56px;font-size:20px;background:linear-gradient(135deg,#bf9bff,#62b8ff)}
+.rang b{font-size:17px}.rang small{opacity:.75;font-size:12px}
+/* liste complete */
+.tout{padding:96px 0;border-top:1px solid var(--line);text-align:center}
+.tout p.sub{color:var(--muted);font-size:17px;margin:0 auto}
+.groupes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;text-align:left}
+.gr{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:18px}
+.gr h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.gr div{display:flex;flex-wrap:wrap;gap:6px}.gr span{font-size:13.5px;padding:4px 9px;border-radius:8px;background:rgba(127,127,127,.08)}
+.tout .lien{color:var(--blue)}
+/* cta final */
+.final{margin:20px 0 80px;padding:64px 24px;border-radius:28px;text-align:center;border:1px solid var(--line-2);background:radial-gradient(600px 300px at 15% 0%,rgba(98,184,255,.2),transparent 70%),radial-gradient(600px 300px at 85% 100%,rgba(169,180,242,.18),transparent 70%),var(--card)}
+.final h2{margin-top:0}.final p{color:var(--muted);font-size:17px}.final .ctas{justify-content:center}
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 34px;color:var(--muted);font-size:14px}
+.f-grille{display:grid;grid-template-columns:1.4fr repeat(5,1fr);gap:28px}
+.f-grille h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.f-grille a{display:block;margin:7px 0}.f-grille a:hover{color:var(--text)}
+.f-grille p{margin:12px 0;max-width:260px}
+.reseaux{display:flex;gap:10px}.reseaux a{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line-2);margin:0}.reseaux svg{width:16px;height:16px}
+.f-bas{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+@media (max-width:1000px){.hero,.sec{grid-template-columns:1fr;gap:36px}.sec.inv .sec-txt{order:0}.collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.cl{position:static;width:auto!important;transform:none!important}
+.groupes{grid-template-columns:1fr 1fr}.f-grille{grid-template-columns:1fr 1fr 1fr}.nav-links{display:none}.burger{display:block}
+header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--line)}}
+@media (max-width:640px){.collage{grid-template-columns:1fr}.cl-4,.cl-6{display:none}.duo,.trio,.choix,.ch{grid-template-columns:1fr}.groupes{grid-template-columns:1fr}.f-grille{grid-template-columns:1fr 1fr}.nav-fin .btn-g{display:none}.sec{padding:64px 0}.lang{display:none}}
 </style>
 </head>
-<body>
-<div class="glow"></div><div class="page-grid"></div>
-
-<header id="hdr">
-  <nav class="wrap">
-    <a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a>
-    <div class="nav-links">
-      <a href="fonctionnalites/?lang=en">Features</a>
-      <a href="#outils">Tools</a>
-      <a href="#commandes">Commands</a>
-      <a href="#demarrer">Get started</a>
-      <a href="#faq">FAQ</a>
-      <a href="statut/">Status</a>
-      <a href="dashboard/">Dashboard</a>
-    </div>
-    <div class="lang" role="group" aria-label="Language"><a href="index.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/index.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
-    <div class="nav-cta">
-      <a class="btn btn-ghost btn-sm" href="https://discord.gg/VaGrXgnAHS">Support</a>
-      <a class="btn btn-primary btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
-    </div>
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('hdr').classList.toggle('open')">☰</button>
-  </nav>
-</header>
-
-<main id="top">
-  <!-- HERO -->
-  <div class="hero">
-    <div class="wrap">
-      <img src="wumi-w.svg" alt="Wumi" class="hero-mascot rv">
-      <div class="pill rv"><b>NEW</b> <a href="premium/" style="color:inherit;text-decoration:none">✨ Wumi Premium: exclusive themes, your own card background →</a></div>
-      <h1 class="rv">A server that thrives. <span class="serif grad-text">A bot that keeps up.</span></h1>
-      <p class="lead rv">Wumi welcomes your members, hands out roles and keeps an eye on moderation. And to make your server beautiful, all the Wumi tools are right next door, for free.</p>
-      <div class="hero-ctas rv">
-        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord →</a>
-        <a class="btn btn-ghost" href="#outils">See the free tools</a>
-      </div>
-      <p class="hero-note rv">Free · Ready in one command · Slash commands</p>
-
-      <!-- Dashboard mockup -->
-      <div class="mock rv">
-        <aside class="mock-side">
-          <div class="srv"><div class="ava" style="background:var(--grad)">W</div><div><b>My server</b><br><span style="color:var(--dim);font-size:11.5px">1,284 members</span></div></div>
-          <h6>MAIN</h6>
-          <a class="on">🏠 Home</a><a>👥 Members</a>
-          <h6>MODULES</h6>
-          <a>🎀 Auto roles</a><a>🌸 Reaction roles</a><a>👋 Welcome</a><a>🛡️ Moderation</a>
-          <h6>TOOLS</h6>
-          <a>🎨 Embeds</a><a>🌈 Colored text</a>
-        </aside>
-        <div class="mock-main">
-          <h4>Today on your server</h4>
-          <div class="stats">
-            <div class="stat"><small>New members</small><strong>42</strong><i>▲ 12</i></div>
-            <div class="stat"><small>Roles given</small><strong>118</strong><i>▲ 30</i></div>
-            <div class="stat"><small>Sanctions</small><strong>3</strong><i style="color:var(--dim)">~ 0</i></div>
-            <div class="stat"><small>Games played</small><strong>27</strong><i>▲ 9</i></div>
-          </div>
-          <div class="feed">
-            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--blue)">N</div><span class="tag" style="background:rgba(61,220,151,.15);color:var(--green)">Role</span><span><b>Noa</b> got @Member</span><time>2 min</time></div>
-            <div class="feed-row"><div class="ava" style="background:rgba(143,160,255,.2);color:var(--pink)">L</div><span class="tag" style="background:rgba(255,190,80,.15);color:#ffbe50">Timeout</span><span><b>Léo</b> : mention spam</span><time>1 h</time></div>
-            <div class="feed-row"><div class="ava" style="background:rgba(98,184,255,.2);color:var(--violet)">S</div><span class="tag" style="background:rgba(98,184,255,.15);color:var(--blue)">Game</span><span><b>Sam</b> won at tic-tac-toe</span><time>3 h</time></div>
-          </div>
-        </div>
-        <aside class="mock-chat">
-          <h6># WELCOME</h6>
-          <div class="msg"><div class="ava" style="background:#7b80b8;color:#fff">M</div><div><span class="name">Maya</span><p><span class="cmd">/autorole add</span> role: <span class="mention">@Member</span></p></div></div>
-          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>All set! New arrivals will automatically receive <span class="mention">@Member</span>.</p></div></div>
-          <div class="msg"><div class="ava wumi"><img src="wumi-icone.svg" alt="Wumi"></div><div><span class="name">Wumi<span class="bot">BOT</span></span><p>Welcome to the server, <span class="mention">@Noa</span>! I gave you the @Member role :3</p></div></div>
-        </aside>
-      </div>
-    </div>
+<body id="top">
+<div class="glow"></div>
+<header id="hdr"><nav class="wrap">
+  <a href="#top" class="logo"><img src="wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
+  <div class="nav-links"><a href="#fonctionnalites">Features</a><a href="premium/">Premium</a><a href="commandes/?lang=en">Docs</a><a href="statut/">Status</a></div>
+  <div class="nav-fin"><div class="lang" role="group" aria-label="Language"><a href="index.html" data-lang="en" hreflang="en" title="English" class="on"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="fr/index.html" data-lang="fr" hreflang="fr" title="Français" class=""><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <a class="btn btn-g btn-sm" href="https://discord.gg/VaGrXgnAHS">Support</a>
+    <a class="btn btn-p btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&amp;scope=bot%20applications.commands&amp;permissions=1426362592470">Add to Discord</a>
+    <button class="burger" type="button" aria-label="Menu" onclick="document.getElementById('hdr').classList.toggle('open')">☰</button>
   </div>
-
-  <!-- MARQUEE -->
-  <div class="trust">
-    <p>Everything your server needs, in <b style="color:var(--text)">one slash</b></p>
-    <div class="marquee"><div class="track" id="track"></div></div>
-    <div class="status">All systems running</div>
+</nav></header>
+<main class="wrap">
+<section class="hero">
+  <div>
+    <span class="eye">The all-in-one Discord bot</span>
+    <h1>A lively server, <span class="serif grad">without the effort.</span></h1>
+    <p class="lead">Wumi welcomes newcomers, runs music and games in voice, rewards your members and takes care of moderation. Everything is set in one command.</p>
+    <div class="ctas"><a class="btn btn-p" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&amp;scope=bot%20applications.commands&amp;permissions=1426362592470">Add to Discord, it's free</a><a class="btn btn-g" href="dashboard/">My dashboard</a></div>
+    <p class="note">Free · ready in a minute</p>
   </div>
+  <div class="collage" aria-hidden="true">
+<div class="cl cl-1"><small>#welcome</small><div class="wcard"><i>N</i><span>WELCOME</span><strong>Noa</strong></div></div>
+<div class="cl cl-2"><small>LEVEL UP</small><b>🎉 Sam · level 12</b><div class="bar" style="--c:#bf9bff"><i style="width:68%"></i></div></div>
+<div class="cl cl-3"><small>MUSIC QUIZ</small><b>Round 3/10</b><div class="chips"><span>A · Get Lucky</span><span style="background:#3ddc97;color:#0c0d1c">B · Blinding Lights</span></div></div>
+<div class="cl cl-4"><small>LIVE ALERT</small><b>🟣 Mira is live!</b><div class="btns"><span class="p">Watch</span></div></div>
+<div class="cl cl-5"><small>NOW PLAYING</small><b>🎵 Blinding Lights</b><div class="bar" style="--c:#62e3ff"><i style="width:44%"></i></div><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span></div></div>
+<div class="cl cl-6"><small>TICKET</small><b>🎫 The bot stopped replying</b><div class="btns"><span class="v">Solved</span></div></div>
+</div>
+</section>
+<section class="preuve">
+  <p>Already on <b id="nb-serveurs">hundreds of</b> servers</p>
+  <div class="vt-rail" id="vitrine" hidden><div class="vt-track" id="vt-track"></div></div>
+</section>
+<div id="fonctionnalites"></div>
+<section class="sec" id="jeux" style="--c:#ffa75a"><div class="sec-txt"><span class="num"><b>01</b>Games</span><h2>Tonight, <span class="serif">we play.</span></h2><p class="sub">Music quiz, "Who picked it?", vibe check and blind test: Wumi plays the tracks in voice, everyone answers from Discord and scores go straight to the leaderboard.</p><div class="puces"><span>Music quiz</span><span>Who picked it?</span><span>Vibe check</span><span>Blind test</span><span>Wumi Run</span><span>Mini-games</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>games</div><div class="dc-body"><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#ffa75a"><h4>🎵 Round 3/10</h4><p>What&#39;s this song?</p><div class="choix"><span><i style="background:#62b8ff">A</i>Get Lucky</span><span class="ok"><i style="background:#3ddc97">B</i>Blinding Lights</span><span><i style="background:#ffcd4a">C</i>Levitating</span><span><i style="background:#ff8cc0">D</i>Bad Guy</span></div><div class="sep"></div><p class="mu">🥇 Sam 2 840 · 🥈 Ana 2 310 · 🥉 Léo 1 700</p></div></div></div><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#2fb6a5"><h4>🕵️ It was <span class="men">@Mika</span>&#39;s pick!</h4><p>Nice one : <span class="men">@Ana</span> · <span class="men">@Léo</span> (+1)</p><p class="mu">Next track in 4 s…</p></div></div></div></div></div></div></section>
+<section class="sec inv" id="bienvenue" style="--c:#ffcd4a"><div class="sec-txt"><span class="num"><b>02</b>Welcome</span><h2>Newcomers <span class="serif">stay.</span></h2><p class="sub">A welcome card with their name, an automatic role, a private message with the rules and self-assigned roles: they feel at home from the first minute.</p><div class="puces"><span>Welcome card</span><span>Auto role</span><span>Private message</span><span>Self roles</span><span>Captcha verification</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>welcome</div><div class="dc-body"><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#ffcd4a"><p>Welcome <span class="men">@Noa</span> ! 👋</p><div class="wcard"><i>N</i><span>WELCOME</span><strong>Noa</strong><span style="letter-spacing:0;font-size:11.5px;opacity:.7">Member #1,285</span></div><div class="btns"><span class="p">Read the rules</span><span>Pick my roles</span></div></div></div></div></div></div></div></section>
+<section class="sec" id="niveaux" style="--c:#bf9bff"><div class="sec-txt"><span class="num"><b>03</b>Levels</span><h2>Your regulars <span class="serif">in the spotlight.</span></h2><p class="sub">XP from chatting and voice, an image rank card, unlockable roles and a monthly recap to share.</p><div class="puces"><span>Text & voice XP</span><span>Rank card</span><span>Leaderboard</span><span>Reward roles</span><span>Prestige</span><span>/wrapped</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>general</div><div class="dc-body"><div class="m"><div class="av" style="background:#2ecc71">S</div><div><div class="qui">Sam<time>Today</time></div><div class="sl">used <code>/rank</code></div><div class="ct" style="--c:#bf9bff"><div class="rang" style="margin-top:0"><div class="av">S</div><div style="flex:1"><b>Sam</b> <small>· rank #2</small><div class="bar" style="--c:#bf9bff"><i style="width:68%"></i></div><small>Level 12 · 3 400 / 5 000 XP</small></div></div></div></div></div><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#bf9bff"><h4>🎉 GG <span class="men">@Sam</span>, level 12!</h4><p class="mu">Role unlocked : <span class="men">@Regular</span></p></div></div></div></div></div></div></section>
+<section class="sec inv" id="musique" style="--c:#62e3ff"><div class="sec-txt"><span class="num"><b>04</b>Music</span><h2>Listening <span class="serif">together.</span></h2><p class="sub">Play music from YouTube, Spotify or SoundCloud, share the queue with the whole voice channel, or start a radio that runs 24/7.</p><div class="puces"><span>YouTube</span><span>Spotify</span><span>SoundCloud</span><span>24/7 radios</span><span>Audio filters</span><span>Shared queue</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>music</div><div class="dc-body"><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#62e3ff"><h4>🎵 Now playing</h4><p><b>Blinding Lights</b> · The Weeknd</p><div class="bar" style="--c:#62e3ff"><i style="width:44%"></i></div><p class="mu" style="margin-top:6px">1:42 / 3:20 · added by Ana</p><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span><span>🔁</span><span>🔀</span></div><div class="sep"></div><p class="mu">UP NEXT</p><p>1. Get Lucky · Daft Punk</p><p>2. Levitating · Dua Lipa</p><p class="mu">+ 6 tracks · 5 listening together</p></div></div></div></div></div></div></section>
+<section class="sec" id="cartes" style="--c:#ff8cc0"><div class="sec-txt"><span class="num"><b>05</b>Collectible cards</span><h2>72 creatures <span class="serif">to collect.</span></h2><p class="sub">A booster every 100 messages, a free one every day, ultra-rare shiny cards, a binder and a showcase. No trading: every collection is earned.</p><div class="puces"><span>6 families</span><span>6 rarities</span><span>Shiny cards</span><span>Binder</span><span>Showcase</span><span>Shop</span></div><a class="lien" href="fonctionnalites/?lang=en#cartes">See the cards →</a></div><div><div class="duo"><img src="assets/apercus/carte-en.webp" alt="" loading="lazy" style="border-radius:16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)"><img src="assets/apercus/classeur-en.webp" alt="" loading="lazy" style="border-radius:16px;align-self:center;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)"></div></div></section>
+<section class="sec" id="organisation" style="--c:#7b9bff;grid-template-columns:1fr;gap:0"><div class="sec-txt"><span class="num"><b>06</b>Organisation</span><h2>Your staff <span class="serif">can breathe.</span></h2><p class="sub">Private tickets that answer themselves with the FAQ, giveaways drawn automatically, and voice channels that create and remove themselves.</p></div><div class="trio"><div class="mini"><h5>🎫 Tickets & FAQ</h5><p>The right FAQ entry arrives as soon as it opens.</p><div class="btns"><span class="v">Solved</span><span>Wait for the team</span></div></div><div class="mini"><h5>🎁 Giveaways</h5><p>Automatic draw, bonus chances per role.</p><div class="btns"><span class="v">🎉 Enter</span></div><p class="mu" style="margin-top:8px;font-size:12.5px;color:var(--dim)">87 entries · ends in 2 d</p></div><div class="mini"><h5>🔊 Temp voice</h5><p>Join "Create your room", it vanishes when empty.</p><div class="chips" style="margin-top:12px"><span>➕ Create your room</span><span>🔊 Leo&#39;s room</span></div></div></div></section>
+<section class="sec" id="alertes" style="--c:#ff7ad9"><div class="sec-txt"><span class="num"><b>07</b>Alerts & announcements</span><h2>Your community there <span class="serif">for every stream.</span></h2><p class="sub">Twitch, YouTube, TikTok, Instagram or RSS: Wumi announces your creators with your message and the right ping. And for the rest: embeds, stats channels, birthdays.</p><div class="puces"><span>Live alerts</span><span>New videos</span><span>Embeds</span><span>Stats channels</span><span>Birthdays</span><span>Suggestions</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>announcements</div><div class="dc-body"><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#9146ff"><p><span class="men">@Stream fans</span> Mira is live!</p><h4 style="margin-top:8px">Sunset chill</h4><p class="mu">Twitch · 1 240 viewers</p><div class="btns"><span class="p">Watch the stream</span></div></div></div></div><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#ff4e45"><p>New video from <b>Nova</b> 🎬</p><h4 style="margin-top:8px">I tried 10 Discord bots</h4><div class="btns"><span class="r">Watch on YouTube</span></div></div></div></div></div></div></div></section>
+<section class="sec inv" id="moderation" style="--c:#ff7a7a"><div class="sec-txt"><span class="num"><b>08</b>Moderation & safety</span><h2>A safe server, <span class="serif">without thinking about it.</span></h2><p class="sub">Automod, anti-scam in 6 languages, step-by-step sanctions, anti-raid and a security audit scored out of 100 with one-click fixes.</p><div class="puces"><span>Automod</span><span>Anti-scam</span><span>Warn steps</span><span>Anti-raid</span><span>Audit /100</span><span>Logs</span></div></div><div><div class="dc"><div class="dc-top"><i>#</i>general</div><div class="dc-body"><div class="m"><div class="av w"><img src="wumi-icone.svg" alt=""></div><div><div class="qui">Wumi<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#ff7a7a"><h4>🛡️ Message removed: likely scam</h4><p>A fake Nitro gift with a trapped link.</p><div class="ch"><div><small>DETECTED</small>Fake Nitro</div><div><small>ACTION</small>Removed + 10 min timeout</div></div><div class="btns"><span>View log</span></div></div></div></div><div class="m"><div class="av" style="background:#2ecc71">S</div><div><div class="qui">Sam<time>Today</time></div><div class="sl">used <code>/audit run</code></div><div class="ct" style="--c:#ff7a7a"><h4>🔐 Audit : 92/100</h4><div class="bar" style="--c:#3ddc97"><i style="width:92%"></i></div><p class="mu" style="margin-top:8px">1 fix suggested</p></div></div></div></div></div></div></section>
+<section class="sec" id="premium" style="--c:#ffcd4a"><div class="sec-txt"><span class="num"><b>09</b>Premium</span><h2>Wumi <span class="serif">in your style.</span></h2><p class="sub">Its own name, avatar, banner and bio on your server only, one background for every rank card and 4 exclusive themes. $3.99 a month per server, cancel anytime.</p><div class="puces"><span>Custom bot</span><span>Card background</span><span>4 exclusive themes</span><span>Higher limits</span></div><a class="lien" href="premium/">Discover Premium →</a></div><div><div class="dc"><div class="dc-top"><i>#</i>general</div><div class="dc-body"><div class="m"><div class="av" style="background:linear-gradient(135deg,#ffcd4a,#ff8cc0)">N</div><div><div class="qui">Night Owl<span class="app">APP</span><time>Today</time></div><div class="ct" style="--c:#ffcd4a"><h4>🌙 Evening, team!</h4><p>I&#39;m Wumi, but your server&#39;s way: my own name, avatar and bio, just for you.</p><p class="mu">/premium bot</p></div></div></div><div class="m"><div class="av" style="background:#9b59b6">A</div><div><div class="qui">Ana<time>Today</time></div><div class="sl">used <code>/rank</code></div><div class="ct" style="--c:#ffcd4a"><div class="rang" style="margin-top:0;background:linear-gradient(120deg,#3b1f5e,#c0507a)"><div class="av">A</div><div style="flex:1"><b>Ana</b> <small>· Sakura theme</small><div class="bar" style="--c:#ffb3d1"><i style="width:80%"></i></div></div></div></div></div></div></div></div></div></section>
 
-  <!-- VITRINE (serveurs volontaires, /config) -->
-  <div class="vitrine" id="vitrine" hidden>
-    <p><b>Servers running Wumi</b></p>
-    <div class="vt-rail"><div class="vt-track" id="vt-track"></div></div>
-  </div>
-
-  <!-- DEMO -->
-  <section id="demo">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div class="eyebrow" data-d="eyebrow">TRY IT</div>
-        <h2 data-d="titre">Test Wumi <span class="serif grad-text">right here.</span></h2>
-        <p data-d="lead">A pretend Discord channel: type a command or click one, and Wumi answers.</p>
-      </div>
-      <div class="demo rv">
-        <div class="demo-top"><span class="demo-hash">#</span><b data-d="salon">general</b><small data-d="hint">Demo · nothing is sent to Discord</small></div>
-        <div class="demo-fil" id="demo-fil" aria-live="polite"></div>
-        <div class="demo-chips" id="demo-chips"></div>
-        <form class="demo-saisie" id="demo-form" autocomplete="off">
-          <input id="demo-input" type="text" maxlength="40" aria-label="Command">
-          <button type="submit" aria-label="Send">➤</button>
-        </form>
-      </div>
-    </div>
-  </section>
-<style>
-#demo .demo{max-width:860px;margin:0 auto;border:1px solid var(--line-2);border-radius:20px;background:var(--card);overflow:hidden;box-shadow:0 30px 80px -40px rgba(98,184,255,.35)}
-.demo-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px}
-.demo-top small{margin-left:auto;color:var(--dim);font-size:12.5px}
-.demo-hash{color:var(--dim);font-size:20px;line-height:1}
-.demo-fil{height:420px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth}
-.demo-msg{display:flex;gap:12px;align-items:flex-start;animation:demoIn .25s ease}
-@keyframes demoIn{from{opacity:0;transform:translateY(6px)}}
-.demo-ava{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff;background:#7b80b8}
-.demo-ava.wumi{background:var(--grad)}
-.demo-nom{font-weight:600;font-size:14.5px}
-.demo-nom .bot{font-size:10px;background:#5865f2;color:#fff;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:1px}
-.demo-txt{color:var(--muted);font-size:14.5px;margin-top:2px}
-.demo-txt code{font-family:ui-monospace,monospace;color:var(--blue);background:rgba(98,184,255,.1);padding:1px 6px;border-radius:5px;font-size:13.5px}
-.demo-box{margin-top:6px;border-left:4px solid var(--blue);background:var(--bg-2);border-radius:8px;padding:12px 14px;max-width:440px}
-.demo-box h4{font-size:15.5px;margin-bottom:6px}
-.demo-box img{width:150px;border-radius:6px;border:1px solid var(--line);margin:6px 0}
-.demo-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.demo-btns button{font:600 13.5px Inter,system-ui,sans-serif;border:0;border-radius:6px;padding:7px 12px;cursor:pointer;background:#4e5058;color:#fff}
-.demo-btns button:disabled{opacity:.55;cursor:default}
-.demo-btns button.ok{background:#248046}.demo-btns button.ko{background:#da373c}
-.demo-grille{font-size:22px;line-height:1.15;letter-spacing:1px;margin-top:4px}
-.demo-chips{display:flex;flex-wrap:wrap;gap:8px;padding:12px 18px 0}
-.demo-chips button{font-family:ui-monospace,monospace;font-size:13.5px;padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg-2);color:var(--blue);cursor:pointer}
-.demo-chips button:hover{border-color:var(--line-2)}
-.demo-saisie{display:flex;gap:8px;padding:12px 18px 18px}
-.demo-saisie input{flex:1;min-width:0;background:var(--bg-2);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit}
-.demo-saisie input:focus{outline:2px solid rgba(98,184,255,.5)}
-.demo-saisie button{width:46px;border:0;border-radius:10px;background:var(--blue);color:#fff;font-size:16px;cursor:pointer}
-@media (max-width:560px){.demo-fil{height:380px;padding:14px}.demo-top small{display:none}}
-</style>
-<script>
-(function () {
-  var FR = (document.documentElement.lang || '').slice(0, 2) === 'fr';
-  var L = FR ? {
-    eyebrow: 'ESSAIE-LE', titre: 'Teste Wumi <span class="serif grad-text">ici même.</span>', lead: 'Un faux salon Discord : tape une commande ou clique dessus, et Wumi répond.',
-    salon: 'général', hint: 'Démo · rien n\'est envoyé sur Discord', placeholder: 'Tape / pour voir les commandes…', toi: 'Toi',
-    bienvenue: 'Salut ! Essaie <code>/quiz</code>, <code>/puissance4</code>, <code>/pendu</code> ou <code>/bienvenue</code> 👋',
-    inconnue: 'Je ne connais pas cette commande dans la démo. Essaie plutôt :',
-    quizTitre: '🏳️ Quiz · drapeaux', quizQ: 'De quel pays est ce drapeau ?', bravo: 'Bonne réponse ! +2 points ⚡', rate: 'Raté ! C\'était',
-    p4Titre: '🎮 Puissance 4', p4Tour: 'À toi de jouer (🔴)', p4Gagne: '🏆 Tu as gagné !', p4Perdu: '🏆 Wumi gagne !', p4Nul: '🤝 Égalité !',
-    penduTitre: '🪢 Pendu', penduAide: 'Clique sur les lettres :', penduGagne: '🎉 Bravo, c\'était', penduPerdu: '💀 Perdu, c\'était',
-    bienvenueTitre: 'Bienvenue sur le serveur !', bienvenueTxt: 'Bienvenue <b>@Léa</b> sur <b>Mon serveur</b> ! Tu es le <b>1 285e</b> membre 🎉', role: 'Rôle donné : @Membre',
-    mots: ['DRAGON', 'GALAXIE', 'PIRATE', 'VOLCAN', 'GUITARE']
-  } : {
-    eyebrow: 'TRY IT', titre: 'Test Wumi <span class="serif grad-text">right here.</span>', lead: 'A pretend Discord channel: type a command or click one, and Wumi answers.',
-    salon: 'general', hint: 'Demo · nothing is sent to Discord', placeholder: 'Type / to see the commands…', toi: 'You',
-    bienvenue: 'Hi! Try <code>/quiz</code>, <code>/connect4</code>, <code>/hangman</code> or <code>/welcome</code> 👋',
-    inconnue: 'I don\'t know that command in the demo. Try:',
-    quizTitre: '🏳️ Quiz · flags', quizQ: 'Which country does this flag belong to?', bravo: 'Correct! +2 points ⚡', rate: 'Wrong! It was',
-    p4Titre: '🎮 Connect Four', p4Tour: 'Your turn (🔴)', p4Gagne: '🏆 You win!', p4Perdu: '🏆 Wumi wins!', p4Nul: '🤝 Draw!',
-    penduTitre: '🪢 Hangman', penduAide: 'Click the letters:', penduGagne: '🎉 Well done, it was', penduPerdu: '💀 Game over, it was',
-    bienvenueTitre: 'Welcome to the server!', bienvenueTxt: 'Welcome <b>@Lea</b> to <b>My server</b>! You\'re member <b>#1,285</b> 🎉', role: 'Role given: @Member',
-    mots: ['DRAGON', 'GALAXY', 'PIRATE', 'VOLCANO', 'GUITAR']
-  };
-  var CMD = FR ? { quiz: '/quiz', p4: '/puissance4', pendu: '/pendu', bienvenue: '/bienvenue' } : { quiz: '/quiz', p4: '/connect4', pendu: '/hangman', bienvenue: '/welcome' };
-  var PAYS = FR
-    ? [['jp', 'Japon'], ['br', 'Brésil'], ['ca', 'Canada'], ['it', 'Italie'], ['kr', 'Corée du Sud'], ['se', 'Suède'], ['mx', 'Mexique'], ['in', 'Inde']]
-    : [['jp', 'Japan'], ['br', 'Brazil'], ['ca', 'Canada'], ['it', 'Italy'], ['kr', 'South Korea'], ['se', 'Sweden'], ['mx', 'Mexico'], ['in', 'India']];
-
-  var racine = document.getElementById('demo');
-  if (!racine) return;
-  racine.querySelectorAll('[data-d]').forEach(function (n) { var k = n.getAttribute('data-d'); if (L[k]) n.innerHTML = L[k]; });
-  var fil = document.getElementById('demo-fil');
-  var input = document.getElementById('demo-input');
-  input.placeholder = L.placeholder;
-
-  function el(tag, cls, html) { var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
-  function melanger(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
-  function message(wumi, contenu) {
-    var m = el('div', 'demo-msg');
-    m.append(el('div', 'demo-ava' + (wumi ? ' wumi' : ''), wumi ? 'W' : (FR ? 'T' : 'Y')));
-    var corps = el('div');
-    corps.append(el('div', 'demo-nom', wumi ? 'Wumi<span class="bot">APP</span>' : L.toi));
-    if (typeof contenu === 'string') corps.append(el('div', 'demo-txt', contenu)); else corps.append(contenu);
-    m.append(corps); fil.append(m); fil.scrollTop = fil.scrollHeight;
-    return corps;
-  }
-  function boite(titre) { var b = el('div', 'demo-box'); b.append(el('h4', null, titre)); return b; }
-
-  function quiz() {
-    var choix = melanger(PAYS).slice(0, 4); var bon = choix[0]; choix = melanger(choix);
-    var b = boite(L.quizTitre);
-    b.append(el('div', 'demo-txt', '<b>' + L.quizQ + '</b>'));
-    var img = el('img'); img.src = 'https://flagcdn.com/w320/' + bon[0] + '.png'; img.alt = ''; b.append(img);
-    var btns = el('div', 'demo-btns');
-    choix.forEach(function (c) {
-      var bt = el('button', null, c[1]); bt.type = 'button';
-      bt.onclick = function () {
-        btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; if (x.textContent === bon[1]) x.className = 'ok'; });
-        if (c !== bon) bt.className = 'ko';
-        message(true, c === bon ? '✅ ' + L.bravo : '❌ ' + L.rate + ' <b>' + bon[1] + '</b>.');
-      };
-      btns.append(bt);
-    });
-    b.append(btns); message(true, b);
-  }
-
-  function p4() {
-    var G = []; for (var l = 0; l < 6; l++) G.push([null, null, null, null, null, null, null]);
-    var fini = false;
-    var b = boite(L.p4Titre); var grille = el('div', 'demo-grille'); var etat = el('div', 'demo-txt', L.p4Tour);
-    var btns = el('div', 'demo-btns');
-    function chute(c) { for (var l = 5; l >= 0; l--) if (G[l][c] === null) return l; return -1; }
-    function gagnant() {
-      var d = [[0, 1], [1, 0], [1, 1], [1, -1]];
-      for (var l = 0; l < 6; l++) for (var c = 0; c < 7; c++) { var v = G[l][c]; if (v === null) continue;
-        for (var k = 0; k < 4; k++) { var n = 1; while (n < 4) { var a = l + d[k][0] * n, z = c + d[k][1] * n; if (a < 0 || a > 5 || z < 0 || z > 6 || G[a][z] !== v) break; n++; } if (n === 4) return v; } }
-      for (var cc = 0; cc < 7; cc++) if (chute(cc) !== -1) return null;
-      return 'nul';
-    }
-    function dessiner() { grille.innerHTML = G.map(function (r) { return r.map(function (v) { return v === null ? '⚫' : v === 0 ? '🔴' : '🟡'; }).join(''); }).join('<br>') + '<br>1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣'; }
-    function coupBot() {
-      var libres = []; for (var c = 0; c < 7; c++) if (chute(c) !== -1) libres.push(c);
-      for (var j = 1; j >= 0; j--) for (var i = 0; i < libres.length; i++) { var cc = libres[i], ll = chute(cc); G[ll][cc] = j; var g = gagnant(); G[ll][cc] = null; if (g === j) return cc; }
-      if (libres.indexOf(3) !== -1 && Math.random() < .6) return 3;
-      return libres[Math.floor(Math.random() * libres.length)];
-    }
-    function finir(g) { fini = true; etat.innerHTML = g === 0 ? L.p4Gagne : g === 1 ? L.p4Perdu : L.p4Nul; btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; }); }
-    for (var c = 0; c < 7; c++) (function (c) {
-      var bt = el('button', null, String(c + 1)); bt.type = 'button';
-      bt.onclick = function () {
-        if (fini) return; var l = chute(c); if (l === -1) return;
-        G[l][c] = 0; var g = gagnant(); if (g !== null) { dessiner(); return finir(g); }
-        var cb = coupBot(); G[chute(cb)][cb] = 1; g = gagnant(); dessiner(); if (g !== null) finir(g);
-      };
-      btns.append(bt);
-    })(c);
-    dessiner(); b.append(grille, etat, btns); message(true, b);
-  }
-
-  function pendu() {
-    var mot = L.mots[Math.floor(Math.random() * L.mots.length)], trouvees = {}, erreurs = 0, fini = false;
-    var b = boite(L.penduTitre); var affichage = el('div', 'demo-grille'); var info = el('div', 'demo-txt');
-    var btns = el('div', 'demo-btns');
-    function maj() {
-      affichage.textContent = mot.split('').map(function (x) { return trouvees[x] ? x : '_'; }).join(' ');
-      info.innerHTML = '❌ ' + erreurs + '/6 · ' + L.penduAide;
-      if (mot.split('').every(function (x) { return trouvees[x]; })) { fini = true; info.innerHTML = L.penduGagne + ' <b>' + mot + '</b>.'; }
-      else if (erreurs >= 6) { fini = true; info.innerHTML = L.penduPerdu + ' <b>' + mot + '</b>.'; }
-      if (fini) btns.querySelectorAll('button').forEach(function (x) { x.disabled = true; });
-    }
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function (x) {
-      var bt = el('button', null, x); bt.type = 'button';
-      bt.onclick = function () { if (fini) return; bt.disabled = true; if (mot.indexOf(x) !== -1) { trouvees[x] = true; bt.className = 'ok'; } else { erreurs++; bt.className = 'ko'; } maj(); };
-      btns.append(bt);
-    });
-    maj(); b.append(affichage, info, btns); message(true, b);
-  }
-
-  function bienvenue() {
-    var b = boite('👋 ' + L.bienvenueTitre);
-    b.append(el('div', 'demo-txt', L.bienvenueTxt), el('div', 'demo-txt', '<small>✅ ' + L.role + '</small>'));
-    message(true, b);
-  }
-
-  var ACTIONS = {}; ACTIONS[CMD.quiz] = quiz; ACTIONS[CMD.p4] = p4; ACTIONS[CMD.pendu] = pendu; ACTIONS[CMD.bienvenue] = bienvenue;
-  function lancer(texte) {
-    var cmd = String(texte || '').trim().split(/\s+/)[0].toLowerCase();
-    if (!cmd) return;
-    message(false, '<code>' + cmd.replace(/[<>&]/g, '') + '</code>');
-    var f = ACTIONS[cmd];
-    setTimeout(function () { if (f) f(); else message(true, L.inconnue + ' ' + Object.keys(ACTIONS).map(function (k) { return '<code>' + k + '</code>'; }).join(' ')); }, 350);
-  }
-  var chips = document.getElementById('demo-chips');
-  Object.keys(ACTIONS).forEach(function (k) { var bt = el('button', null, k); bt.type = 'button'; bt.onclick = function () { lancer(k); }; chips.append(bt); });
-  document.getElementById('demo-form').addEventListener('submit', function (e) { e.preventDefault(); lancer(input.value); input.value = ''; });
-  message(true, L.bienvenue);
-})();
-</script>
-
-  <!-- FEATURES -->
-  <section id="apercus">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div class="eyebrow">IN ACTION</div>
-        <h2>What you will see <span class="serif grad-text">on your server.</span></h2>
-        <p>Real Wumi replies, exactly as they show up in Discord.</p>
-      </div>
-      <div class="ap-grille">
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-cmd">/cards open</div><div class="ap-msg"><img class="ap-av" src="wumi-w.svg" alt=""><div><span class="ap-nom">Wumi</span><span class="ap-app">APP</span><div>✨ Card 5/5 · 🟠 <b>Boostar</b> · Legendary · Shiny</div><img class="ap-img" loading="lazy" src="assets/apercus/carte-en.webp" alt="Boostar"></div></div></div><div class="ap-txt"><h3>Collectible cards</h3><p>72 drawn creatures, boosters earned by chatting, revealed card by card.</p></div></article>
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-cmd">/cards binder</div><div class="ap-msg"><img class="ap-av" src="wumi-w.svg" alt=""><div><span class="ap-nom">Wumi</span><span class="ap-app">APP</span><img class="ap-img" loading="lazy" src="assets/apercus/classeur-en.webp" alt=""></div></div></div><div class="ap-txt"><h3>The binder</h3><p>Everyone fills their binder, family by family. No trading: every card is earned.</p></div></article>
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-msg"><div class="ap-av" style="background:#ed4245"></div><div><span class="ap-nom">spam_bot</span><div class="ap-barre">Free Nitro for 3 months! claim here dlscord-gift.com</div></div></div><div class="ap-msg"><img class="ap-av" src="wumi-w.svg" alt=""><div><span class="ap-nom">Wumi</span><span class="ap-app">APP</span><div class="ap-boite" style="border-color:#ed4245">🛡️ <b>Scam removed</b><br>Fake Nitro · domain imitating Discord</div></div></div></div><div class="ap-txt"><h3>Anti-scam and AI</h3><p>Fake Nitro, fake Steam gifts, insults, NSFW images: removed before anyone clicks.</p></div></article>
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-cmd">/ticket</div><div class="ap-msg"><img class="ap-av" src="wumi-w.svg" alt=""><div><span class="ap-nom">Wumi</span><span class="ap-app">APP</span><div class="ap-boite">💡 <b>The FAQ may already have the answer</b><br>Wumi not answering? Run <code>/diagnostic</code>…<div class="ap-btns"><span class="ap-btn v">✅ Solved</span><span class="ap-btn">👋 Wait for the team</span></div></div></div></div></div><div class="ap-txt"><h3>Smart tickets</h3><p>When a ticket opens, the AI suggests the right FAQ answer, in any language.</p></div></article>
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-cmd">Right-click › Apps › Translate</div><div class="ap-msg"><img class="ap-av" src="wumi-w.svg" alt=""><div><span class="ap-nom">Wumi</span><span class="ap-app">APP</span><div class="ap-boite">🌍 <b>Translation</b> · 🇪🇸 › 🇬🇧<br>« Hi everyone, we start the game tonight at 9 pm! »</div></div></div></div><div class="ap-txt"><h3>One-click translation</h3><p>Six languages, right inside Discord. The AI runs on Wumi's server: nothing leaves it.</p></div></article>
-        <article class="ap rv"><div class="ap-ecran"><div class="ap-cmd">/server stats pack</div><div class="ap-salons"><div class="cat">⌄ 📊 STATISTICS</div><div>🔒 🧭 Members: 9,555</div><div>🔒 🟢 Online: 1,204</div><div>🔒 💎 Boosts: 14</div><div>🔒 🔗 .gg/myserver</div></div></div><div class="ap-txt"><h3>Stats channels</h3><p>A pack of stylish counters, set up in one command and updated on its own.</p></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="fonctions">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div class="eyebrow">THE WUMI BOT</div>
-        <h2>Everything you need. <span class="serif grad-text">In one place.</span></h2>
-        <p>Simple tools to manage your community, no headaches.</p>
-      </div>
-      <div class="features">
-        <article class="feat rv"><div class="ico">🎵</div><small>MUSIC</small><h3>Press play, together.</h3><p>A full player in your voice channels: search YouTube as you type, paste a Spotify playlist, add filters and control everything with buttons.</p><ul><li>YouTube, Spotify, 13 live radios</li><li>Filters, DJ role, playlists, 24/7</li></ul></article>
-        <article class="feat rv"><div class="ico">🔒</div><small>SECURITY AUDIT</small><h3>Find the holes first.</h3><p><code>/audit</code> checks your roles, channels and settings, gives your server a score out of 100 and fixes the risky bits in one click.</p><ul><li>15 checks, one-click fixes</li><li>Weekly report for your staff</li></ul></article>
-        <article class="feat rv"><div class="ico">🤖</div><small>AI</small><h3>A smart guard, built in.</h3><p>Wumi spots scams, toxic messages and NSFW images on its own, and translates any message with a right-click. The AI runs on Wumi's server: nothing leaves it.</p><ul><li>Anti-scam, anti-toxicity, NSFW images</li><li>Right-click › Translate, 6 languages</li></ul></article>
-        <article class="feat rv"><div class="ico">🎀</div><small>AUTO ROLES</small><h3>Every arrival, ready to go.</h3><p>Give one or more roles to every new member, with separate settings for humans and bots.</p><ul><li>Several roles at once</li><li>Humans and bots apart</li></ul></article>
-        <article class="feat rv"><div class="ico">🌸</div><small>REACTION ROLES</small><h3>Everyone picks their place.</h3><p>Members choose their own roles by clicking a button or an emoji, right inside a message.</p><ul><li>Buttons or emojis</li><li>As many roles as you like</li></ul></article>
-        <article class="feat rv"><div class="ico">👋</div><small>WELCOME</small><h3>Say hi, with style.</h3><p>Greeting and farewell messages you customize with the member's name, avatar and the member count.</p><ul><li>Welcome and goodbye</li><li>Custom variables</li></ul></article>
-        <article class="feat rv"><div class="ico">🛡️</div><small>MODERATION</small><h3>Keep things calm.</h3><p>Ban, kick, timeout, clear a channel. Every action can be kept in a logs channel.</p><ul><li>Ban, kick, timeout, clear</li><li>Dedicated logs channel</li></ul></article>
-        <article class="feat rv"><div class="ico">🎮</div><small>GAMES & EVENTS</small><h3>A server that has fun.</h3><p>A music blind test, Connect Four, a virtual pet that grows with you, your monthly Wrapped, and events or LFG posts to play together.</p><ul><li><code>/blindtest</code>, <code>/pet</code>, <code>/wrapped</code></li><li><code>/event</code> and <code>/lfg</code> to team up</li></ul></article>
-        <article class="feat rv"><div class="ico">🎨</div><small>CREATION</small><h3>And to make it beautiful?</h3><p>Embeds, colored text, role icons: the Wumi toolbox is included.</p><ul><li>7 free tools</li><li>Everything runs in your browser</li></ul></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section id="outils">
-    <div class="wrap">
-      <div class="sec-head row rv">
-        <div style="max-width:620px">
-          <div class="eyebrow pink">WUMI TOOLS</div>
-          <h2>Free tools. <span class="serif grad-text">For a unique server.</span></h2>
-          <p style="color:var(--muted);font-size:17px;margin-top:16px">Everything runs right in your browser, nothing to install.</p>
-        </div>
-        <a class="btn btn-ghost" href="outils/">See all the tools</a>
-      </div>
-      <div class="tools">
-        <a class="tool big rv" href="outils/message-builder/"><span class="ico">🧩</span><h4>Embed builder</h4><p>Design your Discord messages with embeds, colors and fields, and see a live preview before sending.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/colored-text/"><span class="ico">🌈</span><h4>Colored text</h4><p>Write colored text for your Discord messages.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/text-formatter/"><span class="ico">✍️</span><h4>Text formatting</h4><p>Bold, italics, spoilers, code blocks: all of Discord's markdown.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/timestamps/"><span class="ico">⏱️</span><h4>Timestamps</h4><p>Generate dates that show in everyone's own time zone.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/bot-invite/"><span class="ico">🔗</span><h4>Invite links</h4><p>Create your bot's invite link with the right permissions.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/downloader/"><span class="ico">📥</span><h4>Role icons</h4><p>Download role icons, emojis and stickers.</p><span class="go">Open →</span></a>
-        <a class="tool rv" href="outils/icon-maker/"><span class="ico">✨</span><h4>Icon maker</h4><p>Draw a role icon with shapes, gradients and symbols, then export it as a PNG.</p><span class="go">Open →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMANDS -->
-  <section id="commandes">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div class="eyebrow">COMMANDS</div>
-        <h2>Type <span class="serif grad-text">/</span> and go.</h2>
-        <p>Wumi uses slash commands: type / in Discord and pick one.</p>
-      </div>
-      <div class="cmds rv">
-        <code>/setup</code><code>/config</code><code>/welcome</code><code>/autorole</code><code>/reactionrole</code><code>/embed</code><code>/ticket</code><code>/ban</code><code>/kick</code><code>/mute</code><code>/clear</code><code>/warn</code><code>/sanctions</code><code>/softban</code><code>/massban</code><code>/nickname</code><code>/role</code><code>/note</code><code>/voicemod</code><code>/modstats</code><code>/warnsteps</code><code>/raid</code><code>/antiraid</code><code>/automod</code><code>/rank</code><code>/leaderboard</code><code>/economy</code><code>/giveaway</code><code>/suggestion</code><code>/birthday</code><code>/tictactoe</code><code>/serverinfo</code><code>/userinfo</code><code>/aide</code>
-      </div>
-      <div class="rv" style="margin-top:22px;text-align:center"><a class="btn btn-ghost" href="commandes/">See all commands →</a></div>
-    </div>
-  </section>
-
-  <!-- STEPS -->
-  <section id="demarrer">
-    <div class="wrap">
-      <div class="sec-head row rv">
-        <div><div class="eyebrow">GETTING STARTED</div><h2>Your server. <span class="serif grad-text">Your way.</span></h2></div>
-        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Need help?</a>
-      </div>
-      <div class="steps">
-        <div class="step rv"><div class="n">01</div><h3>Invite Wumi</h3><p>Add the bot to your server in one click and place its role above the roles it should manage.</p></div>
-        <div class="step rv"><div class="n">02</div><h3>One command</h3><p>Run <span class="cmd">/autorole</span> or <span class="cmd">/welcome</span>: Wumi handles the rest, from the very next arrival.</p></div>
-        <div class="step rv"><div class="n">03</div><h3>Make it yours</h3><p>Build your embeds and colored text with the tools, then tweak your settings whenever you want.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap faq-grid">
-      <div class="rv">
-        <div class="eyebrow">A FEW ANSWERS</div>
-        <h2>Before you <span class="serif grad-text">get started.</span></h2>
-        <a class="btn btn-ghost" style="margin-top:26px" href="https://discord.gg/VaGrXgnAHS">Another question?</a>
-      </div>
-      <div class="rv">
-        <details open><summary>Is Wumi free?</summary><p>Yes. The bot and all the Wumi tools are free.</p></details>
-        <details><summary>How do I set up the bot?</summary><p>Everything happens with slash commands in Discord. Type / and pick a Wumi command, or use /aide to see the list.</p></details>
-        <details><summary>Do the tools need the bot?</summary><p>No. The tools run in your browser, with or without Wumi on your server.</p></details>
-        <details><summary>Why isn't Wumi giving a role?</summary><p>Check that Wumi's role sits above the role to give in your server settings, and that it has the Manage Roles permission.</p></details>
-        <details><summary>How do I join the community?</summary><p>Join the support server to follow the project, ask questions and share feedback.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="wrap">
-    <div class="cta rv">
-      <img src="wumi-icone.svg" alt="Wumi" class="mascot">
-      <div class="eyebrow">ADOPT WUMI TODAY</div>
-      <h2>Ready to bring <span class="serif grad-text">your server to life?</span></h2>
-      <p>Invite it in seconds. Questions? Come say hi in the support server.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord →</a>
-        <a class="btn btn-ghost" href="https://discord.gg/VaGrXgnAHS">Support server</a>
-      </div>
-    </div>
-  </div>
+<section class="tout">
+  <h2>One bot. <span class="serif grad">Everything you need.</span></h2>
+  <p class="sub">Everything is set with /config or from the dashboard, in a few clicks.</p>
+  <div class="groupes"><div class="gr"><h5>Community</h5><div><span>Welcome</span><span>Auto roles</span><span>Reaction roles</span><span>Verification</span><span>Birthdays</span><span>Suggestions</span><span>Applications</span><span>Invites</span></div></div><div class="gr"><h5>Engagement</h5><div><span>Levels</span><span>Prestige</span><span>Badges</span><span>Economy</span><span>Shop</span><span>Cards</span><span>/wrapped</span><span>Profiles</span></div></div><div class="gr"><h5>Voice & games</h5><div><span>Music</span><span>24/7 radios</span><span>Music quiz</span><span>Who picked it?</span><span>Vibe check</span><span>Blind test</span><span>Wumi Run</span><span>Temp voice</span></div></div><div class="gr"><h5>Staff</h5><div><span>Tickets</span><span>Smart FAQ</span><span>Modmail</span><span>Automod</span><span>Anti-scam</span><span>Anti-raid</span><span>Audit</span><span>Logs</span><span>Giveaways</span><span>Live alerts</span><span>Embeds</span><span>Stats channels</span></div></div></div>
+  <a class="lien" href="commandes/?lang=en">All commands →</a>
+</section>
+<section class="final">
+  <h2>Your server <span class="serif grad">deserves better.</span></h2>
+  <p>Add Wumi in a minute. Free, no credit card.</p>
+  <div class="ctas"><a class="btn btn-p" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&amp;scope=bot%20applications.commands&amp;permissions=1426362592470">Add to Discord</a><a class="btn btn-g" href="dashboard/">My dashboard</a></div>
+</section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt="" class="logo-mark"><span>wumi<span class="dot">.</span></span></a><p>A little companion for your server, and tools to make it beautiful.</p><div class="reseaux"><a href="/discord/" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.1.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="/tiktok/" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="/x/" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z"/></svg></a></div></div>
-      <div><h5>Bot</h5><a href="fonctionnalites/?lang=en">Features</a><a href="#commandes">Commands</a><a href="commandes/">All commands</a><a href="#demarrer">Get started</a><a href="#faq">FAQ</a><a href="statut/">Status</a><a href="dashboard/">Dashboard</a><a href="nouveautes/">What's new</a><a href="premium/">Premium</a><a href="#demo">Demo</a></div>
-      <div><h5>Tools</h5><a href="outils/">All tools</a><a href="outils/message-builder/">Embeds</a><a href="outils/colored-text/">Colored text</a><a href="outils/timestamps/">Timestamps</a></div>
-      <div><h5>Community</h5><a href="/discord/">Discord</a><a href="/tiktok/">TikTok</a><a href="/x/">X (Twitter)</a><a href="conditions.html">Terms</a><a href="confidentialite.html">Privacy</a><a href="mentions-legales.html">Legal notice</a><a href="remboursement.html">Refunds</a><a href="droits-auteur.html">Copyright</a></div>
-    </div>
-    <div class="copy"><span>© 2026 Wumi</span><span>Made with love for Discord :3</span></div>
+<footer><div class="wrap">
+  <div class="f-grille">
+    <div><a href="#top" class="logo"><img src="wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a><p>The tiny all-in-one companion for your Discord server.</p><div class="reseaux"><a href="/discord/" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.009c.12.1.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="/tiktok/" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a href="/x/" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z"/></svg></a></div></div>
+    <div><h6>Features</h6><a href="fonctionnalites/?lang=en#musique">Music</a><a href="#jeux">Music games</a><a href="fonctionnalites/?lang=en#bienvenue">Welcome</a><a href="fonctionnalites/?lang=en#niveaux">Levels</a><a href="fonctionnalites/?lang=en#cartes">Cards</a><a href="fonctionnalites/?lang=en#tickets">Tickets & FAQ</a><a href="fonctionnalites/?lang=en#annonces">Live alerts</a><a href="fonctionnalites/?lang=en#moderation">Moderation</a></div><div><h6>Product</h6><a href="fonctionnalites/?lang=en">Features</a><a href="nouveautes/?lang=en">What's new</a><a href="commandes/?lang=en">Commands</a><a href="premium/">Premium</a><a href="dashboard/">Dashboard</a><a href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&amp;scope=bot%20applications.commands&amp;permissions=1426362592470">Invite the bot</a></div><div><h6>Resources</h6><a href="commandes/?lang=en">Docs</a><a href="https://discord.gg/VaGrXgnAHS">Support server</a><a href="statut/">Status</a></div><div><h6>Free tools</h6><a href="outils/message-builder/">Message builder</a><a href="outils/colored-text/">Colored text</a><a href="outils/timestamps/">Timestamps</a><a href="outils/text-formatter/">Text formatter</a><a href="outils/icon-maker/">Icon maker</a><a href="outils/">All tools</a></div><div><h6>Legal</h6><a href="mentions-legales.html">Legal notice</a><a href="conditions.html">Terms of Service</a><a href="confidentialite.html">Privacy</a><a href="remboursement.html">Refunds</a><a href="droits-auteur.html">Copyright</a></div>
   </div>
-</footer>
-
+  <div class="f-bas"><span>© 2026 Wumi. Not affiliated with Discord.</span><a href="fr/">Français</a></div>
+</div></footer>
 <script>
-// marquee
-const cmds=["/setup","/welcome","/autorole","/reactionrole","/embed","/ban","/mute","/warn","/rank","/giveaway","/tictactoe","/aide","embeds","colored text","timestamps"];
-const t=document.getElementById('track');
-t.innerHTML=[...cmds,...cmds].map(c=>`<div class="chip">${c.startsWith('/')?'<b>/</b>'+c.slice(1):'✨ '+c}</div>`).join('');
-// reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-// close mobile menu on click
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('hdr').classList.remove('open')));
-</script>
-<script>(function(){var k='wumi-lang';document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(k,a.dataset.lang)}catch(e){}})});})();</script>
-<script>document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.setItem('wumi-theme',t)}catch(_){}});</script>
-<script>
+document.addEventListener('click',function(e){var b=e.target.closest('.theme');if(!b)return;var m=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=m;try{localStorage.setItem('wumi-theme',m)}catch(_){}});
+document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('hdr').classList.remove('open')})});
 (function(){
-  var API='https://serveurhp63114.tail284a6e.ts.net/api/vitrine', MOT='members', LOC='en-US';
-  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
-  fetch(API,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+  var API='https://serveurhp63114.tail284a6e.ts.net/api', MOT='members', LOC='en-US';
+  function esc(x){var d=document.createElement('div');d.textContent=x;return d.innerHTML}
+  var nf=new Intl.NumberFormat(LOC);
+  fetch(API+'/statut',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+    var n=d&&d.actuel&&d.actuel.serveurs; if(n>20)document.getElementById('nb-serveurs').textContent=nf.format(n);
+  }).catch(function(){});
+  fetch(API+'/vitrine',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
     var l=d&&d.serveurs||[]; if(l.length<3)return;
-    var nf=new Intl.NumberFormat(LOC,{notation:'compact',maximumFractionDigits:1});
-    var html=l.map(function(s){
-      var ini=esc((s.nom||'?').split(/\s+/).map(function(m){return m[0]||''}).join('').slice(0,2).toUpperCase());
-      var ico=s.icone?'<img src="'+esc(s.icone)+'" alt="" loading="lazy" referrerpolicy="no-referrer">':'<span class="vt-ini">'+ini+'</span>';
-      return '<div class="vt-srv">'+ico+'<div><b>'+esc(s.nom)+'</b><small>'+nf.format(s.membres)+' '+MOT+'</small></div></div>';
-    }).join('');
-    var t=document.getElementById('vt-track'); t.innerHTML=html+html;
-    t.style.setProperty('--vt-duree',Math.max(30,l.length*5)+'s');
+    var c=new Intl.NumberFormat(LOC,{notation:'compact',maximumFractionDigits:1});
+    var h=l.map(function(s){var ini=esc((s.nom||'?').split(/\s+/).map(function(m){return m[0]||''}).join('').slice(0,2).toUpperCase());
+      var ico=s.icone?'<img src="'+esc(s.icone)+'" alt="" loading="lazy" referrerpolicy="no-referrer">':'<span class="ini">'+ini+'</span>';
+      return '<div class="vt">'+ico+'<div><b>'+esc(s.nom)+'</b><small>'+c.format(s.membres)+' '+MOT+'</small></div></div>'}).join('');
+    var t=document.getElementById('vt-track');t.innerHTML=h+h;t.style.setProperty('--duree',Math.max(30,l.length*5)+'s');
     document.getElementById('vitrine').hidden=false;
   }).catch(function(){});
 })();
