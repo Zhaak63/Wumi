@@ -1,48 +1,55 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
-.wm{background:#171534;color:#eef0ff;border-radius:24px;overflow:hidden;font-family:'Nunito','Segoe UI',system-ui,sans-serif;line-height:1.6;text-align:left}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@1,500&display=swap');
+.wm{background:#120d08;color:#f7f1e8;border-radius:24px;overflow:hidden;font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.6;text-align:left;border:1px solid #2a2015}
 .wm *{box-sizing:border-box}
 .wm img{display:block;max-width:100%;height:auto;border-radius:0}
 .wm-in{padding:32px clamp(18px,4vw,44px)}
-.wm h2,.wm h3{font-family:'Fredoka','Nunito',system-ui,sans-serif;color:#eef0ff;margin:0;line-height:1.15;border:0;text-shadow:none;letter-spacing:0;text-transform:none}
-.wm h2{font-size:30px;margin:0 0 6px}
-.wm h3{font-size:20px;margin:10px 0 4px}
-.wm p{margin:0;color:#a9acd6}
+.wm h2,.wm h3{font-family:'Inter',system-ui,sans-serif;color:#f7f1e8;margin:0;line-height:1.15;border:0;text-shadow:none;letter-spacing:-.02em;text-transform:none}
+.wm h2{font-size:30px;font-weight:800;margin:0 0 6px}
+.wm h2 em{font-family:'Lora',Georgia,serif;font-style:italic;font-weight:500;color:#ff9d1b;letter-spacing:0}
+.wm h3{font-size:18px;font-weight:700;margin:12px 0 4px}
+.wm p{margin:0;color:#b9ab98}
 .wm a{color:#ff9d1b}
-.wm-lead{font-size:19px;color:#cfd2f5!important;max-width:40em;margin:4px 0 20px!important}
+.wm-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ff9d1b;margin-bottom:10px}
+.wm-lead{font-size:18px;color:#e6dccd!important;max-width:42em;margin:4px 0 22px!important}
 .wm-btns{display:flex;flex-wrap:wrap;gap:12px}
-.wm .wm-btn{display:inline-block;padding:12px 24px;border-radius:999px;background:#ff9d1b;color:#06284a;font:600 17px 'Fredoka','Nunito',sans-serif;text-decoration:none;box-shadow:0 4px 0 rgba(0,0,0,.35)}
-.wm .wm-btn.alt{background:transparent;color:#eef0ff;box-shadow:inset 0 0 0 2px #34306a}
-.wm-sep{height:2px;background:repeating-linear-gradient(90deg,#34306a 0 10px,transparent 10px 18px);margin:0 clamp(18px,4vw,44px)}
-.wm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
-.wm-card{background:#201d45;border:2px solid #34306a;border-radius:20px;padding:20px}
-.wm-card .i{width:48px;height:48px;border-radius:16px 16px 16px 6px;background:#2b2766;display:grid;place-items:center;font-size:24px}
-.wm-card:nth-child(even) .i{border-radius:16px 6px 16px 16px;background:#ff9d1b}
+.wm .wm-btn{display:inline-block;padding:12px 22px;border-radius:12px;background:#ff9d1b;color:#221b10;font:700 16px 'Inter',sans-serif;text-decoration:none}
+.wm .wm-btn.alt{background:transparent;color:#f7f1e8;box-shadow:inset 0 0 0 1px #3a2c1a}
+.wm-sep{height:1px;background:#2a2015;margin:0 clamp(18px,4vw,44px)}
+.wm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:20px}
+.wm-card{background:#1e1912;border:1px solid #2e2418;border-radius:18px;padding:20px}
+.wm-card .i{width:46px;height:46px;border-radius:14px;background:rgba(255,157,27,.14);display:grid;place-items:center;font-size:23px}
+.wm-card p{font-size:15px}
 .wm-shot{margin-top:22px}
-.wm-shot img{border-radius:16px;border:2px solid #34306a}
+.wm-shot img{border-radius:16px;border:1px solid #2e2418}
 .wm-shot p{font-size:14px;margin-top:8px}
 .wm-steps{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:s}
-.wm-steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;color:#cfd2f5}
-.wm-steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:#ff9d1b;color:#06284a;font:700 17px 'Fredoka',sans-serif;display:grid;place-items:center}
-.wm code{background:#201d45;border:2px solid #34306a;border-radius:8px;padding:2px 8px;color:#eef0ff;font-size:14px}
+.wm-steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;color:#e6dccd}
+.wm-steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:10px;background:#ff9d1b;color:#221b10;font:800 16px 'Inter',sans-serif;display:grid;place-items:center}
+.wm code{background:#1e1912;border:1px solid #3a2c1a;border-radius:7px;padding:1px 7px;color:#ffcf8a;font-size:14px}
 .wm-list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.wm-list li{background:#201d45;border-left:6px solid #ff9d1b;border-radius:12px;padding:12px 16px;color:#a9acd6}
-.wm-list b{color:#eef0ff}
-.wm iframe{width:100%;height:520px;border:2px solid #34306a;border-radius:16px;background:#171534;margin-top:16px}
-.wm-foot{text-align:center;padding:22px;font-size:14px;color:#a9acd6;border-top:2px solid #201d45}
+.wm-list li{background:#1e1912;border-left:4px solid #ff9d1b;border-radius:12px;padding:12px 16px;color:#b9ab98}
+.wm-list b{color:#f7f1e8}
+.wm-prix{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
+.wm-prix div{flex:1 1 240px;background:#1e1912;border:1px solid #2e2418;border-radius:18px;padding:20px}
+.wm-prix div.pro{border-color:rgba(255,157,27,.55);background:linear-gradient(160deg,rgba(255,157,27,.14),#1e1912 60%)}
+.wm-prix b{display:block;font-size:26px;color:#f7f1e8}
+.wm-prix small{color:#b9ab98}
+.wm-foot{text-align:center;padding:22px;font-size:14px;color:#b9ab98;border-top:1px solid #2a2015}
 .wm-foot a{margin:0 10px}
 </style>
 
 <div class="wm">
 
-<img src="https://wumi.fr/assets/og.png" alt="Wumi, your server's cutest little companion">
+<img src="https://wumi.fr/og-wumi-en.jpg" alt="Wumi, the little all-in-one companion for your Discord server">
 
 <div class="wm-in">
-<p class="wm-lead">Wumi is a cute all-in-one Discord bot. It welcomes newcomers, hands out roles, moderates, runs tickets, and brings games your members actually play. Set it up with slash commands or from a full web dashboard, in English or French.</p>
+<span class="wm-tag">All-in-one Discord bot</span>
+<p class="wm-lead">Wumi is a cute all-in-one bot for your Discord server. Music and music games, levels and rank cards, welcome images, tickets, moderation, live alerts and collectible cards, all set up with slash commands or a full web dashboard, in English or French.</p>
 <div class="wm-btns">
 <a class="wm-btn" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a>
-<a class="wm-btn alt" href="https://wumi.fr/dashboard/">Dashboard</a>
-<a class="wm-btn alt" href="https://wumi.fr/commandes/">All commands</a>
+<a class="wm-btn alt" href="https://wumi.fr/fonctionnalites/?lang=en">Features</a>
+<a class="wm-btn alt" href="https://wumi.fr/commandes/?lang=en">All commands</a>
 <a class="wm-btn alt" href="https://discord.gg/VaGrXgnAHS">Support server</a>
 </div>
 </div>
@@ -50,56 +57,79 @@
 <div class="wm-sep"></div>
 
 <div class="wm-in">
-<h2>Everything your server needs</h2>
-<p>80 commands, one bot, zero headaches.</p>
+<span class="wm-tag">Features</span>
+<h2>One bot. <em>Everything you need.</em></h2>
+<p>90+ commands, made to be easy for everyone.</p>
 <div class="wm-grid">
-<div class="wm-card"><div class="i">&#127918;</div><h3>Games</h3><p><code>/connect4</code>, <code>/tictactoe</code>, <code>/hangman</code>, a <b>flag quiz</b> and trivia with a server leaderboard, and a counting channel.</p></div>
-<div class="wm-card"><div class="i">&#127800;</div><h3>Reaction roles</h3><p>Panels where members pick their own roles with buttons or a menu. "One at a time" mode for colors.</p></div>
-<div class="wm-card"><div class="i">&#128075;</div><h3>Welcome & auto roles</h3><p>Welcome message, illustrated card, welcome DM, goodbye message, and a role for every newcomer.</p></div>
-<div class="wm-card"><div class="i">&#128737;&#65039;</div><h3>Moderation</h3><p>Warnings with automatic steps, temporary roles, a <code>/raid</code> panic button, anti-phishing, automod and clean logs.</p></div>
-<div class="wm-card"><div class="i">&#127915;</div><h3>Tickets</h3><p>Claim, priority, transcripts, a 1–5 ⭐ rating, and inactive tickets closed automatically.</p></div>
-<div class="wm-card"><div class="i">&#11088;</div><h3>Starboard</h3><p>The most starred messages are reposted in a "best of" channel, with a live star count.</p></div>
-<div class="wm-card"><div class="i">&#128200;</div><h3>Levels & economy</h3><p>XP, rank cards, badges, prestige, a server currency, a shop, a bank and daily missions.</p></div>
-<div class="wm-card"><div class="i">&#129520;</div><h3>Embed builder</h3><p>Build nice messages without code, with a live preview and link buttons.</p></div>
-<div class="wm-card"><div class="i">&#127760;</div><h3>Web dashboard</h3><p>Every setting in your browser, plus statistics: messages, joins, most active channels and members.</p></div>
+<div class="wm-card"><div class="i">&#127925;</div><h3>Music</h3><p>Play songs from YouTube, Spotify or Deezer links, a queue, filters and 24/7 radios. A clean player with buttons.</p></div>
+<div class="wm-card"><div class="i">&#127918;</div><h3>Music games</h3><p>A <b>blind test</b>, a speed <b>music quiz</b>, <b>Who picked it?</b> and <b>Vibe check</b>: play together in voice.</p></div>
+<div class="wm-card"><div class="i">&#11088;</div><h3>Levels & rank cards</h3><p>XP for messages and voice, beautiful <code>/rank</code> cards, a leaderboard, role rewards and level-up cards.</p></div>
+<div class="wm-card"><div class="i">&#128075;</div><h3>Welcome</h3><p>Illustrated welcome and goodbye cards with your own background, a welcome DM and auto roles.</p></div>
+<div class="wm-card"><div class="i">&#127924;</div><h3>Collectible cards</h3><p>72 creatures in 6 rarities. Members open boosters while they chat and fill their binder.</p></div>
+<div class="wm-card"><div class="i">&#128226;</div><h3>Live alerts</h3><p>Twitch streams and new YouTube videos posted in your channel the moment they go live.</p></div>
+<div class="wm-card"><div class="i">&#127915;</div><h3>Tickets & FAQ</h3><p>Ticket panels with forms, claim, priority, transcripts and a 1 to 5 star rating.</p></div>
+<div class="wm-card"><div class="i">&#128737;&#65039;</div><h3>Moderation</h3><p>Warnings with automatic steps, automod, anti-phishing, a <code>/raid</code> panic button and clear logs.</p></div>
+<div class="wm-card"><div class="i">&#128176;</div><h3>Economy & games</h3><p>A server currency, a shop, daily missions, Connect Four, hangman, quizzes and a counting channel.</p></div>
 </div>
 </div>
 
 <div class="wm-sep"></div>
 
 <div class="wm-in">
-<h2>See it in action</h2>
-<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/jeux.jpg" alt="Connect Four, the flag quiz and hangman in Discord"><p>Connect Four against Wumi, the flag quiz and hangman, right in your channels.</p></div>
-<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/dashboard-stats.jpg" alt="Wumi dashboard statistics"><p>The dashboard: your server's activity at a glance.</p></div>
-<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/dashboard-embed.jpg" alt="Wumi embed builder in the dashboard"><p>Write an embed, check the preview, publish it in a channel.</p></div>
+<span class="wm-tag">Dashboard</span>
+<h2>Set everything up <em>in your browser.</em></h2>
+<p>No command to remember: every module, your stats and an embed builder, on <a href="https://wumi.fr/dashboard/">the dashboard</a>.</p>
+<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/dashboard-stats.jpg" alt="Wumi dashboard: statistics of a server"><p>Your server's activity at a glance: messages, joins and leaves, most active channels and members.</p></div>
+<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/dashboard-embed.jpg" alt="Wumi dashboard: embed builder"><p>Write an embed, check the live preview, publish it in a channel.</p></div>
 </div>
 
 <div class="wm-sep"></div>
 
 <div class="wm-in">
-<h2>Ready in three steps</h2>
+<span class="wm-tag">New</span>
+<h2>Wumi got <em>a fresh new look.</em></h2>
+<p>A new orange mascot, new rank and welcome cards, a new website and dashboard.</p>
+<div class="wm-shot"><img src="https://wumi.fr/assets/topgg/nouvelle-da.jpg" alt="Wumi's new look: orange mascot and new rank card"></div>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<span class="wm-tag">Pricing</span>
+<h2>Free, <em>with an optional Premium.</em></h2>
+<div class="wm-prix">
+<div><b>Free</b><small>Every feature above, for every server.</small></div>
+<div class="pro"><b>$3.99 <small>/ month per server</small></b><small>Premium card themes, a custom background for cards, Wumi with your server's own name and avatar, and higher limits. Paid securely through Discord.</small></div>
+</div>
+</div>
+
+<div class="wm-sep"></div>
+
+<div class="wm-in">
+<span class="wm-tag">Get started</span>
+<h2>Ready in <em>three steps.</em></h2>
 <ol class="wm-steps">
 <li><div>Add Wumi to your server with the button above.</div></li>
-<li><div>Run <code>/setup</code>, or open the <a href="https://wumi.fr/dashboard/">dashboard</a> and click through the settings.</div></li>
-<li><div>Type <code>/</code> in Discord and try <code>/quiz play</code> with your members!</div></li>
+<li><div>Run <code>/setup</code>, or open the <a href="https://wumi.fr/dashboard/">dashboard</a> and pick your modules.</div></li>
+<li><div>Type <code>/</code> in Discord and try <code>/rank</code> or <code>/musicgame quiz</code> with your members!</div></li>
 </ol>
 </div>
 
 <div class="wm-sep"></div>
 
 <div class="wm-in">
-<h2>What matters</h2>
+<span class="wm-tag">Good to know</span>
 <ul class="wm-list">
 <li><b>No Administrator permission.</b> The invite link asks only for what Wumi needs: roles, moderation and messages.</li>
 <li><b>English and French.</b> Commands and messages follow your server's language.</li>
-<li><b>Your data stays yours.</b> Remove Wumi and everything about your server is erased. No copy is kept.</li>
+<li><b>Your data stays yours.</b> Remove Wumi and everything about your server is erased.</li>
 <li><b>Always online, and you can check it.</b> Live status and 90 days of uptime on <a href="https://wumi.fr/statut/">wumi.fr/statut</a>.</li>
-<li><b>Free.</b> Read the <a href="https://wumi.fr/conditions.html">Terms</a> and the <a href="https://wumi.fr/confidentialite.html">Privacy Policy</a>.</li>
+<li><b>Clear rules.</b> Read the <a href="https://wumi.fr/conditions.html">Terms</a>, the <a href="https://wumi.fr/confidentialite.html">Privacy Policy</a> and the <a href="https://wumi.fr/remboursement.html">Refund policy</a>.</li>
 </ul>
 </div>
 
 <div class="wm-foot">
-<a href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a><a href="https://wumi.fr/commandes/">Commands</a><a href="https://wumi.fr/dashboard/">Dashboard</a><a href="https://discord.gg/VaGrXgnAHS">Support</a><a href="https://wumi.fr/conditions.html">Terms</a><a href="https://wumi.fr/confidentialite.html">Privacy</a>
+<a href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&scope=bot%20applications.commands&permissions=1426362592470">Add to Discord</a><a href="https://wumi.fr/">Website</a><a href="https://wumi.fr/commandes/?lang=en">Commands</a><a href="https://wumi.fr/dashboard/">Dashboard</a><a href="https://discord.gg/VaGrXgnAHS">Support</a><a href="https://wumi.fr/conditions.html">Terms</a>
 </div>
 
 </div>
