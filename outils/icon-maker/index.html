@@ -2156,7 +2156,7 @@ function setTheme(th) {
   $("theme").innerHTML = th === "dark" ? ICO_SUN : ICO_MOON;
 }
 let th0 = "dark";
-try { th0 = localStorage.getItem("wumi-theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"); } catch (e) {}
+try { th0 = localStorage.getItem("wumi-theme") || "dark"; } catch (e) {}
 setTheme(th0);
 $("theme").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 
