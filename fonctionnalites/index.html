@@ -122,6 +122,7 @@ footer a{color:var(--muted)}
 @media (max-width:900px){.pan{grid-template-columns:1fr;gap:22px}.pan-txt{position:static}}
 @media (max-width:560px){.btn.ret{display:none}.champs{grid-template-columns:1fr}.dc-body{padding:14px 12px 18px}.msg{grid-template-columns:34px 1fr;gap:10px}.ava{width:34px;height:34px}}
 @media (prefers-reduced-motion:no-preference){.pan{animation:monte .35s ease}@keyframes monte{from{opacity:0;transform:translateY(8px)}}}
+.txt{font-size:14.5px;margin-top:2px;line-height:1.5}.att{display:block;width:100%;max-width:440px;border-radius:8px;margin-top:8px}.txt+.cont{margin-top:8px}.ea{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600}.ea i{width:16px;height:16px;border-radius:50%;flex:none}.et{color:#00a8fc;font-weight:700;font-size:15px;margin:6px 0 2px}.mono{letter-spacing:-.5px}.mono code{font-size:15px;letter-spacing:1px}.slash{margin:0 0 2px;font-size:12.5px}.slash code{font-size:12px}.sel{margin-top:8px;padding:9px 12px;border-radius:8px;background:var(--dc-card);border:1px solid rgba(127,127,127,.25);opacity:.8;font-size:13px;max-width:320px}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
@@ -162,14 +163,14 @@ const CATS = [
    cmds: { fr: ['/automod', '/avertir', '/sanctions', '/paliers', '/audit lancer', '/antiraid'], en: ['/automod', '/warn', '/sanctions', '/warnsteps', '/audit run', '/antiraid'] },
    ex: [
     { o: { fr: 'Avertir', en: 'Warn' }, salon: 'moderation',
-      fr: [u('M', '#e67e22'), 'Maya', '<code>/avertir</code> <em>membre: @Léo raison: spam de mentions</em>', '<h4>⚠️ Léo a reçu un avertissement</h4><p>Raison : spam de mentions</p><div class="champs"><div><small>AVERTISSEMENTS</small><span>3 sur 3</span></div><div><small>PALIER ATTEINT</small><span>Mute 1 h appliqué</span></div></div><div class="sep"></div><p class="mut">Sanction n°42 · Léo a été prévenu en MP</p>'],
-      en: [u('M', '#e67e22'), 'Maya', '<code>/warn</code> <em>member: @Leo reason: mention spam</em>', '<h4>⚠️ Leo has been warned</h4><p>Reason: mention spam</p><div class="champs"><div><small>WARNINGS</small><span>3 of 3</span></div><div><small>STEP REACHED</small><span>1 h mute applied</span></div></div><div class="sep"></div><p class="mut">Sanction #42 · Leo was notified by DM</p>'] },
+      fr: [u('M', '#e67e22'), 'Maya', '<code>/avertir</code> <em>membre: @Léo raison: spam de mentions</em>', '<h4>⚠️ leo a reçu un avertissement (<b>3</b> au total).</h4><p><b>Membre</b> · <span class="ment">@Léo</span> <code>leo</code><br><b>Modérateur</b> · <span class="ment">@Maya</span><br><b>Raison</b> · spam de mentions</p><p>🛡️ Escalade automatique : <b>mute de 1 h</b>.</p><div class="sep"></div><p class="mut">Sanction #42 · aujourd&#39;hui à 18:02</p>'],
+      en: [u('M', '#e67e22'), 'Maya', '<code>/warn</code> <em>member: @Leo reason: mention spam</em>', '<h4>⚠️ leo has been warned (<b>3</b> in total).</h4><p><b>Member</b> · <span class="ment">@Leo</span> <code>leo</code><br><b>Moderator</b> · <span class="ment">@Maya</span><br><b>Reason</b> · mention spam</p><p>🛡️ Automatic escalation: <b>1 h mute</b>.</p><div class="sep"></div><p class="mut">Case #42 · today at 6:02 PM</p>'] },
     { o: { fr: 'Anti-arnaque', en: 'Anti-scam' }, salon: 'general', auto: true,
-      fr: [WUMI, 'Wumi', null, '<h4>🛡️ Message supprimé : arnaque probable</h4><p>Un message de <span class="ment">@compte_pirate</span> imitait un cadeau Nitro avec un faux lien.</p><div class="champs"><div><small>DÉTECTÉ</small><span>Faux Nitro · lien suspect</span></div><div><small>ACTION</small><span>Supprimé + exclu 10 min</span></div></div><div class="btns"><span>Voir le journal</span><span class="v">C\'était légitime</span></div>'],
-      en: [WUMI, 'Wumi', null, '<h4>🛡️ Message removed: likely scam</h4><p>A message from <span class="ment">@hacked_account</span> faked a Nitro gift with a fake link.</p><div class="champs"><div><small>DETECTED</small><span>Fake Nitro · suspicious link</span></div><div><small>ACTION</small><span>Removed + 10 min timeout</span></div></div><div class="btns"><span>View log</span><span class="v">It was legit</span></div>'] },
+      fr: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@compte_pirate</span></div><div class="cont" style="--c:#ff7a7a"><p>🛡️ <b>Lien de phishing</b> — Ce lien pointe vers un site de phishing connu (disc0rd-gift.xyz).</p></div>'],
+      en: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@hacked_account</span></div><div class="cont" style="--c:#ff7a7a"><p>🛡️ <b>Phishing link</b> — This link points to a known phishing site (disc0rd-gift.xyz).</p></div>'] },
     { o: { fr: 'Audit', en: 'Audit' }, salon: 'staff',
-      fr: [u('S', '#2ecc71'), 'Sam', '<code>/audit lancer</code>', '<h4>🔐 Audit de sécurité : 78/100</h4><div class="barre"><i style="width:78%"></i></div><p style="margin-top:10px">✅ 2FA exigée pour la modération<br>⚠️ @everyone peut mentionner tout le monde<br>⚠️ 2 webhooks oubliés dans #annonces</p><div class="btns"><span class="p">Corriger (3)</span><span>Détails</span></div>'],
-      en: [u('S', '#2ecc71'), 'Sam', '<code>/audit run</code>', '<h4>🔐 Security audit: 78/100</h4><div class="barre"><i style="width:78%"></i></div><p style="margin-top:10px">✅ 2FA required for moderation<br>⚠️ @everyone can mention everyone<br>⚠️ 2 forgotten webhooks in #announcements</p><div class="btns"><span class="p">Fix (3)</span><span>Details</span></div>'] } ] },
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/audit lancer</code>', '<h4>🛡️ Audit de sécurité · Mon serveur</h4><p><b>🟡 78/100 · Bon</b></p><p class="mono"><code>▰▰▰▰▰▰▰▰▱▱</code></p><p class="mut">9 vérifications sur 12 sans problème</p><div class="sep"></div><p><b>🟠 Important</b> · 1</p><p><b>@everyone peut mentionner tout le monde</b> : un seul message peut notifier tout le serveur.</p><div class="btns"><span>Corriger</span></div><div class="sep"></div><p><b>🔵 Conseil</b> · 2</p><p><b>Filtre de contenu explicite désactivé</b> : les images choquantes ne sont pas analysées.</p><div class="btns"><span>Corriger</span></div>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/audit run</code>', '<h4>🛡️ Security audit · My server</h4><p><b>🟡 78/100 · Good</b></p><p class="mono"><code>▰▰▰▰▰▰▰▰▱▱</code></p><p class="mut">9 of 12 checks passed</p><div class="sep"></div><p><b>🟠 Important</b> · 1</p><p><b>@everyone can mention everyone</b>: a single message can ping the whole server.</p><div class="btns"><span>Fix</span></div><div class="sep"></div><p><b>🔵 Tip</b> · 2</p><p><b>Explicit content filter is off</b>: shocking images aren&#39;t scanned.</p><div class="btns"><span>Fix</span></div>'] } ] },
  { id: 'bienvenue', ico: '👋', c: '#ffcd4a',
    nom: { fr: 'Bienvenue', en: 'Welcome' },
    titre: { fr: 'Chaque arrivée <em>compte</em>.', en: 'Every arrival <em>counts</em>.' },
@@ -178,8 +179,8 @@ const CATS = [
    cmds: { fr: ['/bienvenue', '/autorole', '/roles-reactions', '/serveur verification'], en: ['/welcome', '/autorole', '/reactionrole', '/server verification'] },
    ex: [
     { o: { fr: 'Arrivée', en: 'Arrival' }, salon: 'bienvenue', auto: true,
-      fr: [WUMI, 'Wumi', null, '<p>Bienvenue <span class="ment">@Noa</span> ! Passe dans <span class="ment">#rôles</span> pour choisir tes jeux 🎮</p><div class="wcard"><div class="wava">N</div><b>BIENVENUE</b><strong>Noa</strong><small>Membre n°1 285 · Mon serveur</small></div>'],
-      en: [WUMI, 'Wumi', null, '<p>Welcome <span class="ment">@Noa</span>! Head to <span class="ment">#roles</span> to pick your games 🎮</p><div class="wcard"><div class="wava">N</div><b>WELCOME</b><strong>Noa</strong><small>Member #1,285 · My server</small></div>'] },
+      fr: [WUMI, 'Wumi', null, '!<div class="txt">Bienvenue <span class="ment">@Noa</span> sur <b>Wumi Hangout</b> ! Tu es le 1285e membre 🎉</div><img class="att" src="../assets/discord/bienvenue-fr.webp" alt="" loading="lazy">'],
+      en: [WUMI, 'Wumi', null, '!<div class="txt">Welcome <span class="ment">@Noa</span> to <b>Wumi Hangout</b>! You&#39;re member #1285 🎉</div><img class="att" src="../assets/discord/bienvenue-en.webp" alt="" loading="lazy">'] },
     { o: { fr: 'Rôles à choisir', en: 'Pick your roles' }, salon: 'roles',
       fr: [u('A', '#9b59b6'), 'Ana', '<code>/roles-reactions creer</code> <em>titre: Tes jeux</em>', '<h4>🎮 Tes jeux</h4><p>Clique pour recevoir (ou retirer) un rôle.</p><div class="btns"><span>🟩 Minecraft</span><span>🔫 Valorant</span><span>⚽ Rocket League</span><span>🧱 Roblox</span></div>'],
       en: [u('A', '#9b59b6'), 'Ana', '<code>/reactionrole create</code> <em>title: Your games</em>', '<h4>🎮 Your games</h4><p>Click to get (or remove) a role.</p><div class="btns"><span>🟩 Minecraft</span><span>🔫 Valorant</span><span>⚽ Rocket League</span><span>🧱 Roblox</span></div>'] } ] },
@@ -191,11 +192,11 @@ const CATS = [
    cmds: { fr: ['/rank', '/classement', '/profil', '/wrapped', '/badges'], en: ['/rank', '/leaderboard', '/profil', '/wrapped', '/badges'] },
    ex: [
     { o: { fr: 'Passage de niveau', en: 'Level up' }, salon: 'general', auto: true,
-      fr: [WUMI, 'Wumi', null, '<h4>🎉 GG <span class="ment">@Sam</span>, niveau 10 !</h4><div class="champs"><div><small>NIVEAU</small><span>9 → 10</span></div><div><small>RANG</small><span>#4 du serveur</span></div></div><div class="barre"><i style="width:12%"></i></div><p class="mut" style="margin-top:6px">Rôle débloqué : <span class="ment">@Habitué</span></p>'],
-      en: [WUMI, 'Wumi', null, '<h4>🎉 GG <span class="ment">@Sam</span>, level 10!</h4><div class="champs"><div><small>LEVEL</small><span>9 → 10</span></div><div><small>RANK</small><span>#4 on the server</span></div></div><div class="barre"><i style="width:12%"></i></div><p class="mut" style="margin-top:6px">Role unlocked: <span class="ment">@Regular</span></p>'] },
+      fr: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@Sam</span> passe <b>niveau 12</b> ! 🎉<br>Tu débloques <span class="ment">@Habitué</span> !</div><img class="att" src="../assets/discord/niveau-fr.webp" alt="" loading="lazy">'],
+      en: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@Sam</span> reaches <b>level 12</b>! 🎉<br>You unlock <span class="ment">@Regular</span>!</div><img class="att" src="../assets/discord/niveau-en.webp" alt="" loading="lazy">'] },
     { o: { fr: 'Classement', en: 'Leaderboard' }, salon: 'general',
-      fr: [u('L', '#3498db'), 'Léo', '<code>/classement</code>', '<h4>🏆 Classement du serveur</h4><p>🥇 Ana — niveau 24<br>🥈 Mika — niveau 21<br>🥉 Sam — niveau 18<br><span class="mut">4.</span> Léo — niveau 15</p><div class="btns"><span>◀</span><span class="p">XP</span><span>Vocal</span><span>▶</span></div>'],
-      en: [u('L', '#3498db'), 'Leo', '<code>/leaderboard</code>', '<h4>🏆 Server leaderboard</h4><p>🥇 Ana — level 24<br>🥈 Mika — level 21<br>🥉 Sam — level 18<br><span class="mut">4.</span> Leo — level 15</p><div class="btns"><span>◀</span><span class="p">XP</span><span>Voice</span><span>▶</span></div>'] } ] },
+      fr: [u('L', '#3498db'), 'Léo', '<code>/classement</code>', '<img class="att" src="../assets/discord/classement-fr.webp" alt="" loading="lazy"><div class="btns"><span>◀️ Précédent</span><span>Suivant ▶️</span></div>'],
+      en: [u('L', '#3498db'), 'Leo', '<code>/leaderboard</code>', '<img class="att" src="../assets/discord/classement-en.webp" alt="" loading="lazy"><div class="btns"><span>◀️ Previous</span><span>Next ▶️</span></div>'] } ] },
  { id: 'cartes', ico: '🎴', c: '#ff8cc0',
    nom: { fr: 'Économie & cartes', en: 'Economy & cards' },
    titre: { fr: 'Une monnaie, une boutique, <em>72 cartes</em>.', en: 'A currency, a shop, <em>72 cards</em>.' },
@@ -204,11 +205,11 @@ const CATS = [
    cmds: { fr: ['/cartes ouvrir', '/cartes classeur', '/cartes vitrine', '/economie daily', '/boutique'], en: ['/cards open', '/cards binder', '/cards showcase', '/economy daily', '/shop'] },
    ex: [
     { o: { fr: 'Ouvrir un booster', en: 'Open a booster' }, salon: 'cartes',
-      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes ouvrir</code>', '<h4>🎴 Carte 5 sur 5 · Légendaire</h4><img src="../assets/apercus/carte-fr.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">Carte suivante</span><span>Tout révéler</span></div>'],
-      en: [u('M', '#e91e63'), 'Mika', '<code>/cards open</code>', '<h4>🎴 Card 5 of 5 · Legendary</h4><img src="../assets/apercus/carte-en.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">Next card</span><span>Reveal all</span></div>'] },
+      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes ouvrir</code>', '<h4>Carte 5/5</h4><p>🟠 <b>Le Gardien du Serveur</b> · Légendaire · 🆕 Nouvelle !</p><img src="../assets/apercus/carte-fr.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">Voir le récapitulatif</span></div>'],
+      en: [u('M', '#e91e63'), 'Mika', '<code>/cards open</code>', '<h4>Card 5/5</h4><p>🟠 <b>Le Gardien du Serveur</b> · Legendary · 🆕 New!</p><img src="../assets/apercus/carte-en.webp" alt="" style="max-width:240px" loading="lazy"><div class="btns"><span class="p">See the summary</span></div>'] },
     { o: { fr: 'Classeur', en: 'Binder' }, salon: 'cartes',
-      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes classeur</code>', '<img src="../assets/apercus/classeur-fr.webp" alt="" loading="lazy"><div class="btns"><span>◀</span><span class="p">Néon</span><span>▶</span></div>'],
-      en: [u('M', '#e91e63'), 'Mika', '<code>/cards binder</code>', '<img src="../assets/apercus/classeur-en.webp" alt="" loading="lazy"><div class="btns"><span>◀</span><span class="p">Neon</span><span>▶</span></div>'] } ] },
+      fr: [u('M', '#e91e63'), 'Mika', '<code>/cartes classeur</code>', '<h4>📒 Classeur de Mika</h4><p><b>38/72</b> cartes (53 %) · ✨ 3 brillante(s)</p><img src="../assets/apercus/classeur-fr.webp" alt="" loading="lazy"><div class="btns"><span>◀️</span><span>4/6</span><span>▶️</span></div>'],
+      en: [u('M', '#e91e63'), 'Mika', '<code>/cards binder</code>', '<h4>📒 Mika&#39;s binder</h4><p><b>38/72</b> cards (53%) · ✨ 3 shiny</p><img src="../assets/apercus/classeur-en.webp" alt="" loading="lazy"><div class="btns"><span>◀️</span><span>4/6</span><span>▶️</span></div>'] } ] },
  { id: 'musique', ico: '🎵', c: '#62e3ff',
    nom: { fr: 'Musique & jeux', en: 'Music & games' },
    titre: { fr: 'Le vocal, <em>en mieux</em>.', en: 'Voice, <em>but better</em>.' },
@@ -217,11 +218,11 @@ const CATS = [
    cmds: { fr: ['/jouer', '/musique', '/radio', '/blindtest lancer', '/wumirun jouer', '/puissance4'], en: ['/play', '/music', '/radio', '/blindtest start', '/wumirun play', '/connect4'] },
    ex: [
     { o: { fr: 'Lecteur', en: 'Player' }, salon: 'musique',
-      fr: [u('A', '#9b59b6'), 'Ana', '<code>/jouer</code> <em>recherche: lofi hip hop</em>', '<h4>🎵 En lecture</h4><p><b>lofi hip hop radio – beats to relax</b></p><div class="barre"><i style="width:36%"></i></div><p class="mut" style="margin-top:6px">1:42 / 4:40 · ajouté par Ana · 6 titres à suivre</p><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span><span>🔁</span><span>🔀</span></div>'],
-      en: [u('A', '#9b59b6'), 'Ana', '<code>/play</code> <em>query: lofi hip hop</em>', '<h4>🎵 Now playing</h4><p><b>lofi hip hop radio – beats to relax</b></p><div class="barre"><i style="width:36%"></i></div><p class="mut" style="margin-top:6px">1:42 / 4:40 · added by Ana · 6 tracks up next</p><div class="btns"><span>⏮</span><span class="p">⏸</span><span>⏭</span><span>🔁</span><span>🔀</span></div>'] },
+      fr: [u('A', '#9b59b6'), 'Ana', '<code>/jouer</code> <em>recherche: lofi hip hop</em>', '<h4>🎵 lofi hip hop radio – beats to relax</h4><p class="mut">Lofi Girl · 4:40 · demandé par <span class="ment">@Ana</span></p><p class="mono">▬▬▬▬▬🔘▬▬▬▬▬▬▬▬ <code>1:42 / 4:40</code></p><p class="mut">🔊 80% · 🔁 off · 🎚️ — · 📜 6 en attente · ensuite : Snowman</p><div class="btns"><span>⏮️</span><span class="p">⏸️</span><span>⏭️</span><span class="r">⏹️</span><span>🌐 Lecteur web</span></div><div class="btns"><span>🔁</span><span>🔀</span><span>🔉</span><span>🔊</span><span>📜</span></div><div class="sel">🎚️ Filtre audio</div>'],
+      en: [u('A', '#9b59b6'), 'Ana', '<code>/play</code> <em>query: lofi hip hop</em>', '<h4>🎵 lofi hip hop radio – beats to relax</h4><p class="mut">Lofi Girl · 4:40 · requested by <span class="ment">@Ana</span></p><p class="mono">▬▬▬▬▬🔘▬▬▬▬▬▬▬▬ <code>1:42 / 4:40</code></p><p class="mut">🔊 80% · 🔁 off · 🎚️ — · 📜 6 queued · next: Snowman</p><div class="btns"><span>⏮️</span><span class="p">⏸️</span><span>⏭️</span><span class="r">⏹️</span><span>🌐 Web player</span></div><div class="btns"><span>🔁</span><span>🔀</span><span>🔉</span><span>🔊</span><span>📜</span></div><div class="sel">🎚️ Audio filter</div>'] },
     { o: { fr: 'Blind test', en: 'Blind test' }, salon: 'jeux',
-      fr: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest lancer</code> <em>theme: années 2000</em>', '<h4>🎧 Manche 3 sur 10</h4><p>Wumi passe un extrait de 25 s dans le vocal. Écris le titre !</p><p class="mut">Indice : _ _ _ _ _ _ _ _   _ _ _ _ _ _</p><div class="sep"></div><p>🥇 Sam 6 pts · 🥈 Ana 4 pts · 🥉 Léo 2 pts</p>'],
-      en: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest start</code> <em>theme: 2000s</em>', '<h4>🎧 Round 3 of 10</h4><p>Wumi plays a 25 s clip in voice. Type the title!</p><p class="mut">Hint: _ _ _ _ _ _ _ _   _ _ _ _ _ _</p><div class="sep"></div><p>🥇 Sam 6 pts · 🥈 Ana 4 pts · 🥉 Leo 2 pts</p>'] } ] },
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest lancer</code> <em>theme: années 2000</em>', '<h4>🎵 Manche 3/10</h4><p>🎧 Écoutez… écrivez le titre ou l&#39;artiste !</p><div class="sep"></div><p>💡 Indice : <code>H_y Y_ L_ B_ T_ Y_</code></p><div class="sep"></div><p class="mut">Manche 2/10</p><p>🥇 <span class="ment">@Sam</span> · <b>6</b><br>🥈 <span class="ment">@Ana</span> · <b>4</b><br>🥉 <span class="ment">@Léo</span> · <b>2</b></p>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/blindtest start</code> <em>theme: 2000s</em>', '<h4>🎵 Round 3/10</h4><p>🎧 Listen… type the title or the artist!</p><div class="sep"></div><p>💡 Hint: <code>H_y Y_ L_ B_ T_ Y_</code></p><div class="sep"></div><p class="mut">Round 2/10</p><p>🥇 <span class="ment">@Sam</span> · <b>6</b><br>🥈 <span class="ment">@Ana</span> · <b>4</b><br>🥉 <span class="ment">@Leo</span> · <b>2</b></p>'] } ] },
  { id: 'tickets', ico: '🎫', c: '#7b9bff',
    nom: { fr: 'Tickets & FAQ', en: 'Tickets & FAQ' },
    titre: { fr: 'Le support, <em>sans chaos</em>.', en: 'Support, <em>without chaos</em>.' },
@@ -230,11 +231,11 @@ const CATS = [
    cmds: { fr: ['/ticket panneau', '/faq chercher', '/faq ajouter', '/suggestion envoyer'], en: ['/ticket panel', '/faq search', '/faq add', '/suggestion send'] },
    ex: [
     { o: { fr: 'Ouverture', en: 'Opening' }, salon: 'ticket-0042', auto: true,
-      fr: [WUMI, 'Wumi', null, '<h4>🎫 Ticket de Léo</h4><p><b>Sujet :</b> le bot répond plus</p><div class="sep"></div><p>💡 <b>Cette fiche de la FAQ peut t\'aider :</b> « Wumi ne marche pas » — vérifie qu\'il a la permission d\'écrire dans le salon et relance <code style="font-family:inherit">/diagnostic</code>.</p><div class="btns"><span class="v">C\'est réglé</span><span>J\'attends l\'équipe</span></div>'],
-      en: [WUMI, 'Wumi', null, '<h4>🎫 Leo\'s ticket</h4><p><b>Subject:</b> the bot stopped replying</p><div class="sep"></div><p>💡 <b>This FAQ entry may help:</b> "Wumi doesn\'t work" — check it can write in the channel and run <code style="font-family:inherit">/diagnostic</code>.</p><div class="btns"><span class="v">Solved</span><span>Wait for the team</span></div>'] },
+      fr: [WUMI, 'Wumi', null, '<h4>💡 La FAQ a peut-être déjà la réponse</h4><p class="mut">En attendant l&#39;équipe, voici une réponse qui correspond à ta demande.</p><div class="sep"></div><p><b>Wumi ne répond plus</b><br>Vérifie qu&#39;il peut écrire dans le salon, puis lance <code>/diagnostic</code>.</p><div class="sep"></div><div class="btns"><span class="v">✅ C&#39;est réglé, merci</span><span>👋 J&#39;attends l&#39;équipe</span></div>'],
+      en: [WUMI, 'Wumi', null, '<h4>💡 The FAQ may already have the answer</h4><p class="mut">While you wait for the team, here&#39;s an answer that matches your request.</p><div class="sep"></div><p><b>Wumi doesn&#39;t reply anymore</b><br>Check that it can write in the channel, then run <code>/diagnostic</code>.</p><div class="sep"></div><div class="btns"><span class="v">✅ Solved, thanks</span><span>👋 I&#39;ll wait for the team</span></div>'] },
     { o: { fr: 'Panneau', en: 'Panel' }, salon: 'support',
-      fr: [u('M', '#e67e22'), 'Maya', '<code>/ticket panneau</code>', '<h4>📩 Besoin d\'aide ?</h4><p>Ouvre un ticket privé : seul le staff le verra. Réponse moyenne : <b>12 min</b>.</p><div class="btns"><span class="p">Ouvrir un ticket</span><span>Lire la FAQ</span></div>'],
-      en: [u('M', '#e67e22'), 'Maya', '<code>/ticket panel</code>', '<h4>📩 Need help?</h4><p>Open a private ticket: only the staff will see it. Average reply: <b>12 min</b>.</p><div class="btns"><span class="p">Open a ticket</span><span>Read the FAQ</span></div>'] } ] },
+      fr: [u('M', '#e67e22'), 'Maya', '<code>/ticket panneau</code>', '<h4>Besoin d&#39;aide ?</h4><p>Clique ci-dessous pour ouvrir un ticket. Un salon privé est créé, visible seulement par toi et l&#39;équipe.</p><div class="btns"><span class="p">🎫 Ouvrir un ticket</span></div>'],
+      en: [u('M', '#e67e22'), 'Maya', '<code>/ticket panel</code>', '<h4>Need help?</h4><p>Click below to open a ticket. A private channel is created, visible only to you and the team.</p><div class="btns"><span class="p">🎫 Open a ticket</span></div>'] } ] },
  { id: 'annonces', ico: '📣', c: '#ff7ad9',
    nom: { fr: 'Alertes live', en: 'Live alerts' },
    titre: { fr: 'Ne rate plus <em>un live</em>.', en: 'Never miss <em>a stream</em>.' },
@@ -243,11 +244,11 @@ const CATS = [
    cmds: { fr: ['/veille ajouter', '/veille liste', '/veille tester'], en: ['/watch add', '/watch list', '/watch test'] },
    ex: [
     { o: { fr: 'Twitch', en: 'Twitch' }, salon: 'annonces', auto: true, c: '#9146ff',
-      fr: [WUMI, 'Wumi', null, '<p><span class="ment">@Fans de stream</span> Mira est en live !</p><h4 style="margin-top:8px">Chill au coucher du soleil</h4><p class="mut">Just Chatting · 1 240 spectateurs</p><div class="btns"><span class="p">Regarder sur Twitch</span></div>'],
-      en: [WUMI, 'Wumi', null, '<p><span class="ment">@Stream fans</span> Mira is live!</p><h4 style="margin-top:8px">Sunset chill</h4><p class="mut">Just Chatting · 1,240 viewers</p><div class="btns"><span class="p">Watch on Twitch</span></div>'] },
+      fr: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@Fans de stream</span> Mira est en live !</div><div class="cont" style="--c:#ff9d1b"><div class="ea"><i style="background:#9146ff"></i>Mira est en direct !</div><div class="et">Sunset chill</div><p><b>Just Chatting</b> · 1240 spectateurs</p><img class="att" src="../assets/discord/twitch-fr.webp" alt="" loading="lazy"></div>'],
+      en: [WUMI, 'Wumi', null, '!<div class="txt"><span class="ment">@Stream fans</span> Mira is live!</div><div class="cont" style="--c:#ff9d1b"><div class="ea"><i style="background:#9146ff"></i>Mira is live!</div><div class="et">Sunset chill</div><p><b>Just Chatting</b> · 1240 viewers</p><img class="att" src="../assets/discord/twitch-en.webp" alt="" loading="lazy"></div>'] },
     { o: { fr: 'YouTube', en: 'YouTube' }, salon: 'annonces', auto: true, c: '#ff4e45',
-      fr: [WUMI, 'Wumi', null, '<p>Nouvelle vidéo de <b>Nova</b> 🎬</p><h4 style="margin-top:8px">J\'ai testé 10 bots Discord</h4><p class="mut">14:32 · publiée il y a 2 min</p><div class="btns"><span class="r">Voir sur YouTube</span></div>'],
-      en: [WUMI, 'Wumi', null, '<p>New video from <b>Nova</b> 🎬</p><h4 style="margin-top:8px">I tried 10 Discord bots</h4><p class="mut">14:32 · posted 2 min ago</p><div class="btns"><span class="r">Watch on YouTube</span></div>'] } ] },
+      fr: [WUMI, 'Wumi', null, '!<div class="txt">Nouvelle vidéo de Nova 🎬</div><div class="cont" style="--c:#ff9d1b"><div class="ea"><i style="background:#ff0000"></i>Nova</div><div class="et">J&#39;ai testé 10 bots Discord</div><img class="att" src="../assets/discord/youtube-fr.webp" alt="" loading="lazy"></div>'],
+      en: [WUMI, 'Wumi', null, '!<div class="txt">New video from Nova 🎬</div><div class="cont" style="--c:#ff9d1b"><div class="ea"><i style="background:#ff0000"></i>Nova</div><div class="et">I tried 10 Discord bots</div><img class="att" src="../assets/discord/youtube-en.webp" alt="" loading="lazy"></div>'] } ] },
  { id: 'serveur', ico: '📊', c: '#5ee68f',
    nom: { fr: 'Outils serveur', en: 'Server tools' },
    titre: { fr: 'Tout se règle <em>en une commande</em>.', en: 'Everything set <em>in one command</em>.' },
@@ -259,8 +260,8 @@ const CATS = [
       fr: [u('A', '#9b59b6'), 'Ana', '<code>/serveur stats pack</code> <em>style: élégant</em>', '<h4>✅ Pack de statistiques créé</h4><p>📊 <b>Statistiques</b><br>🔊 🧭 Membres : 1 284<br>🔊 🟢 En ligne : 312<br>🔊 💎 Boosts : 14<br>🔊 🔗 wumi.fr</p><p class="mut">Mis à jour toutes les 10 minutes</p>'],
       en: [u('A', '#9b59b6'), 'Ana', '<code>/server stats pack</code> <em>style: elegant</em>', '<h4>✅ Stats pack created</h4><p>📊 <b>Statistics</b><br>🔊 🧭 Members: 1,284<br>🔊 🟢 Online: 312<br>🔊 💎 Boosts: 14<br>🔊 🔗 wumi.fr</p><p class="mut">Refreshed every 10 minutes</p>'] },
     { o: { fr: 'Giveaway', en: 'Giveaway' }, salon: 'concours',
-      fr: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway lancer</code> <em>lot: Nitro 1 mois durée: 2j</em>', '<h4>🎁 Nitro 1 mois</h4><p>Fin dans <b>2 jours</b> · 1 gagnant · 87 participants</p><p class="mut">Les <span class="ment">@Boosters</span> ont 2× plus de chances</p><div class="btns"><span class="v">🎉 Participer</span></div>'],
-      en: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway start</code> <em>prize: Nitro 1 month duration: 2d</em>', '<h4>🎁 Nitro 1 month</h4><p>Ends in <b>2 days</b> · 1 winner · 87 entries</p><p class="mut"><span class="ment">@Boosters</span> get 2× the chances</p><div class="btns"><span class="v">🎉 Enter</span></div>'] } ] },
+      fr: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway lancer</code> <em>lot: Nitro 1 mois durée: 2j</em>', '<h4>🎁 Nitro 1 mois</h4><p>Fin dans 2 jours · 28 novembre 2026 18:00</p><div class="sep"></div><p>🏆 <b>Gagnants</b> · 1<br>👥 <b>Participants</b> · 87<br>🎙️ <b>Organisé par</b> · <span class="ment">@Sam</span></p><p>Boosters du serveur · chances <b>x2</b></p><div class="btns"><span class="v">🎁 Participer</span></div><p class="mut">Concours #12 · reclique pour ne plus participer</p>'],
+      en: [u('S', '#2ecc71'), 'Sam', '<code>/giveaway start</code> <em>prize: Nitro 1 month duration: 2d</em>', '<h4>🎁 Nitro 1 month</h4><p>Ends in 2 days · November 28, 2026 6:00 PM</p><div class="sep"></div><p>🏆 <b>Winners</b> · 1<br>👥 <b>Entries</b> · 87<br>🎙️ <b>Hosted by</b> · <span class="ment">@Sam</span></p><p>Server boosters · <b>x2</b> chances</p><div class="btns"><span class="v">🎁 Enter</span></div><p class="mut">Giveaway #12 · click again to leave</p>'] } ] },
 ];
 const T = {
   fr: { eyebrow: 'Fonctionnalités', titre: 'Tout ce que Wumi <span class="serif grad">sait faire.</span>', lead: "Choisis un domaine et regarde de vrais exemples : la commande qu'on tape, et ce que Wumi répond.", cmds: 'Commandes', legende: 'Maquette d\'un vrai message de Wumi.', auto: 'automatique', cta: 'Prêt à essayer ?', ctaP: 'Gratuit, prêt en une commande. Premium si tu veux aller plus loin.', ajouter: 'Ajouter à Discord', toutes: 'Toutes les commandes', retour: '← Site', accueil: '../fr/', pied: 'Wumi · <a href="../fr/">wumi.fr</a> · <a href="../fr/conditions.html">Conditions</a> · <a href="../fr/confidentialite.html">Confidentialité</a>', auj: "Aujourd'hui" },
@@ -275,10 +276,11 @@ const h = location.hash.slice(1); if (h) { const i = CATS.findIndex((c) => c.id 
 function message(e, c) {
   const [ava, nom, cmd, rep] = e[langue];
   const t = T[langue];
-  const estBot = ava === WUMI;
-  return '<div class="msg">' + ava + '<div><div class="qui">' + nom + (estBot ? '<span class="app">APP</span>' : '') + '<time>' + t.auj + '</time></div>'
-    + (cmd ? '<div class="slash">' + (langue === 'fr' ? 'a utilisé ' : 'used ') + cmd + '</div>' : '')
-    + '<div class="cont" style="--c:' + (e.c || c) + '">' + rep + '</div></div></div>';
+  const brut = rep.charAt(0) === '!';
+  const corps = brut ? rep.slice(1) : '<div class="cont" style="--c:' + (e.c || c) + '">' + rep + '</div>';
+  const tete = cmd ? '<div class="slash">' + nom + ' ' + (langue === 'fr' ? 'a utilisé ' : 'used ') + cmd + '</div>' : '';
+  return '<div class="msg">' + WUMI + '<div>' + tete + '<div class="qui">Wumi<span class="app">APP</span><time>' + t.auj + '</time></div>'
+    + corps + '</div></div>';
 }
 function panneau() {
   const C = CATS[cat], t = T[langue], e = C.ex[ex];
