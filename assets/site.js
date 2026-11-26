@@ -78,9 +78,10 @@
     const onglets = [[T.fonc, `/fonctionnalites/?lang=${l}`, '/fonctionnalites/'], [T.premium, `/premium/?lang=${l}`, '/premium/'], [T.docs, `/commandes/?lang=${l}`, '/commandes/'], [T.statut, '/statut/', '/statut/']];
     boite.innerHTML = `<div class="sw-entete" role="banner"><div class="sw-wrap sw-nav" role="navigation">
       <a href="${T.accueil}" class="sw-logo"><img src="/wumi-icone.svg" alt=""><span>wumi<span class="sw-dot">.</span></span></a>
-      <div class="sw-liens">${onglets.map(([n, h, p]) => `<a href="${h}"${ici.startsWith(p) ? ' class="on" aria-current="page"' : ''}>${esc(n)}</a>`).join('')}</div>
+      <div class="sw-liens">${onglets.map(([n, h, p]) => `<a href="${h}"${ici.startsWith(p) ? ' class="on" aria-current="page"' : ''}>${esc(n)}</a>`).join('')}<a class="sw-seul-mobile" href="/dashboard/">Dashboard</a></div>
       <div class="sw-fin">${selecteur(boite.dataset.langue || 'aucun', l)}
         ${document.documentElement.dataset.theme ? '<button class="sw-theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>' : ''}
+        <a class="sw-btn sw-btn-g sw-dash" href="/dashboard/"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Dashboard</a>
         <a class="sw-btn sw-btn-g" href="${SUPPORT}">${T.support}</a>
         <a class="sw-btn sw-btn-p" href="${INVITE}">${T.ajouter}</a>
         <button class="sw-burger" type="button" aria-label="Menu">☰</button>

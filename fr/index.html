@@ -173,8 +173,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 34px;color:var(--muted);f
 @media (max-width:1000px){.hero,.sec{grid-template-columns:1fr;gap:36px}.sec.inv .sec-txt{order:0}.collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.cl{position:static;width:auto!important;transform:none!important}
 .groupes{grid-template-columns:1fr 1fr}.f-grille{grid-template-columns:1fr 1fr 1fr}.nav-links{display:none}.burger{display:block}
 header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--line)}}
-@media (max-width:640px){.collage{grid-template-columns:1fr}.cl-4,.cl-6{display:none}.duo,.trio,.choix,.ch{grid-template-columns:1fr}.groupes{grid-template-columns:1fr}.f-grille{grid-template-columns:1fr 1fr}.nav-fin .btn-g{display:none}.sec{padding:64px 0}.lang{display:none}}
-</style>
+@media (max-width:640px){.collage{grid-template-columns:1fr}.cl-4,.cl-6{display:none}.duo,.trio,.choix,.ch{grid-template-columns:1fr}.groupes{grid-template-columns:1fr}.f-grille{grid-template-columns:1fr 1fr}.nav-fin .btn-g{display:none}#hdr .nav-links .seul-mobile{display:block}.sec{padding:64px 0}.lang{display:none}}
+.nav-links .seul-mobile{display:none}.btn-dash{display:inline-flex;align-items:center;gap:7px}</style>
 <link rel="stylesheet" href="../assets/anim.css">
 <script src="../assets/anim.js" defer></script>
 </head>
@@ -182,8 +182,9 @@ header.open .nav-links{display:flex;flex-direction:column;position:absolute;top:
 <div class="glow"></div>
 <header id="hdr"><nav class="wrap">
   <a href="#top" class="logo"><img src="../wumi-icone.svg" alt=""><span>wumi<span class="dot">.</span></span></a>
-  <div class="nav-links"><a href="../fonctionnalites/?lang=fr">Fonctionnalités</a><a href="../premium/?lang=fr">Premium</a><a href="../commandes/?lang=fr">Docs</a><a href="../statut/">Statut</a></div>
+  <div class="nav-links"><a href="../fonctionnalites/?lang=fr">Fonctionnalités</a><a href="../premium/?lang=fr">Premium</a><a href="../commandes/?lang=fr">Docs</a><a href="../statut/">Statut</a><a class="seul-mobile" href="../dashboard/">Dashboard</a></div>
   <div class="nav-fin"><div class="lang" role="group" aria-label="Language"><a href="../index.html" data-lang="en" hreflang="en" title="English" class=""><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="fl-uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#fl-uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg></a><a href="index.html" data-lang="fr" hreflang="fr" title="Français" class="on"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></a></div><button class="theme" type="button" aria-label="Light / dark" title="Light / dark"><span class="lune">🌙</span><span class="soleil">☀️</span></button>
+    <a class="btn btn-g btn-sm btn-dash" href="../dashboard/"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="flex:none"><path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Dashboard</a>
     <a class="btn btn-g btn-sm" href="https://discord.gg/VaGrXgnAHS">Support</a>
     <a class="btn btn-p btn-sm" href="https://discord.com/oauth2/authorize?client_id=1545770920185045084&amp;scope=bot%20applications.commands&amp;permissions=1426362592470">Ajouter à Discord</a>
     <button class="burger" type="button" aria-label="Menu" onclick="document.getElementById('hdr').classList.toggle('open')">☰</button>
