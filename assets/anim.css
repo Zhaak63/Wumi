@@ -1,0 +1,38 @@
+/* Animations du site Wumi (apparitions au defilement, messages Discord,
+   entree du haut de page, compteurs). Tout est coupe si l'appareil
+   demande moins de mouvement, et rien n'est cache sans JavaScript. */
+@media (prefers-reduced-motion:no-preference){
+  html.anim .ra{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 90ms)}
+  html.anim .ra.ra-on{opacity:1;transform:none}
+
+  /* Les messages des maquettes Discord arrivent l'un apres l'autre */
+  html.anim .dc.ra .m,html.anim .dc.ra .msg{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.8,.2,1.2);transition-delay:calc(250ms + var(--j,0) * 380ms)}
+  html.anim .dc.ra.ra-on .m,html.anim .dc.ra.ra-on .msg{opacity:1;transform:none}
+
+  /* Page Fonctionnalites : le panneau se redessine a chaque onglet */
+  html.anim .pan .msg{animation:ra-pop .5s cubic-bezier(.2,.8,.2,1.2) both}
+  html.anim .pan .atouts li{animation:ra-glisse .45s ease both;animation-delay:calc(var(--k,0) * 70ms)}
+
+  /* Haut de page */
+  html.anim .ra-h{opacity:0;transform:translateY(18px);animation:ra-monte .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(120ms + var(--i,0) * 110ms)}
+  html.anim .collage .cl{opacity:0;animation:ra-tombe .8s cubic-bezier(.2,.8,.2,1.15) forwards,flotte 7s ease-in-out infinite;animation-delay:calc(350ms + var(--i,0) * 120ms),calc(1.2s + var(--i,0) * -1.1s)}
+  html.anim .pile img{opacity:0;animation:ra-eventail .9s cubic-bezier(.2,.8,.2,1.1) forwards;animation-delay:calc(300ms + var(--i,0) * 140ms)}
+
+  /* Boutons principaux : un reflet qui passe au survol */
+  html.anim .btn-p,html.anim .btn.p,html.anim .sw-btn-p{position:relative;overflow:hidden}
+  html.anim .btn-p::after,html.anim .btn.p::after,html.anim .sw-btn-p::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s ease;pointer-events:none}
+  html.anim .btn-p:hover::after,html.anim .btn.p:hover::after,html.anim .sw-btn-p:hover::after{left:120%}
+
+  /* Pastilles et cartes : un leger soulevement */
+  html.anim .puces span,html.anim .groupes span,html.anim .chips span{transition:transform .2s ease,border-color .2s ease}
+  html.anim .puces span:hover,html.anim .groupes span:hover{transform:translateY(-2px)}
+  html.anim .mini,html.anim .etape,html.anim .carte,html.anim .gr{transition:transform .25s ease,box-shadow .25s ease,opacity .7s cubic-bezier(.2,.7,.2,1)}
+  html.anim .mini:hover,html.anim .etape:hover,html.anim .carte:hover{transform:translateY(-4px)}
+
+  @keyframes ra-monte{to{opacity:1;transform:none}}
+  @keyframes ra-tombe{from{opacity:0;scale:.86}to{opacity:1;scale:1}}
+  @keyframes ra-eventail{from{opacity:0;translate:0 40px;scale:.9}to{opacity:1;translate:0 0;scale:1}}
+  @keyframes ra-pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes ra-glisse{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  @keyframes flotte{50%{translate:0 -8px}}
+}
